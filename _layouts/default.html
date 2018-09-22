@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
+    <title>Document</title>
+</head>
+<body class="d-flex flex-lg-nowrap container-fluid m-0 p-0 row">
+{% include header.html %}
+
+<div class="d-flex flex-column flex-grow-1">
+    <div class="d-flex bg-warning">
+        <blockquote class="mx-auto">
+            <p style="text-shadow: 1px 1px 2px #000;">在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+            <footer class="blockquote-footer text-right">哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+        </blockquote>
+    </div>
+    <main role="main" id="main" class="flex-grow-1 p-2 p-lg-4">
+        {{ content }}
+    </main>
+    {% include footer.html %}
+</div>
+</body>
+</html>
+

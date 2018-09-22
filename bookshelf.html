@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<div id="bookshelf">
+    <h1 class="col-4 text-right h2">书架</h1>
+    <section>
+        <h2>Python</h2>
+        <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
+            {% for book in site.data.bookshelf["Python"] %}
+            <figure class="figure text-center align-top">
+                <img src="{{ book[1]['cover'] }}" alt="cover" class="figure-img img-thumbnail rounded"/>
+                <figcaption class="figure-caption text-justify px-4">{{ book[1]['title'] }}</figcaption>
+            </figure>
+            {% endfor %}
+        </div>
+    </section>
+</div>

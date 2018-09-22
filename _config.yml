@@ -18,15 +18,17 @@ email: admin@brave1984.com
 description: >- # this means to ignore newlines until "baseurl:"
   您好！我是黄昭隗，这是我的个人网站。
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
+url: "http://www.brave1984.com" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: brave_1984
 github_username:  brave1984
 
 # Build settings
 markdown: kramdown
-# theme: minima
+kramdown:
+  input: GFM
+theme: minima
 plugins:
-- jekyll-feed
+  - jekyll-feed
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -40,9 +42,7 @@ plugins:
 #   - vendor/gems/
 #   - vendor/ruby/
 exclude:
-  [".idea", "Gemfile", "Gemfile.lock", "Rakefile"]
+  [".idea", "Gemfile", "Gemfile.lock", "Rakefile", "**/*.azw3", "**/*.mobi"]
 permalink:
   pretty
-paginate:
-  1
 

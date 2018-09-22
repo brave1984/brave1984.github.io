@@ -1,0 +1,36 @@
+<nav role="navigation" id="navigation">
+    <ul class="nav flex-lg-column">
+        <li class="nav-item">
+            <a href="/" class="nav-link">首页</a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ site.baseurl }}/bookshelf/" class="nav-link">书架</a>
+        </li>
+        <li class="nav-item">
+            <a href="/" class="nav-link">文章</a>
+        </li>
+    </ul>
+    <ul id="social-media" class="nav">
+        <li class="nav-item">
+            <a href="https://www.twitter.com/{{ twitter_username }}" title="Twitter" class="nav-link">
+                <svg class="icon">
+                    <use xlink:href="{{ site.baseurl }}/assets/css/icoMoon.svg#twitter"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="https://github.com/{{ site.github_username}}" title="GitHub" class="nav-link">
+                <svg class="icon">
+                    <use xlink:href="{{ site.baseurl }}/assets/css/icoMoon.svg#github"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="mailto:{{ site.email }}" title="Mail" class="nav-link">
+                <svg class="icon">
+                    <use xlink:href="{{ site.baseurl }}/assets/css/icoMoon.svg#envelope"></use>
+                </svg>
+            </a>
+        </li>
+    </ul>
+</nav>
