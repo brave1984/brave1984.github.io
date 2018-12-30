@@ -31,7 +31,10 @@ import sys
 
 from docutils.core import publish_parts
 
-settings = {'syntax_highlight': 'short'}
+settings = {'syntax_highlight': 'short',
+            'initial_header_level': 2,
+            'file_insertion_enabled': False,
+            'raw_enabled': False, }
 
 
 def converter(source, part="html_body"):

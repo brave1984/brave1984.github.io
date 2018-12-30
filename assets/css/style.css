@@ -69,6 +69,8 @@ p {
     text-indent: 2rem;
 }
 
+/*------------------------------reStructuredText------------------------------*/
+
 #content li > p,
 #content table p {
     text-indent: 0;
@@ -82,4 +84,8 @@ p {
 
 .section {
     margin-top: 1rem;
+}
+
+#content pre {
+    padding: 1rem;
 }

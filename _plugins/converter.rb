@@ -16,7 +16,7 @@ module Jekyll
     def convert(content)
       RbST.python_path = "/usr/bin/env python3"
       RbST.executables = {:html => "#{File.expand_path(File.dirname(__FILE__))}/rst2html5.py"}
-      RbST.new(content).to_html
+      RbST.convert(content)
     end
   end
 
