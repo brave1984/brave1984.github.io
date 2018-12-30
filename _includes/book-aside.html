@@ -1,0 +1,56 @@
+{% if page.collection == "bookshelf" %}
+{% assign book = site.data.bookshelf | where: "title", page.title | first %}
+<aside role="complementary">
+    <article class="d-flex flex-wrap justify-content-center">
+        <figure class="mb-0">
+            <img class="figure-img mb-0 img-fluid rounded" src="/bookshelf/{{ page.title }}/cover.jpg" alt="封面：{{ page.title }}">
+        </figure>
+        <section class="card flex-grow-1" style="max-width: 20rem;">
+            <h2 class="card-header h5 text-center">书籍信息</h2>
+            <ul class="card-body list-unstyled mb-0">
+                <li>
+                    <p><span class="text-muted">作者：</span>{{ book.author }}</p>
+                </li>
+                {% if book.producer != "" %}
+                <li>
+                    <p><span class="text-muted">译者：</span>{{ book.producer }}</p>
+                </li>
+                {% endif %}
+                {% if book.pagination != "" %}
+                <li>
+                    <p><span class="text-muted">页码：</span>{{ book.pagination }}</p>
+                </li>
+                {% endif %}
+                {% if book.brand != "" %}
+                <li>
+                    <p><span class="text-muted">品牌：</span>{{ book.brand }}</p>
+                </li>
+                {% endif %}
+                {% if book.ISBN != "" %}
+                <li>
+                    <p><span class="text-muted">ISBN：</span>{{ book.ISBN }}</p>
+                </li>
+                {% endif %}
+                {% if book.publisher != "" %}
+                <li>
+                    <p><span class="text-muted">出版社：</span>{{ book.publisher }}</p>
+                </li>
+                {% endif %}
+                {% if book.published != "" %}
+                <li>
+                    <p><span class="text-muted">出版日期：</span>{{ book.published }}</p>
+                </li>
+                {% endif %}
+            </ul>
+            {% if book["product link"] != "" %}
+            <a class="text-center btn btn-warning" href="{{ book['product link'] }}">
+                <svg>
+                    <use xlink:href="/assets/img/fontawesome.svg#amazon"></use>
+                </svg>
+                <span>购买</span>
+            </a>
+            {% endif %}
+        </section>
+    </article>
+</aside>
+{% endif %}

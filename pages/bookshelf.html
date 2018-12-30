@@ -1,0 +1,36 @@
+---
+title: 书架
+permalink: /bookshelf/
+layout: default
+pagination:
+  enabled: true
+  collection: bookshelf
+  debug: false
+  per_page: 8
+---
+<section class="flex-grow-1 d-flex flex-column">
+  <header>
+    {% include breadcrumb.html %}
+  </header>
+  <ul class="list-unstyled d-flex flex-wrap">
+    {% for post in paginator.posts %}
+    <li class="col-6 col-md-3 my-2 border-bottom border-secondary d-flex flex-column">
+      <article class="flex-grow-1 d-flex flex-column">
+        <header class=" flex-grow-1">
+          <a href="{{ post.url }}" title="{{ post.title }}">
+            <img class="img-fluid rounded" src="/bookshelf/{{ post.title }}/cover.jpg" alt="封面：{{ post.title }}">
+          </a>
+          <h2 class="h5 m-2">
+            <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+          </h2>
+        </header>
+        <div class="small">
+          {% include tags.html tags=post.tags %}
+        </div>
+        <time class="text-right small" datetime="{{ post.date }}">{{ post.date | date: '%b %d, %y' }}</time>
+      </article>
+    </li>
+    {% endfor %}
+  </ul>
+  {% include pagination.html %}
+</section>

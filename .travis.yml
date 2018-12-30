@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+  - 2.5.1
+script:
+  - bundle install
+  - bundle exec jekyll build
+after_success:
+  - git config --global user.name "brave1984"
+  - git config --global user.email $EMAIL
+  - cd _site
+  - git init
+  - git checkout -b master
+  - git remote add origin https://$TOKEN@github.com/brave1984/brave1984.github.io.git
+  - git add .
+  - git commit -m "Travis CI - $(date)"
+  - git push -f origin master

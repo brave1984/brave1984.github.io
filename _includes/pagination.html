@@ -1,0 +1,29 @@
+{% if paginator.total_pages > 1 %}
+<nav class="align-self-center mt-auto">
+    <ul class="pagination">
+        {% if paginator.previous_page %}
+        <li class="page-item">
+            <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | remove: 'index.html' }}" title="上一页" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">上一页</span>
+            </a>
+        </li>
+        {% endif %}
+        {% if paginator.page_trail %}
+        {% for trail in paginator.page_trail %}
+        <li class="page-item{% if page.url == trail.path %} active{% endif %}">
+            <a class="page-link" href="{{ trail.path | prepend: site.baseurl | remove: "index.html" }}" title="{{trail.title}}">{{ trail.num }}</a>
+        </li>
+        {% endfor %}
+        {% endif %}
+        {% if paginator.next_page %}
+        <li class="page-item">
+            <a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | remove: 'index.html' }}" title="下一页" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">下一页</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}

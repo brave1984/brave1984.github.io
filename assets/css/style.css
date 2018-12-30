@@ -1,0 +1,85 @@
+/*  约定：
+    元素：样式 => 尺寸 => 边距 =>
+        子元素： 布局 => 样式 =>
+            文本: 对齐 => 背景 => 前景*/
+
+html {
+    display: flex;
+    min-height: 100%;
+}
+
+/*------------------------------颜色------------------------------*/
+.card,
+body {
+    background: #f2f1f0;
+}
+
+.bg-main {
+    background: #e6e2dd;
+}
+
+[role="contentinfo"] {
+    background: #f5f6f9;
+}
+
+/*------------------------------尺寸------------------------------*/
+
+[role="navigation"] {
+    max-width: 32rem;
+}
+
+[role="main"] {
+    max-width: 64rem;;
+}
+
+/*------------------------------文本布局------------------------------*/
+
+.jumbotron {
+    margin-bottom: 0;
+}
+
+svg.x1 {
+    width: 1rem;
+    height: 1rem;
+}
+
+svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+h1 {
+    font-size: 1.75rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    margin-bottom: 0.5rem;
+}
+
+.text-indent,
+#content p {
+    text-indent: 2rem;
+}
+
+#content li > p,
+#content table p {
+    text-indent: 0;
+}
+
+.excerpt {
+    font-size: 1.125rem;
+    font-weight: 300;
+    text-indent: 2rem;
+}
+
+.section {
+    margin-top: 1rem;
+}
