@@ -9,7 +9,7 @@ layout: default
         <li {% unless forloop.last %}class="mb-3 border-bottom border-secondary"{% endunless %}>
             <article>
                 <header><h2 class="offset-sm-2"><a href="{{ post.url }}" title="{{ post.title }}">{% if post.collection == "bookshelf" %}{{ post.title | prepend: "《" | append: "》" }}{% else %}{{ post.title }}{% endif %}</a></h2>
-                    <div class="d-flex flex-wrap">
+                    <div class="d-flex flex-wrap mb-3">
                         {% include tags.html tags=post.tags %}
                         <time class="ml-auto small" datetime="{{ post.date }}">{{ post.date | date: '%b %d, %y' }}</time>
                     </div>

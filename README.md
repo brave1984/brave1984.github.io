@@ -22,9 +22,10 @@
   
 ## 技术栈
 
-- [*Jekyll*](https://jekyllrb.com/ "Jekyll Official Site") · Simple, blog-aware, static sites | Transform your plain text into static websites and blogs.
-- [*Bootstrap*](https://getbootstrap.com/ "Bootstrap Official Site") · The most popular HTML, CSS, and JS library in the world.
-- [*Travis CI*](https://travis-ci.org/ "Travis CI Official Site") · Test and Deploy Your Code with Confidence.
+- [*docutils*](http://docutils.sourceforge.net/ "Docutils") · Documentation Utilities
+- [*Jekyll*](https://jekyllrb.com/ "Jekyll") · Simple, blog-aware, static sites | Transform your plain text into static websites and blogs.
+- [*Bootstrap*](https://getbootstrap.com/ "Bootstrap") · The most popular HTML, CSS, and JS library in the world.
+- [*Travis CI*](https://travis-ci.org/ "Travis CI") · Test and Deploy Your Code with Confidence.
 
 ## 致谢
 

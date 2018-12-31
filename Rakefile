@@ -2,8 +2,9 @@ require('time')
 
 desc "Create a new post"
 task :post do
-  unless FileTest.directory?('./_posts')
-    system('mkdir _posts')
+  dir = ENV['dir']
+  unless FileTest.directory?("_#{dir}")
+    system("mkdir _#{dir}")
   end
   title = ENV['title']
   begin
@@ -13,17 +14,29 @@ task :post do
     puts "Error: date format must be YYYY-MM-DD!"
     exit -1
   end
-  filename = File.join('.', '_posts', "#{date}-#{title}.rst")
+
+  filename = File.join('.', "_#{dir}", (dir == 'posts') ? "#{date}-#{title}.rst" : "#{title}.rst")
   if File.exist?(filename)
     abort("rake aborted: #{filename} already exists.")
   end
   puts "Creating new post: #{filename}..."
   open(filename, 'w') do |post|
-    post.puts "---"
-    post.puts "title: #{title}"
-    post.puts "date: #{datetime}"
-    post.puts "categories: "
-    post.puts "tags: "
-    post.puts "---"
+    post.puts <<EOF
+---
+title: #{title}
+date: #{datetime}
+categories: 
+tags:  
+excerpt_separator: .. 摘要注释
+---
+
+.. class:: excerpt
+
+
+
+.. 摘要注释
+
+----
+EOF
   end
 end
