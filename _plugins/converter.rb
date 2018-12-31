@@ -1,5 +1,3 @@
-require 'rbst'
-
 module Jekyll
   class RstConverter < Converter
     safe true
@@ -14,9 +12,13 @@ module Jekyll
     end
 
     def convert(content)
-      RbST.python_path = "/usr/bin/env python3"
-      RbST.executables = {:html => "#{File.expand_path(File.dirname(__FILE__))}/rst2html5.py"}
-      RbST.convert(content)
+      IO.popen("python3 #{File.expand_path(File.dirname(__FILE__))}/rst2html5.py", 'r+') do |pipe|
+        pipe.puts(content)
+        pipe.close_write
+        result = pipe.read
+        pipe.close_read
+        result
+      end
     end
   end
 

@@ -1,7 +1,6 @@
 GEM
   remote: https://gems.ruby-china.com/
   specs:
-    RbST (0.5.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     colorator (1.1.0)
@@ -63,7 +62,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  RbST
   jekyll (~> 3.8.5)
   jekyll-feed (~> 0.6)
   jekyll-paginate-v2
