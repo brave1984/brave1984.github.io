@@ -64,28 +64,43 @@ p {
     margin-bottom: 0.5rem;
 }
 
-.text-indent,
-#content p {
-    text-indent: 2rem;
-}
-
 /*------------------------------reStructuredText------------------------------*/
-
-#content li > p,
-#content table p {
-    text-indent: 0;
-}
-
 .excerpt {
     font-size: 1.125rem;
     font-weight: 300;
-    text-indent: 2rem;
 }
 
 .section {
     margin-top: 2rem;
 }
 
-#content pre {
+.text-indent,
+.excerpt,
+.document > p,
+.header > p,
+.section > p {
+    text-indent: 2rem;
+}
+
+.document img {
+    max-width: 100%;
+    height: auto;
+}
+
+.section pre {
     padding: 1rem;
+}
+
+.section h2 {
+    padding: 0.5rem;
+    background-color: #d8d1c9;
+}
+
+.section h3 {
+    padding-bottom: 0.5rem;
+    border-bottom: solid black 0.0625rem;
+}
+
+.footer {
+    font-size: 0.875rem;
 }

@@ -56,7 +56,7 @@ pagination:
   enabled: true
   debug: false
   collection: all
-  per_page: 4
+  per_page: 8
   permalink: '/:num/'
   title: ':title'
   limit: 0
@@ -105,3 +105,4 @@ exclude:
  - README.md
  - "*.azw3"
  - "*.mobi"
+ - "*.pdf"
