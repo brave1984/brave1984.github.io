@@ -6,10 +6,10 @@ layout: default
     <ul class="list-unstyled col-sm-10 col-md-9 col-lg-8 align-self-center">
         {% assign v = 1 %}
         {% for post in paginator.posts %}
-        <li {% unless forloop.last %}class="mb-3 border-bottom border-secondary"{% endunless %}>
+        <li {% unless forloop.last %}class="mb-4 border-bottom border-secondary"{% endunless %}>
             <article>
                 <header><h2 class="offset-sm-2"><a href="{{ post.url }}" title="{{ post.title }}">{% if post.collection == "bookshelf" %}{{ post.title | prepend: "《" | append: "》" }}{% else %}{{ post.title }}{% endif %}</a></h2>
-                    <div class="d-flex flex-wrap mb-3">
+                    <div class="d-flex flex-wrap">
                         {% include tags.html tags=post.tags %}
                         <time class="ml-auto small" datetime="{{ post.date }}">{{ post.date | date: '%b %d, %y' }}</time>
                     </div>

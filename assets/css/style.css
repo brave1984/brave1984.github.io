@@ -70,15 +70,8 @@ p {
     font-weight: 300;
 }
 
-.section {
-    margin-top: 2rem;
-}
-
 .text-indent,
-.excerpt,
-.document > p,
-.header > p,
-.section > p {
+.document p {
     text-indent: 2rem;
 }
 
@@ -87,20 +80,183 @@ p {
     height: auto;
 }
 
+.section {
+    margin-top: 1.5rem;
+}
+
 .section pre {
     padding: 1rem;
 }
 
+.section h2,
+.section h3 {
+    line-height: 3rem;
+}
+
 .section h2 {
-    padding: 0.5rem;
     background-color: #d8d1c9;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
 }
 
 .section h3 {
-    padding-bottom: 0.5rem;
     border-bottom: solid black 0.0625rem;
 }
 
 .footer {
     font-size: 0.875rem;
+}
+
+em {
+    padding: 0.25rem;
+}
+
+/*--------------------minimal--------------------*/
+
+/* alignment of text and inline objects inside block objects*/
+.align-left   { text-align: left; }
+.align-right  { text-align: right; }
+.align-center { clear: both; text-align: center; }
+.align-top    { vertical-align: top; }
+.align-middle { vertical-align: middle; }
+.align-bottom { vertical-align: bottom; }
+
+/* titles */
+p.admonition-title,
+p.topic-title,
+p.sidebar-title,
+p.rubric,
+p.system-message-title {
+    font-weight: bold;
+    text-indent: 0;
+}
+
+/* Warnings, Errors */
+div.caution p.admonition-title,
+div.attention p.admonition-title,
+div.danger p.admonition-title,
+div.error p.admonition-title,
+div.warning p.admonition-title,
+div.system-messages h1,
+div.error,
+span.problematic,
+p.system-message-title {
+    color: red;
+}
+
+/* inline literals */
+span.docutils.literal {
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+/* Lists */
+
+/* compact and simple lists: no margin between items */
+.simple  li, .compact li,
+.simple  ul, .compact ul,
+.simple  ol, .compact ol,
+.simple > li p, .compact > li p,
+dl.simple > dd, dl.compact > dd {
+    margin-top: 0;
+    margin-bottom: 0;
+    text-indent: 0;
+}
+
+/* Table of Contents */
+div.topic.contents { margin: 0; }
+div.topic.contents ul {
+    list-style-type: none;
+    padding-left: 1.5em;
+}
+
+/* Enumerated Lists */
+ol.arabic     { list-style: decimal }
+ol.loweralpha { list-style: lower-alpha }
+ol.upperalpha { list-style: upper-alpha }
+ol.lowerroman { list-style: lower-roman }
+ol.upperroman { list-style: upper-roman }
+
+dt span.classifier { font-style: italic }
+dt span.classifier:before {
+    font-style: normal;
+    margin: 0.5em;
+    content: ":";
+}
+
+/* Field Lists and drivatives */
+/* bold field name, content starts on the same line */
+dl.field-list > dt,
+dl.option-list > dt,
+dl.docinfo > dt,
+dl.footnote > dt,
+dl.citation > dt {
+    font-weight: bold;
+    clear: left;
+    float: left;
+    margin: 0;
+    padding: 0;
+    padding-right: 0.5em;
+}
+/* Offset for field content (corresponds to the --field-name-limit option) */
+dl.field-list > dd,
+dl.option-list > dd,
+dl.docinfo > dd {
+    margin-left:  9em; /* ca. 14 chars in the test examples */
+}
+/* start field-body on a new line after long field names */
+dl.field-list > dd > *:first-child,
+dl.option-list > dd > *:first-child
+{
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+}
+/* field names followed by a colon */
+dl.field-list > dt:after,
+dl.docinfo > dt:after {
+    content: ":";
+}
+
+/* Bibliographic Fields (docinfo) */
+pre.address { font: inherit; }
+dd.authors > p { margin: 0; }
+
+/* Option Lists */
+dl.option-list { margin-left: 40px; }
+dl.option-list > dt { font-weight: normal; }
+span.option { white-space: nowrap; }
+
+/* Footnotes and Citations  */
+dl.footnote.superscript > dd {margin-left: 1em; }
+dl.footnote.brackets > dd {margin-left: 2em; }
+dl > dt.label { font-weight: normal; }
+a.footnote-reference.brackets:before,
+dt.label > span.brackets:before { content: "["; }
+a.footnote-reference.brackets:after,
+dt.label > span.brackets:after { content: "]"; }
+a.footnote-reference.superscript,
+dl.footnote.superscript > dt.label {
+    vertical-align: super;
+    font-size: smaller;
+}
+dt.label > span.fn-backref { margin-left: 0.2em; }
+dt.label > span.fn-backref > a { font-style: italic; }
+
+/* Line Blocks */
+div.line-block { display: block; }
+div.line-block div.line-block {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 40px;
+}
+
+/* Admonitions and System Messages */
+div.admonition,
+div.system-message,
+div.sidebar{
+    margin: 1rem 0;
+    border: medium outset;
+    padding-right: 1rem;
+    padding-left: 1rem;
 }
