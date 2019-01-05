@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 if !(which git > /dev/null); then
 	echo "请安装：Git"
 	exit 127

@@ -6,4 +6,4 @@ install:
 script:
   - bundle exec jekyll build
 after_success:
-  - ./push_site.sh
+  - ./push_gh-pages.sh

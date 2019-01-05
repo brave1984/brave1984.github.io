@@ -2,7 +2,7 @@
 title: GitHub入门与实践
 date: 2018-10-04
 categories: 计算
-tags: [Git, 基础]
+tags: [Git, 基础, 工具]
 excerpt_separator: .. 摘要注释
 ---
 

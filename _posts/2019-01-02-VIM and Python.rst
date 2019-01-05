@@ -40,20 +40,17 @@ excerpt_separator: .. 摘要注释
     cd ~/.vim/pack/foo/start/
     vim -u NONE -c "helptags python-mode/doc" -c "helptags nerdtree/doc" -c "helptags vim-airline/doc" -c "helptags vim-fugitive/doc" -c "helptags vimcdoc/doc" -c q
 
-在\ ``$HOME``\ 目录下，添加\ `.vimrc <https://raw.githubusercontent.com/brave1984/brave1984.github.io/develop/gists/.vimrc>`_\ ，其中包含以下代码：
+在\ ``$HOME``\ 目录下，添加\ `.vimrc <https://raw.githubusercontent.com/brave1984/brave1984.github.io/develop/gists/.vimrc>`_\ 文件，代码如下：
 
 .. include:: gists/.vimrc
     :code: vim
 
-`setup-vim-plugins.sh <https://raw.githubusercontent.com/brave1984/brave1984.github.io/develop/gists/setup-vim-plugins.sh>`_
+科学浏览：https://gist.github.com/brave1984/e8231dd2fd399536d8272b110f4a8b7e
 
 .. tip::
-    DPS低，就是木桩打得少！
+    DPS垫底，就是木桩打得少！
 
-    .. role:: bash(code)
-        :language: bash
-
-    :bash:`$ vimtutor zh`
+    善用\ *:help*\ 文档；在命令行中输入——\ ``vimtutor zh``\ ——命令后，请多加练习！
 
 .. footer::
 
