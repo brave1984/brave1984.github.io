@@ -31,7 +31,7 @@ import sys
 
 from docutils.core import publish_parts
 
-import directive  # 导入自定义指令
+import directive  # 导入自定义的reStructuredText指令
 
 settings = {'syntax_highlight': 'short',
             'initial_header_level': 2,

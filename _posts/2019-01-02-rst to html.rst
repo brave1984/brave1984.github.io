@@ -90,6 +90,9 @@ excerpt_separator: .. 摘要注释
 
 科学浏览：https://gist.github.com/brave1984/39db3c65f0347d9ee92d33b2dd845105
 
+.. tip::
+    扩展\ *reStructuredText*\ 指令参考：http://docutils.sourceforge.net/docs/howto/rst-directives.html
+
 .. _reStructuredText: http://docutils.sourceforge.net/rst.html
 .. _Jekyll: https://jekyllrb.com/
 .. _Converters: https://jekyllrb.com/docs/plugins/converters/
@@ -97,3 +100,4 @@ excerpt_separator: .. 摘要注释
 .. _rst2html5: https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/tools/rst2html5.py
 .. _core: https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/core.py
 .. _html_base: https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/_html_base.py
+
