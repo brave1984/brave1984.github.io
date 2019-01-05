@@ -8,65 +8,63 @@ excerpt_separator: .. 摘要注释
 
 .. class:: excerpt
 
-    讲述了GitHub的从个人使用到团队开发
+    就如同\ `GitHub <https://github.com/>`_\ 不止是\ *Git*\ 仓库托管服务一般，本书的要点也不止是\ *Git*\ 命令的使用。\
+    作者以“改善开发流程”为主旨，从“社会化编程”的角度，讲述了\ *GitHub*\ 的使用方法：1、发起、接收\ *Pull Request*\；\
+    2、Issue、持续集成、代码覆盖；3、以\ **部署**\ 为中心、以\ **发布**\ 为中心的\ *Git Flow*\ 。
 
 .. 摘要注释
+
+
 
 ----
 
 文摘
 ----
 
-.. role:: bash(code)
-    :language: bash
+.. compound::
 
-设置账户
-~~~~~~~~
-#. :bash:`git config --global user.name "username"`
-#. :bash:`git config --global user.email "email@example.com"`
-#. :bash:`cat ~/.gitconfig`
-#. :bash:`ssh-keygen -t rsa -C "email@example.com"`
-#. :bash:`cat ~/.ssh/id_rsa.pub`
-#. 在\ *GitHub*\ 上添加公钥
-#. :bash:`ssh -T git@github.com`
+    针对不特定的多数人：
+        ❶ 在 GitHub 上进行 Fork
 
-发送Pull Request
-~~~~~~~~~~~~~~~~
+        ❷ 将❶的仓库 clone 至本地开发环境
 
-.. image:: /bookshelf/{{ page.title }}/6-1.png
-    :alt: send pull request
+        ❸ 在本地环境中创建特性分支
 
-❶ 在 GitHub 上进行 Fork
+        ❹ 对特性分支进行代码修改并进行提交
 
-❷ 将❶的仓库 clone 至本地开发环境
+        ❺ 将特性分支 push 到❶的仓库中
 
-❸ 在本地环境中创建特性分支
+        ❻ 在 GitHub 上对 Fork 来源仓库发送 Pull Request
 
-❹ 对特性分支进行代码修改并进行提交
+    以部署为中心：
+        ❶ 令 master 分支时常保持可以部署的状态
 
-❺ 将特性分支 push 到❶的仓库中
+        ❷ 进行新的作业时要从 master 分支创建新分支，新分支名称要具有描述性
 
-❻ 在 GitHub 上对 Fork 来源仓库发送 Pull Request
+        ❸ 在❷新建的本地仓库分支中进行提交
 
-.. image:: /bookshelf/{{ page.title }}/6-2.png
-    :alt: fetch
+        ❹ 在 GitHub 端仓库创建同名分支，定期 push
 
-接收Pull Request
-~~~~~~~~~~~~~~~~
+        ❺ 需要帮助或反馈时创建 Pull Request，以 Pull Request 进行交流
 
-.. image:: /bookshelf/{{ page.title }}/7-1.png
-    :alt: clone & fetch
+        ❻ 让其他开发者进行审查，确认作业完成后与 master 分支合并
 
-.. image:: /bookshelf/{{ page.title }}/7-2.png
-    :alt: checkout & merge
+        ❼ 与 master 分支合并后立刻部署
 
-.. image:: /bookshelf/{{ page.title }}/7-3.png
-    :alt: merge pull request
+    以发布为中心：
+        ❶ 从开发版的分支（develop）创建工作分支（feature branches），进行功能的实现或修正
 
-Travis CI
-~~~~~~~~~
+        ❷ 工作分支（feature branches）的修改结束后，与开发版的分支（develop）进行合并
 
-#. :bash:`gem install travis`
-#. :bash:`vi .travis.yml`
-#. :bash:`travis login`
+        ❸ 重复上述❶和❷，不断实现功能直至可以发布
+
+        ❹ 创建用于发布的分支（release branches），处理发布的各项工作
+
+        ❺ 发布工作完成后与 master 分支合并，打上版本标签（Tag）进行发布
+
+        ❻ 如果发布的软件出现 BUG，以打了标签的版本为基础进行修正（hotfixes）
+
+.. footer::
+
+    工具只能解决工具的问题，版本控制只是开发过程中的一环，但人的问题还是需要人来解决。
 
