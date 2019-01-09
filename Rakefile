@@ -40,3 +40,9 @@ excerpt_separator: .. 摘要注释
 EOF
   end
 end
+
+desc "git submodule via https"
+task :ssh2https do
+  text = File.read('gitmodules').gsub(/git@/,'https://$token@')
+  File.write('gitmodules', text)
+end

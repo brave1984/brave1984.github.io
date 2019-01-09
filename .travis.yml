@@ -6,9 +6,10 @@ git:
     false
 before_install:
   - echo -e "\n\nmachine github.com\n  $token\n" >~/.netrc
-  - git submodule update --init --recursive
 install:
   - bundle install
+  - bundle exec rake ssh2https
+  - git submodule update --init --recursive
 script:
   - bundle exec jekyll build
 after_success:
