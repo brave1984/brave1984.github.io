@@ -43,6 +43,6 @@ end
 
 desc "git submodule via https"
 task :ssh2https do
-  text = File.read('gitmodules').gsub(/git@/,'https://$token@')
-  File.write('gitmodules', text)
+  text = File.read('.gitmodules').gsub(/git@/,'https://$token@')
+  File.write('.gitmodules', text)
 end
