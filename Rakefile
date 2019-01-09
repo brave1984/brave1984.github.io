@@ -26,7 +26,7 @@ task :post do
 title: #{title}
 date: #{datetime}
 categories: 
-tags:  
+tags: []
 excerpt_separator: .. 摘要注释
 ---
 

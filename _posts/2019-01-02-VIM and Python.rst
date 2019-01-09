@@ -3,6 +3,7 @@ title: VIM，手的延伸
 date: 2019-01-02 09:11:25 +0800
 categories: 计算
 tags:  [Python, VIM, 工具]
+gist: e8231dd2fd399536d8272b110f4a8b7e
 excerpt_separator: .. 摘要注释
 ---
 .. _VIM: https://www.vim.org/
@@ -34,7 +35,7 @@ excerpt_separator: .. 摘要注释
 * `vim-fugitive <https://github.com/tpope/vim-fugitive>`_
 * `vimcdoc <https://github.com/yianwillis/vimcdoc>`_
 
-.. include:: gists/{{ page.title }}/setup-vim-plugins.sh
+.. include:: gists/{{ page.gist }}/setup-vim-plugins.sh
     :code: bash
     :start-line: 1
     :end-line: 12
@@ -45,23 +46,25 @@ excerpt_separator: .. 摘要注释
 
 添加插件的帮助文档：
 
-.. include:: gists/{{ page.title }}/setup-vim-plugins.sh
+.. include:: gists/{{ page.gist }}/setup-vim-plugins.sh
     :code: bash
     :start-line: 13
     :end-line: 21
 
 在\ ``$HOME``\ 目录下，添加\ `.vimrc <https://raw.githubusercontent.com/brave1984/brave1984.github.io/develop/gists/.vimrc>`_\ 文件，代码如下：
 
-.. include:: gists/{{ page.title }}/.vimrc
+.. include:: gists/{{ page.gist }}/.vimrc
     :code: vim
-
-GitHub Gist:
-
-    .. code:: bash
-
-        git clone https://gist.github.com/e8231dd2fd399536d8272b110f4a8b7e.git
 
 .. tip::
     DPS垫底，就是木桩打得少！
 
     1、善用\ *VIM*\ 的帮助文档；2、在命令行中输入——\ ``vimtutor zh``\ ——命令后，请多加练习！
+.. footer::
+    |fork| https://gist.github.com/{{ page.gist }}.git
+
+.. |fork| image:: /assets/img/code-branch.svg
+    :alt: fork
+    :class: x2
+
+

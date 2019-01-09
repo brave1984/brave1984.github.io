@@ -4,3 +4,6 @@
 [submodule "_plugins/rst2html"]
 	path = _plugins/rst2html
 	url = git@gist.github.com:39db3c65f0347d9ee92d33b2dd845105.git
+[submodule "gists/e8231dd2fd399536d8272b110f4a8b7e"]
+	path = gists/e8231dd2fd399536d8272b110f4a8b7e
+	url = git@gist.github.com:e8231dd2fd399536d8272b110f4a8b7e.git
