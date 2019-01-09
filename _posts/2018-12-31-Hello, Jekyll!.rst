@@ -23,4 +23,4 @@ excerpt_separator: .. 摘要注释
 
 ----
 
-你好么？
+Hello, Jekyll World!
