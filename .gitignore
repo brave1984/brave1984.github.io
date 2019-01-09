@@ -5,4 +5,5 @@ _site
 *.azw3
 *.azw
 *.mobi
+*.pdf
 __pycache__/
