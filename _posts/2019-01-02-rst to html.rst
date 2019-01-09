@@ -63,7 +63,7 @@ excerpt_separator: .. 摘要注释
 
 于是乎，我们可以编写出如下的\ *.rst to .html*\ 转换函数：
 
-.. include:: _plugins/rst2html5.py
+.. include:: _plugins/rst2html/rst2html5.py
     :code: python
     :start-line: 35
     :end-line: 46
@@ -72,26 +72,29 @@ excerpt_separator: .. 摘要注释
 * `writer_name参数配置 <https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/__init__.py#l120>`_\
 * `docutils配置 <http://docutils.sourceforge.net/docs/user/config.html>`_
 * `Dracula for Pygments <https://github.com/dracula/pygments>`_\ ，请将样式表中的\ *highlight*\ 类替换成\ *code*\ 类。
+* `扩展reStructuredText指令 <http://docutils.sourceforge.net/docs/howto/rst-directives.html>`_
 
 结果
 ----
-在\ *_plugins*\ 目录下，编写插件：
+在\ *_plugins*\ 目录下的\ *rst2html*\ 文件夹中，编写插件。
 
-`converter.rb <https://raw.githubusercontent.com/brave1984/brave1984.github.io/develop/_plugins/converter.rb>`_\ ，代码如下：
+*converter.rb*\ ，代码如下：
 
-.. include:: _plugins/converter.rb
+.. include:: _plugins/rst2html/converter.rb
     :code: ruby
 
-`rst2html5.py <https://raw.githubusercontent.com/brave1984/brave1984.github.io/develop/_plugins/rst2html5.py>`_\ ，代码如下：
+*rst2html5.py*\ ，代码如下：
 
-.. include:: _plugins/rst2html5.py
+.. include:: _plugins/rst2html/rst2html5.py
     :code: python
     :start-line: 22
 
-科学浏览：https://gist.github.com/brave1984/39db3c65f0347d9ee92d33b2dd845105
+.. footer::
+    |fork| https://gist.github.com/39db3c65f0347d9ee92d33b2dd845105.git
 
-.. tip::
-    扩展\ *reStructuredText*\ 指令参考：http://docutils.sourceforge.net/docs/howto/rst-directives.html
+.. |fork| image:: /assets/img/code-branch.svg
+    :alt: fork
+    :class: x2
 
 .. _reStructuredText: http://docutils.sourceforge.net/rst.html
 .. _Jekyll: https://jekyllrb.com/

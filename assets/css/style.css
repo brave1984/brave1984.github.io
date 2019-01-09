@@ -38,12 +38,12 @@ body {
     margin-bottom: 0;
 }
 
-svg.x1 {
+.x1 {
     width: 1rem;
     height: 1rem;
 }
 
-svg {
+.x2 {
     width: 2rem;
     height: 2rem;
 }
