@@ -1,6 +1,12 @@
 language: ruby
 rvm:
   - 2.5.1
+git:
+  submodules:
+    false
+before_install:
+  - echo -e "\n\nmachine github.com\n  $token\n" >~/.netrc
+  - git submodule update --init --recursive
 install:
   - bundle install
 script:
