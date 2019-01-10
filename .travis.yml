@@ -1,8 +1,7 @@
-language: 
-  - ruby
-  - python
+language: ruby
 rvm:
   - 2.5.3
+language: python
 python:
   - "3.6"
 git:
