@@ -1,6 +1,6 @@
 # [黄昭隗的个人网站](https://www.brave1984.com/)
 
-[![Build Status](https://travis-ci.com/brave1984/brave1984.github.io.svg?branch=develop)](https://travis-ci.com/brave1984/brave1984.github.io)
+[![Build Status](https://travis-ci.com/brave1984/brave1984.github.io.svg?branch=master)](https://travis-ci.com/brave1984/brave1984.github.io)
 
 ## 目的
 
