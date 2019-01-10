@@ -9,7 +9,7 @@ git:
   submodules:
     false
 install:
-  - pip3 install -r requirements.txt
+  - pip install -r requirements.txt
   - bundle install
   - bundle exec rake ssh2https
   - git submodule update --init --recursive
