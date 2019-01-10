@@ -20,20 +20,22 @@ excerpt_separator: .. 摘要注释
 
 ----
 
+用好一种\ **可配置**\ 、\ **可扩展**\ 、\ **可编程**\ 的编辑器。学习它，扩展它，拥有它！
+
 本文参考自：\ `VIM and Python – A Match Made in Heaven <https://realpython.com/vim-and-python-a-match-made-in-heaven/>`_\ ，增加了\
-`Python-mode <https://github.com/python-mode/python-mode>`_\ 插件。
+`Python-mode <https://github.com/python-mode/python-mode>`_\ 等插件。
 
 安装插件
 --------
 
 利用\ VIM_\  8的原生包管理功能，从\ `GitHub <https://github.com/>`_\ 上克隆以下插件到\ *~/.vim/pack/foo/start*\目录：
 
-* `YouCompleteMe <https://github.com/Valloric/YouCompleteMe>`_
-* `Python-mode <https://github.com/python-mode/python-mode>`_
-* `NERDTree <https://github.com/scrooloose/nerdtree>`_
-* `vim-airline <https://github.com/vim-airline/vim-airline>`_
-* `vim-fugitive <https://github.com/tpope/vim-fugitive>`_
-* `vimcdoc <https://github.com/yianwillis/vimcdoc>`_
+* `YouCompleteMe <https://github.com/Valloric/YouCompleteMe>`_\ （自动完成）
+* `Python-mode <https://github.com/python-mode/python-mode>`_\ （语法突显&代码重构）
+* `NERDTree <https://github.com/scrooloose/nerdtree>`_\ （目录文件导航）
+* `vim-airline <https://github.com/vim-airline/vim-airline>`_\ （状态条）
+* `vim-fugitive <https://github.com/tpope/vim-fugitive>`_\ （git扩展）
+* `vimcdoc <https://github.com/yianwillis/vimcdoc>`_\ （中文文档）
 
 .. include:: gists/{{ page.gist }}/setup-vim-plugins.sh
     :code: bash

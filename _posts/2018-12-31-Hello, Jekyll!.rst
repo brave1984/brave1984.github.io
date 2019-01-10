@@ -3,6 +3,7 @@ title: Hello, Jekyll!
 date: 2018-12-31 10:57:51 +0800
 categories: 计算
 tags: [Jekyll]
+published: false
 excerpt_separator: .. 摘要注释
 ---
 
