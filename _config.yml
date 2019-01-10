@@ -101,7 +101,6 @@ exclude:
  - Dockerfile
  - docker-compose.yml
  - Rakefile
- - CNAME
  - README.md
  - "*.azw3"
  - "*.mobi"
