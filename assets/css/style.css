@@ -87,7 +87,7 @@ table p {
     margin-bottom: 0;
 }
 
-li > p {
+.document li > p {
     text-indent: 0!important;
 }
 

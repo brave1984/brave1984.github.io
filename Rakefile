@@ -41,8 +41,9 @@ EOF
   end
 end
 
-desc "git submodule via https"
-task :ssh2https do
+desc "在 Travis CI 环境下更新 git submodules"
+task :submodules_update do
   text = File.read('.gitmodules').gsub(/git@gist.github.com:/,'https://gist.github.com/')
   File.write('.gitmodules', text)
+  system('git submodule update --init --recursive')
 end

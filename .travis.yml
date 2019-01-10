@@ -1,18 +1,22 @@
 language: ruby
 rvm:
   - 2.5.3
+
 language: python
 python:
   - "3.6"
+
 git:
   submodules:
     false
+
 install:
   - pip install -r requirements.txt
   - bundle install
-  - bundle exec rake ssh2https
-  - git submodule update --init --recursive
+  - bundle exec rake submodules_update
+
 script:
   - bundle exec jekyll build
+
 after_success:
-  - ./push_gh-pages.sh
+  - ./push_site.sh
