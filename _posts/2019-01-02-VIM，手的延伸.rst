@@ -62,11 +62,9 @@ excerpt_separator: .. 摘要注释
     DPS垫底，就是木桩打得少！
 
     1、善用\ *VIM*\ 的帮助文档；2、在命令行中输入——\ ``vimtutor zh``\ ——命令后，请多加练习！
-.. footer::
-    |fork| https://gist.github.com/{{ page.gist }}.git
 
-.. |fork| image:: /assets/img/code-branch.svg
-    :alt: fork
-    :class: x2
+.. footer::
+
+    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （如果碰到网络连线问题，你懂的。）
 
 

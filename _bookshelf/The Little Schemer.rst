@@ -3,6 +3,7 @@ title: The Little Schemer
 date: 2019-01-09 17:08:48 +0800
 categories: 计算
 tags: [Lisp, Scheme, 算法]
+gist: 413b7b178085f2973427d594f008d88d
 excerpt_separator: .. 摘要注释
 ---
 
@@ -18,9 +19,11 @@ excerpt_separator: .. 摘要注释
 
 不要纠结于使用哪一种\ *Scheme*\ 实现（\ `Chez Scheme <https://www.scheme.com/>`_\ 、\ `MIT/GNU Scheme <http://www.gnu.org/software/mit-scheme/>`_\ ），因为在这两种实现中，\ ``eq?``\ 可以对“数字”与“字符串”进行比较。重要的事情是：一问一答的过程中，跟紧黑客，在\ *VIM*\ 的\ *Lisp*\ 模式下编写代码。
 
-通过高阶函数实现“柯里化”与“偏函数”后，证明了“停机问题”。在阅读“应用序Y组合子”的演算过程中，你的头脑会爆炸，但你将掌握“使用匿名函数进行递归调用”的方法：
+虽然本书没有讲解“宏”，但是”\ *Scheme*\ 五法十诫“也是道不错的开胃菜。
 
-.. include:: gists/{{ page.gist }}/413b7b178085f2973427d594f008d88d/the-little-schemer.scm
+通过高阶函数实现“柯里化”与“偏函数”后，本书证明了“停机问题”。在阅读“应用序Y组合子”的演算过程中，你的头脑会爆炸，但你将掌握“使用匿名函数进行递归调用”的方法：
+
+.. include:: gists/{{ page.gist }}/the-little-schemer.scm
     :code: scheme
     :start-line: 2
     :end-line: 15
@@ -89,6 +92,8 @@ Scheme 五法
 
 .. footer::
 
+    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （如果碰到网络连线问题，你懂的。）
+    
     结合上下文（context）语境，获取你的映射。
 
     .. epigraph::

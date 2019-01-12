@@ -90,11 +90,8 @@ excerpt_separator: .. 摘要注释
     :start-line: 22
 
 .. footer::
-    |fork| https://gist.github.com/39db3c65f0347d9ee92d33b2dd845105.git
 
-.. |fork| image:: /assets/img/code-branch.svg
-    :alt: fork
-    :class: x2
+    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （如果碰到网络连线问题，你懂的。）
 
 .. _reStructuredText: http://docutils.sourceforge.net/rst.html
 .. _Jekyll: https://jekyllrb.com/
