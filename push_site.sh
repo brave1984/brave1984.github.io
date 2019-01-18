@@ -6,6 +6,6 @@ git init
 git checkout -b master
 git remote add origin https://$token@github.com/$name/$name.github.io.git
 git add .
-git commit -m 'Travis CI #$(date +%Y-%m-%d/%T)'
+git commit -m `Travis CI $(date +%Y-%m-%d/%T)`
 git push -f origin master
 

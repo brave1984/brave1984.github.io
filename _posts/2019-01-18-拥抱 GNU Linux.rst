@@ -1,0 +1,60 @@
+---
+title: 拥抱 GNU/Linux
+date: 2019-01-18 11:55:20 +0800
+categories: 计算
+tags: [工具]
+excerpt_separator: .. 摘要注释
+---
+
+.. class:: excerpt
+
+    萌新：“炉石传说”的爆率又被调低了，我要\ *AFK*\ ……
+
+    休闲玩家：自从用上“\ `GNU <http://www.gnu.org/>`_\ /\ `Linux <https://www.kernel.org/>`_\ ”后，值不充、税（智商税）不缴，浑身都“得劲”。
+
+.. 摘要注释
+
+----
+
+`Ubuntu <https://www.ubuntu.com/>`_\ 的\ *UI*\ 设计得比\ `Debian <https://www.debian.org/>`_\ 的好，\ `18.10 <https://wiki.ubuntu.com/CosmicCuttlefish/ReleaseNotes?_ga=2.95109204.938702141.1547712069-1814574655.1547712069>`_\ 又比\ `18.04 LTS <https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes?_ga=2.95109204.938702141.1547712069-1814574655.1547712069>`_\ 美观，使用\ `etcher <https://www.balena.io/etcher/>`_\ 制作系统镜像。
+
+程序设计
+--------
+* `Docker <https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce>`_
+* `Docker Compose <https://github.com/docker/compose/releases>`_
+* `Postgres <https://wiki.postgresql.org/wiki/Apt>`_
+
+JavaScript
+~~~~~~~~~~
+* `Node.js <https://github.com/nodesource/distributions/blob/master/README.md#debinstall>`_
+* `Yarn <https://yarnpkg.com/zh-Hans/docs/install#debian-stable>`_
+
+Ruby
+~~~~
+* `rbenv <https://github.com/rbenv/rbenv#basic-github-checkout>`_
+* `ruby-build <https://github.com/rbenv/ruby-build/wiki>`_
+* `Ruby <https://www.ruby-lang.org/>`_
+
+Python
+~~~~~~
+* `pip <https://packaging.python.org/guides/installing-using-linux-tools/#debian-ubuntu>`_
+* `Pipenv <https://pipenv.readthedocs.io/en/latest/install/>`_
+
+Lisp
+~~~~
+* `Clojure <https://clojure.org/guides/getting_started#_installation_on_linux>`_
+* `Chez Scheme <https://github.com/cisco/chezscheme>`_
+
+工具
+----
+* vim
+* default-jdk
+* `fcitx-sunpinyin <https://github.com/fcitx/fcitx-sunpinyin>`_
+* `GitKraken <https://snapcraft.io/gitkraken>`_
+* `Chromium <https://snapcraft.io/chromium>`_
+* `Slack <https://snapcraft.io/slack>`_
+* `VLC <https://snapcraft.io/vlc>`_
+* `LibreOffice <https://snapcraft.io/libreoffice>`_
+* `calibre <https://github.com/kovidgoyal/calibre>`_
+* `OpenRefine <https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux>`_
+* `Fiddler <https://www.telerik.com/blogs/fiddler-for-linux-beta-is-here>`_

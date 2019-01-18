@@ -27,6 +27,7 @@ title: #{title}
 date: #{datetime}
 categories: 
 tags: []
+gist: 
 excerpt_separator: .. 摘要注释
 ---
 

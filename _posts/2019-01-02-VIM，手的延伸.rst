@@ -53,18 +53,18 @@ excerpt_separator: .. 摘要注释
     :start-line: 13
     :end-line: 21
 
-在\ ``$HOME``\ 目录下，添加\ `.vimrc <https://raw.githubusercontent.com/brave1984/brave1984.github.io/develop/gists/.vimrc>`_\ 文件，代码如下：
+在\ ``$HOME``\ 目录下，添加\ *.vimrc*\ 文件，代码如下：
 
 .. include:: gists/{{ page.gist }}/.vimrc
     :code: vim
 
-.. tip::
-    DPS垫底，就是木桩打得少！
-
-    1、善用\ *VIM*\ 的帮助文档；2、在命令行中输入——\ ``vimtutor zh``\ ——命令后，请多加练习！
-
 .. footer::
 
     `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （如果碰到网络连线问题，你懂的。）
+
+    DPS垫底，就是木桩打得少！
+
+    彩蛋：\ ``$ vimtutor zh``\ 
+
 
 
