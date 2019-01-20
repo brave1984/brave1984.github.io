@@ -50,8 +50,6 @@ defaults:
 plugins:
   - jekyll-feed
 
-jekyll-archives:
-  enabled: ['categories', 'tags']
 
 pagination:
   enabled: true

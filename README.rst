@@ -3,8 +3,8 @@
 
 .. _黄昭隗的个人网站: https://www.brave1984.com/
 
-.. image:: https://travis-ci.org/brave1984/brave1984.github.io.svg?branch=master
-	:target: https://travis-ci.org/brave1984/brave1984.github.io
+.. image:: https://travis-ci.org/brave1984/brave1984.github.io.svg?branch=develop
+    :target: https://travis-ci.org/brave1984/brave1984.github.io
 	:alt: Build Status
 
 出发点
