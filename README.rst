@@ -39,7 +39,7 @@
 
 * `Docutils <http://docutils.sourceforge.net/>`_\  · Documentation Utilities
 * `Jekyll <https://jekyllrb.com/>`_\  · Simple, blog-aware, static sites | Transform your plain text into static websites and blogs.
-* `Bootstrap <https://getbootstrap.com/>`\  · The most popular HTML, CSS, and JS library in the world.
+* `Bootstrap <https://getbootstrap.com/>_`\  · The most popular HTML, CSS, and JS library in the world.
 * `Travis CI <https://travis-ci.org/>`_\ · Test and Deploy Your Code with Confidence.
 
 致谢
