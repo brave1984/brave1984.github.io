@@ -17,13 +17,13 @@ excerpt_separator: .. 摘要注释
 
 ----
 
-`Ubuntu <https://www.ubuntu.com/>`_\ 的\ *UI*\ 设计得比\ `Debian <https://www.debian.org/>`_\ 的好，\ `18.10 <https://wiki.ubuntu.com/CosmicCuttlefish/ReleaseNotes?_ga=2.95109204.938702141.1547712069-1814574655.1547712069>`_\ 又比\ `18.04 LTS <https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes?_ga=2.95109204.938702141.1547712069-1814574655.1547712069>`_\ 美观，使用\ `etcher <https://www.balena.io/etcher/>`_\ 制作系统镜像。
+`Ubuntu <https://www.ubuntu.com/>`_\ 的\ *UI*\ 设计得比\ `Debian <https://www.debian.org/>`_\ 的好，使用\ `etcher <https://www.balena.io/etcher/>`_\ 制作系统镜像。
 
 程序设计
 --------
 * `Docker <https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce>`_
 * `Docker Compose <https://github.com/docker/compose/releases>`_
-* `Postgres <https://wiki.postgresql.org/wiki/Apt>`_
+* `PostgreSQL <https://wiki.postgresql.org/wiki/Apt>`_
 
 JavaScript
 ~~~~~~~~~~
@@ -32,8 +32,8 @@ JavaScript
 
 Ruby
 ~~~~
-* `rbenv <https://github.com/rbenv/rbenv#basic-github-checkout>`_
 * `ruby-build <https://github.com/rbenv/ruby-build/wiki>`_
+* `rbenv <https://github.com/rbenv/rbenv#basic-github-checkout>`_
 * `Ruby <https://www.ruby-lang.org/>`_
 
 Python
@@ -50,7 +50,7 @@ Lisp
 ----
 * vim
 * default-jdk
-* `fcitx-sunpinyin <https://github.com/fcitx/fcitx-sunpinyin>`_
+* fcitx-sunpinyin
 * `GitKraken <https://snapcraft.io/gitkraken>`_
 * `Chromium <https://snapcraft.io/chromium>`_
 * `Slack <https://snapcraft.io/slack>`_
@@ -58,7 +58,6 @@ Lisp
 * `LibreOffice <https://snapcraft.io/libreoffice>`_
 * `calibre <https://github.com/kovidgoyal/calibre>`_
 * `OpenRefine <https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux>`_
-* `Fiddler <https://www.telerik.com/blogs/fiddler-for-linux-beta-is-here>`_
 
 .. footer::
 
