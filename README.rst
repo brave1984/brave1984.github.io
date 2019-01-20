@@ -10,17 +10,20 @@
 出发点
 ------
 
-.. epigraph::
+.. compound::
 
-    寒窗败几无书史，公路可怜合至此。  
+    .. epigraph::
 
-    青州从事孔方兄，终日纷纷喜生事。  
+        寒窗败几无书史，公路可怜合至此。
 
-    作诗谢绝聊闭门，燕寝凝香有佳思。  
+        青州从事孔方兄，终日纷纷喜生事。
 
-    静中我乃得至交，乌有先生子虚子。  
+        作诗谢绝聊闭门，燕寝凝香有佳思。
 
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;——李清照《感怀》
+        静中我乃得至交，乌有先生子虚子。
+
+    ——\ *李清照*\ 《感怀》
+
 
 世上的书有三类：
     #. 写给他人看的；
@@ -34,12 +37,12 @@
 技术栈
 ------
 
-`Docutils <http://docutils.sourceforge.net/>`_\  · Documentation Utilities
-`Jekyll <https://jekyllrb.com/>`_\  · Simple, blog-aware, static sites | Transform your plain text into static websites and blogs.
-`Bootstrap <https://getbootstrap.com/>`\  · The most popular HTML, CSS, and JS library in the world.
-`Travis CI <https://travis-ci.org/>`_\ · Test and Deploy Your Code with Confidence.
+* `Docutils <http://docutils.sourceforge.net/>`_\  · Documentation Utilities
+* `Jekyll <https://jekyllrb.com/>`_\  · Simple, blog-aware, static sites | Transform your plain text into static websites and blogs.
+* `Bootstrap <https://getbootstrap.com/>`\  · The most popular HTML, CSS, and JS library in the world.
+* `Travis CI <https://travis-ci.org/>`_\ · Test and Deploy Your Code with Confidence.
 
 致谢
 ----
 
-为\ *自由软件*\ 与\ *开源运动*\ 做出贡献的\ **hackers**\ ，没有这些尘世间的英雄，我就没法写下：“\ *Hello, World!*\ ”。
+为 *自由软件* 与 *开源运动* 做出贡献的\ **hackers**\ ，没有这些尘世间的英雄，我就没法写下：“\ *Hello, World!*\ ”。
