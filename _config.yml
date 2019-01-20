@@ -30,7 +30,7 @@ permalink: pretty
 collections:
   bookshelf:
     output: true
-    permalink: /:collection/:name/
+    permalink: /:collection/:title/
 
 defaults:
   -
@@ -40,7 +40,8 @@ defaults:
     values:
       layout: "post"
 
-  - scope:
+  - 
+    scope:
       path: ""
       type: "posts"
     values:
