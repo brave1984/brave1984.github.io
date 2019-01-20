@@ -32,7 +32,7 @@
 
 我们无法增加生命的长度，只好追求它的高度。
 
-`书架 <https://www.brave1984.com/bookshelf/>`_\ 上的读书笔记、\ `日志 <https://www.brave1984.com/bookshelf/archive/>`_\ 里的技术实践，献给\ **孤独**\ 的\ **你**\ 。
+`书架 <https://www.brave1984.com/bookshelf/>`_\ 上的读书笔记、\ `日志 <https://www.brave1984.com/posts/>`_\ 里的技术实践，献给\ **孤独**\ 的\ **你**\ 。
   
 技术栈
 ------
