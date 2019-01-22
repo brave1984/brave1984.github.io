@@ -5,7 +5,6 @@
 
 .. image:: https://travis-ci.org/brave1984/brave1984.github.io.svg?branch=develop
     :target: https://travis-ci.org/brave1984/brave1984.github.io
-	:alt: Build Status
 
 出发点
 ------
