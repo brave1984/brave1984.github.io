@@ -1,9 +1,6 @@
 _site
 .sass-cache
 .jekyll-metadata
-*.azw3
-*.azw
-*.mobi
-*.pdf
 __pycache__/
+bookshelf/
 *.swp

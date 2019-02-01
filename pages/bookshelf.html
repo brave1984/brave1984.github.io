@@ -18,7 +18,7 @@ pagination:
       <article class="flex-grow-1 d-flex flex-column">
         <header class=" flex-grow-1">
           <a href="{{ post.url }}" title="{{ post.title }}">
-            <img class="img-fluid rounded" src="//img{{ forloop.index0 | modulo: 4 }}.brave1984.com/bookshelf/{{ post.title }}/cover.jpg" alt="图书封面：{{ post.title }}">
+            <img class="img-fluid rounded" src="/assets/bookshelf/{{ post.title }}/cover.jpg" alt="图书封面：{{ post.title }}">
           </a>
           <h2 class="h5 m-2">
             <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>

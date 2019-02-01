@@ -97,10 +97,6 @@ exclude:
  - Gemfile
  - Gemfile.lock
  - "*.py"
- - Dockerfile
- - docker-compose.yml
  - Rakefile
  - README.md
- - "*.azw3"
- - "*.mobi"
- - "*.pdf"
+ - bookshelf
