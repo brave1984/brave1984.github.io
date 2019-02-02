@@ -31,6 +31,8 @@ collections:
   bookshelf:
     output: true
     permalink: /:collection/:title/
+  posts:
+    permalink: /:collection/:title/
 
 defaults:
   -
@@ -98,5 +100,7 @@ exclude:
  - Gemfile.lock
  - "*.py"
  - Rakefile
- - README.md
- - bookshelf
+ - requirements.txt
+ - README.rst
+ - gists/
+ - bookshelf/
