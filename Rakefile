@@ -51,12 +51,15 @@ end
 
 desc "在 Travis CI 环境下，构建_site目录并推送到master分支"
 task :push_site do
-  system('cd _site')
-  system('git config --global user.email $email')
-  system('git config --global user.name $name')
-  system('git init')
-  system('git remote add origin https://$token@github.com/$name/$name.github.io.git')
-  system('git add .')
-  system('git commit -m "travis-ci $(date +%Y-%m-%d/%T)"')
-  system('git push -f origin master')
+  system <<EOF
+cd _site && \
+git config --global user.email $email && \
+git config --global user.name $name && \
+git init && \
+git remote add origin https://$token@github.com/$name/$name.github.io.git && \
+git add . && \
+git commit -m "Travis CI $(date +%Y-%m-%d/%T)" && \
+git push -f origin master
+EOF
 end
+
