@@ -22,4 +22,5 @@ script:
   - bundle exec jekyll build
 
 after_success:
-  - ./push_site.sh
+  - bundle exec rake push_site
+  #- ./push_site.sh
