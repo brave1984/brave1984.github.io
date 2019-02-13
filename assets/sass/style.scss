@@ -29,8 +29,13 @@ body {
   @extend .flex-grow-1;
 }
 
-p {
-  text-indent: 2em;
+section,
+article,
+blockquote,
+div {
+  > p {
+    text-indent: 2em;
+  }
 }
 
 .jumbotron {
@@ -56,13 +61,10 @@ p {
 
 .cover {
   
-  $gutter: 0.25em;
-
   @include make-col-ready();
 
-  @include media-breakpoint-up(sm) {
-    @include make-col(6);
-  }
+  @include make-col(6);
+
   @include media-breakpoint-up(md) {
     @include make-col(3);
   }

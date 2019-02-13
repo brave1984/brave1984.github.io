@@ -1,3 +1,6 @@
 footer[role="contentinfo"] {
+  @extend .d-flex;
+  @extend .flex-column;
+  @extend .align-items-center;
   background-color: $bg-info;
 }
