@@ -1,0 +1,9 @@
+header[role="banner"] {
+  background-color: $bg-info;
+
+  nav,
+  blockquote {
+    max-width: 36em;
+    margin: 0 auto;
+  }
+}

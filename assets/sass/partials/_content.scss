@@ -1,0 +1,11 @@
+blockquote > footer,
+.attribution {
+  display: block;
+  font-size: $blockquote-small-font-size;
+  color: $blockquote-small-color;
+  text-align: right;
+
+  &::before {
+    content: "\2014\2014";
+  }
+}
