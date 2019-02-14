@@ -1,12 +1,7 @@
-<div class="media">
-    <svg class="x1">
-        <use xlink:href="/assets/img/fontawesome.svg#tags"></use>
-    </svg>
-    <ul class="media-body list-unstyled mb-0 pl-2 d-flex flex-wrap">
-        {% for tag in include.tags %}
-        <li>
-            <a {% unless forloop.last %}class="pr-3"{% endunless %} href="/tag/{{ tag | downcase }}">{{ tag }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
+<ul class="tags">
+    {% for tag in include.tags %}
+    <li>
+        <a class="badge badge-light" href="/tag/{{ tag | downcase }}">{{ tag }}</a>
+    </li>
+    {% endfor %}
+</ul>

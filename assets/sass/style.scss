@@ -34,11 +34,6 @@ body {
   @extend .flex-grow-1;
 }
 
-img {
-  @include img-fluid;
-  @include border-radius($thumbnail-border-radius);
-}
-
 section,
 article,
 blockquote,
@@ -46,6 +41,15 @@ div {
   > p {
     text-indent: 2em;
   }
+}
+
+h1 {
+  text-align: center;
+}
+
+img {
+  @include img-fluid;
+  @include border-radius($thumbnail-border-radius);
 }
 
 .jumbotron {
@@ -68,6 +72,11 @@ div {
 
 [aria-label="Page navigation"] {
   @extend .align-self-center;
+  margin-top: auto;
+  
+  ul {
+    margin-bottom: 0;
+  }
 }
 
 .fa-1x {
@@ -78,9 +87,29 @@ div {
   @include size(2em);
 }
 
+.tags {
+  padding-left: 1.25em;
+  background-image: inline-image("tags.svg");
+  background-size: 1em 1em;
+  background-position: center left;
+  background-repeat: no-repeat;
+  margin-bottom: 0;
+
+  list-style: none;
+
+  li {
+    display: inline-block;
+  }
+
+  + time {
+    @extend .small;
+    text-align: right;
+    padding-bottom: 0.5em;
+  }
+}
+
 .bookshelf {
   @extend .d-flex;
-  @extend .flex-grow-1;
   @extend .flex-wrap;
 }
 
@@ -91,13 +120,38 @@ div {
     @include make-col-ready(1em);
     @include make-col(6);
 
+    &:nth-child(2n+1):nth-last-child(-n+2),
+    &:nth-child(2n+1):nth-last-child(-n+2) ~ & {
+      border-bottom: 0;
+    }
   }
 
   @include media-breakpoint-up(sm) {
     @include make-col(4);
+    
+    &:nth-child(3n+1):nth-last-child(-n+3),
+    &:nth-child(3n+1):nth-last-child(-n+3) ~ & {
+      border-bottom: 0;
+    }
   }
 
   @include media-breakpoint-up(md) {
     @include make-col(3);
+
+    &:nth-child(4n+1):nth-last-child(-n+4),
+    &:nth-child(4n+1):nth-last-child(-n+4) ~ & {
+      border-bottom: 0;
+    }
+  }
+
+  @extend .d-flex;
+  @extend .flex-column;
+  border-bottom: $hr-border-width solid $dark;
+  margin-bottom: 2em;
+
+  h2 {
+    @extend .flex-grow-1;
+    font-size: $h5-font-size;
+    margin-top: $headings-margin-bottom;
   }
 }

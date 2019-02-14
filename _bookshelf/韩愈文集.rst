@@ -11,9 +11,7 @@ excerpt_separator: .. 摘要注释
 
         文者，贯道之器也；不深于斯道，有至焉者，不也。
 
-        .. class:: blockquote-footer text-right
-
-        《昌黎先生集》 李汉编
+        -- 《昌黎先生集》 李汉编
 
 .. 摘要注释
 
