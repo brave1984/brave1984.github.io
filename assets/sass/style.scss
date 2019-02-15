@@ -3,19 +3,18 @@
 @import "variables";
 @import "bootstrap/mixins";
 
-@import "bootstrap/grid";
-@import "bootstrap/utilities/display";
-@import "bootstrap/utilities/flex";
-
 @import "bootstrap/reboot";
 @import "bootstrap/type";
 @import "bootstrap/utilities";
 @import "bootstrap/jumbotron";
 @import "bootstrap/card";
+@import "bootstrap/buttons";
 @import "bootstrap/badge";
 @import "bootstrap/breadcrumb";
 @import "bootstrap/nav";
 @import "bootstrap/pagination";
+
+@import "compass";
 
 @import "dracula";
 @import "mixins";
@@ -25,13 +24,17 @@
 
 html,
 body {
-  @extend .d-flex;
+  @include display-flex;
+  @include flex-direction(column);
   min-height: 100%;
 }
 
 body {
-  @extend .flex-column;
-  @extend .flex-grow-1;
+  @include flex-grow(1);
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, dl, pre {
+  margin-bottom: 0;
 }
 
 section,
@@ -53,12 +56,15 @@ img {
 }
 
 .jumbotron {
-  @extend .d-flex;
-  @extend .flex-column;
-  @extend .flex-grow-1;
-  @extend .w-100;
+  @include flexbox((
+    align-self: center,
+    display: flex,
+    flex-direction: column,
+    flex-grow: 1,
+    ));
+  width: 100%;
   max-width: 64em;
-  margin: 0 auto;
+  margin-bottom: 0;
 }
 
 .breadcrumb {
@@ -70,12 +76,39 @@ img {
   }
 }
 
-[aria-label="Page navigation"] {
-  @extend .align-self-center;
+[aria-label~="navigation"] {
+  @include align-self(center);
   margin-top: auto;
-  
+}
+
+[aria-label~="posts"] {
+  @include flexbox((
+    align-self: stretch,
+    display: flex,
+    justify-content: center,
+    ));
+
   ul {
-    margin-bottom: 0;
+    @include flexbox((
+      display:flex,
+      flex-direction: column,
+      max-width: 20em,
+      ));
+    @include media-breakpoint-up(sm) {
+      @include flex-direction(row);
+      max-width: 40em;
+    };
+    @include flex-grow(1);
+  }
+
+  li {
+    @include media-breakpoint-up(sm) {
+      width: 50%;
+    };
+  }
+
+  .page-link {
+    @include text-truncate;
   }
 }
 
@@ -93,7 +126,6 @@ img {
   background-size: 1em 1em;
   background-position: center left;
   background-repeat: no-repeat;
-  margin-bottom: 0;
 
   list-style: none;
 
@@ -102,15 +134,17 @@ img {
   }
 
   + time {
-    @extend .small;
+    font-size: 90%;
     text-align: right;
     padding-bottom: 0.5em;
   }
 }
 
 .bookshelf {
-  @extend .d-flex;
-  @extend .flex-wrap;
+  @include flexbox((
+    display: flex,
+    flex-wrap: wrap,
+    ));
 }
 
 .cover {
@@ -144,14 +178,58 @@ img {
     }
   }
 
-  @extend .d-flex;
-  @extend .flex-column;
+  @include flexbox((
+    display: flex,
+    flex-direction: column,
+    ));
   border-bottom: $hr-border-width solid $dark;
   margin-bottom: 2em;
 
   h2 {
-    @extend .flex-grow-1;
     font-size: $h5-font-size;
     margin-top: $headings-margin-bottom;
   }
+}
+
+.content {
+  @include media-breakpoint-up(sm) {
+    @include make-col(10);
+  };
+  @include media-breakpoint-up(md) {
+    @include make-col(9);
+  };
+  @include media-breakpoint-up(lg) {
+    @include make-col(8);
+  };
+  @include align-self(center);
+}
+
+.archive {
+  h2 {
+    text-align: center;
+  }
+}
+
+.book-aside {
+  @include flexbox((
+    align-self: stretch,
+    display: flex,
+    flex-wrap: wrap,
+    justify-content: center,
+    ));
+
+  section {
+    @include flex-grow(1);
+    max-width: 20rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 1em;
+  }
+
+  span {
+    color: $text-muted
+  }
+
 }
