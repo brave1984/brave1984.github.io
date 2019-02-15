@@ -10,6 +10,7 @@ $display2-size: 3rem;
 $display3-size: 2.5rem;
 $display4-size: 2rem;
 
+$jumbotron-padding: $base-line-height * 1.5;
 
 $body-bg: #f2f1f0;             
 $bg-secondary: #d8d1c9;
@@ -17,5 +18,4 @@ $jumbotron-bg: #e6e2dd;
 $bg-info: #f5f6f9;
 
 $card-bg: $body-bg;
-// $breadcrumb-divider: quote(">");
 $breadcrumb-bg: $jumbotron-bg;

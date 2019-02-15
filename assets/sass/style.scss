@@ -1,3 +1,5 @@
+@import "compass";
+
 @import "bootstrap/functions";
 @import "bootstrap/variables";
 @import "variables";
@@ -14,13 +16,13 @@
 @import "bootstrap/nav";
 @import "bootstrap/pagination";
 
-@import "compass";
-
 @import "dracula";
 @import "mixins";
 @import "partials/header";
 @import "partials/footer";
 @import "partials/content";
+
+@include establish-baseline;
 
 html,
 body {
@@ -56,6 +58,7 @@ img {
 }
 
 .jumbotron {
+  @include debug-vertical-alignment("debug.png");
   @include flexbox((
     align-self: center,
     display: flex,
@@ -69,6 +72,10 @@ img {
 
 .breadcrumb {
   font-size: $h5-font-size;
+  margin-bottom: 0;
+  @include adjust-font-size-to($h5-font-size);
+  @include padding-leader(0.5);
+  @include padding-trailer(0.5);
   
   h1 {
     display: inline;
@@ -121,7 +128,7 @@ img {
 }
 
 .tags {
-  padding-left: 1.25em;
+  //padding-left: 1.25em;
   background-image: inline-image("tags.svg");
   background-size: 1em 1em;
   background-position: center left;
@@ -136,7 +143,7 @@ img {
   + time {
     font-size: 90%;
     text-align: right;
-    padding-bottom: 0.5em;
+    //padding-bottom: 0.5em;
   }
 }
 
@@ -183,11 +190,14 @@ img {
     flex-direction: column,
     ));
   border-bottom: $hr-border-width solid $dark;
-  margin-bottom: 2em;
+  //margin-bottom: 2em;
+  @include leader;
+  @include trailer;
 
   h2 {
     font-size: $h5-font-size;
-    margin-top: $headings-margin-bottom;
+    //margin-top: $headings-margin-bottom;
+    @include adjust-font-size-to($h5-font-size);
   }
 }
 
@@ -225,7 +235,6 @@ img {
 
   ul {
     list-style: none;
-    padding: 1em;
   }
 
   span {

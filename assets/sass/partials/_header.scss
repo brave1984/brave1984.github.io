@@ -1,9 +1,18 @@
 header[role="banner"] {
   background-color: $bg-info;
 
+  nav {
+    font-size: $h4-font-size;
+  }
+
   nav,
   blockquote {
+  @include debug-vertical-alignment("debug.png");
     max-width: 36em;
     margin: 0 auto;
+  }
+
+  blockquote {
+    @include output-rhythm($property: padding);
   }
 }
