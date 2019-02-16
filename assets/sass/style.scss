@@ -15,6 +15,8 @@
 @import "bootstrap/breadcrumb";
 @import "bootstrap/nav";
 @import "bootstrap/pagination";
+@import "bootstrap/tables";
+@import "bootstrap/code";
 
 @import "dracula";
 @import "mixins";
@@ -35,17 +37,10 @@ body {
   @include flex-grow(1);
 }
 
-h1, h2, h3, h4, h5, h6, p, ul, ol, dl, pre {
+h1, h2, h3, h4, h5, h6, p,
+blockquote, figure, figcaption,
+ul, ol, dl {
   margin-bottom: 0;
-}
-
-section,
-article,
-blockquote,
-div {
-  > p {
-    text-indent: 2em;
-  }
 }
 
 h1 {
@@ -58,7 +53,7 @@ img {
 }
 
 .jumbotron {
-  @include debug-vertical-alignment("debug.png");
+  //@include debug-vertical-alignment("debug.png");
   @include flexbox((
     align-self: center,
     display: flex,
@@ -72,14 +67,20 @@ img {
 
 .breadcrumb {
   font-size: $h5-font-size;
-  margin-bottom: 0;
+  margin-bottom: 1px;
   @include adjust-font-size-to($h5-font-size);
-  @include padding-leader(0.5);
-  @include padding-trailer(0.5);
   
   h1 {
     display: inline;
     font-size: $h5-font-size;
+  }
+}
+
+.page-link {
+  @include adjust-font-size-to($base-font-size);
+
+  small {
+    color: $dark;
   }
 }
 
@@ -125,16 +126,15 @@ img {
 
 .fa-2x {
   @include size(2em);
-}
+ }
 
 .tags {
-  //padding-left: 1.25em;
+  list-style: none;
+  padding-left: 1.375em;
   background-image: inline-image("tags.svg");
-  background-size: 1em 1em;
+  background-size: 1.25em 1.25em;
   background-position: center left;
   background-repeat: no-repeat;
-
-  list-style: none;
 
   li {
     display: inline-block;
@@ -143,7 +143,7 @@ img {
   + time {
     font-size: 90%;
     text-align: right;
-    //padding-bottom: 0.5em;
+    @include adjust-font-size-to(90%);
   }
 }
 
@@ -182,6 +182,7 @@ img {
     &:nth-child(4n+1):nth-last-child(-n+4),
     &:nth-child(4n+1):nth-last-child(-n+4) ~ & {
       border-bottom: 0;
+      @include trailer;
     }
   }
 
@@ -189,34 +190,54 @@ img {
     display: flex,
     flex-direction: column,
     ));
-  border-bottom: $hr-border-width solid $dark;
-  //margin-bottom: 2em;
   @include leader;
-  @include trailer;
+  margin-bottom: 23px;
+  border-bottom: 1px solid $dark;
 
   h2 {
     font-size: $h5-font-size;
-    //margin-top: $headings-margin-bottom;
-    @include adjust-font-size-to($h5-font-size);
+    line-height: $base-line-height;
+    @include flex-grow(1);
   }
 }
 
 .content {
+  @include media-breakpoint-down(sm) {
+    @include make-col(12);
+  };
   @include media-breakpoint-up(sm) {
-    @include make-col(10);
+    @include make-col(11);
   };
   @include media-breakpoint-up(md) {
-    @include make-col(9);
+    @include make-col(10);
   };
   @include media-breakpoint-up(lg) {
-    @include make-col(8);
+    @include make-col(9);
   };
   @include align-self(center);
 }
 
 .archive {
+  @include flexbox((
+    display: flex,
+    flex-direction: column,
+    ));
+  @include leader;
+  border-bottom: 1px solid $dark;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
   h2 {
+    font-size: $h3-font-size;
+    @include adjust-font-size-to($h3-font-size);
     text-align: center;
+    margin-bottom: 1px;
+  }
+
+  .tags {
+    margin-left: 2em;
   }
 }
 
@@ -227,6 +248,13 @@ img {
     flex-wrap: wrap,
     justify-content: center,
     ));
+  @include leader(2);
+
+  h2 {
+    text-align: center;
+    @include adjust-font-size-to($h2-font-size);
+    @include rhythm-padding(0);
+  }
 
   section {
     @include flex-grow(1);
@@ -235,6 +263,11 @@ img {
 
   ul {
     list-style: none;
+    @include rhythm-padding(0.5);
+  }
+
+  p {
+    @include trailer(0.5);
   }
 
   span {

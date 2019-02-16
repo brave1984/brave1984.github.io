@@ -7,12 +7,16 @@ header[role="banner"] {
 
   nav,
   blockquote {
-  @include debug-vertical-alignment("debug.png");
+  //@include debug-vertical-alignment("debug.png");
     max-width: 36em;
     margin: 0 auto;
   }
 
   blockquote {
-    @include output-rhythm($property: padding);
+    @include rhythm-padding(0.5);
+
+    p {
+      padding: 0;
+    }
   }
 }

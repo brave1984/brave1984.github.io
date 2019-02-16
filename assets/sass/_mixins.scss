@@ -1,4 +1,0 @@
-@mixin rhythm($lines: 1, $font-size: $base-font-size, $property: margin) {
-  @include output-rhythm(#{$property}-top, rhythm($lines, $font-size));
-  @include output-rhythm(#{$property}-bottom, rhythm($lines, $font-size));
-}
