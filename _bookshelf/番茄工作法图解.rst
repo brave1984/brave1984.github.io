@@ -6,7 +6,7 @@ tags: [精益, 敏捷]
 excerpt_separator: .. 摘要注释
 ---
 
-.. class:: excerpt
+.. container:: excerpt
 
     虽说“读书百遍，其义自见”，但不懂，就是不懂；悟了，就是悟了。作者是个黑客，他的工作法更适用于程序员。
 

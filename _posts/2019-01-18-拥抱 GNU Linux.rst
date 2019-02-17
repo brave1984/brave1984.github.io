@@ -7,7 +7,7 @@ gist: 2d3078f4024dbedf8fca6a30d6de5548
 excerpt_separator: .. 摘要注释
 ---
 
-.. class:: excerpt
+.. container:: excerpt
 
     萌新：“炉石传说”的爆率又被调低了，我要\ *AFK*\ ……
 

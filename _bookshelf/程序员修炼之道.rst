@@ -6,7 +6,7 @@ tags: [经典]
 excerpt_separator: .. 摘要注释
 ---
 
-.. class:: excerpt
+.. container:: excerpt
 
     编程是一种技艺，也是艰难的工作，更是快乐的源泉。虽然不存在所谓的“圣杯”，但是我们也可以成为注重实效的程序员。
 

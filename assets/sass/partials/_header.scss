@@ -1,13 +1,26 @@
 header[role="banner"] {
   background-color: $bg-info;
 
-  nav {
+  #logo {
+    padding: 0;
+  }
+
+  svg {
+    max-width: 100%;
+    max-height: $base-line-height * 3;
+  }
+
+  .nav-item .nav-link {
+    @include link-colors($dark, $black);
     font-size: $h4-font-size;
+    @include adjust-font-size-to($h4-font-size);
+    padding: $base-line-height 1rem;
   }
 
   nav,
   blockquote {
   //@include debug-vertical-alignment("debug.png");
+
     max-width: 36em;
     margin: 0 auto;
   }

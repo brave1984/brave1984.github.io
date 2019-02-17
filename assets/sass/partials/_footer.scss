@@ -7,14 +7,28 @@ footer[role="contentinfo"] {
   background-color: $bg-info;
 
   nav {
-    li:hover {
-      &:nth-child(odd) {
-        @include simple-transform(1.3,30deg);
-      }
+    @include rhythm-margins(0.5);
+  }
 
-      &:nth-child(even) {
-        @include simple-transform(1.3,330deg);
-      }
+  .nav-item:hover {
+    &:nth-child(odd) {
+      @include simple-transform(1.125,45deg);
     }
+
+    &:nth-child(even) {
+      @include simple-transform(1.125,315deg);
+    }
+
+    &:last-child {
+      @include transform(none);
+    }
+  }
+
+  p {
+    margin-bottom: 6px;
+  }
+
+  img {
+    padding-right: 1em;
   }
 }

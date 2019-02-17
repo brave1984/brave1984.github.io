@@ -1,27 +1,45 @@
-.hackers {
-    @include media-breakpoint-down(sm) {
-    @include make-col-ready(1em);
-    @include make-col(6);
+table {
+  width: 100%;
+  @include media-breakpoint-down(sm) {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  @include rhythm-margins;
 
-    &:nth-child(2n+1):nth-last-child(-n+2),
-    &:nth-child(2n+1):nth-last-child(-n+2) ~ & {
-      border-bottom: 0;
-    }
+  thead,
+  tbody {
+    border-left: 1px solid $dark;
+    border-right: 1px solid $dark;
   }
 
-  @include media-breakpoint-up(md) {
-    @include make-col-ready(2em);
-    @include make-col(3);
-
-    &:nth-child(4n+1):nth-last-child(-n+4),
-    &:nth-child(4n+1):nth-last-child(-n+4) ~ & {
-      border-bottom: 0;
-    }
+  thead tr {
+    line-height: $base-line-height;
   }
 
-  pre {
+  thead th {
+    color: $table-dark-color;
+    background-color: $table-dark-bg;
+  }
+
+  tbody tr {
+    line-height: $base-line-height - 1px;
+    border-bottom: 1px solid $dark;
+  }
+
+  tbody tr:nth-of-type(odd) {
+    background-color: $table-accent-bg;
+  }
+  
+  th,
+  td {
+    padding: 0 1px;
+  }
+
+  p {
+    white-space: nowrap;
     text-align: center;
-    padding: ($base-line-height / 2) 0;
   }
 }
 
@@ -32,6 +50,7 @@ dd,
 .document,
 .header,
 .footer,
+.container,
 .section,
 .compound {
   > p {
@@ -50,55 +69,20 @@ article,
   }
 }
 
-table {
-  width: 100%;
-  @include media-breakpoint-down(sm) {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-  }
-  @include rhythm-margins;
-
-  thead,
-  tbody {
-    border-left: 1px solid $dark;
-    border-right: 1px solid $dark;
-  }
-
-  thead th {
-    color: $table-dark-color;
-    background-color: $table-dark-bg;
-  }
-
-  tbody tr:nth-of-type(odd) {
-    background-color: $table-accent-bg;
-  }
-
-  tr {
-    line-height: 23px;
-    border-bottom: 1px solid $dark;
-  }
-  
-  th,
-  td {
-    padding: 0 2px;
-  }
-
-  p {
-    white-space: nowrap;
-    text-align: center;
-  }
-}
-
 pre {
   @include adjust-font-size-to($code-font-size);
   margin-bottom: $base-line-height;
-  padding: $base-line-height 1em;
+  padding: ($base-line-height / 2) 1em;
 }
 
 hr {
+  border: 0;
+  border-top: $hr-border-width solid $hr-border-color;
   @include rhythm-margins(0.5);
+}
+
+li p {
+  font-size: $font-size-base;
 }
 
 [itemtype="http://schema.org/BlogPosting"] {
@@ -106,7 +90,6 @@ hr {
     display: flex,
     flex-direction: column,
     ));
-  @include leader;
   
   .tags {
     @include align-self(flex-end);
@@ -150,12 +133,6 @@ hr {
   ul, ol, dl {
     @include trailer;
   }
-
-  ul ul,
-  ol ol,
-  dl dl {
-    margin-bottom: 0;
-  }
 }
 
 dd {
@@ -163,21 +140,7 @@ dd {
 }
 
 [itemprop="articleBody"] {
-  @include trailer(2);
-}
-
-section > h1 {
-  margin-bottom: $base-line-height;
-}
-
-.excerpt {
-  font-size: $font-size-base * 1.125;
-  line-height: $base-line-height;
-  margin-bottom: ($base-line-height / 2) !important;
-
-  &:last-child {
-    margin-bottom: $base-line-height !important;
-  }
+  @include trailer;
 }
 
 blockquote > footer,
@@ -193,14 +156,54 @@ blockquote > footer,
   }
 }
 
-.footer {
+em,
+.literal {
+  color: $dark;
+  font-weight: 500;
+  padding: 0 0.25em;
+}
+
+strong,
+em,
+.literal {
+  font-size: 93.75%;
+}
+
+.excerpt {
+  font-size: $font-size-base * 1.125;
+  font-weight: $lead-font-weight;
+  line-height: $base-line-height;
+  margin-bottom: $base-line-height - $hr-border-width;
+  border-bottom: $hr-border-width solid $hr-border-color; 
+
   p {
-    font-size: 87.5%;
-    @include adjust-font-size-to(87.5%);
     margin-bottom: $base-line-height / 2;
+
+    &:last-child {
+      margin-bottom: $base-line-height;
+    }
   }
 
+  strong {
+    font-weight: 700;
+  }
+
+  .reference {
+    font-weight: 400;
+  }
+
+  strong,
+  em,
+  .literal {
+    font-size: 100%;
+  }
+}
+.footer {
+  p {
+    font-weight: 300;
+  }
   hr {
-    @include rhythm-margins;
+    @include leader;
+    margin-bottom: $base-line-height - $hr-border-width;
   }
 }

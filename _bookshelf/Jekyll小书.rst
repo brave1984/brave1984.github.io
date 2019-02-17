@@ -6,7 +6,7 @@ tags:  [Jekyll, Web, 基础]
 excerpt_separator: .. 摘要注释
 ---
 
-.. class:: excerpt
+.. container:: excerpt
 
     通过搭建一个\ `Jekyll <https://jekyllrb.com/>`_\ 静态网站，萌新能够对\ *前端知识*\ 进行巩固与再发现。
 

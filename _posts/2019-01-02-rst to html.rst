@@ -6,7 +6,7 @@ tags:  [Python, 文档, 工具]
 excerpt_separator: .. 摘要注释
 ---
 
-.. class:: excerpt
+.. container:: excerpt
 
     高端玩家： `Don't Use Markdown for Technical Docs！ <http://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/>`_
 
@@ -57,7 +57,7 @@ excerpt_separator: .. 摘要注释
 
 .. include:: _plugins/rst2html/rst2html5.py
     :code: python
-    :start-line: 35
+    :start-line: 33
     :end-line: 46
 
 * `settings_overrides参数配置 <https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/html5_polyglot/__init__.py#l48>`_\

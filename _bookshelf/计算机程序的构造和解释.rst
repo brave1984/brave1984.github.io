@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 ---
 
-.. class:: excerpt
+.. container:: excerpt
     
     “野生”与“家养”的差别不在于学位，而在于对“经典”的理解。
 

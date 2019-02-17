@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 ---
 
-.. class:: excerpt
+.. container:: excerpt
 
     从数学中，体悟到不曾拥有的乐趣。
 

@@ -8,7 +8,7 @@ excerpt_separator: .. 摘要注释
 ---
 .. _VIM: https://www.vim.org/
 
-.. class:: excerpt
+.. container:: excerpt
 
     团长： 萌新，赶紧把这个\ *Python*\ 脚本给我改好。
 
@@ -26,7 +26,7 @@ excerpt_separator: .. 摘要注释
 安装插件
 --------
 
-利用\ VIM_\  8的原生包管理功能，从\ `GitHub <https://github.com/>`_\ 上克隆以下插件到\ *~/.vim/pack/foo/start*\目录：
+利用\ VIM_\  VIM8的原生包管理功能，从\ `GitHub <https://github.com/>`_\ 上克隆以下插件到\ *~/.vim/pack/foo/start*\目录：
 
 * `YouCompleteMe <https://github.com/Valloric/YouCompleteMe>`_\ （自动完成）
 * `Python-mode <https://github.com/python-mode/python-mode>`_\ （语法突显&代码重构）

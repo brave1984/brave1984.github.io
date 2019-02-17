@@ -11,18 +11,15 @@ excerpt_separator: .. 摘要注释
 .. _Python: https://www.python.org/
 .. _Ruby: https://www.ruby-lang.org/
 
-.. header::
+.. container:: excerpt
 
-    修仙玩家： 我用\ Jekyll_\ 搭建了自己的个人网站。
+    \ **修仙玩家**\ ： 我用\ Jekyll_\ 搭建了自己的个人网站。
 
-    萌新： Jekyll，就是能托管在\ `GitHub Pages`_\ 上的那个静态网站生成工具么？等等，你从\ Python_\ 转\ Ruby_\ 呢？
+    \ **萌新**\ ： Jekyll，就是能托管在\ `GitHub Pages`_\ 上的那个静态网站生成工具么？等等，你从\ Python_\ 转\ Ruby_\ 呢？
+
+    \ **修仙玩家**\ ： ……
 
 .. 摘要注释
-
-你好！
-
-hello, world!
--------------
 
 .. table::
 

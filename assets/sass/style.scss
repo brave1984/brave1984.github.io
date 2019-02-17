@@ -6,7 +6,6 @@
 @import "bootstrap/mixins";
 
 @import "bootstrap/reboot";
-@import "bootstrap/type";
 @import "bootstrap/utilities";
 @import "bootstrap/jumbotron";
 @import "bootstrap/card";
@@ -37,19 +36,60 @@ body {
   @include flex-grow(1);
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $headings-font-weight;
+}
+
 h1, h2, h3, h4, h5, h6, p,
 blockquote, figure, figcaption,
 ul, ol, dl {
   margin-bottom: 0;
 }
 
+ul ul,
+ul ol,
+ul dl,
+ol ul,
+ol ol,
+ol dl,
+dl ul,
+dl ol,
+dl dl, {
+  margin-bottom: 0;
+}
+
 h1 {
   text-align: center;
+  margin-bottom: $base-line-height;
 }
 
 img {
   @include img-fluid;
   @include border-radius($thumbnail-border-radius);
+}
+
+.display-1 {
+  font-size: $display1-size;
+  font-weight: $display1-weight;
+  @include adjust-font-size-to($display1-size);
+}
+
+.display-2 {
+  font-size: $display2-size;
+  font-weight: $display2-weight;
+  @include adjust-font-size-to($display3-size);
+}
+
+.display-3 {
+  font-size: $display3-size;
+  font-weight: $display3-weight;
+  @include adjust-font-size-to($display3-size);
+}
+
+.display-4 {
+  font-size: $display4-size;
+  font-weight: $display4-weight;
+  @include adjust-font-size-to($display4-size);
 }
 
 .jumbotron {
@@ -66,8 +106,9 @@ img {
 }
 
 .breadcrumb {
+  background-color: $bg-secondary;
   font-size: $h5-font-size;
-  margin-bottom: 1px;
+  margin-bottom: $base-line-height + 1px;
   @include adjust-font-size-to($h5-font-size);
   
   h1 {
@@ -77,7 +118,7 @@ img {
 }
 
 .page-link {
-  @include adjust-font-size-to($base-font-size);
+  @include text-truncate;
 
   small {
     color: $dark;
@@ -114,18 +155,16 @@ img {
       width: 50%;
     };
   }
-
-  .page-link {
-    @include text-truncate;
-  }
 }
 
 .fa-1x {
-  @include size(1em);
+  width: 1em;
+  height: 1em;
 }
 
 .fa-2x {
-  @include size(2em);
+  width: 2em;
+  height: 2em;
  }
 
 .tags {
@@ -152,6 +191,7 @@ img {
     display: flex,
     flex-wrap: wrap,
     ));
+  @include trailer;
 }
 
 .cover {
@@ -164,6 +204,7 @@ img {
     &:nth-child(2n+1):nth-last-child(-n+2),
     &:nth-child(2n+1):nth-last-child(-n+2) ~ & {
       border-bottom: 0;
+      @include trailer;
     }
   }
 
@@ -173,6 +214,7 @@ img {
     &:nth-child(3n+1):nth-last-child(-n+3),
     &:nth-child(3n+1):nth-last-child(-n+3) ~ & {
       border-bottom: 0;
+      @include trailer;
     }
   }
 
@@ -190,14 +232,19 @@ img {
     display: flex,
     flex-direction: column,
     ));
-  @include leader;
-  margin-bottom: 23px;
-  border-bottom: 1px solid $dark;
+  margin-bottom: $base-line-height - $hr-border-width;
+  border-bottom: $hr-border-width solid $hr-border-color; 
 
   h2 {
     font-size: $h5-font-size;
     line-height: $base-line-height;
     @include flex-grow(1);
+    margin-top: 0.25rem;
+    margin-left: 0.5rem;
+  }
+
+  .tags {
+    margin-left: 0.5rem;
   }
 }
 
@@ -222,11 +269,12 @@ img {
     display: flex,
     flex-direction: column,
     ));
-  @include leader;
-  border-bottom: 1px solid $dark;
 
   &:last-child {
-    border-bottom: 0;
+    .excerpt {
+      margin-bottom: $base-line-height;
+      border-bottom: 0;
+    }
   }
 
   h2 {
@@ -264,14 +312,41 @@ img {
   ul {
     list-style: none;
     @include rhythm-padding(0.5);
+
+    span {
+      color: $text-muted
+    }
   }
 
   p {
     @include trailer(0.5);
   }
+}
 
-  span {
-    color: $text-muted
+.hackers {
+    @include media-breakpoint-down(sm) {
+    @include make-col-ready(1em);
+    @include make-col(6);
+
+    &:nth-child(2n+1):nth-last-child(-n+2),
+    &:nth-child(2n+1):nth-last-child(-n+2) ~ & {
+      border-bottom: 0;
+    }
   }
 
+  @include media-breakpoint-up(md) {
+    @include make-col-ready(2em);
+    @include make-col(3);
+
+    &:nth-child(4n+1):nth-last-child(-n+4),
+    &:nth-child(4n+1):nth-last-child(-n+4) ~ & {
+      border-bottom: 0;
+    }
+  }
+
+  pre {
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

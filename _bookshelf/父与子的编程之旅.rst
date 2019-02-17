@@ -5,7 +5,7 @@ categories: 计算
 tags: [Python, 基础]
 excerpt_separator: .. 摘要注释
 ---
-.. class:: excerpt
+.. container:: excerpt
 
     虽然本书的示例代码是用Python 2实现的，但是作者所要传达的主旨，并不会因Python版本的老旧而失色。
     这是一本非常好的Python入门读物（不仅限于儿童），到现在我还记得——移动沙滩球的兴奋之情。

@@ -7,7 +7,7 @@ gist: 413b7b178085f2973427d594f008d88d
 excerpt_separator: .. 摘要注释
 ---
 
-.. class:: excerpt
+.. container:: excerpt
 
     如何跟上“第一代黑客”的步伐，这是个问题！
 
