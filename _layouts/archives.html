@@ -1,23 +1,20 @@
 ---
 layout: default
 ---
-<section class="flex-grow-1 d-flex flex-column">
+<main class="jumbotron" role="main">
     {% include breadcrumb.html %}
-    <ul class="list-unstyled col-sm-10 col-md-9 col-lg-8 align-self-center">
-        {% assign v = 1 %}
+    <div class="content">
         {% for post in paginator.posts %}
-        <li {% unless forloop.last %}class="mb-4 border-bottom border-secondary"{% endunless %}>
-            <article>
-                <header><h2 class="offset-sm-2"><a href="{{ post.url }}" title="{{ post.title }}">{% if post.collection == "bookshelf" %}{{ post.title | prepend: "《" | append: "》" }}{% else %}{{ post.title }}{% endif %}</a></h2>
-                    <div class="d-flex flex-wrap">
-                        {% include tags.html tags=post.tags %}
-                        <time class="ml-auto small" datetime="{{ post.date }}">{{ post.date | date: '%b %d, %y' }}</time>
-                    </div>
-                </header>
-                {{ post.excerpt }}
-            </article>
-        </li>
+        <article class="archive">
+            <h2>
+                <a href="{{ post.url }}" title="{{ post.title }}">{% if post.collection == "bookshelf" %}{{ post.title |
+                    prepend: "《" | append: "》" }}{% else %}{{ post.title }}{% endif %}</a>
+            </h2>
+            {% include tags.html tags=post.tags %}
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %d, %y' }}</time>
+            {{ post.excerpt }}
+        </article>
         {% endfor %}
-    </ul>
+    </div>
     {% include pagination.html %}
-</section>
+</main>

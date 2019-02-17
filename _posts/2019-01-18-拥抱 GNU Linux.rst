@@ -15,8 +15,6 @@ excerpt_separator: .. 摘要注释
 
 .. 摘要注释
 
-----
-
 `Ubuntu <https://www.ubuntu.com/>`_\ 的\ *UI*\ 设计得比\ `Debian <https://www.debian.org/>`_\ 的好，使用\ `etcher <https://www.balena.io/etcher/>`_\ 制作系统镜像。
 
 程序设计

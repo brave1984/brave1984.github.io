@@ -13,14 +13,14 @@ pagination:
     <div class="bookshelf">
         {% for post in paginator.posts %}
         <article class="cover">
-            <a href="{{ post.url }}" title="{{ post.title }}">
-                <img class="card-img-top" src="/assets/bookshelf/{{ post.title }}/cover.jpg" alt="图书封面：{{ post.title }}">
-            </a>
+            <!--<a href="{{ post.url }}" title="{{ post.title }}">-->
+                <!--<img class="card-img-top" src="/assets/bookshelf/{{ post.title }}/cover.jpg" alt="图书封面：{{ post.title }}">-->
+            <!--</a>-->
             <h2>
                 <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
             </h2>
             {% include tags.html tags=post.tags %}
-            <time datetime="{{ post.date }}">{{ post.date | date: '%b %d, %y' }}</time>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %d, %y' }}</time>
         </article>
         {% endfor %}
     </div>
