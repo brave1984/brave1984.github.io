@@ -90,6 +90,7 @@ li p {
     display: flex,
     flex-direction: column,
     ));
+  @include trailer;
   
   .tags {
     @include align-self(flex-end);
@@ -130,6 +131,10 @@ li p {
     @include adjust-font-size-to($h6-font-size);
   }
 
+  p {
+    word-break: break-all;
+  }
+
   ul, ol, dl {
     @include trailer;
   }
@@ -139,8 +144,8 @@ dd {
   @include trailer(0.5);
 }
 
-[itemprop="articleBody"] {
-  @include trailer;
+dt:after {
+  content: "：";
 }
 
 blockquote > footer,
@@ -167,7 +172,6 @@ strong,
 em,
 .literal {
   font-size: 93.75%;
-  word-break: break-all;
 }
 
 .excerpt {
@@ -199,6 +203,7 @@ em,
     font-size: 100%;
   }
 }
+
 .footer {
   p {
     font-weight: 300;

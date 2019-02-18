@@ -7,8 +7,7 @@ layout: default
         {% for post in paginator.posts %}
         <article class="archive">
             <h2>
-                <a href="{{ post.url }}" title="{{ post.title }}">{% if post.collection == "bookshelf" %}{{ post.title |
-                    prepend: "《" | append: "》" }}{% else %}{{ post.title }}{% endif %}</a>
+                <a {% if post.collection == "bookshelf" %}class="book-title" {% endif %}href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
             </h2>
             {% include tags.html tags=post.tags %}
             <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %d, %y' }}</time>

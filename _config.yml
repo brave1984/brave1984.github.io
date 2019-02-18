@@ -23,7 +23,7 @@ twitter_username: zhaowei1984
 github_username:  brave1984
 
 # Build settings
-assets: http://images.1984world.com
+assets: #http://1984world.com
 
 encoding: UTF-8
 markdown: kramdown
@@ -90,9 +90,6 @@ autopages:
 
   collections:
     enabled: false
-    slugify:
-      mode: 'ascii'
-      cased: true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

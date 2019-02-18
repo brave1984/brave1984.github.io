@@ -14,7 +14,7 @@ pagination:
         {% for post in paginator.posts %}
         <article class="cover">
             <a href="{{ post.url }}" title="{{ post.title }}">
-                <img class="card-img-top" src="{{ site.assets }}/assets/bookshelf/{{ post.title }}/cover.jpg" alt="图书封面：{{ post.title }}">
+                <img src="{{ site.assets }}/assets/bookshelf/{{ post.title }}/cover.jpg" alt="封面：{{ post.title }}">
             </a>
             <h2>
                 <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
