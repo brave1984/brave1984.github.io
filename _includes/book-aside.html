@@ -1,7 +1,7 @@
 {% if page.collection == "bookshelf" %}
 {% assign book = site.data.bookshelf | where: "title", page.title | first %}
 <aside class="book-aside" role="complementary">
-    <img src="/assets/bookshelf/{{ page.title }}/cover.jpg" alt="封面：{{ page.title }}">
+    <img src="{{ site.assets }}/assets/bookshelf/{{ page.title }}/cover.jpg" alt="封面：{{ page.title }}">
     <section class="card">
         <h2 class="card-header">书籍信息</h2>
         <ul class="card-body">
