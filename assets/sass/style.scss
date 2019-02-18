@@ -262,6 +262,7 @@ img {
     @include make-col(9);
   };
   @include align-self(center);
+  width: 100%;
 }
 
 .archive {

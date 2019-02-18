@@ -78,14 +78,14 @@ autopages:
     layouts:
       - archives.html
     title: 标签：:tag
-    permalink: '/tag/:tag/'
+    permalink: '/tags/:tag/'
     enabled: true
 
   categories:
     layouts:
       - archives.html
     title: 分类：:cat
-    permalink: '/category/:cat'
+    permalink: '/categories/:cat'
     enabled: true
 
   collections:
@@ -104,5 +104,7 @@ exclude:
  - Rakefile
  - requirements.txt
  - README.rst
+ - assets/config.rb
+ - assets/sass
  - gists/
  - bookshelf/

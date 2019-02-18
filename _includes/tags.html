@@ -1,7 +1,7 @@
 <ul class="tags">
     {% for tag in include.tags %}
     <li>
-        <a class="badge badge-light" href="/tag/{{ tag | downcase }}">{{ tag }}</a>
+        <a class="badge badge-light" href="/tags/{{ tag | downcase }}">{{ tag }}</a>
     </li>
     {% endfor %}
 </ul>

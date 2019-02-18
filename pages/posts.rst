@@ -1,5 +1,5 @@
 ---
-title: 日志归档
+title: 日志
 permalink: /posts/
 layout: archives
 pagination:

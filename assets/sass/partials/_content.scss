@@ -161,13 +161,13 @@ em,
   color: $dark;
   font-weight: 500;
   padding: 0 0.25em;
-  word-wrap:break-word;
 }
 
 strong,
 em,
 .literal {
   font-size: 93.75%;
+  word-break: break-all;
 }
 
 .excerpt {
