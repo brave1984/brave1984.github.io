@@ -1,12 +1,12 @@
 table {
+  @include trailer;
   width: 100%;
+  white-space: nowrap;
+  text-align: center;
+
   @include media-breakpoint-down(sm) {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
+    @include Scroll_Wrapper;
   }
-  @include rhythm-margins;
 
   thead,
   tbody {
@@ -25,21 +25,16 @@ table {
 
   tbody tr {
     line-height: $base-line-height - 1px;
-    border-bottom: 1px solid $dark;
-  }
-
-  tbody tr:nth-of-type(odd) {
-    background-color: $table-accent-bg;
+   
+    & tr:nth-of-type(odd) {
+      background-color: $table-accent-bg;
+    }
+     border-bottom: 1px solid $dark;
   }
   
   th,
   td {
     padding: 0 1px;
-  }
-
-  p {
-    white-space: nowrap;
-    text-align: center;
   }
 }
 

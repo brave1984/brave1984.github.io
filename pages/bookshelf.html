@@ -12,7 +12,7 @@ pagination:
     {% include breadcrumb.html %}
     <div class="bookshelf">
         {% for post in paginator.posts %}
-        <article class="cover">
+        <article class="bookshelf-item">
             <a href="{{ post.url }}" title="{{ post.title }}">
                 <img src="{{ site.assets }}/assets/bookshelf/{{ post.title }}/cover.jpg" alt="封面：{{ post.title }}">
             </a>
