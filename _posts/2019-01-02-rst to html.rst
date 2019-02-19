@@ -4,15 +4,16 @@ date: 2019-01-02 09:09:59 +0800
 categories: 计算
 tags:  [Python, 文档, 工具]
 excerpt_separator: .. 摘要注释
+
 ---
 
 .. container:: excerpt
 
-    高端玩家： `Don't Use Markdown for Technical Docs！ <http://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/>`_
+    \ **高端玩家**\ ： `Don't Use Markdown for Technical Docs！ <http://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/>`_
 
-    萌新： 没有什么技术文档是\ *Markdown*\ 无法表述的，不行就加个\ ``div``\ 标签。
+    \ **萌新**\ ： 没有什么技术文档是\ *Markdown*\ 无法表述的，不行就加个\ ``div``\ 标签。
 
-    野怪： 为咩不用\ *Word*\ ?
+    \ **野怪**\ ： 为咩不用\ *Word*\ ?
 
 .. 摘要注释
 
@@ -82,7 +83,7 @@ excerpt_separator: .. 摘要注释
 
 .. footer::
 
-    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （如果碰到网络连线问题，你懂的。）
+    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （碰到网络连线问题，你懂的。）
 
 .. _reStructuredText: http://docutils.sourceforge.net/rst.html
 .. _Jekyll: https://jekyllrb.com/

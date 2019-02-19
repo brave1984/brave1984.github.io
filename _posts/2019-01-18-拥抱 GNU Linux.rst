@@ -30,7 +30,7 @@ JavaScript
 
 Ruby
 ~~~~
-* `ruby-build <https://github.com/rbenv/ruby-build/wiki>`_
+* `ruby-build <https://github.com/rbenv/ruby-build/wiki#suggested-build-environment>`_
 * `rbenv <https://github.com/rbenv/rbenv#basic-github-checkout>`_
 * `Ruby <https://www.ruby-lang.org/>`_
 
@@ -49,9 +49,10 @@ Lisp
 * vim
 * default-jdk
 * fcitx-sunpinyin
+* `Postman <https://snapcraft.io/postman>`_
 * `GitKraken <https://snapcraft.io/gitkraken>`_
-* `Chromium <https://snapcraft.io/chromium>`_
 * `Slack <https://snapcraft.io/slack>`_
+* `Chromium <https://snapcraft.io/chromium>`_
 * `VLC <https://snapcraft.io/vlc>`_
 * `LibreOffice <https://snapcraft.io/libreoffice>`_
 * `calibre <https://github.com/kovidgoyal/calibre>`_
@@ -59,4 +60,4 @@ Lisp
 
 .. footer::
 
-    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （如果碰到网络连线问题，你懂的。）
+    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （碰到网络连线问题，你懂的。）

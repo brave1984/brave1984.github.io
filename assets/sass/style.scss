@@ -102,7 +102,7 @@ img {
 }
 
 .jumbotron {
-  //@include debug-vertical-alignment("debug.png");
+  @include debug-vertical-alignment("debug.png");
   @include flexbox((
     align-self: center,
     display: flex,
@@ -111,7 +111,7 @@ img {
     ));
   width: 100%;
   max-width: 64em;
-  margin-bottom: 0;
+  @include trailer;
 
   @include media-breakpoint-up(md) {
     padding-left: 2em;
@@ -220,6 +220,10 @@ img {
     ));
   @include trailer;
 
+  @include media-breakpoint-up(se) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
   @include media-breakpoint-up(sm) {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -231,21 +235,22 @@ img {
   margin-bottom: $base-line-height - $hr-border-width;
   border-bottom: $hr-border-width solid $hr-border-color; 
 
-  @include media-breakpoint-down(sm) {
-    @include make-col-ready(1em);
-    @include make-col(6);
+  @include make-col-ready(0.75em);
+  @include make-col(6);
 
-    &:nth-child(2n+1):nth-last-child(-n+2),
-    &:nth-child(2n+1):nth-last-child(-n+2) ~ & {
-      border-bottom: 0;
-      @include trailer;
-    }
+  &:nth-child(2n+1):nth-last-child(-n+2),
+  &:nth-child(2n+1):nth-last-child(-n+2) ~ & {
+    border-bottom: 0;
+    @include trailer;
   }
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(se) {
     @include make-col-ready(2em);
     padding-left: 1em;
     padding-right: 1em;
+  }
+
+  @include media-breakpoint-up(sm) {
     @include make-col(4);
     
     &:nth-child(3n+1):nth-last-child(-n+3),
@@ -397,6 +402,10 @@ img {
       margin-left: 0;
       margin-right: 0;
     }
+  }
+
+  h3 {
+    @include text-hide($ignore-warning: true);
   }
 
   img {

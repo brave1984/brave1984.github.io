@@ -5,16 +5,17 @@ categories: 计算
 tags:  [Python, VIM, 工具]
 gist: e8231dd2fd399536d8272b110f4a8b7e
 excerpt_separator: .. 摘要注释
+
 ---
 .. _VIM: https://www.vim.org/
 
 .. container:: excerpt
 
-    团长： 萌新，赶紧把这个\ *Python*\ 脚本给我改好。
+    \ **团长**\ ： 萌新，赶紧把这个\ *Python*\ 脚本给我改好。
 
-    萌新： 好的，先等我把打开\ *Pycharm*\ 。
+    \ **萌新**\ ： 好的，先等我把打开\ *Pycharm*\ 。
 
-    休闲玩家： 你就不能用\ VIM_\ ？
+    \ **休闲玩家**\ ： 你就不能用\ VIM_\ ？
 
 .. 摘要注释
 
@@ -58,11 +59,9 @@ excerpt_separator: .. 摘要注释
 
 .. footer::
 
-    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （如果碰到网络连线问题，你懂的。）
+    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （碰到网络连线问题，你懂的。）
 
-    DPS垫底，就是木桩打得少！
-
-    彩蛋：\ ``$ vimtutor zh``\ 
+    DPS垫底，就是木桩打得少！\ ``$ vimtutor zh``\ 
 
 
 

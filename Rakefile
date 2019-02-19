@@ -31,13 +31,12 @@ gist:
 excerpt_separator: .. 摘要注释
 ---
 
-.. class:: excerpt
+.. container:: excerpt
 
 
 
 .. 摘要注释
 
-----
 EOF
   end
 end

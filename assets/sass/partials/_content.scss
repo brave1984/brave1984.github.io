@@ -146,10 +146,10 @@ dt:after {
 blockquote > footer,
 .attribution {
   display: block;
-  font-size: $blockquote-small-font-size;
+  font-size: $small-font-size;
   color: $blockquote-small-color;
   text-align: right;
-  @include adjust-font-size-to($blockquote-small-font-size);
+  @include adjust-font-size-to($small-font-size);
 
   &::before {
     content: "\2014\2014";

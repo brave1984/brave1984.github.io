@@ -17,13 +17,14 @@ title: 黄昭隗的个人网站
 email: admin@brave1984.com
 description: >- # this means to ignore newlines until "baseurl:"
   您好！我是黄昭隗，这是我的个人网站。
+  书架上的读书笔记、日志里的技术实践，献给孤独的你。
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.brave1984.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: zhaowei1984
 github_username:  brave1984
 
 # Build settings
-assets: #http://1984world.com
+assets: http://1984world.com
 
 encoding: UTF-8
 markdown: kramdown

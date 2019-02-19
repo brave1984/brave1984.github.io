@@ -2,9 +2,10 @@
 title: 程序员的数学
 date: 2019-01-22 12:09:26 +0800
 categories: 计算
-tags: [数学]
+tags: [数学, 基础]
 gist: 
 excerpt_separator: .. 摘要注释
+
 ---
 
 .. container:: excerpt

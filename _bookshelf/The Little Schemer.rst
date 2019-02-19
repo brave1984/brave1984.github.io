@@ -5,6 +5,7 @@ categories: 计算
 tags: [Lisp, Scheme, 算法]
 gist: 413b7b178085f2973427d594f008d88d
 excerpt_separator: .. 摘要注释
+
 ---
 
 .. container:: excerpt
@@ -90,6 +91,6 @@ Scheme 五法
 
 .. footer::
 
-    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （如果碰到网络连线问题，你懂的。）
+    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （碰到网络连线问题，你懂的。）
     
     结合上下文（context）语境，获取你的映射。

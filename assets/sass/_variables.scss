@@ -10,6 +10,8 @@ $display2-size: 3rem;
 $display3-size: 2.5rem;
 $display4-size: 2rem;
 
+$small-font-size: 87.5%;
+
 $jumbotron-padding: $base-line-height;
 
 $body-bg: #f2f1f0;             
@@ -20,3 +22,16 @@ $hr-border-color: rgba($black, .5);
 
 $card-bg: $body-bg;
 $breadcrumb-bg: $jumbotron-bg;
+
+$grid-breakpoints: map-merge(
+  (
+    xs: 0,
+    se: 352px,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+  ),
+  $grid-breakpoints
+);
+@debug $grid-breakpoints;
