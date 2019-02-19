@@ -5,24 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">-->
-    <link rel="shortcut icon" href="/favicon.ico"/>
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/dracula.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <title>{{ page.title}} - 黄昭隗的个人网站</title>
+    <!--<link rel="shortcut icon" href="/favicon.ico"/>-->
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>{{ page.title}} - {{ site.title}}</title>
 </head>
-<body class="w-100 d-flex flex-column">
+<body>
     {% include header.html %}
-    <div class="d-flex bg-warning">
-        <blockquote class="mx-auto mt-3 text-indent">
-            <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
-            <footer class="blockquote-footer text-right">哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
-        </blockquote>
-    </div>
-    <main class="jumbotron w-100 flex-grow-1 mx-auto d-flex flex-column bg-main" role="main">
-        {{ content }}
-    </main>
+    {{ content }}
     {% include footer.html %}
 </body>
 </html>

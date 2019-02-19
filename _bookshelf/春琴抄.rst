@@ -4,15 +4,14 @@ date: 2018-06-09
 categories: 自由
 tags: [文学, 日本]
 excerpt_separator: .. 摘要注释
+
 ---
 
-.. class:: excerpt
+.. container:: excerpt
 
     与汝相养以生，相守以死。生而影与汝形相依，死而魂与汝梦相接，如是而已。
 
 .. 摘要注释
-
-----
 
 《春琴抄》、《一九八四》分处于两极的爱情故事。
 

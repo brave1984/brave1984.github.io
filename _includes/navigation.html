@@ -1,19 +1,19 @@
 {% if page.previous or page.next %}
-<nav class="my-4" aria-label="posts navigation">
-    <ul class="pagination d-flex flex-wrap text-center mb-0">
+<nav aria-label="posts navigation">
+    <ul class="pagination">
         {% if page.previous %}
-        <li class="page-item col-12 col-sm-6 px-0">
-            <a class="page-link text-truncate" href="{{ page.previous.url | prepend: site.baseurl }}"
+        <li class="page-item">
+            <a class="page-link" href="{{ page.previous.url | prepend: site.baseurl }}"
                title="{{ page.previous.title | escape }}" aria-label="Previous">
-                <span aria-hidden="true"><small class="text-dark">前一篇：</small>{{ page.previous.title | escape }}</span>
+                <span aria-hidden="true"><small>前一篇：</small>{{ page.previous.title | escape }}</span>
             </a>
         </li>
         {% endif %}
         {% if page.next %}
-        <li class="page-item col-12 col-sm-6 px-0">
-            <a class="page-link text-truncate" href="{{ page.next.url | prepend: site.baseurl }}"
+        <li class="page-item">
+            <a class="page-link" href="{{ page.next.url | prepend: site.baseurl }}"
                title="{{ page.next.title | escape }}" aria-label="Next">
-                <span aria-hidden="true"><small class="text-dark">后一篇：</small>{{ page.next.title | escape }}</span>
+                <span aria-hidden="true"><small>后一篇：</small>{{ page.next.title | escape }}</span>
             </a>
         </li>
         {% endif %}

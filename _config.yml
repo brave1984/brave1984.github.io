@@ -17,12 +17,15 @@ title: 黄昭隗的个人网站
 email: admin@brave1984.com
 description: >- # this means to ignore newlines until "baseurl:"
   您好！我是黄昭隗，这是我的个人网站。
+  书架上的读书笔记、日志里的技术实践，献给孤独的你。
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.brave1984.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: zhaowei1984
 github_username:  brave1984
 
 # Build settings
+assets: #http://1984world.com
+
 encoding: UTF-8
 markdown: kramdown
 permalink: pretty
@@ -76,21 +79,18 @@ autopages:
     layouts:
       - archives.html
     title: 标签：:tag
-    permalink: '/tag/:tag/'
+    permalink: '/tags/:tag/'
     enabled: true
 
   categories:
     layouts:
       - archives.html
     title: 分类：:cat
-    permalink: '/category/:cat'
+    permalink: '/categories/:cat'
     enabled: true
 
   collections:
     enabled: false
-    slugify:
-      mode: 'ascii'
-      cased: true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -102,5 +102,7 @@ exclude:
  - Rakefile
  - requirements.txt
  - README.rst
+ - assets/config.rb
+ - assets/sass
  - gists/
  - bookshelf/

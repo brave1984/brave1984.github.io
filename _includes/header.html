@@ -1,17 +1,25 @@
-<header class="bg-light" role="banner">
-    <nav class="mx-auto mt-2" role="navigation">
-        <ul class="nav justify-content-around align-items-center">
-            <li class="nav-item col-4">
-                <a class="nav-link p-0 text-dark" href="/" title="首页">
-                    <img class="img-fluid" src="/assets/img/logo.svg" alt="logo">
+<header role="banner">
+    <nav role="navigation">
+        <ul class="nav nav-justified">
+            <li class="nav-item">
+                <a class="nav-link" id="logo" href="/" title="首页">
+                    <svg class="">
+                        <use xlink:href="/assets/images/fontawesome.svg#logo"></use>
+                    </svg>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link h3 mb-0 text-dark" href="/bookshelf/" title="书架">书架</a>
+                <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link h3 mb-0 text-dark" href="/posts/" title="日志">日志</a>
+                <a class="nav-link" href="/posts/" title="日志">日志</a>
             </li>
         </ul>
     </nav>
+    <div class="bg-warning">
+        <blockquote>
+            <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+            <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+        </blockquote>
+    </div>
 </header>

@@ -6,31 +6,23 @@ pagination:
   enabled: true
   collection: bookshelf
   debug: false
-  per_page: 8
+  per_page: 12
 ---
-<section class="flex-grow-1 d-flex flex-column">
-  <header>
+<main class="jumbotron" role="main">
     {% include breadcrumb.html %}
-  </header>
-  <ul class="list-unstyled d-flex flex-wrap">
-    {% for post in paginator.posts %}
-    <li class="col-6 col-md-3 my-2 border-bottom border-secondary d-flex flex-column">
-      <article class="flex-grow-1 d-flex flex-column">
-        <header class=" flex-grow-1">
-          <a href="{{ post.url }}" title="{{ post.title }}">
-            <img class="img-fluid rounded" src="/assets/bookshelf/{{ post.title }}/cover.jpg" alt="图书封面：{{ post.title }}">
-          </a>
-          <h2 class="h5 m-2">
-            <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-          </h2>
-        </header>
-        <div class="small">
-          {% include tags.html tags=post.tags %}
-        </div>
-        <time class="text-right small" datetime="{{ post.date }}">{{ post.date | date: '%b %d, %y' }}</time>
-      </article>
-    </li>
-    {% endfor %}
-  </ul>
-  {% include pagination.html %}
-</section>
+    <div class="bookshelf">
+        {% for post in paginator.posts %}
+        <article class="bookshelf-item">
+            <a href="{{ post.url }}" title="{{ post.title }}">
+                <img src="{{ site.assets }}/assets/bookshelf/{{ post.title }}/cover.jpg" alt="封面：{{ post.title }}">
+            </a>
+            <h2>
+                <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+            </h2>
+            {% include tags.html tags=post.tags %}
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %d, %y' }}</time>
+        </article>
+        {% endfor %}
+    </div>
+    {% include pagination.html %}
+</main>

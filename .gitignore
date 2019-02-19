@@ -1,6 +1,7 @@
 _site
-.sass-cache
-.jekyll-metadata
 __pycache__/
+.jekyll-metadata
+.sass-cache
+assets/stylesheets/
 /bookshelf/
 *.swp

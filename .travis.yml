@@ -23,4 +23,3 @@ script:
 
 after_success:
   - bundle exec rake push_site
-  #- ./push_site.sh
