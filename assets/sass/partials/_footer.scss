@@ -1,9 +1,5 @@
 footer[role="contentinfo"] {
-  @include flexbox((
-    display: flex,
-    flex-direction: column,
-    align-items: center,
-    ));
+  @include flexbox((display: flex, flex-direction: column, align-items: center));
   background-color: $bg-info;
 
   nav {

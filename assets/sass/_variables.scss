@@ -22,16 +22,4 @@ $hr-border-color: rgba($black, .5);
 
 $card-bg: $body-bg;
 $breadcrumb-bg: $jumbotron-bg;
-
-$grid-breakpoints: map-merge(
-  (
-    xs: 0,
-    se: 352px,
-    sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px
-  ),
-  $grid-breakpoints
-);
-@debug $grid-breakpoints;
+$grid-breakpoints: ((xs: 0, se: 352px, sm: 576px, md: 768px, lg: 992px, xl: 1200px));

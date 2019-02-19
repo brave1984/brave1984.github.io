@@ -81,10 +81,7 @@ li p {
 }
 
 [itemtype="http://schema.org/BlogPosting"] {
-  @include flexbox((
-    display: flex,
-    flex-direction: column,
-    ));
+  @include flexbox((display: flex, flex-direction: column));
   @include trailer;
   
   .tags {
@@ -206,5 +203,11 @@ em,
   hr {
     @include leader;
     margin-bottom: $base-line-height - $hr-border-width;
+  }
+}
+
+.footnote {
+  dt, dd, p {
+    display: inline;
   }
 }

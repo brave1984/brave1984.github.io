@@ -1,5 +1,4 @@
 @import "compass";
-
 @import "bootstrap/functions";
 @import "bootstrap/variables";
 @import "variables";
@@ -103,12 +102,7 @@ img {
 
 .jumbotron {
   @include debug-vertical-alignment("debug.png");
-  @include flexbox((
-    align-self: center,
-    display: flex,
-    flex-direction: column,
-    flex-grow: 1,
-    ));
+  @include flexbox((align-self: center, display: flex, flex-direction: column, flex-grow: 1));
   width: 100%;
   max-width: 64em;
   @include trailer;
@@ -150,18 +144,10 @@ img {
 }
 
 [aria-label~="posts"] {
-  @include flexbox((
-    align-self: stretch,
-    display: flex,
-    justify-content: center,
-    ));
+  @include flexbox((align-self: stretch, display: flex, justify-content: center));
 
   ul {
-    @include flexbox((
-      display:flex,
-      flex-direction: column,
-      max-width: 20em,
-      ));
+    @include flexbox((display:flex, flex-direction: column, max-width: 20em));
     @include media-breakpoint-up(sm) {
       @include flex-direction(row);
       max-width: 40em;
@@ -214,16 +200,13 @@ img {
 }
 
 .bookshelf {
-  @include flexbox((
-    display: flex,
-    flex-wrap: wrap,
-    ));
+  @include flexbox((display: flex, flex-wrap: wrap));
   @include trailer;
-
   @include media-breakpoint-up(se) {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
+
   @include media-breakpoint-up(sm) {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -244,7 +227,7 @@ img {
     @include trailer;
   }
 
-  @include media-breakpoint-up(se) {
+  @media (min-width: 375px) {
     @include make-col-ready(2em);
     padding-left: 1em;
     padding-right: 1em;
@@ -278,6 +261,10 @@ img {
     line-height: $base-line-height;
     @include flex-grow(1);
     margin: 0 0.25rem;
+
+    @include media-breakpoint-down(xs) {
+      margin: 0;
+    }
   }
 
   .tags {
@@ -303,10 +290,7 @@ img {
 }
 
 .archive {
-  @include flexbox((
-    display: flex,
-    flex-direction: column,
-    ));
+  @include flexbox((display: flex, flex-direction: column));
 
   &:last-child {
     .excerpt {
