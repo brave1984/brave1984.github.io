@@ -19,6 +19,7 @@ install:
   - bundle exec rake submodules_update
 
 script:
+  - bundle exec compass compile -c assets/config.rb assets/
   - bundle exec jekyll build
 
 after_success:
