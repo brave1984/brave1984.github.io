@@ -2,14 +2,13 @@
 title: SQL基础教程
 date: 2018-10-19
 categories: 计算
-tags: [数据库, 基础]
+tags: [数据库, SQL, 基础]
 excerpt_separator: .. 摘要注释
 
 ---
 .. container:: excerpt
 
-    一本对萌新友好的SQL书，阅读本书能掌握基本的SQL语句，实现数据的\ *增查改删*\ 。\
-    本书的侧重在于Read操作，从简单的查询语句延伸到表与表之间的关联查询。
+    一本对新手友好的\ *SQL*\ 书，本书侧重于\ **Read**\ 操作，从简单的查询语句延伸到表与表之间的关联查询。通过阅读本书，你将掌握基本的\ *SQL*\ 语句，实现数据的\ *增查改删*\ 。
 
 .. 摘要注释
 
@@ -23,7 +22,7 @@ DML 数据操纵语言
     用来查询或者变更表中记录，包含：\ *SELECT*\ 、\ *INSERT*\ 、\ *UPDATE*\ 、\ *DELETE*\ 。
 
 DCL 数据控制语言
-    用来确认或者取消对数据库中的数据进行的变更，还可以对RDBMS的用户是否有权限操作数据库中的对象进行设定，包含：\ *COMMIT*\ 、\ *ROLLBACK*\ 、\ *GRANT*\ 、\ *REVOKE*\ 。
+    用来确认或者取消对数据库中的数据进行的变更，还可以对 \ **RDBMS**\ 的用户是否有权限操作数据库中的对象进行设定，包含：\ *COMMIT*\ 、\ *ROLLBACK*\ 、\ *GRANT*\ 、\ *REVOKE*\ 。
 
 SQL语句以分号结尾、关键字不区分大小写、字符串和日期用单引号括起、单词以半角空格或换行分隔。
 
@@ -112,6 +111,7 @@ GROUP BY子句
 
 HAVING子句
 ~~~~~~~~~~
+
 .. code:: postgres
 
     SELECT product_type,
@@ -147,6 +147,7 @@ INSERT子句
 
 DELETE子句
 ~~~~~~~~~~
+
 .. code:: postgres
 
     DELETE FROM productcopy

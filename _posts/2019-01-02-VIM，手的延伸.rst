@@ -7,8 +7,6 @@ gist: e8231dd2fd399536d8272b110f4a8b7e
 excerpt_separator: .. 摘要注释
 
 ---
-.. _VIM: https://www.vim.org/
-
 .. container:: excerpt
 
     \ **团长**\ ： 萌新，赶紧把这个\ *Python*\ 脚本给我改好。
@@ -16,6 +14,8 @@ excerpt_separator: .. 摘要注释
     \ **萌新**\ ： 好的，先等我把打开\ *Pycharm*\ 。
 
     \ **休闲玩家**\ ： 你就不能用\ VIM_\ ？
+
+.. _VIM: https://www.vim.org/
 
 .. 摘要注释
 

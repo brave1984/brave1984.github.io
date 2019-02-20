@@ -6,7 +6,6 @@ tags:  [Python, 文档, 工具]
 excerpt_separator: .. 摘要注释
 
 ---
-
 .. container:: excerpt
 
     \ **高端玩家**\ ： `Don't Use Markdown for Technical Docs！ <http://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/>`_
@@ -37,13 +36,13 @@ excerpt_separator: .. 摘要注释
 
 接下来，要做的只是：编写一个\ Jekyll_\  \ Converters_\ 插件，通过管道调用外部的\ *Python*\ 脚本，将\ *rst*\ 格式转换成\ *html*\ 格式。
 
-\ Docutils_\ 源码中提供了相应的工具：\ rst2html5_.py，但这个转换脚本将输出一个带有\ ``head``\ 部分的\ *html*\ 文本。\
-``publish_cmdline``\ 函数位于docutils目录下的\ core_.py文件中，此文件中包含有一个\ ``Publisher``\ 类和多个以“\ *publish*\ ”开头的函数。
+\ Docutils_\ 源码中提供了相应的工具：\ rst2html5.py_\ ，但这个转换脚本将输出一个带有\ ``head``\ 部分的\ *html*\ 文本。\
+``publish_cmdline``\ 函数位于docutils目录下的\ core.py_\ 文件中，此文件中包含有一个\ ``Publisher``\ 类和多个以“\ *publish*\ ”开头的函数。
 
 通过阅读文档字符串，可以看到\ ``publish_parts``\ 函数返回：\ *a dictionary of document parts*\ (\ ``pub.writer.parts``\ )。\
 \ ``pub``\ 对象，又是通过调用\ ``publish_programmatically``\ 函数——实例化\ ``Publisher``\ 类——产生的。
 
-在\ *docutils/writers*\ 目录下的\_\ html_base_\.py中可以获悉一个\ *HTML*\ 文档究竟是由哪几部分构成：
+在\ *docutils/writers*\ 目录下的\ `_html_base.py`_\ 中可以获悉一个\ *HTML*\ 文档究竟是由哪几部分构成：
 
 .. code:: python
 
@@ -89,7 +88,6 @@ excerpt_separator: .. 摘要注释
 .. _Jekyll: https://jekyllrb.com/
 .. _Converters: https://jekyllrb.com/docs/plugins/converters/
 .. _Docutils: http://docutils.sourceforge.net/
-.. _rst2html5: https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/tools/rst2html5.py
-.. _core: https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/core.py
-.. _html_base: https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/_html_base.py
-
+.. _rst2html5.py: https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/tools/rst2html5.py
+.. _core.py: https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/core.py
+.. _`_html_base.py`: https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/_html_base.py

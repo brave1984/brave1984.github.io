@@ -2,11 +2,10 @@
 title: GitHub入门与实践
 date: 2018-10-04
 categories: 计算
-tags: [Git, 工具, 基础]
+tags: [工具, Git, 基础]
 excerpt_separator: .. 摘要注释
 
 ---
-
 .. container:: excerpt
 
     就如同\ `GitHub <https://github.com/>`_\ 不止是\ *Git*\ 仓库托管服务一般，本书的要点也不止是\ *Git*\ 命令的使用。
@@ -63,5 +62,4 @@ excerpt_separator: .. 摘要注释
 
 .. footer::
 
-    工具只能解决工具的问题，版本控制只是开发过程中的一环，但人的问题还是需要人来解决。
-
+    工具只能解决工具的问题，版本控制也只是开发过程中的一环，而人的问题还是需要人来解决。

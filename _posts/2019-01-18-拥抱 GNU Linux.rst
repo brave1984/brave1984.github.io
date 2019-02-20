@@ -5,13 +5,16 @@ categories: 计算
 tags: [工具]
 gist: 2d3078f4024dbedf8fca6a30d6de5548
 excerpt_separator: .. 摘要注释
----
 
+---
 .. container:: excerpt
 
-    萌新：“炉石传说”的爆率又被调低了，我要\ *AFK*\ ……
+    \ **萌新**\ ：“炉石传说”的爆率又被调低了，我要\ *AFK*\ ……
 
-    休闲玩家：自从用上“\ `GNU <http://www.gnu.org/>`_\ /\ `Linux <https://www.kernel.org/>`_\ ”后，值不充、税（智商税）不缴，浑身都“得劲”。
+    \ **休闲玩家**\ ：自从用上“\ GNU_\ /\ Linux_\ ”后，值不充、税（智商税）不缴，浑身都“得劲”。
+
+.. _GNU: http://www.gnu.org/
+.. _Linux: https://www.kernel.org/
 
 .. 摘要注释
 
@@ -19,33 +22,39 @@ excerpt_separator: .. 摘要注释
 
 程序设计
 --------
+
 * `Docker <https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce>`_
 * `Docker Compose <https://github.com/docker/compose/releases>`_
 * `PostgreSQL <https://wiki.postgresql.org/wiki/Apt>`_
 
 JavaScript
 ~~~~~~~~~~
+
 * `Node.js <https://github.com/nodesource/distributions/blob/master/README.md#debinstall>`_
 * `Yarn <https://yarnpkg.com/zh-Hans/docs/install#debian-stable>`_
 
 Ruby
 ~~~~
+
 * `ruby-build <https://github.com/rbenv/ruby-build/wiki#suggested-build-environment>`_
 * `rbenv <https://github.com/rbenv/rbenv#basic-github-checkout>`_
 * `Ruby <https://www.ruby-lang.org/>`_
 
 Python
 ~~~~~~
+
 * `pip <https://packaging.python.org/guides/installing-using-linux-tools/#debian-ubuntu>`_
 * `Pipenv <https://pipenv.readthedocs.io/en/latest/install/>`_
 
 Lisp
 ~~~~
+
 * `Clojure <https://clojure.org/guides/getting_started#_installation_on_linux>`_
 * `Chez Scheme <https://github.com/cisco/chezscheme>`_
 
 工具
 ----
+
 * vim
 * default-jdk
 * fcitx-sunpinyin
