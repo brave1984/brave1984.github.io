@@ -23,7 +23,7 @@ twitter_username: zhaowei1984
 github_username:  brave1984
 
 # Build settings
-assets: #http://1984world.com
+assets: http://1984world.com
 
 encoding: UTF-8
 markdown: kramdown
@@ -77,14 +77,14 @@ autopages:
   tags:
     layouts:
       - archives.html
-    title: 标签：:tag
+    title: 标签：
     permalink: '/tags/:tag/'
     enabled: true
 
   categories:
     layouts:
       - archives.html
-    title: 分类：:cat
+    title: 分类：
     permalink: '/categories/:cat'
     enabled: true
 
