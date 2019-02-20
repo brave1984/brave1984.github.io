@@ -14,22 +14,23 @@ table {
     border-right: 1px solid $dark;
   }
 
-  thead tr {
-    line-height: $base-line-height;
-  }
-
-  thead th {
-    color: $table-dark-color;
-    background-color: $table-dark-bg;
+  thead {
+    tr {
+      line-height: $base-line-height;
+    }
+    th {
+      color: $table-dark-color;
+      background-color: $table-dark-bg;
+    }
   }
 
   tbody tr {
     line-height: $base-line-height - 1px;
+    border-bottom: 1px solid $dark;
    
-    & tr:nth-of-type(odd) {
+    &:nth-of-type(odd) {
       background-color: $table-accent-bg;
     }
-     border-bottom: 1px solid $dark;
   }
   
   th,
@@ -167,7 +168,7 @@ em,
 }
 
 .excerpt {
-  font-size: $font-size-base * 1.125;
+  font-size: $font-size-base * 1.0625;
   font-weight: $lead-font-weight;
   line-height: $base-line-height;
   margin-bottom: $base-line-height - $hr-border-width;

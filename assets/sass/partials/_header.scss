@@ -27,11 +27,8 @@ header[role="banner"] {
     padding-right: 1rem;
   }
 
-  blockquote {
+  div {
     @include rhythm-padding(0.5);
-
-    p {
-      padding: 0;
-    }
+    background-color: $warning;
   }
 }

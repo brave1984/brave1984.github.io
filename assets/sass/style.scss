@@ -5,7 +5,7 @@
 @import "bootstrap/mixins";
 
 @import "bootstrap/reboot";
-@import "bootstrap/utilities";
+@import "bootstrap/utilities/screenreaders";
 @import "bootstrap/jumbotron";
 @import "bootstrap/card";
 @import "bootstrap/buttons";
@@ -309,19 +309,21 @@ img {
   .tags {
     margin-left: 2em;
   }
+
+  [data-archive-type="bookshelf"] {
+    &:before {
+      content: "《";
+      color: $black;
+    }
+
+    &:after {
+      content: "》";
+      color: $black;
+    }
+  }
 }
 
-.book-title {
-  &:before {
-    content: "《";
-    color: $black;
-  }
 
-  &:after {
-    content: "》";
-    color: $black;
-  }
-}
 
 .book-aside {
   @include flexbox((
