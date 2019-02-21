@@ -18,12 +18,14 @@ excerpt_separator: .. 摘要注释
 
 .. 摘要注释
 
-`Ubuntu <https://www.ubuntu.com/>`_\ 的\ *UI*\ 设计得比\ `Debian <https://www.debian.org/>`_\ 的好，使用\ `etcher <https://www.balena.io/etcher/>`_\ 制作系统镜像。
+用了近半年的“\ GNU_\ /\ Linux_\ ”后，不谈其对\ *ssh*\ 、\ Docker_\ 的友好支持，我只想说——我能够心无旁骛地写好代码了。在\ Terminal_\ 中可以打开多个标签页，而每个\ VIM_\ 窗口又可以打开多个标签，配合快捷键就能脱离鼠标干活了。
+
+\ Ubuntu_\ 的\ *UI*\ 设计得比\ Debian_\ 的好，而\ 18.10_\ 又比\ `18.04 LTS`_\ 美观，使用\ etcher_\ 制作系统镜像。
 
 程序设计
 --------
 
-* `Docker <https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce>`_
+* Docker_
 * `Docker Compose <https://github.com/docker/compose/releases>`_
 * `PostgreSQL <https://wiki.postgresql.org/wiki/Apt>`_
 
@@ -64,9 +66,19 @@ Lisp
 * `Chromium <https://snapcraft.io/chromium>`_
 * `VLC <https://snapcraft.io/vlc>`_
 * `LibreOffice <https://snapcraft.io/libreoffice>`_
+* \ etcher_\
 * `calibre <https://github.com/kovidgoyal/calibre>`_
 * `OpenRefine <https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux>`_
 
 .. footer::
 
     `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （碰到网络连线问题，你懂的。）
+
+.. _Docker:  https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce`
+.. _Terminal: https://wiki.gnome.org/Apps/Terminal
+.. _VIM: https://www.vim.org/
+.. _Ubuntu:  https://www.ubuntu.com/
+.. _Debian:  https://www.debian.org/
+.. _18.10: https://wiki.ubuntu.com/CosmicCuttlefish/ReleaseNotes
+.. _`18.04 LTS`: https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes/18.04
+.. _etcher:  https://www.balena.io/etcher/
