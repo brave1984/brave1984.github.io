@@ -154,6 +154,10 @@ blockquote > footer,
   }
 }
 
+.attribution {
+  @include trailer(0.5);
+}
+
 em,
 .literal {
   color: $dark;

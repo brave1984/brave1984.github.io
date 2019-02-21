@@ -10,7 +10,7 @@ excerpt_separator: .. 摘要注释
 
 .. container:: excerpt
 
-    {{ page.title }}
+    自由，是一种愿望——粉碎孤独。
 
 .. 摘要注释
 
