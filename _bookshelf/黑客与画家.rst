@@ -25,6 +25,16 @@ excerpt_separator: .. 摘要注释
 
 \ *Lisp*\ 语言有种惊心动魄的美——\ **闭合的括号**\ ，你可以从阅读《\ `The Little Schemer </bookshelf/The-Little-Schemer/>`_\ 》来认识它的一种方言\ *Scheme*\ （提供两种实现：\ `Chez Scheme`_\ 、\ `MIT/GNU Scheme`_\）。
 
+所有的编程语言都是图灵等价的，但它们的抽象程度各不相同。Web应用服务器有基于线程的，也有基于事件的。在较大型\ Node.js_\ 项目中，很容易出现“回调地狱”式的代码（\ `callback hell`_\ ）。
+
+.. epigraph::
+
+    回调作为一种抽象，在编写复杂的异步流时，显得过于底层。\ *JavaScript*\ 只是没有跟上工具和抽象的步伐，但是像\ Scala_\ 这样的语言在设计时就考虑了这些抽象，它使用了众所周知的函数式编程原则，从而有可能从不同的角度解决这个问题。
+
+    \ Scala_\ 编程语言一个主要的设计目标就是帮助开发人员克服多核以及分布式系统编程所带来的复杂性。
+
+    -- Manuel Bernhardt《\ `反应式：Web应用开发`_\ 》
+
 .. _`Paul Graham`: http://www.paulgraham.com/
 .. _Viaweb: https://en.wikipedia.org/wiki/Viaweb
 .. _`Y Combinator`: https://www.ycombinator.com/
@@ -35,6 +45,10 @@ excerpt_separator: .. 摘要注释
 .. _Python: https://www.python.org/
 .. _`Chez Scheme`: http://arclanguage.org/
 .. _`MIT/GNU Scheme`:  http://www.gnu.org/software/mit-scheme/
+.. _Node.js: https://nodejs.org/
+.. _`callback hell`: http://callbackhell.com/
+.. _Scala: https://www.scala-lang.org/
+.. _`反应式：Web应用开发`: https://amzn.to/2BOod66
 
 文摘
 ----

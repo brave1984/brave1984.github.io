@@ -104,4 +104,4 @@ exclude:
  - assets/config.rb
  - assets/sass
  - gists/
- - bookshelf/
+ - private/
