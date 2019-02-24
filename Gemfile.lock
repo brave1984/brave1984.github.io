@@ -21,9 +21,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
-    autoprefixer-rails (9.4.7)
+    autoprefixer-rails (9.4.8)
       execjs
-    bootstrap (4.3.0)
+    bootstrap (4.3.1)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
@@ -144,7 +144,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap (~> 4.2)
+  bootstrap (~> 4.3.1)
   compass
   jekyll (~> 3.8.5)
   jekyll-feed (~> 0.6)
