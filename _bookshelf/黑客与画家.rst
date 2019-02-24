@@ -2,19 +2,44 @@
 title: 黑客与画家
 date: 2019-02-19 16:16:24 +0800
 categories: 计算
-tags: [黑客, 经典]
+tags: [程序设计, 黑客, 经典]
 gist: 
 excerpt_separator: .. 摘要注释
 
 ---
 .. container:: excerpt
 
-    程序设计，就如同绘画一般，是一种艺术创作。
+    程序设计，就如同绘画一般，是一种艺术创作。实现原型，以人为本，重构再设计。
 
 .. 摘要注释
 
+\ *保罗·格雷厄姆*\ （\ `Paul Graham`_\ ），是一个“书呆子”（中学时代）、想当画家的黑客（大学时代）、创业者（\ Viaweb_\ ）、风险投资家（\ `Y Combinator`_\ ）、一种Lisp方言（\ Arc_\ ）的设计者。
+
+作者设计了第一个Web应用，预言了移动互联网时代的到来。在文集中，作者以其亲身经历为依据，论述了：1、黑客为什么多为“书呆子”；2、黑客与画家为何相像；3、如何应对“流行”；4、财富与创业的关系；5、计算机时代，该如何创业；6、设想了“百年后，编程语言的模样”；7、如何设计一种成功的产品或编程语言。
+
+畅想未来的编程语言，就得结合现有语言的发展趋势，考虑\ *摩尔定律*\ 会否失效，以及并行计算的发展趋势。未来只能预测，无法断言！\ *松本行弘*\ 在其文集——《\ 代码的未来_\ 》——中，也设想了未来的编程语言，而且有着与\ *保罗·格雷厄姆*\ 相反的观点。
+
+梦寐以求的编程语言，我可以理解为是\ Ruby_\ （社区友好、简洁、元编程、杀手级应用、\ RubyGems_\ ）或\ Python_\ 么？
+
+语言流行的秘诀，即：快速原型（曳光弹）、聆听用户需求、产品再设计、时间的检验，我觉得也适用于创业产品。
+
+\ *Lisp*\ 语言有种惊心动魄的美——\ **闭合的括号**\ ，你可以从阅读《\ `The Little Schemer </bookshelf/The-Little-Schemer/>`_\ 》来认识它的一种方言\ *Scheme*\ （提供两种实现：\ `Chez Scheme`_\ 、\ `MIT/GNU Scheme`_\）。
+
+.. _`Paul Graham`: http://www.paulgraham.com/
+.. _Viaweb: https://en.wikipedia.org/wiki/Viaweb
+.. _`Y Combinator`: https://www.ycombinator.com/
+.. _Arc: http://arclanguage.org/
+.. _代码的未来: https://amzn.to/2TXjVAx
+.. _Ruby: https://www.ruby-lang.org/
+.. _RubyGems: https://rubygems.org/
+.. _Python: https://www.python.org/
+.. _`Chez Scheme`: http://arclanguage.org/
+.. _`MIT/GNU Scheme`:  http://www.gnu.org/software/mit-scheme/
+
 文摘
 ----
+
+“计算机科学”，这个学科的一端是纯粹的数学家（计算机科学家），中间部分是计算机博物学家，另一端则是黑客。
 
 设计者的品味
 ~~~~~~~~~~~~
@@ -36,3 +61,9 @@ excerpt_separator: .. 摘要注释
     * 常常是奇特的设计
     * 是成批出现的
     * 常常是大胆的设计
+
+.. epigraph::
+
+    任何C或Fortran程序复杂到一定程度之后，都会包含一个临时开发的、只有一半功能的、不完全符合规格的、到处都是bug的、运行速度很慢的Common Lisp实现。
+
+    -- 格林斯潘第十定律（Greenspun's Tenth Rule）

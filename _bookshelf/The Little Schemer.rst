@@ -15,7 +15,7 @@ excerpt_separator: .. 摘要注释
 
 如果没有认真阅读前言，那么你将觉得本书晦涩难懂，完全不知所云。为了从繁复的代码中剥离出简明的递归片段，本书预先设置了诸多约束条件。只有明了了这些约束条件，才能跟上黑客的步伐。
 
-不要纠结于使用哪一种\ *Scheme*\ 实现（\ `Chez Scheme <https://www.scheme.com/>`_\ 、\ `MIT/GNU Scheme <http://www.gnu.org/software/mit-scheme/>`_\ ），因为在这两种实现中，\ ``eq?``\ 可以对“数字”与“字符串”进行比较。重要的事情是：在一问一答的过程中，跟紧黑客，并在\ `VIM <https://www.vim.org/>`_\ 的\ *Lisp*\ 模式下编写代码。
+不要纠结于使用哪一种\ *Scheme*\ 实现（\ `Chez Scheme`_\ 、\ `MIT/GNU Scheme`_\ ），因为在这两种实现中，\ ``eq?``\ 可以对“数字”与“字符串”进行比较。重要的事情是：在一问一答的过程中，跟紧黑客，并在\ `VIM <https://www.vim.org/>`_\ 的\ *Lisp*\ 模式下编写代码。
 
 虽然本书没有讲解“宏”，但是”\ *Scheme*\ 五法十诫“也是道不错的开胃菜。
 
@@ -108,3 +108,6 @@ Scheme 五法
     `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （碰到网络连线问题，你懂的。）
     
     结合上下文（context）语境，获取你的映射。
+
+.. _`Chez Scheme`: http://arclanguage.org/
+.. _`MIT/GNU Scheme`:  http://www.gnu.org/software/mit-scheme/

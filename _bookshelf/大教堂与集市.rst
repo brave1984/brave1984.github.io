@@ -100,7 +100,7 @@ excerpt_separator: .. 摘要注释
     #. 防止锁喉
 
 .. footer::
-    本书的附录A：《如何成为一名黑客》，请勤拂拭！
+    本书的附录A：\ `《如何成为一名黑客》 <http://www.catb.org/esr/faqs/hacker-howto.html>`_\ ，请勤拂拭！
 
     微软，《`万圣节文件 <http://catb.org/~esr/halloween/index.html>`_\ 》
 
