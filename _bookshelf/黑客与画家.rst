@@ -17,7 +17,7 @@ excerpt_separator: .. 摘要注释
 
 作者设计了第一个Web应用，预言了移动互联网时代的到来。在文集中，作者以其亲身经历为依据，论述了：1、黑客为什么多为“书呆子”；2、黑客与画家为何相像；3、如何应对“流行”；4、财富与创业的关系；5、计算机时代，该如何创业；6、设想了“百年后，编程语言的模样”；7、如何设计一种成功的产品或编程语言。
 
-畅想未来的编程语言，就得结合现有语言的发展趋势，考虑\ *摩尔定律*\ 会否失效，以及并行计算的发展趋势。未来只能预测，无法断言！\ *松本行弘*\ 在其文集——《\ 代码的未来_\ 》——中，也设想了未来的编程语言，而且有着与\ *保罗·格雷厄姆*\ 相反的观点。
+畅想未来的编程语言，就得结合现有语言的发展趋势，考虑\ *摩尔定律*\ 会否失效，以及并行计算的发展趋势。未来只能预测，无法断言！\ *松本行弘*\ 在其文集——《\ `代码的未来`_\ 》——中，也设想了未来的编程语言，而且有着与\ *保罗·格雷厄姆*\ 相反的观点。
 
 梦寐以求的编程语言，我可以理解为是\ Ruby_\ （社区友好、简洁、元编程、杀手级应用、\ RubyGems_\ ）或\ Python_\ 么？
 
@@ -34,21 +34,6 @@ excerpt_separator: .. 摘要注释
     \ Scala_\ 编程语言一个主要的设计目标就是帮助开发人员克服多核以及分布式系统编程所带来的复杂性。
 
     -- Manuel Bernhardt《\ `反应式：Web应用开发`_\ 》
-
-.. _`Paul Graham`: http://www.paulgraham.com/
-.. _Viaweb: https://en.wikipedia.org/wiki/Viaweb
-.. _`Y Combinator`: https://www.ycombinator.com/
-.. _Arc: http://arclanguage.org/
-.. _代码的未来: https://amzn.to/2TXjVAx
-.. _Ruby: https://www.ruby-lang.org/
-.. _RubyGems: https://rubygems.org/
-.. _Python: https://www.python.org/
-.. _`Chez Scheme`: http://arclanguage.org/
-.. _`MIT/GNU Scheme`:  http://www.gnu.org/software/mit-scheme/
-.. _Node.js: https://nodejs.org/
-.. _`callback hell`: http://callbackhell.com/
-.. _Scala: https://www.scala-lang.org/
-.. _`反应式：Web应用开发`: https://amzn.to/2BOod66
 
 文摘
 ----
@@ -77,4 +62,19 @@ excerpt_separator: .. 摘要注释
     * 是能够复制的设计
     * 常常是奇特的设计
     * 是成批出现的
-    * 常常是大胆的设计
+ 
+.. _`Paul Graham`: http://www.paulgraham.com/
+.. _Viaweb: https://en.wikipedia.org/wiki/Viaweb
+.. _`Y Combinator`: https://www.ycombinator.com/
+.. _Arc: http://arclanguage.org/
+.. _`代码的未来`: https://amzn.to/2TXjVAx
+.. _Ruby: https://www.ruby-lang.org/
+.. _RubyGems: https://rubygems.org/
+.. _Python: https://www.python.org/
+.. _`Chez Scheme`: http://arclanguage.org/
+.. _`MIT/GNU Scheme`:  http://www.gnu.org/software/mit-scheme/
+.. _Node.js: https://nodejs.org/
+.. _`callback hell`: http://callbackhell.com/
+.. _Scala: https://www.scala-lang.org/
+.. _`反应式：Web应用开发`: https://amzn.to/2BOod66
+   * 常常是大胆的设计

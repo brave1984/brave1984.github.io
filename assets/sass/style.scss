@@ -233,7 +233,7 @@ img {
     padding-right: 1em;
   }
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-only(sm) {
     @include make-col(4);
     
     &:nth-child(3n+1):nth-last-child(-n+3),
