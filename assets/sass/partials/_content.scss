@@ -2,10 +2,10 @@ table {
   @include trailer;
   width: 100%;
   white-space: nowrap;
-  text-align: center;
 
   @include media-breakpoint-down(sm) {
     @include Scroll_Wrapper;
+    text-align: left;
   }
 
   thead,
@@ -35,7 +35,7 @@ table {
   
   th,
   td {
-    padding: 0 1px;
+    padding: 0 0 0 1em;
   }
 }
 
@@ -48,7 +48,8 @@ dd,
 .footer,
 .container,
 .section,
-.compound {
+.compound,
+.figure {
   > p {
     text-indent: 2em;
   }
@@ -159,16 +160,26 @@ blockquote > footer,
 }
 
 em,
-.literal {
-  color: $dark;
-  font-weight: 500;
+strong,
+.literal,
+.external {
   padding: 0 0.25em;
 }
 
-strong,
 em,
 .literal {
-  font-size: 93.75%;
+  color: $dark;
+  font-weight: 500;
+}
+
+em,
+strong,
+.literal {
+  line-height: 81.25%;
+}
+
+.literal {
+  font-family: $font-family-monospace;
 }
 
 .excerpt {
@@ -187,18 +198,16 @@ em,
   }
 
   strong {
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .reference {
     font-weight: 400;
   }
+}
 
-  strong,
-  em,
-  .literal {
-    font-size: 100%;
-  }
+.figure {
+  @include trailer;
 }
 
 .footer {

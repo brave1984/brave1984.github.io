@@ -221,16 +221,18 @@ img {
   @include make-col-ready(0.75em);
   @include make-col(6);
 
-  &:nth-child(2n+1):nth-last-child(-n+2),
-  &:nth-child(2n+1):nth-last-child(-n+2) ~ & {
-    border-bottom: 0;
-    @include trailer;
-  }
-
   @media (min-width: 375px) {
     @include make-col-ready(2em);
     padding-left: 1em;
     padding-right: 1em;
+  }
+
+  @include media-breakpoint-down(se) {
+    &:nth-child(2n+1):nth-last-child(-n+2),
+    &:nth-child(2n+1):nth-last-child(-n+2) ~ & {
+      border-bottom: 0;
+      @include trailer;
+    }
   }
 
   @include media-breakpoint-only(sm) {
