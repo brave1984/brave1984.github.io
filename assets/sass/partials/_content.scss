@@ -91,10 +91,6 @@ li p {
     margin-bottom: 0;
   }
 
-  time {
-    margin-bottom: $base-line-height;
-  }
-
   h1 {
     @include adjust-font-size-to($h1-font-size);
   }
@@ -208,6 +204,10 @@ strong,
 
 .figure {
   @include trailer;
+}
+
+.document {
+  margin-top: $base-line-height;
 }
 
 .footer {

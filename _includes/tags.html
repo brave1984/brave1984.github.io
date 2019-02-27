@@ -1,7 +1,14 @@
 <ul class="tags">
-    {% for tag in include.tags %}
-    <li>
-        <a class="badge badge-light" href="/tags/{{ tag | downcase }}">{{ tag }}</a>
-    </li>
-    {% endfor %}
+  {% for tag in include.post.tags %}
+  <li>
+    <a class="badge badge-light" href="/tags/{{ tag | downcase }}" rel="tag">{{ tag }}</a>
+  </li>
+  {% endfor %}
 </ul>
+{% if include.post.date %}
+<div class="date-published">
+  <time datetime="{{ include.post.date | date_to_xmlschema }}">
+    {{ include.post.date | date: "%b %-d, %Y" }}
+  </time>
+</div>
+{% endif %}

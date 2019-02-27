@@ -9,8 +9,7 @@ layout: default
             <h2>
                 <a {% if post.collection == "bookshelf" %}data-archive-type="bookshelf" {% endif %}href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
             </h2>
-            {% include tags.html tags=post.tags %}
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %d, %y' }}</time>
+            {% include tags.html post=post %}
             {{ post.excerpt }}
         </article>
         {% endfor %}

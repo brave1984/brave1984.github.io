@@ -183,12 +183,12 @@ img {
   li {
     display: inline-block;
   }
+}
 
-  + time {
-    font-size: 90%;
-    text-align: right;
-    @include adjust-font-size-to(90%);
-  }
+.date-published {
+  font-size: 90%;
+  text-align: right;
+  @include adjust-font-size-to(90%);
 }
 
 %cover {
@@ -267,6 +267,10 @@ img {
     @include media-breakpoint-down(xs) {
       margin: 0;
     }
+  }
+
+  h2 + a {
+    order: -1;
   }
 
   .tags {

@@ -1,7 +1,14 @@
 header[role="banner"] {
   background-color: $bg-info;
 
-  #logo {
+  .nav-link {
+    @include link-colors($dark, $black);
+    font-size: $h4-font-size;
+    @include adjust-font-size-to($h4-font-size);
+    padding: $base-line-height 1em;
+  }
+
+  .nav-item:first-child .nav-link {
     padding: 0;
   }
 
@@ -10,21 +17,14 @@ header[role="banner"] {
     max-height: $base-line-height * 3;
   }
 
-  .nav-item .nav-link {
-    @include link-colors($dark, $black);
-    font-size: $h4-font-size;
-    @include adjust-font-size-to($h4-font-size);
-    padding: $base-line-height 1rem;
-  }
-
   nav,
   blockquote {
   //@include debug-vertical-alignment("debug.png");
 
     max-width: 36em;
     margin: 0 auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1em;
+    padding-right: 1em;
   }
 
   div {

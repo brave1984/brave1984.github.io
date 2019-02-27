@@ -60,6 +60,7 @@ Lisp
 * vim
 * default-jdk
 * fcitx-sunpinyin
+* `Lynx <https://lynx.invisible-island.net/>`_
 * `Postman <https://snapcraft.io/postman>`_
 * `GitKraken <https://snapcraft.io/gitkraken>`_
 * `Slack <https://snapcraft.io/slack>`_
