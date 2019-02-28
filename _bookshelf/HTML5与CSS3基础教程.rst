@@ -17,7 +17,7 @@ excerpt_separator: .. 摘要注释
 
 \ *HTML5*\ 在原有的\ *HTML*\ 基础上，新增了很多\ **语义化**\ 元素。\ **语义化**\ 使得页面结构清晰完整（不再是清一色的\ ``div``\ 元素了），提升了网站的可访问性，有利于\ *CSS*\ 样式表的编写与维护。什么——你想增加网络爬虫的采集难度，让\ Google_\ 爬虫引擎多干些活？
 
-\ *HTML5*\ 中新增的语义化元素有：\ ``header``\、\ ``main``\、\ ``nav``\、\ ``section``\、\ ``article``\、\ ``aside``\、\ ``footer``\、\ ``video``\、\ ``audio``\、\ ``figure``\、\ ``figcaption``\ 、\ ``small``\、\ ``strong``\、\ ``em``\、\ ``b``\、\ ``i``\、\ ``cite``\、\ ``blockquote``\、\ ``q``\、\ ``time``\、\ ``address``\、\ ``pre``\、\ ``code``\、\ ``mark``\、\ ``del``\、\ ``ins``\、\ ``abbr``\、\ ``dfn``\、\ ``sub``\、\ ``sup``\、以及新的表单控件……
+\ *HTML5*\ 中新增的语义化元素有：\ ``header``\、\ ``main``\、\ ``nav``\、\ ``section``\、\ ``article``\、\ ``aside``\、\ ``footer``\、\ ``video``\、\ ``audio``\、\ ``figure``\、\ ``figcaption``\ 、\ ``small``\、\ ``strong``\、\ ``em``\、\ ``b``\、\ ``i``\、\ ``cite``\、\ ``blockquote``\、\ ``q``\、\ ``time``\、\ ``address``\、\ ``pre``\、\ ``code``\、\ ``mark``\、\ ``del``\、\ ``ins``\、\ ``s``\ 、\ ``abbr``\、\ ``dfn``\、\ ``sub``\、\ ``sup``\、以及新的表单控件……
 
 响应式Web设计，需要通过媒体查询和设置宽度断点，来实现——图像与媒体资源的可伸缩、页面结构的弹性布局。
 
