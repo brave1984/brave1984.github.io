@@ -225,3 +225,7 @@ strong,
     display: inline;
   }
 }
+
+.compound {
+  @include trailer;
+}
