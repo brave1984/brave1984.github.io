@@ -99,7 +99,6 @@ exclude:
  - Gemfile.lock
  - "*.py"
  - Rakefile
- - requirements.txt
  - README.rst
  - assets/config.rb
  - assets/sass
