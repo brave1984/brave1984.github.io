@@ -6,7 +6,7 @@ tags: [文学, 日本]
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     与汝相养以生，相守以死。生而影与汝形相依，死而魂与汝梦相接，如是而已。
 

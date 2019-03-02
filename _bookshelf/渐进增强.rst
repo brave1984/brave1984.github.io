@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     所谓的\ `渐进增强`_\ ，其实就是基于内容（模型）的分层设计（语义、视觉、交互），用户看到的只是视图而已。拥抱“最佳实践”，去除耦合，实现正交！
 

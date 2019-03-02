@@ -1,0 +1,51 @@
+@import "bootstrap/utilities/screenreaders";
+@import "bootstrap/jumbotron";
+@import "bootstrap/card";
+@import "bootstrap/buttons";
+@import "bootstrap/badge";
+@import "bootstrap/breadcrumb";
+@import "bootstrap/nav";
+@import "bootstrap/pagination";
+@import "bootstrap/tables";
+@import "bootstrap/code";
+
+.breadcrumb {
+  background-color: $bg-secondary;
+  @include trailer;
+  
+  h1 {
+    display: inline;
+    font-size: $h5-font-size;
+    font-weight: $font-weight-normal;
+  }
+}
+
+.fa-1x {
+  width: 1rem;
+  height: 1rem;
+}
+
+.fa-2x {
+  width: 2rem;
+  height: 2rem;
+}
+
+.notification {
+  @include make-container;
+  @include make-container-max-widths;
+  @include trailer;
+  box-shadow: inset 0 0 15px #000;
+
+  h1 {
+    $font-size: $font-size-base * 2.5;
+    font-size: $font-size;
+    font-weight: $display3-weight;
+    @include adjust-font-size-to($font-size);
+    margin-top: $base-line-height;
+    text-shadow: 3px 3px 3px #aaa;
+  }
+
+  p {
+    font-weight: $headings-font-weight;
+  }
+}

@@ -6,7 +6,7 @@ tags: [数据库, SQL, 基础]
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     一本对新手友好的\ *SQL*\ 书，本书侧重于\ **Read**\ 操作，从简单的查询语句延伸到表与表之间的关联查询。通过阅读本书，你将掌握基本的\ *SQL*\ 语句，实现数据的\ *增查改删*\ 。
 

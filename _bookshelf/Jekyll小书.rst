@@ -6,15 +6,15 @@ tags:  [Web, Jekyll, 基础]
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     通过搭建一个\ Jekyll_\ 静态网站，新手能够对\ *前端知识*\ 进行巩固与再发现。
-
-    网站虽是由一张张网页聚合而成，但每一张网页都不是孤立存在的个体。
 
 .. _Jekyll: https://jekyllrb.com/ 
 
 .. 摘要注释
+
+网站虽是由一张张网页聚合而成，但每一张网页都不是孤立存在的个体。
 
 初次阅读本书后，你会把一些\ *JavaScript*\ 效果加诸于网站之上；但在多次重构网站后，你将明悟——“去繁就简”的设计才是你想要的。
 

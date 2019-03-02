@@ -27,7 +27,7 @@ end
 group :development do
   gem "rake"
   gem "compass"
-  #gem 'bootstrap', '~> 4.2'
+  gem 'autoprefixer-rails', '~> 9.4'
   gem 'bootstrap', '~> 4.3.1'
 end
 

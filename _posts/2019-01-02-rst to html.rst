@@ -3,10 +3,11 @@ title: .rst to .html
 date: 2019-01-02 09:09:59 +0800
 categories: 计算
 tags:  [Python, 文档, 工具]
+gist: 39db3c65f0347d9ee92d33b2dd845105
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     \ **高端玩家**\ ： `Don't Use Markdown for Technical Docs！ <http://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/>`_
 
@@ -77,10 +78,6 @@ excerpt_separator: .. 摘要注释
 .. include:: _plugins/rst2html/rst2html5.py
     :code: python
     :start-line: 22
-
-.. footer::
-
-    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （碰到网络连线问题，你懂的。）
 
 .. _reStructuredText: http://docutils.sourceforge.net/rst.html
 .. _Python: https://www.python.org/

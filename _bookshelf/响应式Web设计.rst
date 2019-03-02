@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     学习用于构建“响应式Web应用”的基础工具集——\ *HTML5*\ 语义元素、\ `媒体查询`_\ 、\ Flexbox_\ 、\ *SVG*\ 、\ *CSS3*\ 选择器与特效。
 

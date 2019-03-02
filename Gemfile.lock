@@ -144,6 +144,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails (~> 9.4)
   bootstrap (~> 4.3.1)
   compass
   jekyll (~> 3.8.5)

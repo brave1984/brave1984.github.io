@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     不一样的“风土”，造就不一样的生态系统。走进“站长”，一窥他们的奇淫巧技——谋生手段。
 

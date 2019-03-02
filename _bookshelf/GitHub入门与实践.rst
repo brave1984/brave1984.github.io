@@ -6,13 +6,13 @@ tags: [工具, Git, 基础]
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     就如同\ `GitHub <https://github.com/>`_\ 不止是\ *Git*\ 仓库托管服务一般，本书的要点也不止是\ *Git*\ 命令的使用。
 
-    作者以“改善开发流程”为主旨，从“社会化编程”的角度，讲述了\ *GitHub*\ 的使用方法：1、发起、接收\ *Pull Request*\；2、Issue、持续集成、代码覆盖；3、以\ **部署**\ 为中心、以\ **发布**\ 为中心的\ *Git Flow*\ 。
-
 .. 摘要注释
+
+作者以“改善开发流程”为主旨，从“社会化编程”的角度，讲述了\ *GitHub*\ 的使用方法：1、发起、接收\ *Pull Request*\；2、Issue、持续集成、代码覆盖；3、以\ **部署**\ 为中心、以\ **发布**\ 为中心的\ *Git Flow*\ 。
 
 文摘
 ----

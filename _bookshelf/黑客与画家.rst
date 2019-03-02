@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     程序设计，就如同绘画一般，是一种艺术创作。实现原型，以人为本，重构再设计。
 

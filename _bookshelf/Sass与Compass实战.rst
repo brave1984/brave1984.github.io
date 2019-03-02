@@ -2,12 +2,12 @@
 title: Sass与Compass实战
 date: 2019-02-27 23:39:11 +0800
 categories: 计算
-tags: [Web, CSS, Sass&Compass]
+tags: [Web, CSS, Sass, Compass]
 gist: 
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     没法设计出令人惊艳的Web页面时，就使用\ **垂直韵律**\ 让它中规中矩吧！
 

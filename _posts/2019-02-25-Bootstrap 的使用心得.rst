@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     \ **萌新**\ ：\ Bootstrap_\ ——真好用！
 

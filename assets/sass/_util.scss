@@ -1,0 +1,21 @@
+@mixin Scroll_Wrapper {
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  text-align: center;
+}
+
+%hr {
+  border-bottom: $border-width solid $dark;
+  margin-bottom: $base-line-height - $border-width;
+}
+
+%cover {
+    background-color: $thumbnail-bg;
+    border: 1px solid $gray-500;
+    padding: 5px;
+    margin-bottom: 1px;
+    @include box-shadow($thumbnail-box-shadow);
+}

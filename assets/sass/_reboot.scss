@@ -1,0 +1,20 @@
+@import "bootstrap/reboot";
+
+address,
+ol,
+ul,
+dl,
+blockquote,
+pre,
+figure,
+legend {
+  margin-bottom: 0;
+}
+
+hr {
+  @extend %hr;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  margin-top: 0;
+}

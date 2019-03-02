@@ -2,12 +2,12 @@
 title: Sass和Compass设计师指南
 date: 2019-02-27 19:38:46 +0800
 categories: 计算
-tags: [Web, CSS, Sass&Compass]
+tags: [Web, CSS, Sass, Compass]
 gist: 
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     \ Sass_\ 是一种用\ Ruby_\ 开发的、用于编写\ *CSS*\ 的\ *DSL*\ （领域特定语言），\ Compass_\ 是一个用以搭建\ Sass_\ 开发环境的框架。
 

@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     一张网页主要是由\ **文本内容**\ 、\ **对其他文件的引用**\ 和\ **标记**\ 构成的。
 
@@ -53,8 +53,8 @@ excerpt_separator: .. 摘要注释
 .. footer::
     读完本书后，《\ `响应式Web设计`_ \》可以充当进阶指引。
     
-    * `HTML Reference - A free guide to all HTML elements and attributes. <https://htmlreference.io/>`_
-    * `CSS Reference - A free visual guide to CSS <https://cssreference.io/>`_
+    * `HTML Reference <https://htmlreference.io/>`_ - A free guide to all HTML elements and attributes.
+    * `CSS Reference <https://cssreference.io/>`_ - A free visual guide to CSS.
 
 .. _Google: https://www.google.com/
 .. _`渐进增强`: https://en.wikipedia.org/wiki/Progressive_enhancement

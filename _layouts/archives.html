@@ -2,17 +2,17 @@
 layout: default
 ---
 <main class="jumbotron" role="main">
-    {% include breadcrumb.html %}
-    <div class="content">
-        {% for post in paginator.posts %}
-        <article class="archive">
-            <h2>
-                <a {% if post.collection == "bookshelf" %}data-archive-type="bookshelf" {% endif %}href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-            </h2>
-            {% include tags.html post=post %}
-            {{ post.excerpt }}
-        </article>
-        {% endfor %}
-    </div>
-    {% include pagination.html %}
+  {% include breadcrumb.html %}
+  <div class="container">
+    {% for post in paginator.posts %}
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <a {% if post.collection == "bookshelf" %}data-collection="bookshelf" {% endif %}href="{{ post.url }}" title="{{ post.title }}">
+        <h2 itemprop="headline">{{ post.title }}</h2>
+      </a>
+      {% include tags.html post=post %}
+      {{ post.excerpt }}
+    </article>
+    {% endfor %}
+  </div>
+  {% include pagination.html %}
 </main>

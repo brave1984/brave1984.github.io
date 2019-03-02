@@ -9,19 +9,19 @@ pagination:
   per_page: 12
 ---
 <main class="jumbotron" role="main">
-    {% include breadcrumb.html %}
-    <div class="bookshelf">
-        {% for post in paginator.posts %}
-        <article class="bookshelf-item">
-            <h2>
-                <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-            </h2>
-            <a href="{{ post.url }}" title="{{ post.title }}">
-                <img src="{{ site.assets }}/assets/bookshelf/{{ post.title }}/cover.jpg" alt="封面：{{ post.title }}">
-            </a>
-            {% include tags.html post=post %}
-        </article>
-        {% endfor %}
-    </div>
-    {% include pagination.html %}
+  {% include breadcrumb.html %}
+  <div class="bookshelf">
+    {% for post in paginator.posts %}
+    <article class="bookshelf-item">
+      <a href="{{ post.url }}" title="{{ post.title }}">
+        <img src="/assets/bookshelf/{{ post.title }}/cover.jpg" alt="封面：{{ post.title }}">
+    </a>
+    <a href="{{ post.url }}" title="{{ post.title }}">
+      <h2>{{ post.title }}</h2>
+    </a>
+    {% include tags.html post=post %}
+</article>
+{% endfor %}
+</div>
+{% include pagination.html %}
 </main>

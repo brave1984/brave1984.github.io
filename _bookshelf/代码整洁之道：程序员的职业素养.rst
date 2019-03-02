@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     专业人士，懂得说“不”（捍卫），才敢于说”是“（承诺）。
 

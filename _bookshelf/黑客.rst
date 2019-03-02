@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     黑客，是一种传承——共享、开放、分权，以及不惜一切代价亲自动手改进机器并改善整个世界。
 

@@ -1,0 +1,127 @@
+@include establish-baseline;
+
+/* 区块元素 */
+
+header[role="banner"],
+footer[role="contentinfo"],
+main {
+  //@include debug-vertical-alignment("debug.png");
+}
+
+/* 标题和文本元素 */
+
+h1 {
+  font-size: $h1-font-size;
+  margin-bottom: $base-line-height;
+}
+
+h2 {
+  font-size: $h2-font-size;
+}
+
+h3 {
+  font-size: $h3-font-size;
+}
+
+h4 {
+  font-size: $h4-font-size;
+}
+
+h5 {
+  font-size: $h5-font-size;
+}
+
+h6 {
+  font-size: $h6-font-size;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $headings-font-weight;
+}
+
+pre {
+  @include adjust-font-size-to($code-font-size);
+  margin-bottom: $base-line-height;
+  padding: ($base-line-height / 2) 1em;
+}
+
+/* 列表 */
+
+ul ul,
+ul ol,
+ul dl,
+ol ul,
+ol ol,
+ol dl,
+dl ul,
+dl ol,
+dl dl, {
+  margin-bottom: 0;
+}
+
+dd {
+  @include trailer(0.5);
+}
+
+dt:after {
+  content: "：";
+}
+
+li p {
+  font-size: $font-size-base;
+}
+
+/* 表格 */
+
+table {
+  @include trailer;
+  width: 100%;
+  white-space: nowrap;
+
+  @include media-breakpoint-down(sm) {
+    @include Scroll_Wrapper;
+    text-align: left;
+  }
+
+  thead,
+  tbody {
+    border-left: 1px solid $dark;
+    border-right: 1px solid $dark;
+  }
+
+  thead {
+    tr {
+      line-height: $base-line-height;
+    }
+    th {
+      color: $table-dark-color;
+      background-color: $table-dark-bg;
+    }
+  }
+
+  tbody tr {
+    line-height: $base-line-height - 1px;
+    border-bottom: 1px solid $dark;
+   
+    &:nth-of-type(odd) {
+      background-color: $table-accent-bg;
+    }
+  }
+  
+  th,
+  td {
+    padding: 0 0 0 1em;
+  }
+}
+
+/* 图像与媒体资源 */
+
+img {
+  @include img-fluid;
+  @include border-radius($thumbnail-border-radius);
+}

@@ -2,12 +2,11 @@
 title: Hello, Jekyll!
 date: 2018-12-31 10:57:51 +0800
 categories: 计算
-tags: [Jekyll]
+tags: [Web, Jekyll]
 excerpt_separator: .. 摘要注释
-published: false
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     \ **修仙玩家**\ ： 我用\ Jekyll_\ 搭建了自己的个人网站。
 
@@ -21,5 +20,3 @@ published: false
 .. _Ruby: https://www.ruby-lang.org/
 
 .. 摘要注释
-
-占位符

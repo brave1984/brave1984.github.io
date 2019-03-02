@@ -7,11 +7,11 @@ gist: 2d3078f4024dbedf8fca6a30d6de5548
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     \ **萌新**\ ：“炉石传说”的爆率又被调低了，我要\ *AFK*\ ……
 
-    \ **休闲玩家**\ ：自从用上“\ GNU_\ /\ Linux_\ ”后，值不充、税（智商税）不缴，浑身都“得劲”。
+    \ **休闲玩家**\ ：自从用上\ GNU_\ /\ Linux_\ 后，值不充、税（智商税）不缴，浑身都“得劲”。
 
 .. _GNU: http://www.gnu.org/
 .. _Linux: https://www.kernel.org/
@@ -70,10 +70,6 @@ Lisp
 * \ etcher_\
 * `calibre <https://github.com/kovidgoyal/calibre>`_
 * `OpenRefine <https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux>`_
-
-.. footer::
-
-    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （碰到网络连线问题，你懂的。）
 
 .. _Docker:  https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce`
 .. _Terminal: https://wiki.gnome.org/Apps/Terminal

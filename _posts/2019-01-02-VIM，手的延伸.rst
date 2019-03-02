@@ -7,7 +7,7 @@ gist: e8231dd2fd399536d8272b110f4a8b7e
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     \ **团长**\ ： 萌新，赶紧把这个\ Python_\ 脚本给我改好。
 
@@ -61,8 +61,6 @@ excerpt_separator: .. 摘要注释
     :code: vim
 
 .. footer::
-
-    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （碰到网络连线问题，你懂的。）
 
     DPS垫底，就是木桩（\ ``$ vimtutor zh``\ ） 打得少！
 

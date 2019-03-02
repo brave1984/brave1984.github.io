@@ -1,5 +1,6 @@
 require 'compass/import-once/activate'
 # Require any additional compass plugins here.
+require 'autoprefixer-rails'
 require "bootstrap"
 
 # Set this to the root of your project when deployed:
@@ -11,7 +12,7 @@ javascripts_dir = "javascripts"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
-output_style = :compressed
+# output_style = :compressed
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
 # relative_assets = true
@@ -25,3 +26,28 @@ output_style = :compressed
 # preferred_syntax = :sass
 # and then run:
 # sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
+
+browserslist = [
+  #'ie 10',
+  #'chrome 25',
+  #'android 4'
+]
+
+on_stylesheet_saved do |file|
+  css = File.read(file)
+  map = file + '.map'
+
+  if File.exists? map
+    result = AutoprefixerRails.process(css,
+      browsers: browserslist,
+      from:     file,
+      to:       file,
+      map:    { prev: File.read(map), inline: false })
+    File.open(file, 'w') { |io| io << result.css }
+    File.open(map,  'w') { |io| io << result.map }
+  else
+    File.open(file, 'w') do |io|
+      io << AutoprefixerRails.process(css, browsers: browserslist)
+    end
+  end
+end

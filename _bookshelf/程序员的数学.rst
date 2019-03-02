@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     从\ *数学*\ 中，体悟到不曾拥有的乐趣。与其说是：程序员的数学，不如说是：中学生的数学。
 

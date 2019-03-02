@@ -1,0 +1,40 @@
+<aside>
+  <section>
+    {% if page.gist %}
+    <button>
+      <a href="https://gist.github.com/{{ page.gist }}.git" rel="external">
+        <svg class="fa-2x">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span>View on GitHub Gist</span>
+      </a>
+    </button>
+    {% endif %}
+  </section>
+  <section class="share-block">
+    <h2>Share this on</h2>
+    <div class="btn-group">
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url={{ page.url | prepend: site.url }}" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u={{ page.url | prepend: site.url }}" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url={{ page.url | prepend: site.url }}" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+        </a>
+      </button>
+    </div>
+  </section>
+</aside>

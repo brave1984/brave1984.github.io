@@ -31,7 +31,7 @@ gist:
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: entry-summary
 
 
 

@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     将多彩的糖衣（故事）剥除，就能品尝到作者馈赠给大家的饴糖（道理）。
 

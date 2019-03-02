@@ -6,7 +6,7 @@ tags: [Python, 基础]
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     去年，本书教会我粗浅但实用的命令行命令；今年，重读本书，作者谈了一些编程经验，如：“单元测试”、语言的学习方法。
 

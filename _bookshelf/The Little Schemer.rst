@@ -7,9 +7,9 @@ gist: 413b7b178085f2973427d594f008d88d
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
-    如何跟上“第一代黑客”的步伐，这是个问题！
+    如何跟上“真正的代黑客”的步伐，这是个问题！
 
 .. 摘要注释
 
@@ -105,8 +105,6 @@ Scheme 五法
 
 .. footer::
 
-    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （碰到网络连线问题，你懂的。）
-    
     结合上下文（context）语境，获取你的映射。
 
 .. _`Chez Scheme`: http://arclanguage.org/

@@ -6,15 +6,15 @@ tags: [Python, Pygame, 基础]
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     虽然本书的示例代码是用\ *Python 2*\ 描述的，但是作者所要传达的主旨，却不会因\ Python_\ 版本的老旧而无用。
-
-    这是一本非常好的\ Python_\ 入门读物（不仅限于儿童），到现在我还记得——移动沙滩球的兴奋之情。
 
 .. _Python: https://www.python.org/
 
 .. 摘要注释
+
+这是一本非常好的\ Python_\ 入门读物（不仅限于儿童），到现在我还记得——移动沙滩球的兴奋之情。
 
 Pygame_\ 之于\ Scratch_\ ，就犹如蟒蛇之于猫咪。在使用\ Pygame_\ 模块编写游戏程序的过程中，你将掌握：
 

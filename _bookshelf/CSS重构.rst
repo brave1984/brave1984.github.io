@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     CSS样式表的宿命不是僵化，就是重构，而你的宿命则是——主动选择或被动接受——沦为“人肉UI测试器”。
 

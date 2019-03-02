@@ -6,7 +6,7 @@ tags: [文学, 古典]
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     谪仙，一个见证了李唐王朝由盛转衰的刑余之人，一个游走于自我期许与怀疑间的绝嗣之人。
 

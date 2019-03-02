@@ -7,7 +7,7 @@ gist:
 excerpt_separator: .. 摘要注释
 
 ---
-.. container:: excerpt
+.. container:: summary
 
     相较于\ *自由软件*\ 中“自由”这个词，“开源”，是一种策略。开源开发模式，也是弱者对抗强者的策略。
 
