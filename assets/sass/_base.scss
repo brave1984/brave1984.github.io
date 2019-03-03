@@ -5,7 +5,7 @@
 header[role="banner"],
 footer[role="contentinfo"],
 main {
-  //@include debug-vertical-alignment("debug.png");
+  @include debug-vertical-alignment("debug.png");
 }
 
 /* 标题和文本元素 */
