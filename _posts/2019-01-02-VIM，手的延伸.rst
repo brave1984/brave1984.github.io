@@ -9,7 +9,7 @@ excerpt_separator: .. 摘要注释
 ---
 .. container:: summary
 
-    \ **团长**\ ： 萌新，赶紧把这个\ Python_\ 脚本给我改好。
+    \ **团长**\ ： 赶紧把这个\ Python_\ 脚本给我改好。
 
     \ **萌新**\ ： 好的，先等我把\ Pycharm_\ 打开。
 

@@ -46,7 +46,7 @@ excerpt_separator: .. 摘要注释
     -- 林纳斯·托瓦兹
 
 .. footer::
-    本书采用\ GFDL_\ 许可证，读者可以自由的获取、修改、分发本书的内容（http://faifchs.github.io/）。
+    本书采用\ GFDL_\ 许可证，读者可以自由的获取、修改、分发\ `本书的内容 <http://faifchs.github.io/>`_\ 。
 
     用\ `GNU GPL <http://www.gnu.org/licenses/>`_\ 去分享喜悦！
 
