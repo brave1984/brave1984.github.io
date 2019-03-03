@@ -11,11 +11,13 @@
 @import "components";
 @import "layouts";
 @import "content";
+@import "sprites";
 
 .bookshelf {
   display: flex;
   flex-wrap: wrap;
   @include trailer;
+
   @include media-breakpoint-up(se) {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -30,10 +32,9 @@
 .bookshelf-item {
   display: flex;
   flex-direction: column;
-  @extend %hr;
-
   @include make-col-ready(0.75em);
   @include make-col(6);
+  @extend %hr;
 
   @media (min-width: 375px) {
     @include make-col-ready(2em);
@@ -73,10 +74,6 @@
     font-size: $h5-font-size;
     line-height: $base-line-height;
     margin: 0 0.25rem;
-
-    @include media-breakpoint-down(xs) {
-      margin: 0;
-    }
   }
 
   .tags {
@@ -95,9 +92,9 @@
     text-align: left;
     text-shadow: 2px 2px 2px #aaa;
     padding-left: 1rem;
-    border-top: 1px solid $dark;
-    margin-top: ($base-line-height / 2) - 1px;
     margin-bottom: $base-line-height / 2;
+    margin-top: ($base-line-height / 2) - $border-width;
+    border-top: $border-width solid $dark;
   }
 
   article {
@@ -124,11 +121,5 @@
 
   pre {
     margin-bottom: 0;
-  }
-}
-
-.share-block {
-  button {
-    padding: 0.5rem;
   }
 }

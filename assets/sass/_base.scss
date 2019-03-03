@@ -68,20 +68,12 @@ dd {
   @include trailer(0.5);
 }
 
-dt:after {
-  content: "：";
-}
-
-li p {
-  font-size: $font-size-base;
-}
-
 /* 表格 */
 
 table {
-  @include trailer;
   width: 100%;
   white-space: nowrap;
+  @include trailer;
 
   @include media-breakpoint-down(sm) {
     @include Scroll_Wrapper;
@@ -90,14 +82,15 @@ table {
 
   thead,
   tbody {
-    border-left: 1px solid $dark;
-    border-right: 1px solid $dark;
+    border-left: $border-width solid $dark;
+    border-right: $border-width solid $dark;
   }
 
   thead {
     tr {
       line-height: $base-line-height;
     }
+
     th {
       color: $table-dark-color;
       background-color: $table-dark-bg;
@@ -105,8 +98,8 @@ table {
   }
 
   tbody tr {
-    line-height: $base-line-height - 1px;
-    border-bottom: 1px solid $dark;
+    line-height: $base-line-height - $border-width;
+    border-bottom: $border-width solid $dark;
    
     &:nth-of-type(odd) {
       background-color: $table-accent-bg;
@@ -115,7 +108,7 @@ table {
   
   th,
   td {
-    padding: 0 0 0 1em;
+    padding: 0 0 0 0.5em;
   }
 }
 

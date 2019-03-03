@@ -1,6 +1,6 @@
 @mixin Scroll_Wrapper {
-  width: 100%;
   display: block;
+  width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
@@ -10,14 +10,14 @@
 }
 
 %hr {
-  border-bottom: $border-width solid $dark;
   margin-bottom: $base-line-height - $border-width;
+  border-bottom: $border-width solid $dark;
 }
 
 %cover {
-    background-color: $thumbnail-bg;
-    border: 1px solid $gray-500;
     padding: 5px;
     margin-bottom: 1px;
+    border: 1px solid $gray-500;
     @include box-shadow($thumbnail-box-shadow);
+    background-color: $thumbnail-bg;
 }

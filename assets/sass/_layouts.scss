@@ -14,6 +14,7 @@ header[role="banner"] {
 
   .nav-link {
     font-size: $h2-font-size;
+    font-weight: $headings-font-weight;
     line-height: $base-line-height;
     color: $dark;
     padding: $base-line-height 0;
@@ -30,7 +31,7 @@ header[role="banner"] {
 
   nav,
   blockquote {
-    padding: 0 1rem;
+    padding: 0 1em;
   }
 
   div {
@@ -55,7 +56,7 @@ footer[role="contentinfo"] {
 
   img {
     height: $base-line-height * 1.5;
-    padding-right: 1rem;
+    padding-right: 2em;
   }
 }
 

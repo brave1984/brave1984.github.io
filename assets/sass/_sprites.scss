@@ -1,0 +1,162 @@
+.fa-1x {
+  width: 1rem;
+  height: 1rem;
+}
+
+.fa-2x {
+  width: 2rem;
+  height: 2rem;
+}
+
+.post-aside {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  max-height: $base-line-height * 8;
+  font-weight: $font-weight-bold;
+  padding: $base-line-height / 2;
+  @include rhythm-margins;
+  margin-left: auto;
+  border-radius: 0.5rem;
+  background-color: $bg-info;
+
+  section {
+    max-height: $base-line-height * 4;
+  }
+
+  section:first-child {
+    display: flex;
+    flex-direction: column;
+  }
+
+  section:last-child {
+    margin: $base-line-height / 2 0.5rem;
+  }
+
+  button {
+    height: $base-line-height * 1.5;
+  }
+
+  a {
+    color: $bg-info;
+    text-decoration: none;
+  }
+
+  h2 {
+    font-size: $h3-font-size;
+    font-weight: $font-weight-bold;
+    color: $black;
+    //color: $orange;
+    text-align: center;
+  }
+
+  .btn {
+    padding: 1px 7px;
+  }
+
+  .github-issue {
+    background-color: #f15c00;
+    border: 1px solid #a53f00;
+    border-radius: 0.25rem;
+    @include trailer(0.5);
+    
+    &:hover {
+      background-color: #ff6506;
+    }
+  }
+
+  .github-gist {
+    background-color: #4d4d4d;
+    border: 1px solid #272727;
+    border-radius: 0.25rem;
+    
+    &:hover {
+      background-color: #575757;
+    }
+  }
+
+  .reply,
+  .github,
+  .twitter,
+  .facebook-f,
+  .google-plus-g  {
+    color: #fff;
+    fill: #fff;
+    padding: 0.25rem;
+  }
+
+  .twitter,
+  .facebook-f,
+  .google-plus-g {
+    border-radius: 50%;
+  }
+
+  .twitter {
+    background-color: #50abf1;
+    
+    &:hover {
+      background-color: #63b4f3;
+    }
+  }
+
+  .facebook-f {
+    background-color: #3b5998;
+    
+    &:hover {
+      background-color: #4162a7;
+    }
+  }
+
+  .google-plus-g {
+    background-color: #e24929;
+    
+    &:hover {
+      background-color: #e4583b;
+    }
+  }
+}
+
+footer[role="contentinfo"] {
+  svg {
+    transition-duration: .15s;
+    transition-property: transform,-webkit-transform;
+    transition-timing-function: cubic-bezier(.68,-.55,.265,1.55);
+  }
+
+  .twitter {
+    color: #50abf1;
+
+    &:hover {
+      color: #63b4f3;
+      transform: rotate(-6deg) scale(1.2) translateY(-20%);
+    }
+  }
+
+  .github {
+    color: #4d4d4d;
+
+    &:hover {
+      color: #575757;
+      transform: rotate(6deg) scale(1.2) translateY(-20%);
+    }
+  }
+
+  .envelope {
+    color: #df565a;
+
+    &:hover {
+      color: #d72d32;
+      transform: rotate(-2deg) scale(1.2) translateY(-20%);
+    }
+  }
+
+  .rss {
+    color: #ffc107;
+
+    &:hover {
+      color: #ff9100;
+      transform: rotate(4deg) scale(1.2) translateY(-20%);
+    }
+  }
+}
