@@ -21,7 +21,7 @@ article,
 .footer,
 .section {
   > p {
-    @include trailer(0.5);
+    @include trailer;
   }
 }
 

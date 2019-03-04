@@ -51,7 +51,7 @@ pre {
 /* 列表 */
 
 dd {
-  @include trailer(0.5);
+  @include trailer;
 }
 
 ol, ul {
