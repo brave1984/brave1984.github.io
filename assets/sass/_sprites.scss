@@ -21,16 +21,17 @@
   border-radius: 0.5rem;
   background-color: $bg-info;
 
+  div,
   section {
     max-height: $base-line-height * 4;
   }
 
-  section:first-child {
+  div {
     display: flex;
     flex-direction: column;
   }
 
-  section:last-child {
+  section {
     margin: $base-line-height / 2 0.5rem;
   }
 
@@ -46,8 +47,8 @@
   h2 {
     font-size: $h3-font-size;
     font-weight: $font-weight-bold;
+    line-height: $base-line-height * 1.5;
     color: $black;
-    //color: $orange;
     text-align: center;
   }
 

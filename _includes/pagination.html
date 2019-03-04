@@ -10,20 +10,20 @@
     </li>
     {% endif %}
     {% if paginator.page_trail %}
-    {% for trail in paginator.page_trail %}
-    {% if page.url == trail.path %}
-    <li class="page-item active">
-      <span class="page-link">
-        {{ trail.num }}
-        <span class="sr-only">当前页</span>
-      </span>
-    </li>
-    {% else %}
-    <li class="page-item">
-      <a class="page-link" href="{{ trail.path | prepend: site.baseurl | remove: 'index.html' }}" title="{{trail.title}}">{{ trail.num }}</a>
-    </li>
-    {% endif %}
-    {% endfor %}
+      {% for trail in paginator.page_trail %}
+        {% if page.url == trail.path %}
+        <li class="page-item active">
+          <span class="page-link">
+            {{ trail.num }}
+            <span class="sr-only">当前页</span>
+          </span>
+        </li>
+        {% else %}
+        <li class="page-item">
+          <a class="page-link" href="{{ trail.path | prepend: site.baseurl | remove: 'index.html' }}" title="{{trail.title}}">{{ trail.num }}</a>
+        </li>
+        {% endif %}
+      {% endfor %}
     {% endif %}
     {% if paginator.next_page %}
     <li class="page-item">

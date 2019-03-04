@@ -15,13 +15,13 @@ pagination:
     <article class="bookshelf-item">
       <a href="{{ post.url }}" title="{{ post.title }}">
         <img src="/assets/bookshelf/{{ post.title }}/cover.jpg" alt="封面：{{ post.title }}">
-    </a>
-    <a href="{{ post.url }}" title="{{ post.title }}">
-      <h2>{{ post.title }}</h2>
-    </a>
-    {% include tags.html post=post %}
-</article>
-{% endfor %}
-</div>
-{% include pagination.html %}
+      </a>
+      <a href="{{ post.url }}" title="{{ post.title }}">
+        <h2>{{ post.title }}</h2>
+      </a>
+      {% include tags.html post=post %}
+    </article>
+    {% endfor %}
+  </div>
+  {% include pagination.html %}
 </main>

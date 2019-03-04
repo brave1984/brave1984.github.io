@@ -1,5 +1,3 @@
-@include establish-baseline;
-
 /* 区块元素 */
 
 header[role="banner"],
@@ -69,7 +67,6 @@ table {
 
   @include media-breakpoint-down(sm) {
     @include Scroll_Wrapper;
-    text-align: left;
   }
 
   thead,

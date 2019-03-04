@@ -20,7 +20,7 @@
     {% else %}
     <li class="breadcrumb-item active" aria-current="page">
       <h1>{{ page.title | append: page.autopages.display_name }}{% if page.pagination_info.curr_page > 1%}{{ page.pagination_info.curr_page | prepend: " - "}}{% endif %}</h1>
-  </li>
-  {% endif %}
+    </li>
+    {% endif %}
 </ol>
 </nav>

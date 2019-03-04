@@ -17,7 +17,7 @@
       {% endif %}
       {% if book.pagination %}
       <li>
-        <p><span>页码：</span>{{ book.pagination }}</p>
+        <p><span>页码：</span>{{ book.pagination }}页</p>
       </li>
       {% endif %}
       {% if book.brand %}
@@ -44,8 +44,8 @@
     {% if book["product link"] %}
     <a class="btn btn-warning" href="{{ book['product link'] }}" rel="external">
       <svg class="fa-2x">
-          <use xlink:href="/assets/images/sprites.svg#amazon"></use>
-        </svg>
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+      </svg>
         <span class="sr-only">Amazon</span>
         <span>购买</span>
     </a>

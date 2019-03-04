@@ -1,5 +1,6 @@
 <aside class="post-aside">
-  <section>
+  {% if page.issue or page.gist %}
+  <div>
     {% if page.issue %}
     <button type="button" class="github-issue">
       <a href="https://github.com/brave1984/brave1984.github.io/issues/{{ page.issue }}" title="Leave a Reply" rel="external">
@@ -20,7 +21,8 @@
       </a>
     </button>
     {% endif %}
-  </section>
+  </div>
+  {% endif %}
   <section>
     <h2>Share this on</h2>
       <button type="button" class="btn">

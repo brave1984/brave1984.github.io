@@ -204,28 +204,36 @@ h2[itemprop="headline"] {
   align-self: stretch;
   @include leader(2);
 
+  figure,
   section {
-    flex-grow: 1;
-    max-width: 20rem;
+    width: 15rem;
   }
 
-  h2 {
+  .card-header {
+    font-size: $h3-font-size;
+    line-height: $base-line-height * 1.5 - 2px;
     text-align: center;
-    @include adjust-font-size-to($h2-font-size);
-    @include rhythm-padding(0);
+    padding: 0;
   }
 
   ul {
+    line-height: $base-line-height;
+    padding: 0 $base-line-height / 2;
     list-style: none;
-    @include rhythm-padding(0.5);
+
+    p {
+      font-size: 93.75%;
+    }
 
     span {
+      font-size: $small-font-size;
       color: $text-muted;
     }
   }
 
-  p {
-    @include trailer(0.5);
+  .btn {
+    height: $base-line-height * 1.5 - 1px;
+    padding: 0;
   }
 }
 
