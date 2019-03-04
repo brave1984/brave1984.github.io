@@ -52,18 +52,6 @@ pre {
 
 /* 列表 */
 
-ul ul,
-ul ol,
-ul dl,
-ol ul,
-ol ol,
-ol dl,
-dl ul,
-dl ol,
-dl dl, {
-  margin-bottom: 0;
-}
-
 dd {
   @include trailer(0.5);
 }

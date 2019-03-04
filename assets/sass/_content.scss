@@ -30,7 +30,6 @@ em,
 .literal,
 .reference {
   line-height: 1;
-  padding: 0 0.125em;
 }
 
 strong {
@@ -51,8 +50,14 @@ em,
   font-family: $font-family-monospace;
 }
 
-.arabic dt {
-  font-weight: $font-weight-normal;
+.arabic {
+  dt {
+    font-weight: $font-weight-normal;
+  }
+
+  dd {
+    font-weight: $font-weight-light;
+  }
 }
 
 blockquote footer,
@@ -170,6 +175,10 @@ h2[itemprop="headline"] {
 
   ul, ol, dl {
     @include trailer;
+  }
+
+  dt::after {
+    content: "：";
   }
 }
 
