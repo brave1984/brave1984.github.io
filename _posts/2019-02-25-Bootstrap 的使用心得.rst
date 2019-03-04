@@ -20,5 +20,5 @@ excerpt_separator: .. 摘要注释
 
 .. 摘要注释
 
-虽然\ Bootstrap_\ 已经”烂大街“了，但是它起码是个完整的\ *CSS*\ 组件库。
+虽然\ Bootstrap_\ 已经”烂大街“了，但是它起码是个完整的CSS组件库。
 

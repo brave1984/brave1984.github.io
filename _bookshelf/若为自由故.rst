@@ -10,19 +10,19 @@ excerpt_separator: .. 摘要注释
 
 .. container:: summary
 
-    \ *理查德·斯托曼*\ ，发起"自由软件运动"只是为了实现一个愿望——\ *粉碎孤独*\ 。他的愿望，也是所有程序员的愿望。
+    \ *理查德·斯托曼*\ ，发起"自由软件运动"只是为了实现一个\ **愿望**\ ——\ *粉碎孤独*\ 。他的愿望，也是所有程序员的愿望。
 
 .. 摘要注释
 
-\ *理查德·斯托曼*\ 是自由软件之父，是自由软件运动的精神领袖、\ GNU_\ 工程以及\ `自由软件基金会 <https://www.fsf.org/>`_\ 的创立者。
+\ *理查德·斯托曼*\ 是自由软件之父，是自由软件运动的精神领袖、\ GNU_\ 工程以及\ `FSF`_\ （自由软件基金会）的创立者。
 
 他不止是软件行业变迁的见证者，还是时代的推动者，更是一个传奇。
 
-自由软件（\ **Free Software**\ ）意味着使用者有运行、复制、发布、研究、修改和改进该软件的自由。\ *Free*\ 是自由，而不是免费。
+自由软件（\ **Free Software**\ ）意味着使用者有运行、复制、发布、研究、修改和改进该软件的自由。\ *Free*\ 是\ **自由**\ ，而不是\ **免费**\ 。
 
 现如今的我们，也只是站在巨人（\ *斯托曼*\ 和\ *托瓦兹*\ ）的肩膀（\ GNU_ /Linux_\ ）上，实现想法。
 
-用户可以自由地使用、学习、修改和再发布软件，这是昭昭天命！
+用户可以自由地使用、学习、修改和再发布软件，这是\ *昭昭天命*\ ！
 
 文摘
 ----
@@ -46,10 +46,12 @@ excerpt_separator: .. 摘要注释
     -- 林纳斯·托瓦兹
 
 .. footer::
-    本书采用\ GFDL_\ 许可证，读者可以自由的获取、修改、分发\ `本书的内容 <http://faifchs.github.io/>`_\ 。
+    用\ `GNU GPL`_\ 去分享喜悦！《\ `Free as in Freedom`_\ 》采用\ GFDL_\ 许可证，读者可以自由的获取、修改、分发\ `本书的内容 <http://faifchs.github.io/>`_\ 。
 
-    用\ `GNU GPL <http://www.gnu.org/licenses/>`_\ 去分享喜悦！
 
 .. _GNU: http://www.gnu.org/
+.. _FSF: https://www.fsf.org/
 .. _Linux: https://www.kernel.org/
+.. _`GNU GPL`: http://www.gnu.org/licenses/
+.. _`Free as in Freedom`: http://www.oreilly.com/catalog/freedom/
 .. _GFDL: http://www.gnu.org/copyleft/fdl.html

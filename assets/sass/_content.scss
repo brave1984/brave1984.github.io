@@ -14,6 +14,10 @@ dd,
   }
 }
 
+li > .compound > p {
+  text-indent: 0;
+}
+
 section,
 article,
 .document,
@@ -37,6 +41,12 @@ strong {
 }
 
 em,
+.literal,
+.reference {
+  padding: 0 0.125rem;
+}
+
+em,
 .literal {
   font-weight: $headings-font-weight;
   color: $dark;
@@ -48,16 +58,6 @@ em,
 
 .literal {
   font-family: $font-family-monospace;
-}
-
-.arabic {
-  dt {
-    font-weight: $font-weight-normal;
-  }
-
-  dd {
-    font-weight: $font-weight-light;
-  }
 }
 
 blockquote footer,
@@ -76,6 +76,10 @@ blockquote footer,
 .epigraph {
   padding: $base-line-height / 2;
   outline: 1px solid $gray-600;
+}
+
+.compound {
+  font-weight: $font-weight-light;
 }
 
 div[class="footer"], // rst中的footer指令，会生成一个带有footer类的 hr。
@@ -144,7 +148,6 @@ h2[itemprop="headline"] {
 
 .summary {
   font-size: $font-size-base * 1.0625;
-  font-weight: $font-weight-light;
   line-height: $base-line-height;
   padding-bottom: $base-line-height;
   margin-top: $base-line-height;

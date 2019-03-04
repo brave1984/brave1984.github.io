@@ -71,7 +71,7 @@ excerpt_separator: .. 摘要注释
 .. _Ruby: https://www.ruby-lang.org/
 .. _RubyGems: https://rubygems.org/
 .. _Python: https://www.python.org/
-.. _`Chez Scheme`: http://arclanguage.org/
+.. _`Chez Scheme`: https://www.scheme.com/
 .. _`MIT/GNU Scheme`:  http://www.gnu.org/software/mit-scheme/
 .. _Node.js: https://nodejs.org/
 .. _`callback hell`: http://callbackhell.com/
