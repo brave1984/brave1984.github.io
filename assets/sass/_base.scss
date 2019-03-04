@@ -68,6 +68,10 @@ dd {
   @include trailer(0.5);
 }
 
+ol, ul {
+  padding-left: 2rem;
+}
+
 /* 表格 */
 
 table {
