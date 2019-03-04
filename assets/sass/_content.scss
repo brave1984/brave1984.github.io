@@ -65,7 +65,7 @@ blockquote footer,
   display: block;
   font-size: $small-font-size;
   line-height: $base-line-height;
-  color: $blockquote-small-color;
+  color: $gray-600;
   text-align: right;
 
   &::before {
@@ -75,7 +75,7 @@ blockquote footer,
 
 .epigraph {
   padding: $base-line-height / 2;
-  box-shadow: inset 0 0 5px #000;
+  outline: 1px solid $gray-600;
 }
 
 div[class="footer"], // rst中的footer指令，会生成一个带有footer类的 hr。
@@ -118,7 +118,7 @@ div[class="footer"], // rst中的footer指令，会生成一个带有footer类�
 [itemprop="datePublished"] {
   font-size: 81.25%;
   line-height: $base-line-height;
-  color: $text-muted;
+  color: $gray-600;
   text-align: right;
 }
 
@@ -201,7 +201,7 @@ h2[itemprop="headline"] {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-self: stretch;
+  align-self: center;
   @include leader(2);
 
   figure,
@@ -214,6 +214,15 @@ h2[itemprop="headline"] {
     line-height: $base-line-height * 1.5 - 2px;
     text-align: center;
     padding: 0;
+  }
+
+  &:hover img {
+    box-shadow: 0 5px 36px -3px #777;
+    transform: scale(0.9);
+  }
+
+  img {
+    transition: all .15s;
   }
 
   ul {

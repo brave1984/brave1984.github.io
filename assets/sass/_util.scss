@@ -16,7 +16,7 @@
 %cover {
     padding: 5px;
     margin-bottom: 1px;
-    border: 1px solid $gray-500;
+    border: 1px solid $gray-600;
     @include box-shadow($thumbnail-box-shadow);
     background-color: $thumbnail-bg;
 }

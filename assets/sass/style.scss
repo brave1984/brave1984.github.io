@@ -65,9 +65,15 @@
       @include trailer;
     }
   }
-
+  
   img {
+    transition: all .15s;
     @extend %cover;
+  }
+
+  &:hover img {
+    box-shadow: 0 5px 36px -3px #777;
+    transform: scale(1.05) translateY(-1rem);
   }
 
   h2 {

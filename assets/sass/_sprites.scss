@@ -122,7 +122,7 @@
 footer[role="contentinfo"] {
   svg {
     transition-duration: .15s;
-    transition-property: transform,-webkit-transform;
+    transition-property: transform;
     transition-timing-function: cubic-bezier(.68,-.55,.265,1.55);
   }
 
