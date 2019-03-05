@@ -102,5 +102,4 @@ exclude:
  - README.rst
  - assets/config.rb
  - assets/sass
- - assets/.sass-cache
  - gists/

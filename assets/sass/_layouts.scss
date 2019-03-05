@@ -89,3 +89,75 @@ footer[role="contentinfo"] {
     padding-right: 0;
   }
 }
+
+.pageclip-form {
+  @include make-container(0);
+  @include make-container-max-widths(((sm: 540px)));
+  display: flex;
+  flex-direction: column;
+  font-size: $h4-font-size;
+  line-height: $base-line-height;
+
+  div {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+$half-base-line-height: $base-line-height / 2;
+
+label {
+  z-index: 1;
+  height: $base-line-height;
+  font-size: $h4-font-size;
+  color: $btn-green;
+  margin: 8px auto -8px 2rem;
+  padding: 0 0.5rem 0 0.5rem;
+  background-color: $jumbotron-bg;
+  transition: color 250ms ease;
+}
+
+label[for="message"] {
+  margin: 4px auto -4px 2rem;
+}
+
+input,
+textarea {
+  margin-bottom: $base-line-height;
+  padding: $half-base-line-height - 4px;
+  border: 4px solid $btn-green-light;
+  border-radius: 0.5rem;
+  outline: none;
+  background-color: $jumbotron-bg;
+  transition: border-color 250ms ease;
+
+  &:focus {
+    border-color: $btn-green-light;
+
+    & + label {
+      color: $btn-cta;
+    }
+  }
+
+  &:invalid {
+    border-color: $btn-cta-light;
+  }
+}
+
+input {
+  height: $base-line-height * 2;
+}
+
+.pageclip-form__submit {
+  align-self: flex-end;
+  font-size: $h3-font-size;
+  height: $base-line-height * 1.5;
+  color: $bg-info;
+  margin-bottom: $base-line-height / 2;
+  border: 1px solid $btn-cta;
+  border-radius: 0.25rem;
+  background-color: $btn-cta;
+
+  &:hover {
+    background-color: $btn-cta-light;
+  }
+}
