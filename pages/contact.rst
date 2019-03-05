@@ -1,6 +1,6 @@
 ---
 title: 关于我
-permalink: /about/
+permalink: /contact/
 layout: contact
 
 ---

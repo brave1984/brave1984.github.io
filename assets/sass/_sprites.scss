@@ -69,12 +69,12 @@
   }
 
   .github-gist {
-    background-color: #4d4d4d;
-    border: 1px solid #272727;
+    background-color: $btn-black;
+    border: 1px solid $btn-black-border;
     border-radius: 0.25rem;
     
     &:hover {
-      background-color: #575757;
+      background-color: $btn-black-light;
     }
   }
 
@@ -136,28 +136,28 @@ footer[role="contentinfo"] {
   }
 
   .github {
-    color: #4d4d4d;
+    color: #000;
 
     &:hover {
-      color: #575757;
+      color: $dark;
       transform: rotate(6deg) scale(1.2) translateY(-20%);
     }
   }
 
   .envelope {
-    color: #df565a;
+    color: #d72d32;
 
     &:hover {
-      color: #d72d32;
+      color: #df565a;
       transform: rotate(-2deg) scale(1.2) translateY(-20%);
     }
   }
 
   .rss {
-    color: #ffc107;
+    color: #ff9100;
 
     &:hover {
-      color: #ff9100;
+      color: #ffc107;
       transform: rotate(4deg) scale(1.2) translateY(-20%);
     }
   }

@@ -33,11 +33,7 @@
     font-size: $font-size;
     font-weight: $font-weight-light;
     @include adjust-font-size-to($font-size);
-    text-shadow: 3px 3px 3px #aaa;
+    text-shadow: 2px 2px 2px #aaa;
     margin-top: $base-line-height;
-  }
-
-  p {
-    font-weight: $headings-font-weight;
   }
 }

@@ -56,7 +56,11 @@ footer[role="contentinfo"] {
 
   img {
     height: $base-line-height * 1.5;
-    padding-right: 2em;
+    padding-right: 1rem;
+  }
+
+  a {
+    color: $dark;
   }
 }
 
@@ -95,15 +99,14 @@ footer[role="contentinfo"] {
   @include make-container-max-widths(((sm: 540px)));
   display: flex;
   flex-direction: column;
-  font-size: $h4-font-size;
   line-height: $base-line-height;
+  margin-top: $base-line-height * 2;
 
   div {
     display: flex;
     flex-direction: column-reverse;
   }
 }
-$half-base-line-height: $base-line-height / 2;
 
 label {
   z-index: 1;
@@ -114,10 +117,6 @@ label {
   padding: 0 0.5rem 0 0.5rem;
   background-color: $jumbotron-bg;
   transition: color 250ms ease;
-}
-
-label[for="message"] {
-  margin: 4px auto -4px 2rem;
 }
 
 input,
@@ -151,13 +150,15 @@ input {
   align-self: flex-end;
   font-size: $h3-font-size;
   height: $base-line-height * 1.5;
-  color: $bg-info;
+  color: #fff;
   margin-bottom: $base-line-height / 2;
-  border: 1px solid $btn-cta;
+  border: 0;
   border-radius: 0.25rem;
   background-color: $btn-cta;
+  transform: background-color 250ms ease;
 
   &:hover {
     background-color: $btn-cta-light;
+    transform: scale(1.05);
   }
 }
