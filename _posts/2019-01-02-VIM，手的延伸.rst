@@ -47,21 +47,17 @@ excerpt_separator: .. 摘要注释
 配置VIM
 -------
 
-.. compound::
+添加插件的帮助文档：
 
-    添加插件的帮助文档：
+.. include:: gists/{{ page.gist }}/setup-vim-plugins.sh
+    :code: bash
+    :start-line: 14
+    :end-line: 23
 
-    .. include:: gists/{{ page.gist }}/setup-vim-plugins.sh
-        :code: bash
-        :start-line: 14
-        :end-line: 23
+在\ ``$HOME``\ 目录下，添加\ *.vimrc*\ 文件，代码如下：
 
-.. compound::
-
-    在\ ``$HOME``\ 目录下，添加\ *.vimrc*\ 文件，代码如下：
-
-    .. include:: gists/{{ page.gist }}/.vimrc
-        :code: vim
+.. include:: gists/{{ page.gist }}/.vimrc
+    :code: vim
 
 .. footer::
 
