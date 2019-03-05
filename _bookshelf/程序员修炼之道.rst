@@ -211,7 +211,7 @@ excerpt_separator: .. 摘要注释
 
         Fix the Problem, Not the Blame
 
-        bug 是你的过错还是别人的过错，并不是真的很有关系——它仍然是你的问题，它仍然需要修正。
+        \ *bug*\ 是你的过错还是别人的过错，并不是真的很有关系——它仍然是你的问题，它仍然需要修正。
 
 #. .. compound::
     
@@ -219,7 +219,7 @@ excerpt_separator: .. 摘要注释
 
         Don't Panic When Debuging
 
-        做一次深呼吸，思考什么可能是 bug 的原因。
+        做一次深呼吸，思考什么可能是\ *bug*\ 的原因。
 
 #. .. compound::
     
@@ -227,7 +227,7 @@ excerpt_separator: .. 摘要注释
 
         "Select" Isn't Broken
 
-        在 OS 或编译器、甚或是第三方产品或库中很少发现 bug。bug 很可能在应用中。
+        在 OS 或编译器、甚或是第三方产品或库中很少发现\ *bug*\ 。\ *bug*\ 很可能在应用中。
 
 #. .. compound::
     
@@ -411,7 +411,7 @@ excerpt_separator: .. 摘要注释
 
         Test Your Software, or Your Users Will
 
-        无情地测试，不要让你的用户为你查找 bug。
+        无情地测试，不要让你的用户为你查找\ *bug*\ 。
 
 #. .. compound::
     
@@ -531,7 +531,7 @@ excerpt_separator: .. 摘要注释
 
         Use Saboteurs to Test Your Testing
 
-        在单独的软件副本上故意引入 bug，以检测测试能够抓住它们。
+        在单独的软件副本上故意引入\ *bug*\ ，以检测测试能够抓住它们。
 
 #. .. compound::
     
@@ -543,11 +543,11 @@ excerpt_separator: .. 摘要注释
 
 #. .. compound::
     
-        **一个 bug 只抓一次**
+        **一个bug只抓一次**
 
         Find Bugs Once
 
-        一旦测试员找到一个 bug，这应该是测试员最后一次找到它。此后自动测试应该对其进行检查。
+        一旦测试员找到一个\ *bug*\ ，这应该是测试员最后一次找到它。此后自动测试应该对其进行检查。
 
 #. .. compound::
     
@@ -633,11 +633,11 @@ excerpt_separator: .. 摘要注释
 
         **调试检查清单**
 
-        - 正在报告的问题是底层 bug 的直接结果，还是只是系统症状？
-        - bug真的在编译器里？在 OS 里？或者是在你的代码里？
+        - 正在报告的问题是底层\ *bug*\ 的直接结果，还是只是系统症状？
+        - \ *bug*\ 真的在编译器里？在 OS 里？或者是在你的代码里？
         - 如果你向同事详细解释这个问题，你会说什么？
         - 如果可疑代码通过了单元测试，测试是否足够完善？如果你用该数据运行单元测试，会发生什么？
-        - 造成这个 bug 的条件是否存在于系统中的其他任何地方？
+        - 造成这个\ *bug*\ 的条件是否存在于系统中的其他任何地方？
 
 #. .. compound::
 
