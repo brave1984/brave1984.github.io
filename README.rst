@@ -46,3 +46,7 @@
 ----
 
 为 *自由软件* 与 *开源运动* 做出贡献的\ **hackers**\ ，没有这些尘世间的英雄，我就没法写下：“\ *Hello, World!*\ ”。
+
+.. footer::
+
+    Code released under the `GNU GPLv3 <http://www.gnu.org/licenses/gpl-3.0-standalone.html>`_. Docs released under `CC BY-NC-ND 4.0 <https://creativecommons.org/licenses/by-nc-nd/4.0/>`_.

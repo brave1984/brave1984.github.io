@@ -98,10 +98,10 @@
   }
 
   .twitter {
-    background-color: #50abf1;
+    background-color: lighten($blue, 10%);
     
     &:hover {
-      background-color: #63b4f3;
+      background-color: lighten($blue, 15%);
     }
   }
 
@@ -130,10 +130,10 @@ footer[role="contentinfo"] {
   }
 
   .twitter {
-    color: lighten($blue, 5%);
+    color: lighten($blue, 10%);
 
     &:hover {
-      color: lighten($blue, 10%);
+      color: lighten($blue, 15%);
       transform: rotate(-6deg) scale(1.2) translateY(-20%);
     }
   }

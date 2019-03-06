@@ -130,14 +130,14 @@ textarea {
   transition: border-color 250ms ease;
 
   &:invalid {
-    border-color: $yellow;
+    border-color: darken(#C0C0C0, 10%);
   }
 
   &:focus {
     border-color: lighten($green, 10%);
 
     & + label {
-      color: lighten($orange, 10%);
+      color: darken(#C0C0C0, 10%);
     }
   }
 }
@@ -154,11 +154,11 @@ input {
   margin-bottom: $base-line-height / 2;
   border: 0;
   border-radius: 0.25rem;
-  background-color: lighten($orange, 5%);
+  background-color: lighten($orange, 10%);
   transform: background-color 250ms ease;
 
   &:hover {
-    background-color: lighten($orange, 10%);
+    background-color: lighten($orange, 15%);
     transform: scale(1.05);
   }
 }

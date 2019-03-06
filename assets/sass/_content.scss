@@ -25,7 +25,7 @@ article,
 .footer,
 .section {
   > p {
-    @include trailer;
+    margin-bottom: $base-line-height;
   }
 }
 
@@ -91,13 +91,18 @@ div[class="footer"], // rst中的footer指令，会生成一个带有footer类�
   margin-bottom: $base-line-height;
 }
 
+div[class="footer"] {
+  font-size: $h6-font-size;
+  line-height: $base-line-height;
+}
+
 [itemtype*="BlogPosting"] {
   display: flex;
   flex-direction: column;
 
   h1 {
     @include adjust-font-size-to($h1-font-size);
-    text-shadow: 2px 2px 2px #aaa;
+    text-shadow: 0px 2px 2px #aaa;
   }
   
   .tags {
