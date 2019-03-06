@@ -49,4 +49,4 @@
 
 .. footer::
 
-    Code released under the `GNU GPLv3 <http://www.gnu.org/licenses/gpl-3.0-standalone.html>`_. Docs released under `CC BY-NC-ND 4.0 <https://creativecommons.org/licenses/by-nc-nd/4.0/>`_.
+    本仓库的所有\ *.rst*\ 文件采用\ `知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 <https://creativecommons.org/licenses/by-nc-nd/4.0/>`_\ 进行许可，代码文件采用\  `GNU GPLv3 <http://www.gnu.org/licenses/gpl-3.0-standalone.html>`_\ 进行许可。

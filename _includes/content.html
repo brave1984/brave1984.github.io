@@ -1,6 +1,6 @@
 <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
   <h1 itemprop="headline">{{ page.title }}</h1>
-  {% include tags.html post=page %}
+  {% include tags.html tags=page.tags date=page.date %}
   <div itemprop="articleBody">
     {{ content }}
   </div>

@@ -142,12 +142,9 @@ h2[itemprop="headline"] {
 
 [data-collection="bookshelf"] {
   color: darken($red, 10%);
-  text-decoration: underline;
-  text-decoration-color: lighten($pink, 20%);
 
   &:hover {
     color: darken($red, 15%);
-    text-decoration-color: currentColor;
   }
 }
 
@@ -206,99 +203,5 @@ h2[itemprop="headline"] {
     &:visited {
       color: $indigo;
     }
-  }
-}
-
-.book-aside {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-self: center;
-  @include leader(2);
-
-  figure,
-  section {
-    width: 15rem;
-  }
-
-  .card-header {
-    font-size: $h3-font-size;
-    line-height: $base-line-height * 1.5 - 2px;
-    text-align: center;
-    padding: 0;
-  }
-
-  &:hover img {
-    box-shadow: 0 5px 36px -3px #777;
-    transform: scale(0.8);
-  }
-
-  img {
-    transition: all .15s;
-  }
-
-  ul {
-    line-height: $base-line-height;
-    padding: 0 $base-line-height / 2;
-    list-style: none;
-
-    p {
-      font-size: 93.75%;
-    }
-
-    span {
-      font-size: $small-font-size;
-      color: $text-muted;
-    }
-  }
-
-  .btn {
-    height: $base-line-height * 1.5 - 1px;
-    padding: 0;
-    background-color: $yellow;
-    @include transition($btn-transition);
-
-    &:hover {
-      background-color: lighten($yellow, 10%);
-    }
-  }
-}
-
-[aria-label~="navigation"] {
-  align-self: center;
-  margin-top: auto;
-}
-
-[aria-label~="posts"] {
-  display: flex;
-  justify-content: center;
-  align-self: stretch;
-
-  ul {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-
-    @include media-breakpoint-down(se) {
-      max-width: 20em;
-    }
-
-    @include media-breakpoint-up(sm) {
-      flex-direction: row;
-      max-width: 40em;
-
-      li {
-        width: 50%;
-      }
-    };
-  }
-}
-
-.page-link {
-  height: $base-line-height * 1.5;
-  @include text-truncate;
-
-  small {
-    color: $dark;
   }
 }
