@@ -207,7 +207,7 @@ excerpt_separator: .. 摘要注释
 
 #. .. compound::
     
-        ****要修正问题，而不是发出指责**
+        **要修正问题，而不是发出指责**
 
         Fix the Problem, Not the Blame
 
@@ -215,7 +215,7 @@ excerpt_separator: .. 摘要注释
 
 #. .. compound::
     
-        ****不要恐慌**
+        **不要恐慌**
 
         Don't Panic When Debuging
 

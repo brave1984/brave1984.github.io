@@ -64,35 +64,9 @@ footer[role="contentinfo"] {
   }
 }
 
-.jumbotron {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  flex-grow: 1;
-  max-width: 64em;
-  width: 100%;
-  margin-bottom: 0;
-
-  @include media-breakpoint-up(md) {
-    padding-left: 2em;
-    padding-right: 2em;
-  }
-
-  @include media-breakpoint-up(lg) {
-    padding-left: 4em;
-    padding-right: 4em;
-  }
-}
-
-.container {
-  @include make-container;
-  @include make-container-max-widths;
-
-  @include media-breakpoint-down(xs) {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
+/*
+ * https://pageclip.co/ 表单
+ */
 
 .pageclip-form {
   @include make-container(0);
@@ -160,5 +134,233 @@ input {
   &:hover {
     background-color: lighten($orange, 15%);
     transform: scale(1.05);
+  }
+}
+
+/*
+ * pages/bookshelf.html
+ */
+
+.bookshelf {
+  display: flex;
+  flex-wrap: wrap;
+  @include trailer;
+
+  @include media-breakpoint-up(se) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.bookshelf-item {
+  display: flex;
+  flex-direction: column;
+  @include make-col-ready(0.75em);
+  @include make-col(6);
+  @extend %hr;
+
+  @media (min-width: 375px) {
+    @include make-col-ready(2em);
+  }
+
+  @media (max-width: 543.98px) {
+    &:nth-child(2n+1):nth-last-child(-n+2),
+    &:nth-child(2n+1):nth-last-child(-n+2) ~ & {
+      border-bottom: 0;
+      @include trailer;
+    }
+  }
+
+  @media (min-width: 544px) and (max-width: 767.98px) {
+    @include make-col(4);
+
+    &:nth-child(3n+1):nth-last-child(-n+3),
+    &:nth-child(3n+1):nth-last-child(-n+3) ~ & {
+      border-bottom: 0;
+      @include trailer;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    @include make-col(3);
+    &:nth-child(4n+1):nth-last-child(-n+4),
+    &:nth-child(4n+1):nth-last-child(-n+4) ~ & {
+      border-bottom: 0;
+      @include trailer;
+    }
+  }
+
+  img {
+    transition: all .15s;
+    @extend %cover;
+  }
+
+  &:hover img {
+    box-shadow: 0 5px 36px -3px #777;
+    transform: scale(1.05) translateY(-1rem);
+  }
+
+  h2 {
+    font-size: $h5-font-size;
+    line-height: $base-line-height;
+    margin: 0 0.25rem;
+  }
+
+  .tags {
+    margin-left: 0.5rem;
+  }
+}
+
+/*
+ * _layouts/home.html
+ */
+
+.hackers {
+  @include Scroll_Wrapper;
+  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+
+  h2 {
+    @include adjust-font-size-to($h2-font-size);
+    font-weight: 400;
+    line-height: $base-line-height * 2 - $border-width;
+    text-align: left;
+    text-shadow: 0px 2px 2px #aaa;
+    padding-left: 1rem;
+    border-top: $border-width solid $dark;
+  }
+
+  article {
+    display: inline-block;
+    max-width: 8.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+
+    @include media-breakpoint-up(md) {
+      @include make-col-ready(2em);
+      @include make-col(3);
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  h3 {
+    @include text-hide($ignore-warning: true);
+  }
+
+  img {
+    @extend %cover;
+  }
+
+  pre {
+    margin-bottom: 0;
+  }
+}
+
+/*
+ * 分页
+ */
+
+[aria-label~="navigation"] {
+  align-self: center;
+  margin-top: auto;
+}
+
+[aria-label~="posts"] {
+  display: flex;
+  justify-content: center;
+  align-self: stretch;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    @include media-breakpoint-down(se) {
+      max-width: 20em;
+    }
+
+    @include media-breakpoint-up(sm) {
+      flex-direction: row;
+      max-width: 40em;
+
+      li {
+        width: 50%;
+      }
+    };
+  }
+}
+
+.page-link {
+  height: $base-line-height * 1.5;
+  @include text-truncate;
+
+  small {
+    color: $dark;
+  }
+} 
+
+/* 
+ * _includes/book-aside.html
+ */
+
+.book-aside {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-self: center;
+  @include leader(2);
+
+  figure,
+  section {
+    width: 15rem;
+  }
+
+  .card-header {
+    font-size: $h3-font-size;
+    line-height: $base-line-height * 1.5 - 2px;
+    text-align: center;
+    padding: 0;
+  }
+
+  &:hover img {
+    box-shadow: 0 5px 36px -3px #777;
+    transform: scale(0.8);
+  }
+
+  img {
+    transition: all .15s;
+  }
+
+  ul {
+    line-height: $base-line-height;
+    padding: 0 $base-line-height / 2;
+    list-style: none;
+
+    p {
+      font-size: 93.75%;
+    }
+
+    span {
+      font-size: $small-font-size;
+      color: $text-muted;
+    }
+  }
+
+  .btn {
+    height: $base-line-height * 1.5 - 1px;
+    padding: 0;
+    background-color: $yellow;
+    @include transition($btn-transition);
+
+    &:hover {
+      background-color: lighten($yellow, 10%);
+    }
   }
 }
