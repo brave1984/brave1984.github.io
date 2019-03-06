@@ -250,6 +250,12 @@ h2[itemprop="headline"] {
   .btn {
     height: $base-line-height * 1.5 - 1px;
     padding: 0;
+    background-color: $yellow;
+    transform: background-color 250ms ease;
+
+    &:hover {
+      background-color: #f0c14b;
+    }
   }
 }
 

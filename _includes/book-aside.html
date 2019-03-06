@@ -42,12 +42,12 @@
       {% endif %}
     </ul>
     {% if book["product link"] %}
-    <a class="btn btn-warning" href="{{ book['product link'] }}" rel="external">
+    <a class="btn" href="{{ book['product link'] }}" title="Amazon 购买本书" rel="external">
       <svg class="fa-2x">
         <use xlink:href="/assets/images/sprites.svg#amazon"></use>
-      </svg>
         <span class="sr-only">Amazon</span>
-        <span>购买</span>
+      </svg>
+        <span>购买本书</span>
     </a>
     {% endif %}
   </section>
