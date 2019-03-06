@@ -3,7 +3,6 @@ title: The Little Schemer
 date: 2019-01-09 17:08:48 +0800
 categories: 计算
 tags: [Lisp, Scheme, 算法]
-issue: 4
 gist: 413b7b178085f2973427d594f008d88d
 excerpt_separator: .. 摘要注释
 
