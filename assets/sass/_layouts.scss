@@ -105,7 +105,7 @@ footer[role="contentinfo"] {
   div {
     display: flex;
     flex-direction: column-reverse;
-    margin-bottom: $base-line-height / 2;
+    margin-bottom: $base-line-height;
   }
 }
 
@@ -151,12 +151,11 @@ input {
   font-size: $h3-font-size;
   height: $base-line-height * 1.5;
   color: #fff;
-  margin-top: $base-line-height;
   margin-bottom: $base-line-height / 2;
   border: 0;
   border-radius: 0.25rem;
   background-color: lighten($orange, 10%);
-  transform: background-color 250ms ease;
+  transition: background-color 250ms ease;
 
   &:hover {
     background-color: lighten($orange, 15%);

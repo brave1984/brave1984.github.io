@@ -142,12 +142,9 @@ h2[itemprop="headline"] {
 
 [data-collection="bookshelf"] {
   color: darken($red, 10%);
-  text-decoration: underline;
-  text-decoration-color: lighten($pink, 20%);
 
   &:hover {
     color: darken($red, 15%);
-    text-decoration-color: currentColor;
   }
 }
 
