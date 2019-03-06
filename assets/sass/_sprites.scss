@@ -38,10 +38,13 @@
 
   button {
     height: $base-line-height * 1.5;
+    @include transition($btn-transition);
   }
 
   a {
-    color: $bg-info;
+    display: inline-block;
+    width: 100%;
+    color: #fff;
     text-decoration: none;
   }
 
@@ -69,12 +72,12 @@
   }
 
   .github-gist {
-    background-color: $btn-black;
-    border: 1px solid $btn-black-border;
+    background-color: #4d4d4d;
+    border: 1px solid #272727;
     border-radius: 0.25rem;
     
     &:hover {
-      background-color: $btn-black-light;
+      background-color: #575757;
     }
   }
 
@@ -127,10 +130,10 @@ footer[role="contentinfo"] {
   }
 
   .twitter {
-    color: #50abf1;
+    color: lighten($blue, 5%);
 
     &:hover {
-      color: #63b4f3;
+      color: lighten($blue, 10%);
       transform: rotate(-6deg) scale(1.2) translateY(-20%);
     }
   }
@@ -139,25 +142,25 @@ footer[role="contentinfo"] {
     color: #000;
 
     &:hover {
-      color: $dark;
+      color: lighten(#000, 10%);
       transform: rotate(6deg) scale(1.2) translateY(-20%);
     }
   }
 
   .envelope {
-    color: #d72d32;
+    color: #f00;
 
     &:hover {
-      color: #df565a;
+      color: lighten(#f00, 10%);
       transform: rotate(-2deg) scale(1.2) translateY(-20%);
     }
   }
 
   .rss {
-    color: #ff9100;
+    color: $orange;
 
     &:hover {
-      color: #ffc107;
+      color: lighten($orange, 10%);
       transform: rotate(4deg) scale(1.2) translateY(-20%);
     }
   }

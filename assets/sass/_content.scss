@@ -251,10 +251,10 @@ h2[itemprop="headline"] {
     height: $base-line-height * 1.5 - 1px;
     padding: 0;
     background-color: $yellow;
-    transform: background-color 250ms ease;
+    @include transition($btn-transition);
 
     &:hover {
-      background-color: #f0c14b;
+      background-color: lighten($yellow, 10%);
     }
   }
 }
