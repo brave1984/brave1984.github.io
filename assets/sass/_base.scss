@@ -1,0 +1,109 @@
+/* 区块元素 */
+
+header[role="banner"],
+footer[role="contentinfo"],
+main {
+  //@include debug-vertical-alignment("debug.png");
+}
+
+/* 标题和文本元素 */
+
+h1 {
+  font-size: $h1-font-size;
+  margin-bottom: $base-line-height;
+}
+
+h2 {
+  font-size: $h2-font-size;
+}
+
+h3 {
+  font-size: $h3-font-size;
+}
+
+h4 {
+  font-size: $h4-font-size;
+}
+
+h5 {
+  font-size: $h5-font-size;
+}
+
+h6 {
+  font-size: $h6-font-size;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $headings-font-weight;
+}
+
+pre {
+  @include adjust-font-size-to($code-font-size);
+  margin-bottom: $base-line-height;
+  padding: ($base-line-height / 2) 1em;
+}
+
+/* 列表 */
+
+dd {
+  @include trailer;
+}
+
+ol, ul {
+  padding-left: 2rem;
+}
+
+/* 表格 */
+
+table {
+  width: 100%;
+  white-space: nowrap;
+  @include trailer;
+
+  @include media-breakpoint-down(sm) {
+    @include Scroll_Wrapper;
+  }
+
+  thead,
+  tbody {
+    border-left: $border-width solid $dark;
+    border-right: $border-width solid $dark;
+  }
+
+  thead {
+    tr {
+      line-height: $base-line-height;
+    }
+
+    th {
+      color: $table-dark-color;
+      background-color: $table-dark-bg;
+    }
+  }
+
+  tbody tr {
+    line-height: $base-line-height - $border-width;
+    border-bottom: $border-width solid $dark;
+   
+    &:nth-of-type(odd) {
+      background-color: $table-accent-bg;
+    }
+  }
+  
+  th,
+  td {
+    padding: 0 0 0 0.5em;
+  }
+}
+
+/* 图像与媒体资源 */
+
+img {
+  @include img-fluid;
+  @include border-radius($thumbnail-border-radius);
+}

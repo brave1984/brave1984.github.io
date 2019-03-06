@@ -3,5 +3,4 @@ __pycache__/
 .jekyll-metadata
 .sass-cache
 assets/stylesheets/
-/bookshelf/
 *.swp

@@ -2,62 +2,80 @@
 title: 拥抱 GNU/Linux
 date: 2019-01-18 11:55:20 +0800
 categories: 计算
-tags: [工具]
+tags: [GNU/Linux, 工具]
 gist: 2d3078f4024dbedf8fca6a30d6de5548
 excerpt_separator: .. 摘要注释
+
 ---
+.. container:: summary
 
-.. container:: excerpt
+    \ **萌新**\ ：《炉石传说》的橙卡掉率又被调低了，我要\ *AFK*\ ……
 
-    萌新：“炉石传说”的爆率又被调低了，我要\ *AFK*\ ……
+    \ **休闲玩家**\ ：自从用上\ GNU_\ /\ Linux_\ 后，值不充、（智商）税不缴，浑身都“得劲”。
 
-    休闲玩家：自从用上“\ `GNU <http://www.gnu.org/>`_\ /\ `Linux <https://www.kernel.org/>`_\ ”后，值不充、税（智商税）不缴，浑身都“得劲”。
+.. _GNU: http://www.gnu.org/
+.. _Linux: https://www.kernel.org/
 
 .. 摘要注释
 
-`Ubuntu <https://www.ubuntu.com/>`_\ 的\ *UI*\ 设计得比\ `Debian <https://www.debian.org/>`_\ 的好，使用\ `etcher <https://www.balena.io/etcher/>`_\ 制作系统镜像。
+用了近半年的“\ GNU_\ /\ Linux_\ ”后，不谈其对\ *ssh*\ 、\ Docker_\ 的友好支持，我只想说——我能够心无旁骛地写好代码了。在\ Terminal_\ 中可以打开多个标签页，而每个\ VIM_\ 窗口又可以打开多个标签，配合上快捷键，就能脱离鼠标干活了。
+
+\ Ubuntu_\ 的\ *UI*\ 设计得比\ Debian_\ 的好，而\ 18.10_\ 又比\ `18.04 LTS`_\ 美观，可以用\ etcher_\ 来制作系统镜像。
 
 程序设计
 --------
-* `Docker <https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce>`_
-* `Docker Compose <https://github.com/docker/compose/releases>`_
-* `PostgreSQL <https://wiki.postgresql.org/wiki/Apt>`_
+
+- Docker_
+- `Docker Compose <https://github.com/docker/compose/releases>`_
+- `PostgreSQL <https://wiki.postgresql.org/wiki/Apt>`_
 
 JavaScript
 ~~~~~~~~~~
-* `Node.js <https://github.com/nodesource/distributions/blob/master/README.md#debinstall>`_
-* `Yarn <https://yarnpkg.com/zh-Hans/docs/install#debian-stable>`_
+
+- `Node.js <https://github.com/nodesource/distributions/blob/master/README.md#debinstall>`_
+- `Yarn <https://yarnpkg.com/zh-Hans/docs/install#debian-stable>`_
 
 Ruby
 ~~~~
-* `ruby-build <https://github.com/rbenv/ruby-build/wiki#suggested-build-environment>`_
-* `rbenv <https://github.com/rbenv/rbenv#basic-github-checkout>`_
-* `Ruby <https://www.ruby-lang.org/>`_
+
+- `ruby-build <https://github.com/rbenv/ruby-build/wiki#suggested-build-environment>`_
+- `rbenv <https://github.com/rbenv/rbenv#basic-github-checkout>`_
+- `Ruby <https://www.ruby-lang.org/>`_
 
 Python
 ~~~~~~
-* `pip <https://packaging.python.org/guides/installing-using-linux-tools/#debian-ubuntu>`_
-* `Pipenv <https://pipenv.readthedocs.io/en/latest/install/>`_
+
+- `pip <https://packaging.python.org/guides/installing-using-linux-tools/#debian-ubuntu>`_
+- `Pipenv <https://pipenv.readthedocs.io/en/latest/install/>`_
 
 Lisp
 ~~~~
-* `Clojure <https://clojure.org/guides/getting_started#_installation_on_linux>`_
-* `Chez Scheme <https://github.com/cisco/chezscheme>`_
+
+- `Clojure <https://clojure.org/guides/getting_started#_installation_on_linux>`_
+- `Chez Scheme <https://github.com/cisco/chezscheme>`_
 
 工具
 ----
-* vim
-* default-jdk
-* fcitx-sunpinyin
-* `Postman <https://snapcraft.io/postman>`_
-* `GitKraken <https://snapcraft.io/gitkraken>`_
-* `Slack <https://snapcraft.io/slack>`_
-* `Chromium <https://snapcraft.io/chromium>`_
-* `VLC <https://snapcraft.io/vlc>`_
-* `LibreOffice <https://snapcraft.io/libreoffice>`_
-* `calibre <https://github.com/kovidgoyal/calibre>`_
-* `OpenRefine <https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux>`_
 
-.. footer::
+- vim
+- default-jdk
+- fcitx-sunpinyin
+- `Lynx <https://lynx.invisible-island.net/>`_
+- `Postman <https://snapcraft.io/postman>`_
+- `GitKraken <https://snapcraft.io/gitkraken>`_
+- `Slack <https://snapcraft.io/slack>`_
+- `Chromium <https://snapcraft.io/chromium>`_
+- `VLC <https://snapcraft.io/vlc>`_
+- `LibreOffice <https://snapcraft.io/libreoffice>`_
+- \ etcher_\
+- `calibre <https://github.com/kovidgoyal/calibre>`_
+- `OpenRefine <https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux>`_
 
-    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （碰到网络连线问题，你懂的。）
+.. _Docker:  https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce`
+.. _Terminal: https://wiki.gnome.org/Apps/Terminal
+.. _VIM: https://www.vim.org/
+.. _Ubuntu:  https://www.ubuntu.com/
+.. _Debian:  https://www.debian.org/
+.. _18.10: https://wiki.ubuntu.com/CosmicCuttlefish/ReleaseNotes
+.. _`18.04 LTS`: https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes/18.04
+.. _etcher:  https://www.balena.io/etcher/

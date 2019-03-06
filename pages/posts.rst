@@ -5,4 +5,5 @@ layout: archives
 pagination:
   enabled: true
   collection: posts
+
 ---

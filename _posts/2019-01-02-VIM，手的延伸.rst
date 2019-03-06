@@ -7,39 +7,41 @@ gist: e8231dd2fd399536d8272b110f4a8b7e
 excerpt_separator: .. 摘要注释
 
 ---
-.. _VIM: https://www.vim.org/
+.. container:: summary
 
-.. container:: excerpt
+    \ **团长**\ ： 赶紧把这个\ Python_\ 脚本给我改好！
 
-    \ **团长**\ ： 萌新，赶紧把这个\ *Python*\ 脚本给我改好。
-
-    \ **萌新**\ ： 好的，先等我把打开\ *Pycharm*\ 。
+    \ **萌新**\ ： 好的，先等我把\ Pycharm_\ 打开。
 
     \ **休闲玩家**\ ： 你就不能用\ VIM_\ ？
+
+.. _Python: https://www.python.org/
+.. _Pycharm: http://www.jetbrains.com/pycharm/
+.. _VIM: https://www.vim.org/
 
 .. 摘要注释
 
 用好一种\ **可配置**\ 、\ **可扩展**\ 、\ **可编程**\ 的编辑器。学习它，扩展它，拥有它！
 
-本文参考自：\ `VIM and Python – A Match Made in Heaven <https://realpython.com/vim-and-python-a-match-made-in-heaven/>`_\ ，增加了\
-`Python-mode <https://github.com/python-mode/python-mode>`_\ 等插件。
+本文参考自：\ `VIM and Python – A Match Made in Heaven <https://realpython.com/vim-and-python-a-match-made-in-heaven/>`_\ ，增加了\ `Python-mode`_\ 等插件。
 
 安装插件
 --------
 
-利用\ VIM_\  VIM8的原生包管理功能，从\ `GitHub <https://github.com/>`_\ 上克隆以下插件到\ *~/.vim/pack/foo/start*\目录：
+利用\ VIM_\  8的原生包管理功能，从\ GitHub_\ 上克隆以下插件到\ *~/.vim/pack/foo/start*\目录：
 
-* `YouCompleteMe <https://github.com/Valloric/YouCompleteMe>`_\ （自动完成）
-* `Python-mode <https://github.com/python-mode/python-mode>`_\ （语法突显&代码重构）
-* `NERDTree <https://github.com/scrooloose/nerdtree>`_\ （目录文件导航）
-* `vim-airline <https://github.com/vim-airline/vim-airline>`_\ （状态条）
-* `vim-fugitive <https://github.com/tpope/vim-fugitive>`_\ （git扩展）
-* `vimcdoc <https://github.com/yianwillis/vimcdoc>`_\ （中文文档）
+- YouCompleteMe_\ （自动完成）
+- Python-mode_\ （Python语法突显&代码重构）
+- emmet-vim_\ （HTML & CSS）
+- NERDTree_\ （目录文件导航）
+- vim-airline_\ （状态条）
+- vim-fugitive_\ （git扩展）
+- vimcdoc_\ （中文文档）
 
 .. include:: gists/{{ page.gist }}/setup-vim-plugins.sh
     :code: bash
     :start-line: 1
-    :end-line: 12
+    :end-line: 13
 
 
 配置VIM
@@ -49,8 +51,8 @@ excerpt_separator: .. 摘要注释
 
 .. include:: gists/{{ page.gist }}/setup-vim-plugins.sh
     :code: bash
-    :start-line: 13
-    :end-line: 21
+    :start-line: 14
+    :end-line: 23
 
 在\ ``$HOME``\ 目录下，添加\ *.vimrc*\ 文件，代码如下：
 
@@ -59,9 +61,13 @@ excerpt_separator: .. 摘要注释
 
 .. footer::
 
-    `GitHub Gist 仓库链接 <https://gist.github.com/{{ page.gist }}.git>`_\ （碰到网络连线问题，你懂的。）
+    DPS垫底，就是木桩（\ ``$ vimtutor zh``\ ）打得少！
 
-    DPS垫底，就是木桩打得少！\ ``$ vimtutor zh``\ 
-
-
-
+.. _GitHub: https://github.com/
+.. _Python-mode: https://github.com/python-mode/python-mode
+.. _YouCompleteMe: https://github.com/Valloric/YouCompleteMe
+.. _emmet-vim: https://github.com/mattn/emmet-vim
+.. _NERDTree: https://github.com/scrooloose/nerdtree
+.. _vim-airline: https://github.com/vim-airline/vim-airline
+.. _vimcdoc: https://github.com/yianwillis/vimcdoc
+.. _vim-fugitive: https://github.com/tpope/vim-fugitive

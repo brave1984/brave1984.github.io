@@ -1,0 +1,53 @@
+<aside class="post-aside">
+  {% if page.issue or page.gist %}
+  <div>
+    {% if page.issue %}
+    <button type="button" class="github-issue">
+      <a href="https://github.com/brave1984/brave1984.github.io/issues/{{ page.issue }}" title="Leave a Reply" rel="external">
+        <span>Reply on GitHub</span>
+        <svg class="fa-2x reply">
+          <use xlink:href="/assets/images/sprites.svg#reply"></use>
+        </svg>
+      </a>
+    </button>
+    {% endif %}
+    {% if page.gist %}
+    <button type="button" class="github-gist">
+      <a href="https://gist.github.com/{{ page.gist }}.git" title="Clone with HTTPS" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span>View on GitHub Gist</span>
+      </a>
+    </button>
+    {% endif %}
+  </div>
+  {% endif %}
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url={{ page.url | prepend: site.url }}" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u={{ page.url | prepend: site.url }}" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url={{ page.url | prepend: site.url }}" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>

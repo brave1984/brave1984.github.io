@@ -14,10 +14,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: 黄昭隗的个人网站
-email: admin@brave1984.com
+email: 
 description: >- # this means to ignore newlines until "baseurl:"
-  您好！我是黄昭隗，这是我的个人网站。
-  书架上的读书笔记、日志里的技术实践，献给孤独的你。
+  您好！我是黄昭隗，这是我的个人网站。书架上的读书笔记、日志里的技术实践，献给孤独的你。
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.brave1984.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: zhaowei1984
@@ -78,14 +77,14 @@ autopages:
   tags:
     layouts:
       - archives.html
-    title: 标签：:tag
+    title: 标签：
     permalink: '/tags/:tag/'
     enabled: true
 
   categories:
     layouts:
       - archives.html
-    title: 分类：:cat
+    title: 分类：
     permalink: '/categories/:cat'
     enabled: true
 
@@ -100,9 +99,7 @@ exclude:
  - Gemfile.lock
  - "*.py"
  - Rakefile
- - requirements.txt
  - README.rst
  - assets/config.rb
  - assets/sass
  - gists/
- - bookshelf/

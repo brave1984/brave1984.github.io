@@ -1,18 +1,26 @@
 <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/">首页</a></li>
-        {% case page.collection %}
-        {% when 'bookshelf' %}
-        <li class="breadcrumb-item"><a href="/bookshelf/">书架</a></li>
-        {% when 'posts' %}
-        <li class="breadcrumb-item"><a href="/posts/">日志</a></li>
-        {% endcase %}
-        {% if page.collection %}
-        <li class="breadcrumb-item"><a href="/categories/{{ page.categories }}">{{ page.categories }}</a></li>
-        {% else %}
-        <li class="breadcrumb-item active" aria-current="page">
-            <h1>{{ page.title  }}{% if page.pagination_info.curr_page > 1%}{{ page.pagination_info.curr_page | prepend: " - "}}{% endif %}</h1>
-        </li>
-        {% endif %}
-    </ol>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    {% case page.collection %}
+    {% when 'bookshelf' %}
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    {% when 'posts' %}
+    <li class="breadcrumb-item">
+      <a href="/posts/">日志</a>
+    </li>
+    {% endcase %}
+    {% if page.collection %}
+    <li class="breadcrumb-item">
+      <a href="/categories/{{ page.categories }}">{{ page.categories }}</a>
+    </li>
+    {% else %}
+    <li class="breadcrumb-item active" aria-current="page">
+      <h1>{{ page.title | append: page.autopages.display_name }}{% if page.pagination_info.curr_page > 1%}{{ page.pagination_info.curr_page | prepend: " - "}}{% endif %}</h1>
+    </li>
+    {% endif %}
+</ol>
 </nav>
