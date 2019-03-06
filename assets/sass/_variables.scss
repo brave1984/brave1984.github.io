@@ -22,7 +22,7 @@ $hr-border-color: rgba($black, .5);
 $breadcrumb-bg: $jumbotron-bg;
 $card-bg: $body-bg;
 
-$link-color: #3273dc;
+$link-color: darken($blue, 3%);
 
 $grid-breakpoints: ((xs: 0, se: 352px, sm: 576px, md: 768px, lg: 992px, xl: 1200px));
 $container-max-widths: ((sm: 540px, md: 720px));

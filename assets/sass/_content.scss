@@ -136,12 +136,12 @@ h2[itemprop="headline"] {
 }
 
 [data-collection="bookshelf"] {
-  color: #ac0056;
+  color: darken($red, 10%);
   text-decoration: underline;
-  text-decoration-color: #e6b3cc;
+  text-decoration-color: lighten($pink, 20%);
 
   &:hover {
-    color: #810041;
+    color: darken($red, 15%);
     text-decoration-color: currentColor;
   }
 }
@@ -192,14 +192,14 @@ h2[itemprop="headline"] {
   }
 
   a[href^="http"] {
-    color: #ac0056;
+    color: darken($red, 12%);
 
     &:hover {
-      color: #810041;
+      color: darken($red, 15%);
     }
 
     &:visited {
-      color: #b86bff;
+      color: $indigo;
     }
   }
 }
