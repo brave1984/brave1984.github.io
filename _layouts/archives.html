@@ -9,7 +9,7 @@ layout: default
       <a {% if post.collection == "bookshelf" %}data-collection="bookshelf" {% endif %}href="{{ post.url }}" title="{{ post.title }}">
         <h2 itemprop="headline">{{ post.title }}</h2>
       </a>
-      {% include tags.html post=post %}
+      {% include tags.html tags=post.tags date= post.date %}
       {{ post.excerpt }}
     </article>
     {% endfor %}

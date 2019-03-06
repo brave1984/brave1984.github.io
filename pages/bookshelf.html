@@ -19,7 +19,7 @@ pagination:
       <a href="{{ post.url }}" title="{{ post.title }}">
         <h2>{{ post.title }}</h2>
       </a>
-      {% include tags.html post=post %}
+      {% include tags.html tags=post.tags date=post.date %}
     </article>
     {% endfor %}
   </div>
