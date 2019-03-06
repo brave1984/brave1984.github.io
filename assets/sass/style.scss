@@ -98,11 +98,10 @@
   h2 {
     @include adjust-font-size-to($h2-font-size);
     font-weight: 400;
+    line-height: $base-line-height * 2 - $border-width;
     text-align: left;
-    text-shadow: 2px 2px 2px #aaa;
+    text-shadow: 0px 2px 2px #aaa;
     padding-left: 1rem;
-    margin-bottom: $base-line-height / 2;
-    margin-top: ($base-line-height / 2) - $border-width;
     border-top: $border-width solid $dark;
   }
 
