@@ -65,7 +65,7 @@ blockquote footer,
   display: block;
   font-size: $small-font-size;
   line-height: $base-line-height;
-  color: $gray-600;
+  color: $gray-700;
   text-align: right;
 }
 
@@ -80,10 +80,6 @@ blockquote footer::before {
 .epigraph {
   padding: $base-line-height / 2;
   outline: 1px solid $gray-600;
-}
-
-.compound {
-  font-weight: $font-weight-light;
 }
 
 div[class="footer"], // rst中的footer指令，会生成一个带有footer类的 hr。
@@ -200,6 +196,10 @@ h2[itemprop="headline"] {
 
     &:hover {
       color: #810041;
+    }
+
+    &:visited {
+      color: #b86bff;
     }
   }
 }
