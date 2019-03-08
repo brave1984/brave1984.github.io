@@ -20,3 +20,9 @@ excerpt_separator: .. 摘要注释
 .. _Ruby: https://www.ruby-lang.org/
 
 .. 摘要注释
+
+.. code:: bash
+
+    $ bundle config mirror.https://rubygems.org https://gems.ruby-china.com
+
+    $ bundle config --local path vendor/bundle

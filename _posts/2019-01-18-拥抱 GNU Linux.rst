@@ -63,13 +63,17 @@ Lisp
 - `Lynx <https://lynx.invisible-island.net/>`_
 - `Postman <https://snapcraft.io/postman>`_
 - `GitKraken <https://snapcraft.io/gitkraken>`_
-- `Slack <https://snapcraft.io/slack>`_
-- `Chromium <https://snapcraft.io/chromium>`_
 - `VLC <https://snapcraft.io/vlc>`_
 - `LibreOffice <https://snapcraft.io/libreoffice>`_
+- `Chrome <https://www.google.com/chrome/>`_
+- `Slack <https://slack.com/downloads/linux>`_
 - \ etcher_\
 - `calibre <https://github.com/kovidgoyal/calibre>`_
 - `OpenRefine <https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux>`_
+
+.. footer::
+
+   在使用\ `Ubuntu`_ `18.10`_\ 的过程中，我的计算机出现过\ **没法重现**\ 的BUG（UI方面的）……
 
 .. _Docker:  https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce`
 .. _Terminal: https://wiki.gnome.org/Apps/Terminal

@@ -33,35 +33,20 @@ Flexbox
 
 \ Flexbox_\ 有4个关键特性：方向、对齐、次序和弹性。关于\ Flexbox_\ 的对齐，最重要的是理解“主轴”和“交叉轴”。若\ Flexbox_\ 的方向为 row ，则主轴就是横轴，交叉轴就是纵轴；反之，若\ Flexbox_\ 的方向为 column ，则主轴就是纵轴，交叉轴为横轴。\ *flex*\ 对应：伸展（\ *flex-grow*\ ）、收缩（\ *flex-shrink*\ ）、基准（\ *flex-basis*\ ）。
 
-*display* : flex | inline-flex
-
-*flex-direction* : row | row-reverse | column | column-reverse
-
-*flex-wrap* : nowrap | wrap | wrap-reverse
-
-*flex-flow* : <*flex-direction*> || <*flex-wrap*>
-
-.. figure:: https://www.w3.org/TR/css-flexbox-1/images/flex-pack.svg
-    :alt: An illustration of the five justify-content keywords and their effects on a flex container with three colored items.
-
-    *justify-content* : flex-start | flex-end | center | space-between | space-around
-
-.. figure:: https://www.w3.org/TR/css-flexbox-1/images/flex-align.svg
-    :alt: An illustration of the five align-items keywords and their effects on a flex container with four colored items.
-
-    *align-items* : flex-start | flex-end | center | baseline | stretch
-
-*align-self* : auto | flex-start | flex-end | center | baseline | stretch
-
-*order* :  <integer>
-
-*flex-grow* : <number>
-
-*flex-shrink* : <number>
-
-*flex-basis* : content | <width>
-
-*flex* : none | [ <*flex-grow*> <*flex-shrink*>? || <*flex-basis*> ]
+* *display* : flex | inline-flex
+* *flex-direction* : row | row-reverse | column | column-reverse
+* *flex-wrap* : nowrap | wrap | wrap-reverse
+* *flex-flow* : <*flex-direction*> || <*flex-wrap*>
+* *justify-content* : flex-start | flex-end | center | space-between | space-around
+* *align-items* : flex-start | flex-end | center | baseline | stretch
+* *align-content* : flex-start | flex-end | center | space-between | space-around | stretch
+* *align-self* : auto | flex-start | flex-end | center | baseline | stretch
+* *order* :  <integer>
+* *flex-grow* : <number>
+* *flex-shrink* : <number>
+* *flex-basis* : content | <width>
+* *flex* : none | [ <*flex-grow*> <*flex-shrink*>? || <*flex-basis*> ]
+* \ `Flexbox 示例`_\
 
 CSS3 伪类选择器
 ~~~~~~~~~~~~~~~
@@ -80,7 +65,7 @@ CSS3 过渡、变形、动画
     - transition-duration：定义过渡效果持续的时长
     - transition-timing-function：定义过渡期间的速度变化
     - transition-delay：用于定义过渡开始前的延迟时间
-    - `transitions示例 <https://cssreference.io/transitions/>`_
+    - `transitions 示例 <https://cssreference.io/transitions/>`_
 
 .. compound::
 
@@ -90,7 +75,7 @@ CSS3 过渡、变形、动画
     - translate：在屏幕上移动元素（上下左右）
     - rotate：按照一定角度旋转元素（单位为度）
     - skew：沿X和Y轴对元素进行斜切
-    - `transform示例 <https://cssreference.io/property/transform/>`_
+    - `transform 示例 <https://cssreference.io/property/transform/>`_
 
 .. compound::
 
@@ -104,9 +89,10 @@ CSS3 过渡、变形、动画
     - animation-delay：开始延迟
     - animation-fill-mode：none | forwards | backwards | both;
     - animation-direction：播放方向（normal | reverse | alternate | alternatereverse）
-    - `animations示例 <https://cssreference.io/animations/>`_
+    - `animations 示例 <https://cssreference.io/animations/>`_
 
 .. _`响应式Web设计`: https://alistapart.com/article/responsive-web-design
+.. _`Flexbox 示例`: https://cssreference.io/flexbox/
 .. _`CSS3过渡`: https://www.w3.org/TR/css-transitions-1/
 .. _`CSS3变形`: https://www.w3.org/TR/css-transforms-1/
 .. _`CSS3动画`: https://www.w3.org/TR/css-animations-1/

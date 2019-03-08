@@ -1,4 +1,6 @@
-_site
+.bundle/
+vendor/
+_site/
 __pycache__/
 .jekyll-metadata
 .sass-cache

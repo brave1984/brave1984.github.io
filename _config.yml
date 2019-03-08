@@ -100,6 +100,7 @@ exclude:
  - "*.py"
  - Rakefile
  - README.rst
+ - vendor/
  - assets/config.rb
  - assets/sass
  - gists/
