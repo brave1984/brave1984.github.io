@@ -28,9 +28,17 @@ javascripts_dir = "javascripts"
 # sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
 
 browserslist = [
-  #'ie 10',
-  #'chrome 25',
-  #'android 4'
+  '>= 1%',
+  'last 1 version',
+  'not dead',
+  'chrome >= 45',
+  'firefox >= 38',
+  'edge >= 12',
+  'ie 10',
+  'ios >= 9',
+  'safari >= 9',
+  'android >= 4.4',
+  'opera >= 30'
 ]
 
 on_stylesheet_saved do |file|
