@@ -10,3 +10,6 @@
 [submodule "gists/2d3078f4024dbedf8fca6a30d6de5548"]
 	path = gists/2d3078f4024dbedf8fca6a30d6de5548
 	url = git@gist.github.com:2d3078f4024dbedf8fca6a30d6de5548.git
+[submodule "gists/7847ff9b396660b1054f23a0744ffc0c"]
+	path = gists/7847ff9b396660b1054f23a0744ffc0c
+	url = git@gist.github.com:7847ff9b396660b1054f23a0744ffc0c.git
