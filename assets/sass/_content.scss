@@ -60,6 +60,48 @@ em,
   font-family: $font-family-monospace;
 }
 
+.footnote-reference,
+.fn-backref {
+  &::before {
+    content: "[";
+  }
+
+  &::after {
+    content: "]";
+  }
+}
+
+.footnote-reference {
+  position: relative;
+  top: -.5em;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+  padding-left: 0.25rem;
+}
+
+dl.footnote {
+  font-size: $h6-font-size;
+  line-height: $base-line-height;
+  padding-left: 0.5rem;
+  border-left: solid 0.25rem $gray-500;
+
+  dt {
+    float: left;
+    &::after {
+      content: "\00A0\00A0";
+    }
+  }
+
+  dd {
+    margin-bottom: 0;
+  }
+
+  p {
+    text-indent: 0;
+  }
+}
+
 blockquote footer,
 .attribution {
   display: block;
@@ -82,7 +124,7 @@ blockquote footer::before {
   outline: 1px solid $gray-600;
 }
 
-div[class="footer"], // rst中的footer指令，会生成一个带有footer类的 hr。
+div.footer, // rst中的footer指令，会生成一个带有footer类的 hr。
 .document,
 .section,
 .epigraph,
@@ -91,7 +133,7 @@ div[class="footer"], // rst中的footer指令，会生成一个带有footer类�
   margin-bottom: $base-line-height;
 }
 
-div[class="footer"] {
+div.footer {
   font-size: $h6-font-size;
   line-height: $base-line-height;
 }
@@ -180,6 +222,11 @@ h2[itemprop="headline"] {
 
   ul, ol, dl {
     @include trailer;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto $base-line-height auto;
   }
 
   dt::after {
