@@ -43,5 +43,5 @@ excerpt_separator: .. 摘要注释
 .. _`Blue Ocean`: https://hub.docker.com/r/jenkinsci/blueocean
 .. _Drone: https://drone.io/
 .. _Portainer: https://www.portainer.io/
-.. _Swarm: https://docs.docker.com/swarm/overview/
+.. _Swarm: https://docs.docker.com/engine/swarm/
 .. _`Docker 实战`: /bookshelf/Docker实战/
