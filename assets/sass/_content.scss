@@ -60,6 +60,11 @@ em,
   font-family: $font-family-monospace;
 }
 
+.caption {
+  font-size: $h6-font-size;
+  color: $gray-600;
+}
+
 .footnote-reference,
 .fn-backref {
   &::before {
