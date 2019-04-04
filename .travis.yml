@@ -1,27 +1,22 @@
-language: ruby
+language: python
 rvm:
   - 2.5.3
-
-language: python
 python:
-  - "3.6"
-
+  - '3.6'
 git:
-  submodules:
-    false
-
+  submodules: false
 before_install:
   - gem install bundler
-
 install:
   - pip install -r requirements.txt
   - bundle install
   - bundle exec rake submodules_update
-
 script:
   - bundle exec compass compile -c assets/config.rb assets/
   - sed -i '/assets\/stylesheets\//d' .gitignore
   - bundle exec jekyll build
-
 after_success:
   - bundle exec rake push_site
+notifications:
+  slack:
+    secure: dCG2KHMPg0wkk55v0q0pDQVV3toLzicCxZOn/iOQXzcagx7KzohoxsmTY6U7NnVsIJGD+aibiAjncP9l6KFlG/WXXBZLcOWzuxyCvTztVY8le65U3zpBgum2N2YFVzlV7ZKvIgwMwtu6tcNkV6PL2PBTB/ETcOz96C15NSv0dsE6v6yqw6WD3d7rxkbdz+AMrW12LWaa8QaK7KdjgIVmYMbAZdFUhCMtqQnl9NHOsJH7u6pNwH/Jn+zxtqTYTFQfwguvwKkqdO+TKegrvn/GlKd4CPmDegnIzgRht7zNOqd7rWgI+uux4m6RJLw6cejKFHug/lY8UN4DIyheVL3BzRFS2/fK7R6QeCOp9Si4STfPtXXe30EWayb4+2Fqj0lPRc8p8C/VK787STnwgCxIeNwlMPche4WCJgVH61KjyivhJp7G3pdZucW5jV8R9J6indd5zqvvGB+2YRS843QrZkXJ72FKx+CEgQkSv3qj5KNMCl059MGAvDs8bDgkhjfBMlr2ZU/yxLPtUaK6TuxHoh2S4mGvoNaUaSQIaoVtVhkPv1aesA+UtBOH8qnUVD9RCxJJ5GEX4e3DfLMbyD64it6zpPvhD43lMCTAuMY4g2kXaM0VVXHc1XRSzIQhwYOiEZMXeHYTrfftBLlh6ulcahKI0Sc+6ZfSs4ReQmXBPgw=
