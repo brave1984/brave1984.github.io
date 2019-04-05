@@ -210,6 +210,10 @@ h2[itemprop="headline"] {
   p {
     margin-bottom: 0;
   }
+
+  .epigraph {
+    margin-bottom: 0;
+  }
 }
 
 [itemprop="articleBody"] {
@@ -236,6 +240,13 @@ h2[itemprop="headline"] {
 
   dt::after {
     content: "：";
+  }
+}
+
+.compound {
+  ul,
+  ol {
+    margin-bottom: 0;
   }
 }
 
