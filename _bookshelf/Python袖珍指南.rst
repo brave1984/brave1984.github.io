@@ -11,7 +11,7 @@ excerpt_separator: .. 摘要注释
 
     ``pip install --user Python袖珍指南``
 
-    ``import``\ 它——你会的。
+    你会用上它的——我相信。
 
 .. 摘要注释
 
