@@ -73,7 +73,7 @@ excerpt_separator: .. 摘要注释
 .. _`指南`: https://docs.python-guide.org/
 .. _Python: https://www.python.org/
 .. _SpaceVim: https://spacevim.org/
-.. _pytest: https://docs.pytest.org/en/latest/
+.. _pytest: https://pytest.org
 .. _Sphinx: http://www.sphinx-doc.org/en/master/
 .. _Ansible: https://www.ansible.com/
 .. _Docker: https://www.docker.com/
