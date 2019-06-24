@@ -2,7 +2,7 @@
 title: Python 3面向对象编程
 date: 2019-05-13 18:36:30 +0800
 categories: 计算
-tags: [Python, 面向对象]
+tags: [Python, 面向对象, 设计模式]
 gist: 
 excerpt_separator: .. 摘要注释
 
