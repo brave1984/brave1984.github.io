@@ -2,7 +2,7 @@
 title: 精通Python设计模式
 date: 2019-06-12 18:54:44 +0800
 categories: 计算
-tags: [面向对象, 设计模式]
+tags: [Python, 面向对象, 设计模式]
 gist: 
 excerpt_separator: .. 摘要注释
 
