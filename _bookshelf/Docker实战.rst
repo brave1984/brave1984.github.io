@@ -2,7 +2,7 @@
 title: Docker实战
 date: 2019-03-18 19:32:44 +0800
 categories: 计算
-tags: [Docker, 集群, 基础]
+tags: [Docker, 工具, 基础]
 gist: 
 excerpt_separator: .. 摘要注释
 

@@ -2,7 +2,7 @@
 title: 第一本Docker书
 date: 2019-03-13 19:10:11 +0800
 categories: 计算
-tags: [Docker, 集群, 基础]
+tags: [Docker, 工具, 基础]
 gist: 
 excerpt_separator: .. 摘要注释
 
