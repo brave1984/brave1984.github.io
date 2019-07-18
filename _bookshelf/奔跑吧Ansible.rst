@@ -2,7 +2,7 @@
 title: 奔跑吧Ansible
 date: 2019-06-26 10:09:08 +0800
 categories: 计算
-tags: [Ansible, 工具]
+tags: [Ansible, Python, 工具]
 gist: 
 excerpt_separator: .. 摘要注释
 
