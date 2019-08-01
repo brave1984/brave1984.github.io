@@ -2,7 +2,7 @@
 title: 代码整洁之道
 date: 2019-07-29 20:39:58 +0800
 categories: 计算
-tags: [程序设计, Java, 经典]
+tags: [程序设计, 经典]
 gist: 
 excerpt_separator: .. 摘要注释
 
