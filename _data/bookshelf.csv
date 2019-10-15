@@ -1,6 +1,6 @@
 title,author,producer,pagination,brand,publisher,published,ISBN,asin,product link
 JavaScript ES6函数式编程入门经典,Anto Aravinth,梁宵,172,,清华大学出版社,2018-01-01,9787302487142,,https://amzn.to/2Rdq8Ks
-JavaScript函数式编程指南,Luis Atencio,欧阳继超 & 屈鉴铭,210,异步图书,人民邮电出版社,2018-06-01,9787115462046,B07MX5H1H1,https://amzn.to/2Rckcl4
+JavaScript函数式编程指南,Luis Atencio,欧阳继超 & 屈鉴铭,210,异步图书,人民邮电出版社,2018-06-01,9787115462046,B07MX5H1H1,https://amzn.to/321VMNm
 GitHub入门与实践,[日]大塚弘记,支鹏浩 & 刘斌,255,图灵社区,人民邮电出版社,2015-06-30,9787115394095,B01F7IELDG,https://amzn.to/2AcwPmo
 HTML5与CSS3基础教程,Elizabeth Castro&Bruce Hyslop,望以文,417,图灵社区,人民邮电出版社,2014-04-30,9787115350657,B015316ZWC,https://amzn.to/2TXg6vb
 JavaScript和jQuery实战手册,David Sawyer McFarland,姚待艳,617,,机械工业出版社,2016-08-31,9787111546696,B071RKD1QF,https://amzn.to/2TXgJVz
@@ -10,12 +10,12 @@ Python 3学习笔记 上卷,雨痕,,400,博文视点,电子工业出版社,2017-
 Python学习手册,Mark Lutz,李军 & 刘红伟,889,,机械工业出版社,2011-03-28,9787111326533,B00H6X6KH6,https://amzn.to/2V72BJC
 Python网络数据采集,Ryan Mitchell,陶俊杰 & 陈小莉,200,图灵社区,人民邮电出版社,2016-02-29,9787115416292,B01M3VN9CW,https://amzn.to/2V7VLmO
 Ruby基础教程,高桥征义 & 后藤裕藏,何文斯,338,图灵社区,人民邮电出版社,2017-08-24,9787115462947,B077SNL4CW,https://amzn.to/2TWfIgs
-SQL基础教程,[日] MICK,孙淼 & 罗勇,320,图灵社区,人民邮电出版社,2017-12-14,9787115455024,,https://amzn.to/2GEJPH8
+SQL基础教程,[日] MICK,孙淼 & 罗勇,320,图灵社区,人民邮电出版社,2017-12-14,9787115455024,B0771DQPMN,https://amzn.to/31VYEuT
 代码之外的功夫,格雷戈里·布朗,李志,110,图灵社区,人民邮电出版社,2018-02-28,9787115478375,B07DDGYZWN,https://amzn.to/2U5j14M
 代码之髓,[日]西尾泰和,曾一鸣,219,图灵社区,人民邮电出版社,2014-07-31,9787115361530,B01531736E,https://amzn.to/2TXirWZ
 代码的未来,[日]松本行弘,周自恒,354,图灵社区,人民邮电出版社,2013-05-31,9787115317513,B00ITJQAOE,https://amzn.to/2TXjVAx
 全栈应用开发,黄峰达,,376,博文视点,电子工业出版社,2017-04-30,9787121313691,B072XKSPLF,https://amzn.to/2U06FLq
-响应式Web设计,Ben Frain,奇舞团,220,图灵社区,人民邮电出版社,2017-12-14,9787115446558,,https://amzn.to/2V3QX1W
+响应式Web设计,Ben Frain,奇舞团,220,图灵社区,人民邮电出版社,2017-12-14,9787115446558,,https://amzn.to/2ANYR7H
 大教堂与集市,Eric S. Raymond,卫剑钒,194,,机械工业出版社,2014-06-13,9787111452478,B00L2XQY0Y,https://amzn.to/2TYAE6j
 开源思索集,庄表伟,,125,简书·浙版数媒,浙江出版集团数字传媒有限公司,2016-07-31,,B01JHO0388,https://amzn.to/2V9GFxn
 春琴抄,[日]谷崎润一郎,曹曼,96,果麦文化,天津人民出版社,2017-05-31,9787201118284,B074V1NWKS,https://amzn.to/2GHHif9
@@ -32,7 +32,7 @@ SQL基础教程,[日] MICK,孙淼 & 罗勇,320,图灵社区,人民邮电出版�
 软技能,John Z. Sonmez,王小刚,370,异步图书,人民邮电出版社,2016-08-30,9787115429476,B01J9MZPPO,https://amzn.to/2U1ZAKw
 面向对象的思考过程,Matt Weisfeld,黄博文,233,,机械工业出版社,2016-10-31,9787111553083,B07CNS1LCT,https://amzn.to/2TWwxaX
 韩愈文集,钱伯城,,296,,中国国际广播出版社,2010-12-31,9787507833201,B0080D0NS8,https://amzn.to/2GELYTa
-黑客,Steven Levy,赵俐 & 刁海鹏 & 田俊静,352,,机械工业出版社,2011-10-11,9787111358404,B00E593MRU,
+黑客,Steven Levy,赵俐 & 刁海鹏 & 田俊静,352,,机械工业出版社,2011-10-11,9787111358404,B00E593MRU,https://amzn.to/2AO7gbc
 黑客与画家,Paul Graham,阮一峰,236,图灵社区,人民邮电出版社,2011-03-31,9787115249494,B00ALPRKH0,https://amzn.to/2TXigLj
 程序员修炼之道,Andy Hunt & Dave Thomas,马维达,272,博文视点,电子工业出版社,2011-01-01,9787121123368,,https://amzn.to/2H1GRwl
 The Little Schemer,Daniel P. Friedman & Matthias Felleisen,卢俊祥,196,博文视点,电子工业出版社,2017-07-01,9787121317255,,https://amzn.to/2SJ05IE
@@ -42,16 +42,16 @@ The Little Schemer,Daniel P. Friedman & Matthias Felleisen,卢俊祥,196,博文�
 Sass与Compass实战,Wynn Netherland & Nathan Weizenbaum & Chris Eppstein & Brandon Mathis,刘炬光 & 赵锦江 & 张浩然,188,图灵社区,人民邮电出版社,2014-05-31,978711553016,B015PQUWI8,https://amzn.to/2BJNajk
 Sass和Compass设计师指南,Ben Frain,任凯光,272,,华中科技大学出版社,2014-04-24,9787560999302,B013UG2PHG,https://amzn.to/2BLZQGb
 码农翻身,刘欣,,296,博文视点,电子工业出版社,2018-05-01,9787121341175,,https://amzn.to/2EjKNFi
-代码整洁之道：程序员的职业素养,Robert C. Martin,余晟 & 章显洲,170,异步图书,人民邮电出版社,2016-09-01,9787115434159,,https://amzn.to/2U0HBUz
+代码整洁之道：程序员的职业素养,Robert C. Martin,余晟 & 章显洲,170,异步图书,人民邮电出版社,2016-09-01,9787115434159,,https://amzn.to/2OstO9t
 CSS重构,Steve Lindstrom,杜春晓 & 司韦韦,120,图灵社区,人民邮电出版社,2017-11-01,9787115469786,,https://amzn.to/2ECvTKC
 Linux命令行与shell脚本编程大全,Richard Blum & Christine Bresnahan,门佳 & 武海峰,605,图灵社区,人民邮电出版社,2016-08-01,9787115429674,B0719GT5W1,https://amzn.to/2O0Jf6h
-Docker实战,Jeff Nickoloff,胡震 & 杨润青 & 黄帅,292,博文视点,电子工业出版社,2016-11-01,9787121303067,,https://amzn.to/2Od7Kxp
-JavaScript忍者秘籍,John Resig & Bear Bibeault & Josip Maras,一心一译前端小组,429,异步图书,人民邮电出版社,2018-01-01,9787115473264,B07BT4Y68Q,https://amzn.to/2G2m49t
+Docker实战,Jeff Nickoloff,胡震 & 杨润青 & 黄帅,292,博文视点,电子工业出版社,2016-11-01,9787121303067,,https://amzn.to/2IwRwh0
+JavaScript忍者秘籍,John Resig & Bear Bibeault & Josip Maras,一心一译前端小组,429,异步图书,人民邮电出版社,2018-01-01,9787115473264,B07BT4Y68Q,https://amzn.to/35hp4ti
 深入理解ES6,Nicholas C. Zakas,刘振涛,396,博文视点,电子工业出版社,2017-06-01,9787121317989,,https://amzn.to/2VGgA9D
 Python袖珍指南,Mark Lutz,侯荣涛,189,,中国电力出版社,2015-01-01,9787512364554,,https://amzn.to/2VWNlQm
 Python编程之美,Kenneth Reitz & Tanya Schlusser,夏永锋 & 廖邦杰,320,博文视点,电子工业出版社,2018-08-01,9787121347573,,https://amzn.to/2W7K5BM
 pytest测试实战,Brian Okken,陆阳 & 饶勇,224,,华中科技大学出版社,2018-08-31,9787568044424,,https://amzn.to/2GMfu7g
-Python 3面向对象编程,Dusty Phillips,孙雨生,440,博文视点,电子工业出版社,2018-06-01,9787121341366,,https://amzn.to/2VPqpp3
+Python 3面向对象编程,Dusty Phillips,孙雨生,440,博文视点,电子工业出版社,2018-06-01,9787121341366,,https://amzn.to/35d01HG
 Ruby元编程,Paolo Perrotta,廖志刚,272,,华中科技大学出版社,2015-08-01,9787568009799,,https://amzn.to/2WbzoNB
 面向对象设计实践指南,Sandi Metz,张雪平 & 彭晓东,208,异步图书,人民邮电出版社,2014-01-01,9787115332455,,https://amzn.to/2Z9PfhK
 优雅的Ruby,Avdi Grimm,秦凡鹏,248,,华中科技大学出版社,2017-04-01,9787568024891,,https://amzn.to/2Zp3LlV
@@ -73,3 +73,4 @@ MongoDB大数据处理权威指南,David Hows & Peter Membrey & Eelco Plugge & T
 简约之美,Max Kanat-Alexander,余晟,105,图灵社区,人民邮电出版社,2013-01-01,9787115302380,B00JVLEYYM,https://amzn.to/2LUBcdm
 架构整洁之道,Robert C. Martin,孙宇聪,348,博文视点,电子工业出版社,2018-09-20,9787121347962,,
 我的架构思想,周爱民,,236,图灵社区,,2017-06-12,,,
+演进式架构,Neal Ford & Rebecca Parsons & Patrick Kua,周训杰,140,图灵社区,人民邮电出版社,2019-08-22,9787115516176,,
