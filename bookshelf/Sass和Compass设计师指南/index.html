@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>Sass和Compass设计师指南 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">Sass和Compass设计师指南</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/web" rel="tag">Web</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/css" rel="tag">CSS</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/sass" rel="tag">Sass</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/compass" rel="tag">Compass</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Feb 27, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p><a class="reference external" href="http://sass-lang.com/">Sass</a>是一种用<a class="reference external" href="https://www.ruby-lang.org/">Ruby</a>开发的、用于编写<em>CSS</em>的<em>DSL</em>（领域特定语言），<a class="reference external" href="http://compass-style.org/">Compass</a>是一个用以搭建<a class="reference external" href="http://sass-lang.com/">Sass</a>开发环境的框架。</p>
+</div>
+<!-- 摘要注释 -->
+<p>作者利用<a class="reference external" href="http://sass-lang.com/">Sass</a>和<a class="reference external" href="http://compass-style.org/">Compass</a>，从无到有地构建了一个采用网格布局（<a class="reference external" href="https://oddbird.net/susy/">Susy</a>）与<a class="reference external" href="https://www.w3.org/TR/css3-mediaqueries/">媒体查询</a>的响应式Web页面。读完本书，你会发出“Sass与Compass也不过如此”的感慨！</p>
+<p>首先，<a class="reference external" href="http://sass-lang.com/">Sass</a>不一定能让我们写出比以前更优化的代码，它只是个工具而已；其次，因为它只是个<em>CSS</em>的预处理工具，所以并不难学。</p>
+<p>谈到<em>CSS</em>中的<em>class</em>(类），就不能不联想到面向对象程序设计。我们需要通过<strong>继承</strong>、<strong>抽象类</strong>以及<strong>接口</strong>，来实现代码重用。为了克服系统的复杂性，我们又得进行<strong>模块化</strong>——划分出具有内聚力的组件。</p>
+<p><a class="reference external" href="http://sass-lang.com/">Sass</a>的最大特点是<strong>嵌套</strong>，它是<a class="reference external" href="http://sass-lang.com/">Sass</a>中代码的组织形式。</p>
+<div class="compound">
+<p class="compound-first"><a class="reference external" href="http://sass-lang.com/">Sass</a>是通过<strong>指令</strong>来重用代码的：</p>
+<p class="compound-last"><span class="docutils literal">&#64;extend</span>实现了<strong>继承</strong>，带<em>%</em>的占位符选择器实现了<strong>抽象类</strong>，<span class="docutils literal">&#64;include</span>实现了<strong>接口</strong>（<span class="docutils literal">&#64;mixin</span>）的调用。变量、<span class="docutils literal">#{}</span>、<span class="docutils literal">!default</span>、<span class="docutils literal">&amp;</span>解决了硬编码的问题，<span class="docutils literal">&#64;if</span>、<span class="docutils literal">&#64;for</span>、<span class="docutils literal">&#64;each</span>、<span class="docutils literal">&#64;while</span>与函数组成了代码重用的最小单位，<span class="docutils literal">&#64;import</span>按不同的组织层次将代码<strong>模块化</strong>。</p>
+</div>
+<p>通过阅读<a class="reference external" href="http://sass-lang.com/documentation/">Sass文档</a>，你能够全面地掌握<a class="reference external" href="http://sass-lang.com/">Sass</a>的语法规则：数据类型、变量、运算符、控制流程、参数与作用域、函数与类的定义及使用、模块的导入、编译输出。</p>
+<p><a class="reference external" href="http://compass-style.org/">Compass</a>除了为我们搭建<a class="reference external" href="http://sass-lang.com/">Sass</a>开发环境外，还提供了一系列的有用的混合器（如：样式重置、<em>CSS3</em>特性、图像精灵与<em>data URI</em>等），从而再也不用为厂商前缀而忧心啦！</p>
+<p>注意事项：不要嵌套得太深；选择器不要过于具体，够用就好。至于<a class="reference external" href="http://sass-lang.com/">Sass</a>与<a class="reference external" href="http://compass-style.org/">Compass</a>的安装问题，你需要学习就是那么一点命令行与<a class="reference external" href="https://www.ruby-lang.org/">Ruby</a>知识（如：《<a class="reference external" href="https://amzn.to/2TWfIgs">Ruby基础教程</a>》）。</p>
+</div>
+<div class="footer">
+<hr class="footer" />
+<p>感谢<em>Ben Frain</em>和他的两本好书（另一本《<a class="reference external" href="/bookshelf/响应式Web设计/">响应式Web设计</a>》），还有就是<a class="reference external" href="https://benfrain.com/">他的网站</a>设计得真好（比我的好太多了），他的推特是<a class="reference external" href="https://twitter.com/benfrain">&#64;benfrain</a>。</p>
+<p>进阶——请阅读《<a class="reference external" href="/bookshelf/Sass与Compass实战/">Sass与Compass实战</a>》和《<a class="reference external" href="http://sass-lang.com/documentation/">Sass文档</a>》！</p>
+
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/Sass%E5%92%8CCompass%E8%AE%BE%E8%AE%A1%E5%B8%88%E6%8C%87%E5%8D%97/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/Sass%E5%92%8CCompass%E8%AE%BE%E8%AE%A1%E5%B8%88%E6%8C%87%E5%8D%97/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/Sass%E5%92%8CCompass%E8%AE%BE%E8%AE%A1%E5%B8%88%E6%8C%87%E5%8D%97/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E6%B8%90%E8%BF%9B%E5%A2%9E%E5%BC%BA/" title="渐进增强" aria-label="Previous">
+        <span><small>上一篇：</small>渐进增强</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/Sass%E4%B8%8ECompass%E5%AE%9E%E6%88%98/" title="Sass与Compass实战" aria-label="Next">
+        <span><small>下一篇：</small>Sass与Compass实战</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/Sass和Compass设计师指南/cover.jpg" alt="封面：Sass和Compass设计师指南">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Ben Frain</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>任凯光</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>272页</p>
+      </li>
+      
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787560999302</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>华中科技大学出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2014-04-24</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2BLZQGb" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

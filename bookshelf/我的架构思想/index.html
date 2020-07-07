@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>我的架构思想 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">我的架构思想</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/程序设计" rel="tag">程序设计</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/架构" rel="tag">架构</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/经典" rel="tag">经典</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Aug 10, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>架构需要那束光来观照事实，以证明自己的存在。</p>
+</div>
+<!-- 摘要注释 -->
+<p>这不是一本易于读懂的书，作者所说的“那束光”是指“思想”么？同《<a class="reference external" href="https://www.amazon.cn/dp/B01MXQC8WP">如何阅读一本书</a>》一样，本书能与你的心智一并成长，它在我所认为的好书中有一席之地。</p>
+<p>作者用层层渐近的叙事方法，触及了架构的方方面面，进而得到了架构之原则、架构之美。架构的要旨是“以序容易”，本书的要旨亦是如此。架构是一个以架构意图驱动的过程，形成论与组成论是两个过程观点。用线串起珍珠是个过程，在这过程里所得到的映像（珠宝）是耳环、是手链、是项链、是衣裳……</p>
+<p>人生的架构是什么？其复杂性、方向性与系统性又是什么？</p>
+<p>人生就似组K线，人需要有信念的支撑，才不会迷茫。经过长时间的思索，我有了“我所追寻的是什么？”的答案——编程的乐趣（亦或是，粉碎孤独）。超越自己很容易，只要按部就班地进行迭代；超越自己也很困难，因为要有过程实施的保障。你需要的是高瞻远瞩，而不是好高骛远!</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p>系统，是对架构师所面对对象的基本抽象。架构师对系统的认识过程、方法与结果，决定了他如何理性地架构之。认识系统将致力于将系统中的核心概念抽象出来，将核心逻辑梳理出来，将核心问题（关系、依赖与冲突）揭示出来。但是架构系统的目的正好在于通过对概念与逻辑的映射来消弥这些核心问题，使核心问题对其外在（例如用户可见的产品）不构成明显的影响。</p>
+<img alt="/assets/bookshelf/我的架构思想/认知过程的方法树.jpg" src="/assets/bookshelf/我的架构思想/认知过程的方法树.jpg" />
+<p>“识别”与“分别”是这个树上较低层次的方法，它们能得到系统知识而无法归纳之，能分辨出差异而无法梳理之，能构建功能模块而无法推演之。因为归纳（概念）、梳理（关系）、推演（逻辑）这些架构活动的核心基础在于“知得”而非“识得”。</p>
+<p>意图，是“识得”的核心，即“你想要什么”决定了系统如何构画，而不仅仅是对现实系统的复制。架构活动只是将这种意图表达在架构产出中，并阐述这一意图的合理性；如何得到或形成意图才是架构的精髓，其本质是通过抽象过程，对既有系统的再认识与再创造。意图必须是能够被规则化，且规则化也可以为其他系统构件带来便利。</p>
+<p>架构师的核心价值，在于通过架构意图来将“方向设定”映射为“规模与细节”。其中，“规模”表现为架构的边界/范围，“细节”表现为架构部件的联接关系/联接件。任何一个架构意图的形成都是对三个“入手角度”（<strong>系统的脉络</strong>、<strong>系统的组织</strong>、<strong>系统组织间的关系</strong>）整体的反复考量进而形成的一个最终认识，而决非其单一方面的阐述。架构意图中最重要的是系统的脉络，其整体动向是本质性的需求，其内在动律是上述需求的表现与表达方式。</p>
+<ul class="simple">
+<li><p>系统的脉络是对方向性的体现，包括系统内在的动律与整体的动向两个方面。<strong>内在动律</strong>意味着架构师应当对系统（作为一个整体）的核心运作规律加以考察，这包括一般过程、限制条件以及最基本的系统要素间的流转关系。<strong>整体动向</strong>意味着架构师应当对系统的长期目标做出考量，这包括依赖、复杂性与持续价值。</p></li>
+<li><p>系统的组织是对范围的考虑，它主要讨论将哪些内容放在一起的问题，它一方面决定组织在内含上的规模，另一方面也决定组织在外延间的距离。</p></li>
+<li><p>组织的关系是对联接件的考虑，它主要讨论上述组织成员间的通信，并进一步决定通信的形式与其成本。</p></li>
+</ul>
+<p>在既不存在所谓事实（因而也难有可信的主观判断），又没有所谓战略时，我们可以藉由前瞻方向来形成架构意图，也可以尝试回溯问题。所谓问题，要么是系统与其要素之间的矛盾，要么是观察与其预期之间的矛盾。架构师的思维应当是基于对事实与问题的思考，而非基于可能既有的、已得的工具的应用与设问。</p>
+<p>架构<strong>形成论</strong>是过程论的动态模型，可以看成架构在时间视角的求解，其部件应当包括各种架构阶段；架构<strong>组成论</strong>是过程论的静态模型，可以看成架构在空间视角上的求解，其部件应当包括：子系统、通信与验证。</p>
+<div class="compound">
+<p class="compound-first">架构师应当具备的能力：</p>
+<ul class="compound-last simple">
+<li><p>领悟，主要包括架构思维的三个核心能力：概念抽象能力、概念表达能力和基于概念的逻辑表达能力。</p></li>
+<li><p>领域，是架构师在目标系统中的背景知识。</p></li>
+<li><p>领袖，是架构师在领域内和团队内的影响力。</p></li>
+</ul>
+</div>
+<img alt="/assets/bookshelf/我的架构思想/架构决策过程.jpg" src="/assets/bookshelf/我的架构思想/架构决策过程.jpg" />
+<p>若架构不谈时间需求与空间需求，而只谈目标需求，那么“架构整体”就必将等效于“各种架构的全集”。架构是可以通过解决问题来实现需求的，而非单纯对需求的响应。架构本身的价值在于：在保持方向的同时控制成本。架构在时间需求与空间需求上的考量，构成了“架构全集”到“架构整体”的价值提升。</p>
+<div class="compound">
+<p class="compound-first">任何系统架构必存在其外部实现与内部实现的过程：</p>
+<ul class="compound-last simple">
+<li><p>外部实现，是指架构师团队用以形成与演化架构的过程。</p></li>
+<li><p>内部实现，是指架构以及其部件的内部关系得以构建与维护的过程。</p></li>
+</ul>
+</div>
+<div class="compound">
+<p class="compound-first">一个架构的有效性、正确性应当表达为：</p>
+<ul class="compound-last simple">
+<li><p>如何确保宏观规划层对需求映射层的<strong>约束</strong>，以及确保功能架构对开发架构的<strong>约束</strong>；</p></li>
+<li><p>如何确保在将能力架构<strong>映射</strong>为实现架构时不丢失功能设计；</p></li>
+<li><p>如何确保开发实现的结果能够被应用于预设的交付环境。</p></li>
+</ul>
+</div>
+<img alt="/assets/bookshelf/我的架构思想/架构形成模型.jpg" src="/assets/bookshelf/我的架构思想/架构形成模型.jpg" />
+<ul class="simple">
+<li><p>功能架构：它是实现架构中的组成部分，把由能力架构映射而来的能力分割为基本独立的<strong>功能</strong>块，基本映射了用户的原始需求，并约束了开发架构中的功能模块。</p></li>
+<li><p>运行架构（静态部分）：将这些功能包装并发布成<strong>服务</strong>，用以约束开发架构中的包的组织与接口的设计。</p></li>
+<li><p>运行架构（动态部分）：选择或实现可运行<strong>框架</strong>来驱动服务与功能，基本约束了开发架构中可选的第三方应用服务器，以及应当自主开发的、系统中的关键联接件，如事务服务框架等。</p></li>
+<li><p>集成架构：以<strong>产品</strong>来封装和交付可运行框架，基本约束了部署架构可用的部件，以及部件之间的组合、依赖等关系。</p></li>
+</ul>
+<p>系统架构要能反映系统长期演化中的不变性，以在演化过程中持续用于对系统的讨论，但不能是系统阶段实现的负担。架构的支撑性应当以数据为核心，平台（platform）通常是围绕数据的位置、功用、生存周期或其分布特性来规划的。架构的调度性应当以逻辑为核心，框架（framework）应当追寻架构对象——系统——的一般过程，并将它实现为架构的核心调度逻辑。</p>
+<p>架构意图在各个阶段的不同变化，意味着我们可以用“有规划的变化”来讨论整体的架构意图。从架构的体系性上来考虑，即使在最初阶段的架构中，也不能缺少对后续架构阶段的设定。这至少包括两个方面：其一，后续架构阶段的启动条件；其二，后续架构过程“在当前架构中的”入手点。我们需要做的最后的一步工作是：将几个关键入手点连续起来，于是整个系统架构的脉络也就赫然可见了。</p>
+<p>架构表达是在架构过程的阶段性成果的基础上所进行的、尽可能准确而清晰的叙述。就“系统架构”的整体表达来看，<strong>层次结构</strong>适宜构建平台（platform）的过程，其基础领域倾向于不变；<strong>并列结构</strong>适宜构建库（library）的过程，其领域总量倾向于不变；<strong>嵌套结构</strong>适宜构建框架（framework）的过程，其核心领域（或核心过程）是倾向于不变的。我们必须关注三点：其一，应通过层次系统来隔离可变性，并尽量增大其中不变的部分；其二，可变部分影响系统的形态，但不影响系统的性状（亦即是指系统的边界与联接件）；其三，如何理解“不变部分的关系”决定了系统的性状，也决定了“不变部分的复杂度是1”的单位大小。</p>
+<div class="compound">
+<p class="compound-first">向下依赖其实只发生于如下两种情况：</p>
+<ol class="compound-last arabic simple">
+<li><p>上层对下层的数据依赖（逻辑依赖可以通过数据下沉或添加数据抽象层次来变成数据依赖）；</p></li>
+<li><p>当采用嵌套结构时，需要一个向下的注册逻辑。</p></li>
+</ol>
+</div>
+<div class="compound">
+<p class="compound-first">架构原则：</p>
+<ol class="compound-last arabic simple">
+<li><p><strong>架构面向问题，但满足需求</strong></p></li>
+<li><p><strong>架构基于概念抽象，而非想象</strong></p></li>
+<li><p><strong>架构=范围+联接件</strong></p></li>
+<li><p><strong>过程之于结果，并没有必然性</strong></p></li>
+<li><p><strong>系统的本质，即是架构的本质</strong></p></li>
+</ol>
+</div>
+<p>我们之所以将某个领域集或其他类似的“组成/构成/集/……”称为系统，必是因为它们之间存在某种<strong>系统性</strong>，以维持它们的内部关系与外部表现。这种系统性是系统存在的唯一依据、核心矛盾与主体价值，也是架构——系统所有的可能映像——的基本事实、本质问题与形成驱动。系统的本质即是架构的本质。我们必将二者的本质指向同一，其复杂性，亦即结构的本质，方可同一；其方向性，亦即目标的本质，方可同一；其系统性，亦即问题的本质，方可同一。</p>
+<p>通过复制的方法得到的架构失去了在形成论中的精髓，即映射与约束；也失去了组成论中的精髓，即关系与通信。即使我们通过某种过程将这些“精髓”凝集在一个架构模式（以及由此而来的架构方法）之中，我们也失去了最原始的架构者的思想过程。架构思想是认识系统的方法与结果：从方法上来说，思想决定了如何认识系统；从结果上来说，思想表现为对系统的认识。</p>
+<p>在时间维度上，架构的美在于能以其持续性来保障系统的实施；在空间维度上，架构的美在于能以其结构性来保障系统的成本。架构要做到的便是抹去那些枝节的东西，将系统主体的、正确的、无可争辩的事实揭示出来，因为唯有这些才能长期而又大范围地影响到系统的推进过程。需知设计所重的，正在于系统之细节刻画；而架构所重的，是先于刻画之前的、对系统之本实的确立。</p>
+</div>
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/%E6%88%91%E7%9A%84%E6%9E%B6%E6%9E%84%E6%80%9D%E6%83%B3/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/%E6%88%91%E7%9A%84%E6%9E%B6%E6%9E%84%E6%80%9D%E6%83%B3/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/%E6%88%91%E7%9A%84%E6%9E%B6%E6%9E%84%E6%80%9D%E6%83%B3/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/" title="架构整洁之道" aria-label="Previous">
+        <span><small>上一篇：</small>架构整洁之道</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E6%BC%94%E8%BF%9B%E5%BC%8F%E6%9E%B6%E6%9E%84/" title="演进式架构" aria-label="Next">
+        <span><small>下一篇：</small>演进式架构</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/我的架构思想/cover.jpg" alt="封面：我的架构思想">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>周爱民</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>236页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>图灵社区</p>
+      </li>
+      
+      
+      
+      
+      <li>
+        <p><span>出版日期：</span>2017-06-12</p>
+      </li>
+      
+    </ul>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

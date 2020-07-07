@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>Docker实战 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">Docker实战</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/docker" rel="tag">Docker</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/工具" rel="tag">工具</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/基础" rel="tag">基础</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Mar 18, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>只有理解<strong>隔离</strong>，才能知其然又知其所以然。</p>
+</div>
+<!-- 摘要注释 -->
+<p>个人认为全书的精华就是容器的资源隔离与权限控制等基础原理的介绍，只有了解了这些概念，才能更好地构建与部署多容器应用栈。</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p>隔离是众多计算模式、资源管理策略和一般审计实践的一个核心概念。容器提供的是进程上下文的隔离，而不是整个系统的虚拟化。</p>
+<div class="compound">
+<p class="compound-first"><a class="reference external" href="https://www.docker.com/">Docker</a>构建的容器隔离包括8个方面：</p>
+<ul class="compound-last simple">
+<li><p><em>PID命名空间</em>——进程标识符和能力</p></li>
+<li><p><em>UTS命名空间</em>——主机名和域名</p></li>
+<li><p><em>MNT命名空间</em>——文件系统访问和结构</p></li>
+<li><p><em>IPC命名空间</em>——通过共享内存的进程间通信</p></li>
+<li><p><em>NET命名空间</em>——网络访问和结构</p></li>
+<li><p><em>USR命名空间</em>——用户名和标识</p></li>
+<li><p><em>chroot()</em>——控制文件系统根目录的位置</p></li>
+<li><p><em>cgroups</em>——资源保护</p></li>
+</ul>
+</div>
+<p>容器有四种状态：正在运行、暂停、重新启动或退出。</p>
+<div class="figure">
+<img alt="https://docs.docker.com/storage/images/types-of-mounts-volume.png" src="https://docs.docker.com/storage/images/types-of-mounts-volume.png" />
+<p class="caption">每一个存储卷就是容器目录树的挂载点在主机目录树中的位置，存储卷有两种类型：绑定挂载存储卷、管理存储卷。</p>
+</div>
+<div class="figure">
+<img alt="/assets/bookshelf/Docker实战/network.jpg" src="/assets/bookshelf/Docker实战/network.jpg" />
+<p class="caption">有四种网络容器原型：<strong>Closed</strong>容器、<strong>Bridged</strong>容器、<strong>Joined</strong>容器、<strong>Open</strong>容器。<strong>Joined</strong>容器共享私有接口与本地回环接口。</p>
+</div>
+<p><a class="reference external" href="https://docs.docker.com/network/links/">链接</a>的本质就是静态的、具有方向性和无传递性的依赖。链接通过检测目的容器的网络信息（IP地址和开放端口），然后将这些信息注入新容器中。容器只有在运行状态，才能维持IP地址的租约。</p>
+<div class="compound">
+<p class="compound-first">为新容器添加一条<a class="reference external" href="https://docs.docker.com/network/links/">链接</a>会发生以下三件事：</p>
+<ul class="compound-last simple">
+<li><p>描述目标容器的环境变量会被创建；</p></li>
+<li><p>链接的别名和对应的目标容器的IP地址会被添加到DNS覆盖列表中；</p></li>
+<li><p>如果跨容器通信被禁止了，<a class="reference external" href="https://www.docker.com/">Docker</a>会添加特定的防火墙规则来允许被链接的容器间的通信。</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<p>关于<a class="reference external" href="https://docs.docker.com/engine/swarm/">Swarm mode</a>的学习，可参考《<a class="reference external" href="https://amzn.to/2CszJ7I">Swarm容器编排与Docker原生集群</a>》。技术书籍，尤其是中文书籍总是落后于文档。</p>
+<p>Dockerfile links: <a class="reference external" href="https://github.com/tianon/docker-brew-ubuntu-core/blob/bfd753a747344ff1c6838a2c91ff0606e936f0d0/bionic/Dockerfile">ubuntu</a>, <a class="reference external" href="https://github.com/nginxinc/docker-nginx/blob/7890fc2342613e6669ad83ceead9c81136d2cc0a/mainline/stretch/Dockerfile">nginx</a>, <a class="reference external" href="https://github.com/docker-library/postgres/blob/7e80419825e4bab4e749bc61334570ffc261ea5e/11/Dockerfile">postgres</a>, <a class="reference external" href="https://github.com/docker-library/python/blob/9bb5d46dbcf16250a2d292ddc1e0b7a792aa275f/3.7/stretch/Dockerfile">python</a>, <a class="reference external" href="https://github.com/docker-library/ruby/blob/995719add69339b78bd8cde46183b4902b761add/2.6/stretch/Dockerfile">ruby</a>.</p>
+
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/Docker%E5%AE%9E%E6%88%98/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/Docker%E5%AE%9E%E6%88%98/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/Docker%E5%AE%9E%E6%88%98/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E7%AC%AC%E4%B8%80%E6%9C%ACDocker%E4%B9%A6/" title="第一本Docker书" aria-label="Previous">
+        <span><small>上一篇：</small>第一本Docker书</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E4%BB%A3%E7%A0%81%E4%B9%8B%E9%AB%93/" title="代码之髓" aria-label="Next">
+        <span><small>下一篇：</small>代码之髓</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/Docker实战/cover.jpg" alt="封面：Docker实战">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Jeff Nickoloff</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>胡震 & 杨润青 & 黄帅</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>292页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>博文视点</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787121303067</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>电子工业出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2016-11-01</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2IwRwh0" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

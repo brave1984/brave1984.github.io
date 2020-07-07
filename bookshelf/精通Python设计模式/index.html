@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>精通Python设计模式 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">精通Python设计模式</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/python" rel="tag">Python</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/面向对象" rel="tag">面向对象</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/设计模式" rel="tag">设计模式</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Jun 12, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p><strong>设计模式</strong>是在已有的方案之上发现更好的方案，而不是全新发明。</p>
+</div>
+<!-- 摘要注释 -->
+<p>软件开发不是一蹴而就的事，而是一个不断改善的过程。随着需求的变化，在——读代码、写代码——这个迭代过程中，我们面临着权衡取舍，为控制软件的复杂度而努力着。</p>
+<p>设计模式是应对软件复杂度的有效方法，是前人对设计原则的解读、对优秀代码的抽象，可分为创建型、结构型、以及行为型。设计模式好用，但不可滥用，需要结合相应的上下文来使用。</p>
+<p>本书的作者用简单、明了的文字讲解了16种设计模式，使得整本书具有很高的可读性，有助于读者对模式的识别。</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p>设计模式并不是万能的，仅当代码确实存在坏味道、难以扩展维护时，才有使用的必要。</p>
+<p><strong>工厂模式</strong>通常有两种形式：一种是工厂方法（Factory Method），它是一个方法/函数，对不同的输入参数返回不同的对象；第二种是抽象工厂，它是一组用于创建一系列相关事物对象的工厂方法。</p>
+<p>在<strong>建造者模式</strong>中，有两个参与者：建造者（builder）和指挥者（director）。建造者负责创建复杂对象的各个组成部分，指挥者使用一个建造者实例控制建造的过程。同<strong>工厂模式</strong>的主要的区别在于：工厂模式以单个步骤创建对象，而建造者模式以多个步骤创建对象，并且几乎始终会使用一个指挥者。</p>
+<p><strong>适配器模式</strong>，无需修改不兼容模型的源代码就能获得接口的一致性。</p>
+<p><strong>装饰器模式</strong>能够以透明的方式（不会影响其他对象）动态地将功能添加到一个对象中，是实现横切关注点的绝佳方案。</p>
+<p><strong>外观设计模式</strong>有助于隐藏系统的内部复杂性，并通过一个简化的接口向客户端暴露必要的部分，是在已有复杂系统之上实现的一个抽象层。</p>
+<p><strong>享元模式</strong>通过为相似对象引入数据共享来最小化内存使用，提升性能。一个享元（Flyweight）就是一个包含状态独立的不可变（又称固有的）数据的共享对象，非固有的数据应由客户端代码显式地提供。</p>
+<p><strong>关注点分离原则</strong>（Separation of Concerns，SoC）是将一个应用切分成不同的部分，每个部分解决一个单独的关注点。<strong>模型—视图—控制器模式</strong>是一种架构模式，它将应用切分成三个部分：模型、视图和控制器。模型是核心的部分，代表着应用的信息本源，包含和管理（业务）逻辑、数据、状态以及应用的规则；视图是模型的可视化表现；控制器是模型与视图之间的链接/粘附，模型与视图之间的所有通信都通过控制器进行。为了实现模型与其表现之间的解耦，每个视图通常都需要有属于它的控制器。</p>
+<div class="compound">
+<p class="compound-first"><strong>代理模式</strong>因使用代理对象在访问实际对象之前执行重要操作而得其名，以下是四种不同的知名代理类型：</p>
+<ul class="compound-last simple">
+<li><p>远程代理：实际存在于不同地址空间的对象在本地的代理者</p></li>
+<li><p>虚拟代理：用于懒初始化，将一个大计算量对象的创建延迟到真正需要的时候进行</p></li>
+<li><p>保护/防护代理：控制对敏感对象的访问</p></li>
+<li><p>智能（引用）代理：在对象被访问时执行额外的动作</p></li>
+</ul>
+</div>
+<p><strong>责任链模式</strong>用于让多个对象来处理单个请求时，或者用于预先不知道应该由哪个对象（来自某个对象链）来处理某个特定请求时。发送方可直接访问链中的首个节点，若首个节点不能处理请求，则转发给下一个节点，如此直到请求被某个节点处理或者整个链遍历结束，从而实现发送方与接收方（多个）之间的解耦。</p>
+<p><strong>命令模式</strong>将一个操作封装成一个对象。可以在任何时候执行一个命令，而并不一定是在命令创建时；调用者与执行者解耦，调用者无需知道命令的任何实现细节；可以对命令进行分组，并按一定的顺序执行。</p>
+<p><strong>观察者模式</strong>描述单个对象（发布者，又称为主持者或可观察者）与一个或多个对象（订阅者，又称为观察者）之间的发布—订阅关系，可以降低发布者与订阅者之间的耦合度，从而易于在运行时添加/删除订阅者。</p>
+<p><strong>状态模式</strong>就是应用到一个特定软件工程问题的状态机，核心部分是状态和状态之间的转换，解决的是一定上下文中无限数量状态的完全封装，从而实现更好的可维护性和灵活性。</p>
+<p><strong>策略模式</strong>鼓励使用多种算法来解决一个问题，其杀手级特性是能够在运行时透明地切换算法（客户端代码对变化无感知）。</p>
+<p><strong>模板模式</strong>关注的是消除代码冗余，其思想是无需改变算法结构就能重新定义一个算法的某些部分。</p>
+</div>
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/%E7%B2%BE%E9%80%9APython%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/%E7%B2%BE%E9%80%9APython%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/%E7%B2%BE%E9%80%9APython%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E4%BC%98%E9%9B%85%E7%9A%84Ruby/" title="优雅的Ruby" aria-label="Previous">
+        <span><small>上一篇：</small>优雅的Ruby</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/Python%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="Python设计模式" aria-label="Next">
+        <span><small>下一篇：</small>Python设计模式</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/精通Python设计模式/cover.jpg" alt="封面：精通Python设计模式">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Sakis Kasampalis</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>夏永锋</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>162页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>图灵社区</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787115428035</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>人民邮电出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2016-07-01</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2ZqGujl" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>JavaScript忍者秘籍 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">JavaScript忍者秘籍</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/javascript" rel="tag">JavaScript</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/经典" rel="tag">经典</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Apr 4, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<blockquote class="epigraph">
+<p>尧以是传之舜，舜以是传之禹，禹以是传之汤，汤以是传之文、武、周公，文、武、周公传之孔子，孔子传之孟轲。</p>
+<p class="attribution">—韩愈《原道》</p>
+</blockquote>
+</div>
+<!-- 摘要注释 -->
+<p>绝大多数作者，对于“变量提升”的本原，语焉而不详。而本书着眼于浏览器中<a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">JavaScript</a>代码的生命周期，讲解了函数上下文、原型链、事件循环等内容。</p>
+<p>尽管这不是一本论述浏览器内核工作原理的专著，但是通过阅读本书，浏览器在我眼里已不再是个纯粹的黑盒子了。只有明了了<a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">JavaScript</a>引擎的基本运行机理，才能编写出更为可靠的代码。</p>
+<p><a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">JavaScript</a>与<em>Scheme</em>同为动态语言，可参照《<a class="reference external" href="/bookshelf/计算机程序的构造和解释/">计算机程序的构造和解释</a>》中的“求值的环境模型”来理解函数与生成器函数的执行上下文。迭代器与生成器提供了一种实现“流”的新方式，有利于函数式代码的编写。代理（<span class="docutils literal">Proxy</span>）起到了一种类似于<a class="reference external" href="https://www.python.org/">Python</a>中运算符重载与装饰器的作用。原型链，就是一种继承树，只不过可以显示地控制继承关系；而在其他语言里类的定义就决定了继承关系。<span class="docutils literal">Promise</span>对象可以被链式调用，这是因为调用后会返回另一个<span class="docutils literal">Promise</span>对象。</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<div class="section" id="id2">
+<h3>注册标识符</h3>
+<ol class="arabic simple">
+<li><p>如果是创建一个函数环境，那么创建形参及函数参数的默认值。如果是非函数环境，将跳过此步骤。</p></li>
+<li><p>如果是创建全局或函数环境，就扫描当前代码进行函数声明（不会扫描其他函数的函数体），但是不会执行函数表达式或箭头函数。对于所找到的函数声明，将创建函数，并绑定到当前环境与函数名相同的标识符上。若该标识符已经存在，那么该标识符的值将被重写。如果是块级作用域，将跳过此步骤。</p></li>
+<li><p>扫描当前代码进行变量声明。在函数或全局环境中，查找所有当前函数以及其他函数之外通过<span class="docutils literal">var</span>声明的变量，并查找所有通过<span class="docutils literal">let</span>或<span class="docutils literal">const</span>定义的变量。在块级环境中，仅查找当前块中通过<span class="docutils literal">let</span>或<span class="docutils literal">const</span>定义的变量。对于所查找到的变量，若该标识符不存在，进行注册并将其初始化为<span class="docutils literal">undefined</span>。若该标识符已经存在，将保留其值。</p></li>
+</ol>
+<img alt="注册标识符" src="/assets/bookshelf/JavaScript忍者秘籍/注册标识符.jpg" />
+</div>
+<div class="section" id="this">
+<h3>this</h3>
+<p>当调用函数时，除了传入在函数定义中显式声明的参数之外，同时还传入两个隐式参数：<span class="docutils literal">arguments</span>与<span class="docutils literal">this</span>。参数<span class="docutils literal">this</span>表示被调用函数的上下文对象，即与函数调用相关联的对象。</p>
+<div class="compound">
+<p class="compound-first">使用关键字<span class="docutils literal">new</span>调用函数会触发以下几个动作:</p>
+<ul class="compound-middle simple">
+<li><p>创建一个新的空对象；</p></li>
+<li><p>该对象作为<span class="docutils literal">this</span>参数传递给构造函数，从而成为构造函数的函数上下文；</p></li>
+<li><p>新构造的对象作为<span class="docutils literal">new</span>运算符的返回值。</p></li>
+</ul>
+<p class="compound-last">如果构造函数返回一个对象，则该对象将作为整个表达式的值返回，而传入构造函数的<span class="docutils literal">this</span>将被丢弃。但是，如果构造函数返回的是非对象类型，则忽略返回值，返回新创建的对象。</p>
+</div>
+<p>箭头函数的<span class="docutils literal">this</span>与声明所在的上下文的相同。</p>
+</div>
+<div class="section" id="id3">
+<h3>原型链</h3>
+<ul class="simple">
+<li><p>每一个函数都具有一个原型对象；</p></li>
+<li><p>每一个函数的原型都具有一个<span class="docutils literal">constructor</span>属性，该属性指向函数本身；</p></li>
+<li><p>构造器对象的原型被设置为新创建的对象的原型。</p></li>
+</ul>
+<p><span class="docutils literal">constructor</span>属性的存在仅仅是为了说明该对象是从哪儿创建出来的。<span class="docutils literal">instanceof</span>操作符，会检查操作符右边的函数的原型是否存在于操作符左边的对象的原型链上。</p>
+</div>
+<div class="section" id="id4">
+<h3>事件循环</h3>
+<div class="compound">
+<p class="compound-first">事件循环基于两个基本原则：</p>
+<ul class="compound-last simple">
+<li><p>一次处理一个任务；</p></li>
+<li><p>一个任务开始后直到运行完成，不会被其他任务中断。</p></li>
+</ul>
+</div>
+<img alt="事件循环" src="/assets/bookshelf/JavaScript忍者秘籍/事件循环.jpg" />
+<ul class="simple">
+<li><p>事件循环通常至少有两个事件队列：<strong>宏任务</strong>队列和<strong>微任务</strong>队列；</p></li>
+<li><p>单次循环迭代中，最多处理一个宏任务（其余的在队列中等待），而队列中的所有微任务都会被处理；</p></li>
+<li><p>当微任务队列处理完成并清空时，事件循环会检查是否需要更新UI渲染，如果是，则会重新渲染UI视图。</p></li>
+</ul>
+<p>当代码对DOM进行一系列连续的读取和写入操作时，浏览器每次都会强制重新计算布局信息，这会引起<strong>布局抖动</strong>。</p>
+<p>通过内置的<span class="docutils literal">CustomEvent</span>构造函数和<span class="docutils literal">dispatchEvent</span>方法，创建和分发自定义事件，减少应用程序不同部分之间的耦合。</p>
+</div>
+</div>
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/JavaScript%E5%BF%8D%E8%80%85%E7%A7%98%E7%B1%8D/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/JavaScript%E5%BF%8D%E8%80%85%E7%A7%98%E7%B1%8D/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/JavaScript%E5%BF%8D%E8%80%85%E7%A7%98%E7%B1%8D/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/JavaScript%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" title="JavaScript学习指南" aria-label="Previous">
+        <span><small>上一篇：</small>JavaScript学习指南</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/JavaScript-ES6%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8/" title="JavaScript ES6函数式编程入门经典" aria-label="Next">
+        <span><small>下一篇：</small>JavaScript ES6函数式编程入门经典</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/JavaScript忍者秘籍/cover.jpg" alt="封面：JavaScript忍者秘籍">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>John Resig & Bear Bibeault & Josip Maras</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>一心一译前端小组</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>429页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>异步图书</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787115473264</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>人民邮电出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2018-01-01</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/35hp4ti" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

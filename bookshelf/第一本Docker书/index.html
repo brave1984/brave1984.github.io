@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>第一本Docker书 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">第一本Docker书</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/docker" rel="tag">Docker</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/工具" rel="tag">工具</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/基础" rel="tag">基础</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Mar 13, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p><a class="reference external" href="https://www.docker.com/">Docker</a>的容颜——<strong>CLI</strong>接口——竟然可以这么美！</p>
+</div>
+<!-- 摘要注释 -->
+<p>作为一本名副其实的<a class="reference external" href="https://www.docker.com/">Docker</a>入门书，它的主要内容是命令行接口的使用、镜像的构建、单主机网络中多容器应用栈的构建与部署。只要熟悉<a class="reference external" href="http://www.gnu.org/">GNU</a>/<a class="reference external" href="https://www.kernel.org/">Linux</a>命令行，你就能快速地入门。</p>
+<p><a class="reference external" href="https://www.docker.com/">Docker</a>的命令行接口通过<span class="docutils literal">REST API</span>与守护进程进行交互，守护进程创建并管理<a class="reference external" href="https://www.docker.com/">Docker</a>对象，如：镜像、容器、网络与存储卷。</p>
+<img alt="Docker Engine Components Flow" src="https://docs.docker.com/engine/images/engine-components-flow.png" />
+<p>镜像是由联合文件系统以“栈”的形式堆叠加载的。在<strong>写时复制</strong>的模式下，容器内的镜像层是只读的，镜像栈的顶端是个读写层。与<a class="reference external" href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a>、<a class="reference external" href="https://docs.docker.com/compose/compose-file/">docker-compose.yml</a>关联的两种<em>DSL</em>，使服务的构建与部署变得更为容易，实现了“一次构建，随处运行”。</p>
+<p>用<a class="reference external" href="https://hub.docker.com/_/docker/">Docker in Docker</a>搭建<em>CI</em>的实现是不够优雅的<a class="footnote-reference brackets" href="#id2" id="id1">1</a>，应当将<a class="reference external" href="https://www.docker.com/">Docker</a>的套接字文件挂载到提供<em>CI</em>的容器上。基于<a class="reference external" href="https://jenkins.io/">Jenkins</a>的<em>CI</em>，可以采用<a class="reference external" href="https://hub.docker.com/r/jenkinsci/blueocean">Blue Ocean</a>镜像。还可以采用<a class="reference external" href="https://drone.io/">Drone</a>，容器管理平台可采用<a class="reference external" href="https://www.portainer.io/">Portainer</a>。</p>
+<p>书中的<a class="reference external" href="https://docs.docker.com/engine/swarm/">Swarm</a>集群编排示例已经过时，从<em>Engine API version</em> 1.12 开始，<a class="reference external" href="https://docs.docker.com/engine/swarm/">Swarm</a>被整合进了<a class="reference external" href="https://www.docker.com/">Docker</a> <em>Engine</em>中，并且不再需要集成额外的“服务发现”了。</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><a class="reference external" href="http://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/">http://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/</a></p>
+</dd>
+</dl>
+</div>
+<div class="footer">
+<hr class="footer" />
+<p>带着对<strong>存储卷</strong>、<strong>网络</strong>、<strong>用户</strong>等概念的疑惑，去阅读《<a class="reference external" href="/bookshelf/Docker实战/">Docker 实战</a>》吧！</p>
+
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/%E7%AC%AC%E4%B8%80%E6%9C%ACDocker%E4%B9%A6/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/%E7%AC%AC%E4%B8%80%E6%9C%ACDocker%E4%B9%A6/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/%E7%AC%AC%E4%B8%80%E6%9C%ACDocker%E4%B9%A6/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/" title="Linux命令行与shell脚本编程大全" aria-label="Previous">
+        <span><small>上一篇：</small>Linux命令行与shell脚本编程大全</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/Docker%E5%AE%9E%E6%88%98/" title="Docker实战" aria-label="Next">
+        <span><small>下一篇：</small>Docker实战</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/第一本Docker书/cover.jpg" alt="封面：第一本Docker书">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>James Turnbull</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>李兆海 & 刘斌 & 巨震</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>286页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>异步图书</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787115419330</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>人民邮电出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2016-03-31</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2EjcbU4" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

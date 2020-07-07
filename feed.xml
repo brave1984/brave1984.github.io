@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://www.brave1984.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.brave1984.com/" rel="alternate" type="text/html" /><updated>2020-07-07T21:48:53+00:00</updated><id>https://www.brave1984.com/feed.xml</id><title type="html">黄昭隗的个人网站</title><subtitle>您好！我是黄昭隗，这是我的个人网站。书架上的读书笔记、日志里的技术实践，献给孤独的你。</subtitle><entry><title type="html">Headless Raspberry Pi</title><link href="https://www.brave1984.com/posts/Headless-Raspberry-Pi/" rel="alternate" type="text/html" title="Headless Raspberry Pi" /><published>2019-03-19T07:17:17+00:00</published><updated>2019-03-19T07:17:17+00:00</updated><id>https://www.brave1984.com/posts/Headless%20Raspberry%20Pi</id><content type="html" xml:base="https://www.brave1984.com/posts/Headless-Raspberry-Pi/">&lt;div class=&quot;document&quot;&gt;
+&lt;div class=&quot;summary docutils container&quot;&gt;
+&lt;p&gt;&lt;strong&gt;萌新&lt;/strong&gt;：如何配置“无头”&lt;a class=&quot;reference external&quot; href=&quot;https://www.raspberrypi.org/&quot;&gt;树莓派&lt;/a&gt;呀？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;休闲玩家&lt;/strong&gt;：照官方文档配呗……&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- 摘要注释 --&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h2&gt;烧录镜像&lt;/h2&gt;
+&lt;p&gt;在&lt;a class=&quot;reference external&quot; href=&quot;https://www.raspberrypi.org/downloads/raspbian/&quot;&gt;Raspbian&lt;/a&gt;操作系统的下载页面下载&lt;em&gt;Raspbian Stretch Lite&lt;/em&gt;镜像，使用&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/balena-io/etcher&quot;&gt;Etcher&lt;/a&gt;烧录镜像。&lt;/p&gt;
+&lt;p&gt;镜像烧录好后，SD卡被挂载在主机目录树中&lt;span class=&quot;docutils literal&quot;&gt;/media/pi&lt;/span&gt;的位置，并被分成了两个分区：引导文件系统&lt;em&gt;boot&lt;/em&gt;、根文件系统&lt;em&gt;rootfs&lt;/em&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h2&gt;配置文件&lt;/h2&gt;
+&lt;p&gt;用&lt;span class=&quot;docutils literal&quot;&gt;sudo su&lt;/span&gt;命令，将主机用户切换成&lt;em&gt;root&lt;/em&gt;用户；&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;ssh&quot;&gt;
+&lt;h3&gt;SSH&lt;/h3&gt;
+&lt;ol class=&quot;arabic simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;在&lt;em&gt;boot&lt;/em&gt;分区的根目录下，创建一个名为&lt;em&gt;ssh&lt;/em&gt;的空白文件&lt;a class=&quot;footnote-reference brackets&quot; href=&quot;#id11&quot; id=&quot;id4&quot;&gt;1&lt;/a&gt;；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;用&lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ssh-keygen&lt;/span&gt;&lt;/span&gt;命令创建一个SSH KEY&lt;a class=&quot;footnote-reference brackets&quot; href=&quot;#id12&quot; id=&quot;id5&quot;&gt;2&lt;/a&gt;；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在&lt;em&gt;rootfs&lt;/em&gt;分区的&lt;span class=&quot;docutils literal&quot;&gt;home/pi&lt;/span&gt;目录下，新建一个名为&lt;em&gt;.ssh&lt;/em&gt;的目录&lt;a class=&quot;footnote-reference brackets&quot; href=&quot;#id13&quot; id=&quot;id6&quot;&gt;3&lt;/a&gt;；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;将SSH KEY的公钥&lt;em&gt;id_rsa.pub&lt;/em&gt;写入&lt;em&gt;.ssh&lt;/em&gt;目录下的&lt;em&gt;authorized_keys&lt;/em&gt;文件中；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;用&lt;span class=&quot;docutils literal&quot;&gt;sed&lt;/span&gt;命令，修改&lt;em&gt;rootfs&lt;/em&gt;分区中&lt;em&gt;etc/ssh&lt;/em&gt;目录下的&lt;em&gt;sshd_config&lt;/em&gt;文件中的认证信息。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;code bash literal-block&quot;&gt;&lt;code&gt;touch /media/pi/boot/ssh
+&lt;span class=&quot;nv&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;cat /etc/passwd &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep &lt;span class=&quot;m&quot;&gt;1000&lt;/span&gt;:1000 &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep /home/&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;^:&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;* -o&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+ssh-keygen -t rsa -b &lt;span class=&quot;m&quot;&gt;4096&lt;/span&gt; -C &lt;span class=&quot;s2&quot;&gt;&amp;quot;your_email&amp;#64;example.com&amp;quot;&lt;/span&gt; -f &lt;span class=&quot;nv&quot;&gt;$home&lt;/span&gt;/.ssh/id_rsa
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /media/pi/rootfs/home/pi/
+mkdir .ssh
+cat &lt;span class=&quot;nv&quot;&gt;$home&lt;/span&gt;/.ssh/id_rsa.pub &amp;gt;&amp;gt; .ssh/authorized_keys
+chmod &lt;span class=&quot;m&quot;&gt;644&lt;/span&gt; .ssh/authorized_keys
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /media/pi/rootfs/etc/ssh/
+sed -i &lt;span class=&quot;s1&quot;&gt;'/ChallengeResponseAuthentication no/c ChallengeResponseAuthentication no'&lt;/span&gt; sshd_config
+sed -i &lt;span class=&quot;s1&quot;&gt;'/PasswordAuthentication yes/c PasswordAuthentication no'&lt;/span&gt; sshd_config
+sed -i &lt;span class=&quot;s1&quot;&gt;'/UsePAM yes/c UsePAM no'&lt;/span&gt; sshd_config&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;wi-fi&quot;&gt;
+&lt;h3&gt;Wi-Fi&lt;/h3&gt;
+&lt;ol class=&quot;arabic simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&quot;docutils literal&quot;&gt;wpa_passphrase&lt;/span&gt;命令，接受两个参数：&lt;span class=&quot;docutils literal&quot;&gt;ssid&lt;/span&gt;、&lt;span class=&quot;docutils literal&quot;&gt;passphrase&lt;/span&gt;，用于生成Wi-Fi连接信息&lt;a class=&quot;footnote-reference brackets&quot; href=&quot;#id14&quot; id=&quot;id7&quot;&gt;4&lt;/a&gt;；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;用&lt;span class=&quot;docutils literal&quot;&gt;sed&lt;/span&gt;命令在连接信息中添加两个字段：国名、搜寻隐藏网络；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;将连接信息追加到&lt;em&gt;rootfs&lt;/em&gt;分区中&lt;span class=&quot;docutils literal&quot;&gt;etc/wpa_supplicant&lt;/span&gt;目录下的&lt;span class=&quot;docutils literal&quot;&gt;wpa_supplicant.conf&lt;/span&gt;文件中。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;code bash literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /media/pi/rootfs/etc/wpa_supplicant/
+wpa_passphrase &lt;span class=&quot;s1&quot;&gt;'ssid'&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'passphrase'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sed -e &lt;span class=&quot;s1&quot;&gt;'1i country=CN'&lt;/span&gt; -e &lt;span class=&quot;s1&quot;&gt;'3i \\tscan_ssid=1'&lt;/span&gt; &amp;gt;&amp;gt; wpa_supplicant.conf&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;ip&quot;&gt;
+&lt;h3&gt;静态IP&lt;/h3&gt;
+&lt;ol class=&quot;arabic simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;登录路由器的管理界面，查看LAN口IP参数：IP地址与子网掩码；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&quot;docutils literal&quot;&gt;ip_address&lt;/span&gt;的值为：&lt;a class=&quot;reference external&quot; href=&quot;https://www.raspberrypi.org/&quot;&gt;树莓派&lt;/a&gt;的静态IP地址/子网掩码位数，&lt;span class=&quot;docutils literal&quot;&gt;routers&lt;/span&gt;与&lt;span class=&quot;docutils literal&quot;&gt;domain_name_servers&lt;/span&gt;的值为LAN口IP地址；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改&lt;em&gt;rootfs&lt;/em&gt;分区中&lt;span class=&quot;docutils literal&quot;&gt;etc&lt;/span&gt;目录下的&lt;span class=&quot;docutils literal&quot;&gt;dhcpcd.conf&lt;/span&gt;文件&lt;a class=&quot;footnote-reference brackets&quot; href=&quot;#id15&quot; id=&quot;id8&quot;&gt;5&lt;/a&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;code bash literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /media/pi/rootfs/etc/
+cat &amp;gt;&amp;gt; dhcpcd.conf &lt;span class=&quot;s&quot;&gt;&amp;lt;&amp;lt; EOF
+interface wlan0
+    static ip_address=192.168.0.200/24
+    static routers=192.168.0.1
+    static domain_name_servers=192.168.0.1
+EOF&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;hostnamelocale&quot;&gt;
+&lt;h3&gt;hostname与locale&lt;/h3&gt;
+&lt;ol class=&quot;arabic simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;在&lt;em&gt;rootfs&lt;/em&gt;分区中&lt;span class=&quot;docutils literal&quot;&gt;etc&lt;/span&gt;目录下的&lt;span class=&quot;docutils literal&quot;&gt;hostname&lt;/span&gt;、&lt;span class=&quot;docutils literal&quot;&gt;hosts&lt;/span&gt;文件中，写入&lt;a class=&quot;reference external&quot; href=&quot;https://www.raspberrypi.org/&quot;&gt;树莓派&lt;/a&gt;的新主机名；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;将环境变量&lt;span class=&quot;docutils literal&quot;&gt;$LC_ALL&lt;/span&gt;添加到&lt;em&gt;rootfs&lt;/em&gt;分区中&lt;span class=&quot;docutils literal&quot;&gt;home/pi&lt;/span&gt;目录下的&lt;span class=&quot;docutils literal&quot;&gt;.bashrc&lt;/span&gt;文件中。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;code bash literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /media/pi/rootfs/etc/
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'raspberrypi0'&lt;/span&gt; &amp;gt; hostname
+sed -i &lt;span class=&quot;s1&quot;&gt;'/raspberrypi/c 127.0.1.1\traspberrypi0'&lt;/span&gt; hosts
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /media/pi/rootfs/home/pi/
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'export LC_ALL=&amp;quot;C.UTF-8&amp;quot;'&lt;/span&gt; &amp;gt;&amp;gt; .bashrc&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id9&quot;&gt;
+&lt;h2&gt;搭建集群&lt;/h2&gt;
+&lt;ol class=&quot;arabic simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://docs.docker.com/machine/overview/&quot;&gt;Docker Machine&lt;/a&gt;无法识别&lt;a class=&quot;reference external&quot; href=&quot;https://www.raspberrypi.org/&quot;&gt;树莓派&lt;/a&gt;的操作系统，需挨个安装&lt;a class=&quot;reference external&quot; href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt;；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;参照&lt;a class=&quot;reference external&quot; href=&quot;https://docs.docker.com/engine/swarm/&quot;&gt;Swarm&lt;/a&gt;示例&lt;a class=&quot;footnote-reference brackets&quot; href=&quot;#id16&quot; id=&quot;id10&quot;&gt;6&lt;/a&gt;，编排容器集群。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img alt=&quot;/assets/posts/raspberrypi.jpg&quot; src=&quot;/assets/posts/raspberrypi.jpg&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;
+&lt;hr class=&quot;footer&quot; /&gt;
+&lt;dl class=&quot;footnote brackets&quot;&gt;
+&lt;dt class=&quot;label&quot; id=&quot;id11&quot;&gt;&lt;span class=&quot;brackets&quot;&gt;&lt;a class=&quot;fn-backref&quot; href=&quot;#id4&quot;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.raspberrypi.org/documentation/remote-access/ssh/README.md&quot;&gt;https://www.raspberrypi.org/documentation/remote-access/ssh/README.md&lt;/a&gt;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;label&quot; id=&quot;id12&quot;&gt;&lt;span class=&quot;brackets&quot;&gt;&lt;a class=&quot;fn-backref&quot; href=&quot;#id5&quot;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent&quot;&gt;https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent&lt;/a&gt;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;label&quot; id=&quot;id13&quot;&gt;&lt;span class=&quot;brackets&quot;&gt;&lt;a class=&quot;fn-backref&quot; href=&quot;#id6&quot;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.raspberrypi.org/documentation/configuration/security.md&quot;&gt;https://www.raspberrypi.org/documentation/configuration/security.md&lt;/a&gt;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;label&quot; id=&quot;id14&quot;&gt;&lt;span class=&quot;brackets&quot;&gt;&lt;a class=&quot;fn-backref&quot; href=&quot;#id7&quot;&gt;4&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md&quot;&gt;https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md&lt;/a&gt;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;label&quot; id=&quot;id15&quot;&gt;&lt;span class=&quot;brackets&quot;&gt;&lt;a class=&quot;fn-backref&quot; href=&quot;#id8&quot;&gt;5&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md&quot;&gt;https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md&lt;/a&gt;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;label&quot; id=&quot;id16&quot;&gt;&lt;span class=&quot;brackets&quot;&gt;&lt;a class=&quot;fn-backref&quot; href=&quot;#id10&quot;&gt;6&lt;/a&gt;&lt;/span&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://docs.docker.com/engine/swarm/swarm-tutorial/&quot;&gt;https://docs.docker.com/engine/swarm/swarm-tutorial/&lt;/a&gt;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;/div&gt;</content><author><name></name></author><category term="树莓派" /><summary type="html">萌新：如何配置“无头”树莓派呀？ 休闲玩家：照官方文档配呗……</summary></entry><entry><title type="html">Virtualenv 是如何被激活的？</title><link href="https://www.brave1984.com/posts/Virtualenv-%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E6%BF%80%E6%B4%BB%E7%9A%84/" rel="alternate" type="text/html" title="Virtualenv 是如何被激活的？" /><published>2019-03-12T09:14:14+00:00</published><updated>2019-03-12T09:14:14+00:00</updated><id>https://www.brave1984.com/posts/Virtualenv%20%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E6%BF%80%E6%B4%BB%E7%9A%84%3F</id><content type="html" xml:base="https://www.brave1984.com/posts/Virtualenv-%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E6%BF%80%E6%B4%BB%E7%9A%84/">&lt;div class=&quot;document&quot;&gt;
+&lt;div class=&quot;summary docutils container&quot;&gt;
+&lt;p&gt;&lt;strong&gt;萌新&lt;/strong&gt;：&lt;a class=&quot;reference external&quot; href=&quot;https://virtualenv.pypa.io/en/latest/&quot;&gt;Virtualenv&lt;/a&gt; 是如何被激活的呀？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;休闲玩家&lt;/strong&gt;：没看过&lt;span class=&quot;docutils literal&quot;&gt;bin&lt;/span&gt;目录下的&lt;span class=&quot;docutils literal&quot;&gt;activate&lt;/span&gt;文件？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;高端玩家&lt;/strong&gt;：&lt;span class=&quot;docutils literal&quot;&gt;activate&lt;/span&gt;文件就是个shell脚本。&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- 摘要注释 --&gt;
+&lt;div class=&quot;section&quot; id=&quot;shell&quot;&gt;
+&lt;h2&gt;将函数导入 Shell&lt;/h2&gt;
+&lt;div class=&quot;compound&quot;&gt;
+&lt;p class=&quot;compound-first&quot;&gt;&lt;em&gt;source&lt;/em&gt;命令可以读取并执行指定文件中的命令（在当前shell环境中），别名是&lt;span class=&quot;docutils literal&quot;&gt;.&lt;/span&gt;号。&lt;/p&gt;
+&lt;ol class=&quot;compound-last arabic simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;用&lt;span class=&quot;docutils literal&quot;&gt;cat&lt;/span&gt;命令在&lt;span class=&quot;docutils literal&quot;&gt;add.sh&lt;/span&gt;文件中写入一个“求两数之和”的函数&lt;span class=&quot;docutils literal&quot;&gt;add&lt;/span&gt;；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;用&lt;span class=&quot;docutils literal&quot;&gt;cat&lt;/span&gt;命令查看&lt;span class=&quot;docutils literal&quot;&gt;add.sh&lt;/span&gt;文件的内容；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;用&lt;span class=&quot;docutils literal&quot;&gt;source&lt;/span&gt;命令从&lt;span class=&quot;docutils literal&quot;&gt;add.sh&lt;/span&gt;文件中导出&lt;span class=&quot;docutils literal&quot;&gt;add&lt;/span&gt;函数；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;用&lt;span class=&quot;docutils literal&quot;&gt;type&lt;/span&gt;命令查看&lt;span class=&quot;docutils literal&quot;&gt;add&lt;/span&gt;的类型;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;用&lt;span class=&quot;docutils literal&quot;&gt;add&lt;/span&gt;函数求“二加二”的和。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;pre class=&quot;code bash literal-block&quot;&gt;&lt;code&gt;cat &amp;gt; add.sh &lt;span class=&quot;s&quot;&gt;&amp;lt;&amp;lt; EOF
+#! /bin/bash
+
+add () {
+    echo \$[ \$1 + \$2 ]
+}
+EOF&lt;/span&gt;
+
+cat add.sh
+&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; add.sh
+&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; add
+add &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;阅读源码&lt;/h2&gt;
+&lt;p&gt;用&lt;a class=&quot;reference external&quot; href=&quot;https://virtualenv.pypa.io/en/latest/&quot;&gt;Virtualenv&lt;/a&gt;创建一个虚拟环境目录&lt;span class=&quot;docutils literal&quot;&gt;venv&lt;/span&gt;，查看其中&lt;span class=&quot;docutils literal&quot;&gt;bin&lt;/span&gt;目录下的&lt;span class=&quot;docutils literal&quot;&gt;activate&lt;/span&gt;文件。&lt;/p&gt;
+&lt;pre class=&quot;code bash literal-block&quot;&gt;&lt;code&gt;virtualenv venv
+&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; venv/bin/activate
+vi venv/bin/activate&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;span class=&quot;docutils literal&quot;&gt;activate&lt;/span&gt;文件开头定义了一个名为&lt;span class=&quot;docutils literal&quot;&gt;deactivate&lt;/span&gt;的函数，暂且先跳过它。接着，设置全局环境变量&lt;span class=&quot;docutils literal&quot;&gt;VIRTUAL_ENV&lt;/span&gt;，其值为虚拟环境目录的名字（当前为&lt;span class=&quot;docutils literal&quot;&gt;venv&lt;/span&gt;）。&lt;/p&gt;
+&lt;pre class=&quot;code bash literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;VIRTUAL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;/home/pi/venv&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; VIRTUAL_ENV&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用变量&lt;span class=&quot;docutils literal&quot;&gt;_OLD_VIRTUAL_PATH&lt;/span&gt;维持当前搜索路径&lt;span class=&quot;docutils literal&quot;&gt;$PATH&lt;/span&gt;的值。因为虚拟环境的&lt;span class=&quot;docutils literal&quot;&gt;bin&lt;/span&gt;目录下有指向&lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;解释器的符号链接和其它可执行文件，所以将其追加到&lt;span class=&quot;docutils literal&quot;&gt;$PATH&lt;/span&gt;中，并导出。&lt;/p&gt;
+&lt;pre class=&quot;code bash literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;_OLD_VIRTUAL_PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$VIRTUAL_ENV&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/bin:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; PATH&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;解释器维持着一个环境变量&lt;span class=&quot;docutils literal&quot;&gt;$PYTHONHOME&lt;/span&gt;，用命令&lt;span class=&quot;docutils literal&quot;&gt;$python &lt;span class=&quot;pre&quot;&gt;--help&lt;/span&gt; | more&lt;/span&gt;查看它的描述——作为&lt;span class=&quot;docutils literal&quot;&gt;sys.prefix&lt;/span&gt;或&lt;span class=&quot;docutils literal&quot;&gt;sys.exec_prefix&lt;/span&gt;的备用前缀目录，会影响模块搜索路径&lt;span class=&quot;docutils literal&quot;&gt;sys.path&lt;/span&gt;。&lt;/p&gt;
+&lt;pre class=&quot;code bash literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; ! &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PYTHONHOME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;+_&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;_OLD_VIRTUAL_PYTHONHOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PYTHONHOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;unset&lt;/span&gt; PYTHONHOME
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;环境变量&lt;span class=&quot;docutils literal&quot;&gt;$PS1&lt;/span&gt;持有&lt;strong&gt;主命令行提示符字符串&lt;/strong&gt;，用&lt;span class=&quot;docutils literal&quot;&gt;basename&lt;/span&gt;命令获取虚拟环境目录的名字后，修改&lt;span class=&quot;docutils literal&quot;&gt;$PS1&lt;/span&gt;并导出。&lt;/p&gt;
+&lt;pre class=&quot;code bash literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;VIRTUAL_ENV_DISABLE_PROMPT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;_OLD_VIRTUAL_PS1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;x&amp;quot;&lt;/span&gt; !&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; x &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;(`basename \&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$VIRTUAL_ENV&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;\&amp;quot;`) &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; PS1
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数&lt;span class=&quot;docutils literal&quot;&gt;deactivate&lt;/span&gt;用于还原修改过的环境变量，在命令行中调用就行。&lt;/p&gt;
+&lt;pre class=&quot;code bash literal-block&quot;&gt;&lt;code&gt;deactivate &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;unset&lt;/span&gt; -f pydoc &amp;gt;/dev/null &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&amp;gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# reset old environment variables
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# ! [ -z ${VAR+_} ] returns true if VAR is declared at all
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; ! &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_OLD_VIRTUAL_PATH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;+_&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_OLD_VIRTUAL_PATH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; PATH
+        &lt;span class=&quot;nb&quot;&gt;unset&lt;/span&gt; _OLD_VIRTUAL_PATH
+    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; ! &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_OLD_VIRTUAL_PYTHONHOME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;+_&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;PYTHONHOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_OLD_VIRTUAL_PYTHONHOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; PYTHONHOME
+        &lt;span class=&quot;nb&quot;&gt;unset&lt;/span&gt; _OLD_VIRTUAL_PYTHONHOME
+    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# This should detect bash and zsh, which have a hash command that must
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# be called to get it to forget past commands.  Without forgetting
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# past commands the $PATH changes we made may not be respected
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -n &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;BASH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -n &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ZSH_VERSION&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt; -r &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&amp;gt;/dev/null
+    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; ! &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_OLD_VIRTUAL_PS1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;+_&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$_OLD_VIRTUAL_PS1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; PS1
+        &lt;span class=&quot;nb&quot;&gt;unset&lt;/span&gt; _OLD_VIRTUAL_PS1
+    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;unset&lt;/span&gt; VIRTUAL_ENV
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;nondestructive&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Self destruct!
+&lt;/span&gt;        &lt;span class=&quot;nb&quot;&gt;unset&lt;/span&gt; -f deactivate
+    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name></name></author><category term="Python" /><category term="Shell" /><category term="Virtualenv" /><summary type="html">萌新：Virtualenv 是如何被激活的呀？ 休闲玩家：没看过bin目录下的activate文件？ 高端玩家：activate文件就是个shell脚本。</summary></entry><entry><title type="html">Bootstrap 的使用心得</title><link href="https://www.brave1984.com/posts/Bootstrap-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" rel="alternate" type="text/html" title="Bootstrap 的使用心得" /><published>2019-02-25T13:43:53+00:00</published><updated>2019-02-25T13:43:53+00:00</updated><id>https://www.brave1984.com/posts/Bootstrap%20%E7%9A%84%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97</id><content type="html" xml:base="https://www.brave1984.com/posts/Bootstrap-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">&lt;div class=&quot;document&quot;&gt;
+&lt;div class=&quot;summary docutils container&quot;&gt;
+&lt;p&gt;&lt;strong&gt;萌新&lt;/strong&gt;：&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;——真好用！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;休闲玩家&lt;/strong&gt;：&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;与&lt;em&gt;HTML&lt;/em&gt;页面耦合在一起，如何维护？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;高端玩家&lt;/strong&gt;：用&lt;a class=&quot;reference external&quot; href=&quot;http://compass-style.org/&quot;&gt;Compass&lt;/a&gt;引入&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- 摘要注释 --&gt;
+&lt;p&gt;虽然&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;已经“烂大街”了，但是它至少是个完整的&lt;em&gt;CSS&lt;/em&gt;组件库。&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/docs/4.3/getting-started/introduction/&quot;&gt;Bootstrap 文档&lt;/a&gt;非常详细，参照示例代码，就能快速上手。&lt;/p&gt;
+&lt;p&gt;复用&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;所提供的组件样式，有利于原型的制作实现。但原型就是原型，由于HTML页面中充斥着大量无语义的类名，&lt;em&gt;CSS&lt;/em&gt;样式就与&lt;em&gt;HTML&lt;/em&gt;页面深度耦合了。耦合，使得页面代码既不易阅读，也不易修改。&lt;/p&gt;
+&lt;p&gt;有时，我们并不只是满足于原型的制作，而是希望得到一个曳光弹。在不舍弃&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;的情况下，需要找到一个既能复用组件，又能减少耦合的办法。&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;从文档着手&lt;/h2&gt;
+&lt;p&gt;在&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/docs/4.3/getting-started/introduction/&quot;&gt;Bootstrap 文档&lt;/a&gt;中，整个框架按层次被划分为四部分：&lt;em&gt;Layout&lt;/em&gt;、&lt;em&gt;Content&lt;/em&gt;、&lt;em&gt;Components&lt;/em&gt;、&lt;em&gt;Utilities&lt;/em&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Layout&lt;/em&gt;提供了基于&lt;a class=&quot;reference external&quot; href=&quot;https://www.w3.org/TR/css-flexbox-1/&quot;&gt;Flexbox&lt;/a&gt;的响应式“网格布局”，其中的“列”和“槽”是无语义的类名；&lt;em&gt;Content&lt;/em&gt;提供了文字、图片、代码与表格的排版样式，但大部分都是无语义的展示性类名；&lt;em&gt;Components&lt;/em&gt;提供了一系列通用性组件，如：面包屑、手风琴、轮播等； &lt;em&gt;Utilities&lt;/em&gt;中大都是与元素的盒模型、外观有关的展示性类名。&lt;/p&gt;
+&lt;p&gt;单个元素的盒模型、排版与外观都可以在外部的&lt;em&gt;CSS&lt;/em&gt;样式表中实现，而&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;的核心则是响应式的“网格布局”与通用性组件。在&lt;em&gt;Layout&lt;/em&gt;部分的&lt;em&gt;Grid&lt;/em&gt;章节中，&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/docs/4.3/layout/grid/#sass-mixins&quot;&gt;Sass mixins&lt;/a&gt;小节提供了可定制、语义化“网格布局”的解决方案——&lt;a class=&quot;reference external&quot; href=&quot;http://sass-lang.com/&quot;&gt;Sass&lt;/a&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;sass&quot;&gt;
+&lt;h2&gt;学习 Sass&lt;/h2&gt;
+&lt;p&gt;既然官方已给出解决方案，那么我们顺着路走就好了。&lt;a class=&quot;reference external&quot; href=&quot;http://sass-lang.com/&quot;&gt;Sass&lt;/a&gt;没听说过，那就去查、去学！&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://sass-lang.com/&quot;&gt;Sass&lt;/a&gt;并不难学，它只是一种用于描述&lt;em&gt;CSS&lt;/em&gt;的&lt;em&gt;DSL&lt;/em&gt;而已，可参考&lt;a class=&quot;reference external&quot; href=&quot;http://sass-lang.com/documentation/&quot;&gt;Sass 文档&lt;/a&gt;、《&lt;a class=&quot;reference external&quot; href=&quot;/bookshelf/Sass和Compass设计师指南/&quot;&gt;Sass和Compass设计师指南&lt;/a&gt;》、《&lt;a class=&quot;reference external&quot; href=&quot;/bookshelf/Sass与Compass实战&quot;&gt;Sass与Compass实战&lt;/a&gt;》。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h2&gt;阅读源码&lt;/h2&gt;
+&lt;p&gt;在&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;上，可以找到&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;的&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/twbs/bootstrap&quot;&gt;源码仓库&lt;/a&gt;。在&lt;a class=&quot;reference external&quot; href=&quot;https://www.ruby-lang.org/&quot;&gt;Ruby&lt;/a&gt;社区的&lt;em&gt;Gem&lt;/em&gt;托管——&lt;a class=&quot;reference external&quot; href=&quot;https://rubygems.org/&quot;&gt;RubyGems&lt;/a&gt;，可以获得&lt;a class=&quot;reference external&quot; href=&quot;https://rubygems.org/gems/bootstrap&quot;&gt;Bootstrap 源码包&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;整个&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;框架源码分为两部分：&lt;em&gt;stylesheets&lt;/em&gt;和&lt;em&gt;javascripts&lt;/em&gt;，而&lt;em&gt;javascripts&lt;/em&gt;与交互式组件有关，暂不考虑。&lt;em&gt;stylesheets&lt;/em&gt;是由初始化文件、组件文件、&lt;em&gt;mixins&lt;/em&gt;文件夹与 &lt;em&gt;utilities&lt;/em&gt;文件夹构成。&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h3&gt;网格布局&lt;/h3&gt;
+&lt;p&gt;在自有的&lt;em&gt;.scss&lt;/em&gt;文件中，覆盖&lt;em&gt;_variables.scss&lt;/em&gt;中的变量可实现&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;的定制。&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;的“网格布局”是由&lt;em&gt;_grid.scss&lt;/em&gt;调用&lt;em&gt;mixins&lt;/em&gt;目录下&lt;em&gt;_grid.scss&lt;/em&gt;、&lt;em&gt;_grid-framework.scss&lt;/em&gt;中的混合器实现的。&lt;/p&gt;
+&lt;pre class=&quot;code sass literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;&amp;#64;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;bootstrap/variables&amp;quot;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;&amp;#64;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;bootstrap/mixins/breakpoints&amp;quot;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;&amp;#64;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;bootstrap/mixins/grid-framework&amp;quot;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;&amp;#64;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;bootstrap/mixins/grid&amp;quot;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;&amp;#64;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;bootstrap/grid&amp;quot;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;mixins&lt;/em&gt;目录下的&lt;em&gt;_grid.scss&lt;/em&gt;文件用于生成“容器”、“行”、“列” ，以及列偏移，“槽”是由参数&lt;span class=&quot;docutils literal&quot;&gt;$gutter&lt;/span&gt;控制。&lt;/p&gt;
+&lt;pre class=&quot;code sass literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;&amp;#64;mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; make-container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$gutter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$grid-gutter-width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;padding-right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$gutter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;padding-left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$gutter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;margin-right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;margin-left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参数&lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;$max-widths&lt;/span&gt;&lt;/span&gt;用于控制“容器”的最大宽度，参数&lt;span class=&quot;docutils literal&quot;&gt;$breakpoints&lt;/span&gt;用于设置断点，这些参数可以通过传参或使用默认值来调节。混合器&lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;media-breakpoint-up&lt;/span&gt;&lt;/span&gt;是由&lt;em&gt;mixins&lt;/em&gt;目录下的&lt;em&gt;_breakpoints.scss&lt;/em&gt;文件提供，用于设置媒体查询。&lt;/p&gt;
+&lt;pre class=&quot;code sass literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;&amp;#64;mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; make-container-max-widths&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$max-widths&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$container-max-widths&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$breakpoints&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$grid-breakpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;&amp;#64;each&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;breakpoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;container-max-width&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;max-widths&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;&amp;#64;include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; media-breakpoint-up&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$breakpoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$breakpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;max-width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$container-max-width&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;“列”是通过调用混合器&lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;make-col-ready&lt;/span&gt;&lt;/span&gt;、 &lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;make-col&lt;/span&gt;&lt;/span&gt;、&lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;make-col-offset&lt;/span&gt;&lt;/span&gt;来实现的，&lt;span class=&quot;docutils literal&quot;&gt;flex&lt;/span&gt;属性控制列宽，&lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;margin-left&lt;/span&gt;&lt;/span&gt;属性控制列偏移。&lt;/p&gt;
+&lt;pre class=&quot;code sass literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;&amp;#64;mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; make-col-ready&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$gutter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$grid-gutter-width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;relative&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Prevent columns from becoming too narrow when at smaller grid tiers by&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// always setting `width: 100%;`. This works because we use `flex` values&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// later on to override this initial width.&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;padding-right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$gutter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;padding-left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$gutter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;&amp;#64;mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; make-col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$columns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$grid-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;percentage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Add a `max-width` to ensure content within each column does not blow out&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// the width of the column. Applies to IE10+ and Firefox. Chrome and Safari&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// do not appear to require this.&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;max-width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;percentage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;&amp;#64;mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; make-col-offset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$columns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$grid-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$columns&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;margin-left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;percentage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id4&quot;&gt;
+&lt;h3&gt;媒体查询&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;的媒体查询是由&lt;em&gt;mixins&lt;/em&gt;目录下的&lt;em&gt;_breakpoints.scss&lt;/em&gt;文件实现的，这个文件是整个框架的&lt;strong&gt;基石&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;media-breakpoint-up&lt;/span&gt;&lt;/span&gt;、&lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;media-breakpoint-down&lt;/span&gt;&lt;/span&gt;、&lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;media-breakpoint-between&lt;/span&gt;&lt;/span&gt;、&lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;media-breakpoint-only&lt;/span&gt;&lt;/span&gt;四个混合器的&lt;span class=&quot;docutils literal&quot;&gt;$name&lt;/span&gt;参数，只接受&lt;span class=&quot;docutils literal&quot;&gt;$breakpoints&lt;/span&gt;中的存在的键名。而它们又是基于函数：&lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;breakpoint-next&lt;/span&gt;&lt;/span&gt;、&lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;breakpoint-min&lt;/span&gt;&lt;/span&gt;、&lt;span class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;breakpoint-max&lt;/span&gt;&lt;/span&gt;，理解了这3个函数的返回值，也就弄懂了&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;媒体查询的实现方式。&lt;/p&gt;
+&lt;pre class=&quot;code sass literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;&amp;#64;function&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;breakpoint-next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;breakpoints&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;grid-breakpoints&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;breakpoint-names&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;map-keys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;breakpoints&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$breakpoint-names&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;&amp;#64;return&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;breakpoint-names&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;nth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;breakpoint-names&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;code sass literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;&amp;#64;function&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;breakpoint-min&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;breakpoints&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;grid-breakpoints&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$min&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;map-get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$breakpoints&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;&amp;#64;return&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;code sass literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;&amp;#64;function&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;breakpoint-max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;breakpoints&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;grid-breakpoints&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;breakpoint-next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$breakpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;&amp;#64;return&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;breakpoint-min&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;breakpoints&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.02&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id5&quot;&gt;
+&lt;h2&gt;收工&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt;自身不包含自动添加厂商前缀的功能，它依赖于&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/postcss/autoprefixer&quot;&gt;Autoprefixer&lt;/a&gt;（&lt;em&gt;Gem&lt;/em&gt;包：&lt;a class=&quot;reference external&quot; href=&quot;https://rubygems.org/gems/autoprefixer-rails&quot;&gt;autoprefixer-rails&lt;/a&gt;），支持的浏览器见&lt;a class=&quot;reference external&quot; href=&quot;https://getbootstrap.com/docs/4.3/getting-started/browsers-devices/#supported-browsers&quot;&gt;browserslist&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;使用&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/postcss/autoprefixer&quot;&gt;Autoprefixer&lt;/a&gt;的话，就不再依赖于用&lt;a class=&quot;reference external&quot; href=&quot;http://compass-style.org/&quot;&gt;Compass&lt;/a&gt;添加&lt;em&gt;CSS 3&lt;/em&gt;特性啦！&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name></name></author><category term="Web" /><category term="Bootstrap" /><category term="CSS" /><summary type="html">萌新：Bootstrap——真好用！ 休闲玩家：Bootstrap与HTML页面耦合在一起，如何维护？ 高端玩家：用Compass引入Bootstrap。</summary></entry><entry><title type="html">拥抱 GNU/Linux</title><link href="https://www.brave1984.com/posts/%E6%8B%A5%E6%8A%B1-GNU-Linux/" rel="alternate" type="text/html" title="拥抱 GNU/Linux" /><published>2019-01-18T03:55:20+00:00</published><updated>2019-01-18T03:55:20+00:00</updated><id>https://www.brave1984.com/posts/%E6%8B%A5%E6%8A%B1%20GNU%20Linux</id><content type="html" xml:base="https://www.brave1984.com/posts/%E6%8B%A5%E6%8A%B1-GNU-Linux/">&lt;div class=&quot;document&quot;&gt;
+&lt;div class=&quot;summary docutils container&quot;&gt;
+&lt;p&gt;&lt;strong&gt;萌新&lt;/strong&gt;：《炉石传说》的橙卡掉率又被调低了，我要&lt;em&gt;AFK&lt;/em&gt;……&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;休闲玩家&lt;/strong&gt;：自从用上&lt;a class=&quot;reference external&quot; href=&quot;http://www.gnu.org/&quot;&gt;GNU&lt;/a&gt;/&lt;a class=&quot;reference external&quot; href=&quot;https://www.kernel.org/&quot;&gt;Linux&lt;/a&gt;后，值不充、（智商）税不缴，浑身都“得劲”。&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- 摘要注释 --&gt;
+&lt;p&gt;用了近半年的“&lt;a class=&quot;reference external&quot; href=&quot;http://www.gnu.org/&quot;&gt;GNU&lt;/a&gt;/&lt;a class=&quot;reference external&quot; href=&quot;https://www.kernel.org/&quot;&gt;Linux&lt;/a&gt;”后，不谈其对&lt;em&gt;ssh&lt;/em&gt;、&lt;a class=&quot;reference external&quot; href=&quot;https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce`&quot;&gt;Docker&lt;/a&gt;的友好支持，我只想说——我能够心无旁骛地写好代码了。在&lt;a class=&quot;reference external&quot; href=&quot;https://wiki.gnome.org/Apps/Terminal&quot;&gt;Terminal&lt;/a&gt;中可以打开多个标签页，而每个&lt;a class=&quot;reference external&quot; href=&quot;https://www.vim.org/&quot;&gt;VIM&lt;/a&gt;窗口又可以打开多个标签，配合上快捷键，就能脱离鼠标干活了。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt;的&lt;em&gt;UI&lt;/em&gt;设计得比&lt;a class=&quot;reference external&quot; href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt;的好，而&lt;a class=&quot;reference external&quot; href=&quot;https://wiki.ubuntu.com/CosmicCuttlefish/ReleaseNotes&quot;&gt;18.10&lt;/a&gt;又比&lt;a class=&quot;reference external&quot; href=&quot;https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes/18.04&quot;&gt;18.04 LTS&lt;/a&gt;美观，可以用&lt;a class=&quot;reference external&quot; href=&quot;https://www.balena.io/etcher/&quot;&gt;etcher&lt;/a&gt;来制作系统镜像。&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;程序设计&lt;/h2&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce`&quot;&gt;Docker&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/docker/compose/releases&quot;&gt;Docker Compose&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://wiki.postgresql.org/wiki/Apt&quot;&gt;PostgreSQL&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;section&quot; id=&quot;javascript&quot;&gt;
+&lt;h3&gt;JavaScript&lt;/h3&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/nodesource/distributions/blob/master/README.md#debinstall&quot;&gt;Node.js&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://yarnpkg.com/zh-Hans/docs/install#debian-stable&quot;&gt;Yarn&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;ruby&quot;&gt;
+&lt;h3&gt;Ruby&lt;/h3&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/rbenv/ruby-build/wiki#suggested-build-environment&quot;&gt;ruby-build&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/rbenv/rbenv#basic-github-checkout&quot;&gt;rbenv&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.ruby-lang.org/&quot;&gt;Ruby&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;python&quot;&gt;
+&lt;h3&gt;Python&lt;/h3&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://packaging.python.org/guides/installing-using-linux-tools/#debian-ubuntu&quot;&gt;pip&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://pipenv.readthedocs.io/en/latest/install/&quot;&gt;Pipenv&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;lisp&quot;&gt;
+&lt;h3&gt;Lisp&lt;/h3&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://clojure.org/guides/getting_started#_installation_on_linux&quot;&gt;Clojure&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/cisco/chezscheme&quot;&gt;Chez Scheme&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h2&gt;工具&lt;/h2&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;vim&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;default-jdk&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;fcitx-sunpinyin&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://lynx.invisible-island.net/&quot;&gt;Lynx&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://snapcraft.io/postman&quot;&gt;Postman&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://snapcraft.io/gitkraken&quot;&gt;GitKraken&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://snapcraft.io/vlc&quot;&gt;VLC&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://snapcraft.io/libreoffice&quot;&gt;LibreOffice&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.google.com/chrome/&quot;&gt;Chrome&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://slack.com/downloads/linux&quot;&gt;Slack&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.balena.io/etcher/&quot;&gt;etcher&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/kovidgoyal/calibre&quot;&gt;calibre&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#linux&quot;&gt;OpenRefine&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;
+&lt;hr class=&quot;footer&quot; /&gt;
+&lt;p&gt;在使用&lt;a class=&quot;reference external&quot; href=&quot;https://www.ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://wiki.ubuntu.com/CosmicCuttlefish/ReleaseNotes&quot;&gt;18.10&lt;/a&gt;的过程中，我的计算机出现过&lt;strong&gt;没法重现&lt;/strong&gt;的BUG（UI方面的）……&lt;/p&gt;
+
+&lt;/div&gt;</content><author><name></name></author><category term="GNU/Linux" /><category term="工具" /><summary type="html">萌新：《炉石传说》的橙卡掉率又被调低了，我要AFK…… 休闲玩家：自从用上GNU/Linux后，值不充、（智商）税不缴，浑身都“得劲”。</summary></entry><entry><title type="html">VIM，手的延伸</title><link href="https://www.brave1984.com/posts/VIM-%E6%89%8B%E7%9A%84%E5%BB%B6%E4%BC%B8/" rel="alternate" type="text/html" title="VIM，手的延伸" /><published>2019-01-02T01:11:25+00:00</published><updated>2019-01-02T01:11:25+00:00</updated><id>https://www.brave1984.com/posts/VIM,%E6%89%8B%E7%9A%84%E5%BB%B6%E4%BC%B8</id><content type="html" xml:base="https://www.brave1984.com/posts/VIM-%E6%89%8B%E7%9A%84%E5%BB%B6%E4%BC%B8/">&lt;div class=&quot;document&quot;&gt;
+&lt;div class=&quot;summary docutils container&quot;&gt;
+&lt;p&gt;&lt;strong&gt;团长&lt;/strong&gt;： 赶紧把这个&lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;脚本给我改好！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;萌新&lt;/strong&gt;： 好的，先等我把&lt;a class=&quot;reference external&quot; href=&quot;http://www.jetbrains.com/pycharm/&quot;&gt;Pycharm&lt;/a&gt;打开。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;休闲玩家&lt;/strong&gt;： 你就不能用&lt;a class=&quot;reference external&quot; href=&quot;https://www.vim.org/&quot;&gt;VIM&lt;/a&gt;？&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- 摘要注释 --&gt;
+&lt;p&gt;用好一种&lt;strong&gt;可配置&lt;/strong&gt;、&lt;strong&gt;可扩展&lt;/strong&gt;、&lt;strong&gt;可编程&lt;/strong&gt;的编辑器。学习它，扩展它，拥有它！&lt;/p&gt;
+&lt;p&gt;本文参考自：&lt;a class=&quot;reference external&quot; href=&quot;https://realpython.com/vim-and-python-a-match-made-in-heaven/&quot;&gt;VIM and Python – A Match Made in Heaven&lt;/a&gt;，增加了&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/python-mode/python-mode&quot;&gt;Python-mode&lt;/a&gt;等插件。&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;安装插件&lt;/h2&gt;
+&lt;p&gt;利用&lt;a class=&quot;reference external&quot; href=&quot;https://www.vim.org/&quot;&gt;VIM&lt;/a&gt; 8的原生包管理功能，从&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;上克隆以下插件到&lt;em&gt;~/.vim/pack/foo/start&lt;/em&gt;目录：&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Valloric/YouCompleteMe&quot;&gt;YouCompleteMe&lt;/a&gt;（自动完成）&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/python-mode/python-mode&quot;&gt;Python-mode&lt;/a&gt;（Python语法突显&amp;amp;代码重构）&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/mattn/emmet-vim&quot;&gt;emmet-vim&lt;/a&gt;（HTML &amp;amp; CSS）&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/scrooloose/nerdtree&quot;&gt;NERDTree&lt;/a&gt;（目录文件导航）&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/vim-airline/vim-airline&quot;&gt;vim-airline&lt;/a&gt;（状态条）&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/tpope/vim-fugitive&quot;&gt;vim-fugitive&lt;/a&gt;（git扩展）&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/yianwillis/vimcdoc&quot;&gt;vimcdoc&lt;/a&gt;（中文文档）&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;code bash literal-block&quot;&gt;&lt;code&gt;mkdir -p &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.vim/pack/foo/start
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.vim/pack/foo/start
+
+sudo apt-get install -yqq --no-install-recommends build-essential cmake python3-dev
+git clone --recurse-submodules &lt;span class=&quot;s2&quot;&gt;&amp;quot;https://github.com/Valloric/YouCompleteMe.git&amp;quot;&lt;/span&gt;
+
+git clone --recurse-submodules &lt;span class=&quot;s2&quot;&gt;&amp;quot;https://github.com/python-mode/python-mode.git&amp;quot;&lt;/span&gt;
+git clone &lt;span class=&quot;s2&quot;&gt;&amp;quot;https://github.com/mattn/emmet-vim.git&amp;quot;&lt;/span&gt;
+git clone &lt;span class=&quot;s2&quot;&gt;&amp;quot;https://github.com/scrooloose/nerdtree.git&amp;quot;&lt;/span&gt;
+git clone &lt;span class=&quot;s2&quot;&gt;&amp;quot;https://github.com/vim-airline/vim-airline.git&amp;quot;&lt;/span&gt;
+git clone &lt;span class=&quot;s2&quot;&gt;&amp;quot;https://github.com/tpope/vim-fugitive.git&amp;quot;&lt;/span&gt;
+git clone &lt;span class=&quot;s2&quot;&gt;&amp;quot;https://github.com/yianwillis/vimcdoc.git&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h2&gt;配置VIM&lt;/h2&gt;
+&lt;p&gt;添加插件的帮助文档：&lt;/p&gt;
+&lt;pre class=&quot;code bash literal-block&quot;&gt;&lt;code&gt;vim -u NONE &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;        -c &lt;span class=&quot;s2&quot;&gt;&amp;quot;helptags YouCompleteMe/doc&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;        -c &lt;span class=&quot;s2&quot;&gt;&amp;quot;helptags python-mode/doc&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;        -c &lt;span class=&quot;s2&quot;&gt;&amp;quot;helptags emmet-vim/doc&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;        -c &lt;span class=&quot;s2&quot;&gt;&amp;quot;helptags nerdtree/doc&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;        -c &lt;span class=&quot;s2&quot;&gt;&amp;quot;helptags vim-airline/doc&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;        -c &lt;span class=&quot;s2&quot;&gt;&amp;quot;helptags vim-fugitive/doc&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;        -c &lt;span class=&quot;s2&quot;&gt;&amp;quot;helptags vimcdoc/doc&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;        -c q&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在&lt;span class=&quot;docutils literal&quot;&gt;$HOME&lt;/span&gt;目录下，添加&lt;em&gt;.vimrc&lt;/em&gt;文件，代码如下：&lt;/p&gt;
+&lt;pre class=&quot;code vim literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nocompatible&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;syntax&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;filetype&lt;/span&gt; off
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;expandtab&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tabstop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shiftwidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;softtabstop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;autoindent&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;au&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;BufNewFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;BufRead&lt;/span&gt; *.&lt;span class=&quot;nb&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;*.html&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;*.scss&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;*.yml&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;*.rb&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;Rakefile
+    \ &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;expandtab&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+    \ &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tabstop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shiftwidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;softtabstop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;
+    \ &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;autoindent&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;splitbelow&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;splitright&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;nnoremap&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;J&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;W&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;J&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;nnoremap&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;K&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;W&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;K&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;nnoremap&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;L&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;W&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;L&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;nnoremap&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;H&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;W&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;H&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;foldmethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;indent
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;foldlevel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;99&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;nnoremap&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;space&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; za
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;utf&lt;span class=&quot;m&quot;&gt;-8&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;nu&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hls&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;clipboard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;unnamed
+&lt;span class=&quot;c&quot;&gt;
+&amp;quot; python-mode&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_python &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'python3'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_folding &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_lint_on_unmodified &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_lint_on_fly &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_syntax &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_syntax_all &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_run_bind &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;lt;F5&amp;gt;'&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;
+&amp;quot; NERDTree&lt;/span&gt;
+autocmd vimenter * NERDTree
+map &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;C&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; :NERDTreeToggle&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+autocmd bufenter * &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;winnr&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;$&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &amp;amp;&amp;amp; exists&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;b:NERDTree&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &amp;amp;&amp;amp; &lt;span class=&quot;k&quot;&gt;b&lt;/span&gt;:NERDTree.isTabTree&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; NERDTreeIgnore&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;[&lt;span class=&quot;s1&quot;&gt;'^.git$'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'^__pycache__$'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'\.pyc$'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'\~$'&lt;/span&gt;]
+&lt;span class=&quot;c&quot;&gt;
+&amp;quot; YouCompleteMe&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:ycm_autoclose_preview_window_after_completion&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+map &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;leader&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;  :YcmCompleter GoToDefinitionElseDeclaration&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;
+&amp;quot; emmet-vim&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:user_emmet_settings &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; {
+\   &lt;span class=&quot;s1&quot;&gt;'html'&lt;/span&gt;: {
+\       &lt;span class=&quot;s1&quot;&gt;'snippets'&lt;/span&gt;: {
+\           &lt;span class=&quot;s1&quot;&gt;'html:5'&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;lt;!DOCTYPE html&amp;gt;\n&amp;quot;&lt;/span&gt;
+\               .&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;lt;html lang=\&amp;quot;${lang}\&amp;quot;&amp;gt;\n&amp;quot;&lt;/span&gt;
+\               .&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;lt;head&amp;gt;\n&amp;quot;&lt;/span&gt;
+\               .&lt;span class=&quot;s2&quot;&gt;&amp;quot;\t&amp;lt;meta charset=\&amp;quot;${charset}\&amp;quot;&amp;gt;\n&amp;quot;&lt;/span&gt;
+\               .&lt;span class=&quot;s2&quot;&gt;&amp;quot;\t&amp;lt;meta name=\&amp;quot;viewport\&amp;quot; content=\&amp;quot;width=device-width, initial-scale=1, shrink-to-fit=no\&amp;quot;&amp;gt;\n&amp;quot;&lt;/span&gt;
+\               .&lt;span class=&quot;s2&quot;&gt;&amp;quot;\t&amp;lt;meta http-equiv=\&amp;quot;X-UA-Compatible\&amp;quot; content=\&amp;quot;ie=edge\&amp;quot;&amp;gt;\n&amp;quot;&lt;/span&gt;
+\               .&lt;span class=&quot;s2&quot;&gt;&amp;quot;\t&amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;\n&amp;quot;&lt;/span&gt;
+\               .&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;lt;/head&amp;gt;\n&amp;quot;&lt;/span&gt;
+\               .&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;lt;body&amp;gt;\n\t${child}|\n&amp;lt;/body&amp;gt;\n&amp;quot;&lt;/span&gt;
+\               .&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;lt;/html&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+\       }&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+\   }&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+\}
+
+&lt;span class=&quot;k&quot;&gt;filetype&lt;/span&gt; plugin indent &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;
+&lt;hr class=&quot;footer&quot; /&gt;
+&lt;p&gt;DPS垫底，就是木桩（&lt;span class=&quot;docutils literal&quot;&gt;$ vimtutor zh&lt;/span&gt;）打得少！&lt;/p&gt;
+
+&lt;/div&gt;</content><author><name></name></author><category term="Python" /><category term="VIM" /><category term="工具" /><summary type="html">团长： 赶紧把这个Python脚本给我改好！ 萌新： 好的，先等我把Pycharm打开。 休闲玩家： 你就不能用VIM？</summary></entry><entry><title type="html">.rst to .html</title><link href="https://www.brave1984.com/posts/rst-to-html/" rel="alternate" type="text/html" title=".rst to .html" /><published>2019-01-02T01:09:59+00:00</published><updated>2019-01-02T01:09:59+00:00</updated><id>https://www.brave1984.com/posts/rst%20to%20html</id><content type="html" xml:base="https://www.brave1984.com/posts/rst-to-html/">&lt;div class=&quot;document&quot;&gt;
+&lt;div class=&quot;summary docutils container&quot;&gt;
+&lt;p&gt;&lt;strong&gt;高端玩家&lt;/strong&gt;： &lt;a class=&quot;reference external&quot; href=&quot;http://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/&quot;&gt;Don't Use Markdown for Technical Docs！&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;萌新&lt;/strong&gt;： 没有什么技术文档是&lt;a class=&quot;reference external&quot; href=&quot;https://daringfireball.net/projects/markdown/syntax&quot;&gt;Markdown&lt;/a&gt;无法表述的，不行就加个&lt;span class=&quot;docutils literal&quot;&gt;div&lt;/span&gt;元素。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NPC&lt;/strong&gt;： 为咩不用&lt;em&gt;Word&lt;/em&gt;?&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- 摘要注释 --&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;起因&lt;/h2&gt;
+&lt;p&gt;本站的内容起初是使用&lt;a class=&quot;reference external&quot; href=&quot;https://daringfireball.net/projects/markdown/syntax&quot;&gt;Markdown&lt;/a&gt;编写的，在样式表中给&lt;span class=&quot;docutils literal&quot;&gt;p&lt;/span&gt;元素添加了首行缩进。文本转译成&lt;em&gt;.html&lt;/em&gt;后，原本独立的&lt;span class=&quot;docutils literal&quot;&gt;img&lt;/span&gt;元素被包裹在&lt;span class=&quot;docutils literal&quot;&gt;p&lt;/span&gt;标签中。&lt;/p&gt;
+&lt;p&gt;这就导致：不符合语义；移动端显示时，图片因缩进，而溢出屏幕边界。&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h2&gt;经过&lt;/h2&gt;
+&lt;p&gt;解决方法不外乎：1、在文本中插入一个&lt;span class=&quot;docutils literal&quot;&gt;div&lt;/span&gt;元素；2、使用新的文本标记语言。&lt;/p&gt;
+&lt;p&gt;因为插入&lt;span class=&quot;docutils literal&quot;&gt;div&lt;/span&gt;元素不能彻底解决问题，所以将&lt;a class=&quot;reference external&quot; href=&quot;https://daringfireball.net/projects/markdown/syntax&quot;&gt;Markdown&lt;/a&gt;替换成&lt;a class=&quot;reference external&quot; href=&quot;http://docutils.sourceforge.net/rst.html&quot;&gt;reStructuredText&lt;/a&gt;（被用于编写&lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;文档）。&lt;a class=&quot;reference external&quot; href=&quot;http://docutils.sourceforge.net/rst.html&quot;&gt;reStructuredText&lt;/a&gt;可以通过&lt;span class=&quot;docutils literal&quot;&gt;include&lt;/span&gt;指令引用外部文档（如：代码片段），达到去除冗余的目的。&lt;/p&gt;
+&lt;p&gt;接下来，要做的只是：编写一个&lt;a class=&quot;reference external&quot; href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://jekyllrb.com/docs/plugins/converters/&quot;&gt;Converters&lt;/a&gt;插件，通过管道调用外部的&lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;脚本，将文本由&lt;em&gt;.rst&lt;/em&gt;格式转换成&lt;em&gt;.html&lt;/em&gt;格式。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docutils.sourceforge.net/&quot;&gt;Docutils&lt;/a&gt;源码中提供了相应的工具：&lt;a class=&quot;reference external&quot; href=&quot;https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/tools/rst2html5.py&quot;&gt;rst2html5.py&lt;/a&gt;脚本，但这个转换脚本将输出一个带有&lt;span class=&quot;docutils literal&quot;&gt;head&lt;/span&gt;部分的&lt;em&gt;.html&lt;/em&gt;文本。&lt;span class=&quot;docutils literal&quot;&gt;publish_cmdline&lt;/span&gt;函数位于docutils目录下的&lt;a class=&quot;reference external&quot; href=&quot;https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/core.py&quot;&gt;core.py&lt;/a&gt;文件中，此文件内包含有一个&lt;span class=&quot;docutils literal&quot;&gt;Publisher&lt;/span&gt;类和多个以“&lt;em&gt;publish&lt;/em&gt;”开头的函数。&lt;/p&gt;
+&lt;p&gt;通过阅读文档字符串，可以看到&lt;span class=&quot;docutils literal&quot;&gt;publish_parts&lt;/span&gt;函数返回：&lt;em&gt;a dictionary of document parts&lt;/em&gt;（&lt;span class=&quot;docutils literal&quot;&gt;pub.writer.parts&lt;/span&gt;）。&lt;span class=&quot;docutils literal&quot;&gt;pub&lt;/span&gt;对象，又是通过调用&lt;span class=&quot;docutils literal&quot;&gt;publish_programmatically&lt;/span&gt;函数——实例化&lt;span class=&quot;docutils literal&quot;&gt;Publisher&lt;/span&gt;类——产生的。&lt;/p&gt;
+&lt;p&gt;查看&lt;em&gt;docutils/writers&lt;/em&gt;目录下的&lt;a class=&quot;reference external&quot; href=&quot;https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/_html_base.py&quot;&gt;_html_base.py&lt;/a&gt;文件，可以获悉一个&lt;em&gt;.html&lt;/em&gt;文本究竟是由哪几部分构成：&lt;/p&gt;
+&lt;pre class=&quot;code python literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;visitor_attributes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;'head_prefix'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'head'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'stylesheet'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'body_prefix'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;'body_pre_docinfo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'docinfo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'body'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'body_suffix'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;'title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'subtitle'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'header'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'footer'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'meta'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'fragment'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;'html_prolog'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'html_head'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'html_title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'html_subtitle'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;'html_body'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;于是乎，我们可以编写出如下的&lt;em&gt;.rst&lt;/em&gt; to &lt;em&gt;.html&lt;/em&gt;转换函数：&lt;/p&gt;
+&lt;pre class=&quot;code python literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'syntax_highlight'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'short'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;'initial_header_level'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;'raw_enabled'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;converter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;part&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;html_body&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;parts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;publish_parts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;writer_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'html5'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;settings_overrides&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;part&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/html5_polyglot/__init__.py#l48&quot;&gt;settings_overrides参数配置&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/__init__.py#l120&quot;&gt;writer_name参数配置&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docutils.sourceforge.net/docs/user/config.html&quot;&gt;docutils配置&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/dracula/pygments&quot;&gt;Dracula for Pygments&lt;/a&gt;，请将样式表中的&lt;em&gt;highlight&lt;/em&gt;类替换成&lt;em&gt;code&lt;/em&gt;类。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h2&gt;结果&lt;/h2&gt;
+&lt;p&gt;在&lt;a class=&quot;reference external&quot; href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;项目的&lt;em&gt;_plugins/rst2html&lt;/em&gt;目录下，编写插件&lt;em&gt;converter.rb&lt;/em&gt;和&lt;em&gt;rst2html5.py&lt;/em&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;converter.rb&lt;/em&gt;，代码如下：&lt;/p&gt;
+&lt;pre class=&quot;code ruby literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Jekyll&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RstConverter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Converter&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;safe&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:low&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;matches&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;ext&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=~&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/rst/i&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;output_ext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&amp;quot;.html&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;no&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;popen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;python &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;expand_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;__FILE__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/rst2html5.py&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'r+'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;puts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close_write&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close_read&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Filters&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;&amp;#64;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;registers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;find_converter_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Converters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;RstConverter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;rst2html5.py&lt;/em&gt;，代码如下：&lt;/p&gt;
+&lt;pre class=&quot;code python literal-block&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;locale&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# module missing in Jython&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;locale&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setlocale&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;locale&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LC_ALL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;locale&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;docutils.core&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;publish_parts&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'syntax_highlight'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'short'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;'initial_header_level'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;'raw_enabled'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;converter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;part&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;html_body&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;parts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;publish_parts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;writer_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'html5'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;settings_overrides&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;part&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vm&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;
+&lt;hr class=&quot;footer&quot; /&gt;
+&lt;p&gt;本插件依赖于第三方&lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;模块：&lt;a class=&quot;reference external&quot; href=&quot;http://pygments.org/&quot;&gt;Pygments&lt;/a&gt;、&lt;a class=&quot;reference external&quot; href=&quot;http://docutils.sourceforge.net/&quot;&gt;Docutils&lt;/a&gt;。&lt;/p&gt;
+
+&lt;/div&gt;</content><author><name></name></author><category term="Python" /><category term="文档" /><category term="工具" /><summary type="html">高端玩家： Don't Use Markdown for Technical Docs！ 萌新： 没有什么技术文档是Markdown无法表述的，不行就加个div元素。 NPC： 为咩不用Word?</summary></entry></feed>

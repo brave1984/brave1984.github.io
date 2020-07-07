@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>程序原本 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">程序原本</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/程序设计" rel="tag">程序设计</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/经典" rel="tag">经典</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Aug 3, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>同是在船上做记号，刻舟求剑与曹冲称象的败与成。</p>
+</div>
+<!-- 摘要注释 -->
+<p>作者的自序——《最后一层表象》——是读者同作者沟通的基石。我从作者的发问中，观照到了自己的影子……</p>
+<p>我已有了<em>“什么是程序？”</em>的答案，而<em>“我所追寻的是什么？”</em>的答案又是什么呢？</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p>“算”是程序之表，“数”是程序之本。</p>
+<p>数据，并不是数，而是<strong>数的系列</strong>。数据，其内聚的特性表明它由一系列存有相互关系的数构成，其外延的特性表明它可以与其他数的系列建立新的抽象关系。数据性质的基本子集：<strong>标识</strong>、<strong>值</strong>和<strong>确定性</strong>。</p>
+<p>因为不可能有永远的或者无尽的存储，所以任何在计算系统中的数据都存有生存周期的问题。我们讨论的确定与不确定是以其生存周期为背景的。数据一旦存在“不确定”的可能，则计算系统的严密性就受到了挑战——计算的不确定性是对机器计算是否有价值的终极拷问。</p>
+<p><strong>计算系统的要素</strong>包括：数、数据和逻辑，以及在此基础上<em>进行正确计算的方法</em>的抽象，即计算范式。</p>
+<p>程序设计语言，是指计算机与人（亦即是程序的使用者与定义者）之间沟通的工具，其有着三种基本性质：<strong>语法</strong>、<strong>语义</strong>与<strong>语用</strong>。</p>
+<p>所谓的“会编程”，是指将我们的意图表达为计算系统的理解能力范围内的语义。而这种语义与掌握某种语言的语法形式无关，它由计算系统与程序员共同确知的数据与逻辑构成，且最终可以由某种计算方法在指定计算系统上实施以得到计算结果。</p>
+<p>在严格的计算系统中，语用——这一语言的背景因素被限制在计算机的初始环境中，从而使“语义+语法”能够描述确定的计算及其结果成为可能。</p>
+<ul class="simple">
+<li><p>使用人群由专业人员变成普通用户，将导致提出大量的<strong>非功能需求</strong>，即它作为“软件”的使用问题；</p></li>
+<li><p>由于使用人群的变化，维护和发布的工作对程序员变得不可控，因此将导致提出大量的<strong>非当前需求</strong>，即它作为“产品”的生命周期问题。</p></li>
+</ul>
+<p>从计算机应用的历史来看，我们在语言中加入新的元素，其本质的原因正是旧的语言特性在应对规模（而非仅仅是计算）的时候显得力不从心，尤其是在应用与系统这两个规模级别中，（在语法与语义上的）语言特性体现出来的代码组织能力，相当大的程度上决定了这门语言所适用的开发规模。</p>
+<img alt="/assets/bookshelf/程序原本/1.jpg" src="/assets/bookshelf/程序原本/1.jpg" />
+<p><strong>程序设计</strong>主要应对计算要素问题，产出是一般含义上的<strong>程序</strong>；<strong>应用开发</strong>主要应对程序组织问题，产出是有产品化概念的<strong>软件</strong>；<strong>系统构建</strong>主要应对跨领域问题，产出是可持续进化的<strong>系统</strong>。</p>
+<p>数组指的是包括某种相同数据（数组元素的类型相同）的连续空间，是顺序地址存储这一概念的自然延伸。结构体指的就是包括某几种不同数据的连续空间，是对数组的补充。数组与结构体一起构成了“用基础数据类型”来复合其他类型的全部可能性。</p>
+<p>指针是对顺序的结构化存储这一方案在运行期的一种补充。它是一个标识，有一个计算系统访问它的地址。它包含数据（值），该值是一个（与它关联的、实际的）数据的地址。</p>
+<p>关联数组在基于地址存取的机器中应用时，面临的核心问题是：作为名字的字符串存在无限的组合，这与有限的地址空间是矛盾的。哈希算法通过将“名/值”映射为“Key/Code/Value”的关系，从而解决了上述问题。“名/值”数据系统与其存储背景有着相关大的关系，“必须在相同背景下创建与维护哈希表”是一种系统负担。</p>
+<p>对于一个计算过程来说，关联数组可以维护它所需的一切参考，所有的数据性质都可以表述为关联数组与其存取的性质。我们称这一运算所需的参考为<strong>上下文环境</strong>。上下文是保证一个运算具有确定性的主要方式，换言之，它相当于语言中的语用这一要素。</p>
+<blockquote class="epigraph">
+<p>如果一个过程能够产生比调用语句存活得更久的数据实体，则称该过程为<strong>类</strong>、该数据实体为<strong>对象</strong>。</p>
+<p class="attribution">—《结构程序设计》</p>
+</blockquote>
+<img alt="/assets/bookshelf/程序原本/2.jpg" src="/assets/bookshelf/程序原本/2.jpg" />
+<p>所谓模式的结构型与行为型，其实是从数据与逻辑的视角观察一组对象或一个对象的结果；而所谓模式，是对上述观察所见关系的一种抽象描述。<em>GoF</em>模式本质上是<strong>“结构（逻辑+数据）”</strong>这样的基本模型作用于<strong>数据间关系</strong>之后的产出。</p>
+<p>对于应用开发中的功能性需求（计算需求与应用需求）来说，一切空间因素所致的复杂性，都可以通过组织形式来解决；一切时间因素所致的复杂性，都可以通过抽象模型来解决。</p>
+<p>应用开发语言中有着两个发展方向：一个是从“模块/单元”这一角度出发的软件复用，另一个是从“项目/工程”这一角度出发的工程组织。模块划分永远不存在最优方案，模块化的精髓不在于外在形式的分离，而在于内在逻辑的延续。我们可以设定一个简单的分类依据，使得位于同一个单元中的函数表现出一定的相似性；我们可以使得一个单元或多个单元中的函数存有某种逻辑关系。</p>
+<p>一个“建模者”所面临的需求主要来自三个方面：决策域、产品域与实施域。敏捷工程本质上是把决策域与产品域中的需求拉到了实施域中，就地决策与设计（产品），并将这一过程开放给用户。原型是轻量级的试错，它并没有减少问题的总量，但是“可讨论对象”（即原型）变成了纯粹用于工程师与用户之间沟通的桥梁。</p>
+<p>从实施推进的角度来看，模型事实上允许我们将系统拆分成多个阶段，并尽早地预期了系统的每个阶段所依赖的（前一个阶段的、可能的）事实基础，因此模型具有可描述、可分析、可预期等性质。</p>
+<img alt="/assets/bookshelf/程序原本/3.jpg" src="/assets/bookshelf/程序原本/3.jpg" />
+<p>系统应付规模问题的总法则只有两个：<strong>运算能力的分布</strong>，以及<strong>运算对象的分布</strong>。</p>
+<p>“分割”是指一个问题集（无论是运算能力还是运算对象）能否被切分，而“分布”，指的是分割的结果能否被各个独立地加以处理。“可拆分”与拆分的结果“可处理”，这两个特性在“分布”中缺一不可。</p>
+<p>如果子函数可以分布，则整个系统是可以分布的。逻辑或数据的时序依赖，在时间维度下不可分解，这预示着必然存在无法通过“分布（或组织的结构化）”来解决的规模/复杂性系统问题。而逻辑的不可分布并非无解，它最终可以被聚焦于“用于处理数据依赖问题的逻辑”的复杂性。</p>
+<div class="compound">
+<p class="compound-first">数据(x)的全集 = 数据(x') + 操作(x&quot;) + 状态(Sx)</p>
+<p class="compound-last">数据依赖在概念上只表明多个逻辑作用于同一个数据，它最终将被表达为面向{ x', x&quot;, Sx }的操作，其中{x', x&quot;}表明被依赖的数据与其可确定的行为,而{ Sx }表明一个有明确含义与可操作性的状态。</p>
+</div>
+<p>状态与消息的抽象概念的区别在于：前者往往带有位置之于存储，或数据之于逻辑的含义；后者则将位置与逻辑含义都抽取掉，只认为消息是一个约定所需的数据部分。</p>
+<p>在大型系统（以及任何一个需要架构的系统）中，我们得承认两点事实：其一，我们的系统永远都只是更大系统的局部；其二，我们只能在实施中关注可控领域中的可控因素。任何一个子系统——作为一个更大系统的组成部件——对外部系统只需要承担这样两种责任：一，维护可对外公示的状态，使得外部系统可以将明确的行为（逻辑）施于自身；二，接受外部的消息，使得外部可以通过传递数据来影响自身。</p>
+<p>“系统”这个规模是包含“应用”的，这一规模的定义本身就是由跨领域引申而来。系统本身的复杂性并不是由这些领域带来的，领域间的交叉与交互才是系统规模问题的根源。</p>
+<div class="compound">
+<p class="compound-first">作为组成部件的领域提供了一组接口：</p>
+<ol class="compound-last arabic simple">
+<li><p>将领域问题转义为一组逻辑的界面；</p></li>
+<li><p>将领域间有无关系，转义为“领域对领域（调用者与被调用者）”的接口是否可达；</p></li>
+<li><p>屏蔽领域内的数据性质，迫使开发者必须通过特定的设计来解决领域间的数据问题（例如数据类型、数据依赖等）。</p></li>
+</ol>
+</div>
+<p>系统与子系统之间面临的第一个问题，是系统的整体部署。系统的部署方案几乎决定或限制了大多数有关系统的决策，其中首当其冲的是数据的结构化与预结构化问题。数据的结构化阶段离处理阶段越远，其系统的整体收益也就越高，即数据要“尽可能早地”结构化。但结构化是一个逻辑过程，需要相应的部署环节的支持。</p>
+<p>对于数据规划，关系型数据库强调数据项（Rows）间存在序列关系，以及数据列（Cols）间存在的键关系。在NoSQL的思维方式中，数据是通过一大批获取过程、在一系列被分布的数据中“收集”而最终得到的一个结果集。</p>
+</div>
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/%E7%A8%8B%E5%BA%8F%E5%8E%9F%E6%9C%AC/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/%E7%A8%8B%E5%BA%8F%E5%8E%9F%E6%9C%AC/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/%E7%A8%8B%E5%BA%8F%E5%8E%9F%E6%9C%AC/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E7%AE%80%E7%BA%A6%E4%B9%8B%E7%BE%8E/" title="简约之美" aria-label="Previous">
+        <span><small>上一篇：</small>简约之美</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/" title="架构整洁之道" aria-label="Next">
+        <span><small>下一篇：</small>架构整洁之道</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/程序原本/cover.jpg" alt="封面：程序原本">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>周爱民</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>236页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>图灵社区</p>
+      </li>
+      
+      
+      
+      
+      <li>
+        <p><span>出版日期：</span>2017-06-12</p>
+      </li>
+      
+    </ul>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

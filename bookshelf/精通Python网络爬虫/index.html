@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>精通Python网络爬虫 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">精通Python网络爬虫</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/python" rel="tag">Python</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/爬虫" rel="tag">爬虫</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/scrapy" rel="tag">Scrapy</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Jul 19, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>从<a class="reference external" href="https://docs.python.org/3/library/urllib.html">urllib</a>到<a class="reference external" href="https://scrapy.org/">Scrapy</a>，从模块到框架，从脚本到应用。</p>
+</div>
+<!-- 摘要注释 -->
+<div class="compound">
+<p class="compound-first">虽然本书只适用于（爬虫领域）从初阶到中阶的过渡阶段，但是它给我留下了深刻的印象，其中的原因有三点：</p>
+<ul class="compound-last simple">
+<li><p>与<a class="reference external" href="http://python-requests.org/">Requests</a>相比，<a class="reference external" href="https://docs.python.org/3/library/urllib.html">urllib</a>需要做太多的事；</p></li>
+<li><p>用<a class="reference external" href="https://www.telerik.com/fiddler">Fiddler</a>抓包数据；</p></li>
+<li><p>17年——<a class="reference external" href="https://docs.python.org/3/">Python 3</a>环境下的<a class="reference external" href="https://scrapy.org/">Scrapy</a>书，就这么一两本。</p></li>
+</ul>
+</div>
+<p>编写增量式爬虫的时候，我们就得考虑维护性的问题了，而引入<a class="reference external" href="https://scrapy.org/">Scrapy</a>框架就是个好选择。框架抽取了代码的公共部分，为我们搭好了架子，使得我们可以专注于应用的开发。在熟悉框架的前提下，我们的代码也具有了更高的可读性。</p>
+<p>初学<a class="reference external" href="https://scrapy.org/">Scrapy</a>的时候，代码照着书写就行了，但我心中有个疑问——为什么要这样写？在面向对象的编程范式下，<strong>继承</strong>弱化了父类与子类间的封装，其核心是一种用于实现“<em>消息自动委托</em>”的机制。只有查看源码中父类的公共接口，才能解答这个“为什么”。</p>
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/%E7%B2%BE%E9%80%9APython%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/%E7%B2%BE%E9%80%9APython%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/%E7%B2%BE%E9%80%9APython%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/Selenium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" title="Selenium自动化测试" aria-label="Previous">
+        <span><small>上一篇：</small>Selenium自动化测试</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E7%B2%BE%E9%80%9AScrapy%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/" title="精通Scrapy网络爬虫" aria-label="Next">
+        <span><small>下一篇：</small>精通Scrapy网络爬虫</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/精通Python网络爬虫/cover.jpg" alt="封面：精通Python网络爬虫">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>韦玮</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>294页</p>
+      </li>
+      
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787111562085</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>机械工业出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2017-02-01</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2Gk17X8" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

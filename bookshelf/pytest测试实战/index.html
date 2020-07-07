@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>pytest测试实战 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">pytest测试实战</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/python" rel="tag">python</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/测试" rel="tag">测试</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/工具" rel="tag">工具</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Apr 27, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p><a class="reference external" href="https://pytest.org">pytest</a>，能更好地完成测试，却只需要更少的代码。</p>
+</div>
+<!-- 摘要注释 -->
+<p><a class="reference external" href="https://pytest.org">pytest</a>主要用于单元测试与功能测试，而本书的内容涵盖了它的基本用法，足以满足工程需要。结合优秀库的<span class="docutils literal">setup.py</span>、<span class="docutils literal">setup.cfg</span>文件，就能掌握工程的打包要诀。至于扩展<a class="reference external" href="https://pytest.org">pytest</a>，则需要深入阅读文档与源码。</p>
+<div class="compound">
+<p class="compound-first">从使用层面上看，<a class="reference external" href="https://pytest.org">pytest</a>主要由<em>cli</em>、<span class="docutils literal">assert</span> 、<span class="docutils literal">mark</span>、<span class="docutils literal">fixtrue</span>、<span class="docutils literal">hook</span>等部分构成。</p>
+<ul class="compound-last simple">
+<li><p><em>cli</em>，提供了用例定位、格式化输出等功能。</p></li>
+<li><p><a class="reference external" href="https://pytest.org">pytest</a>重写了<span class="docutils literal">assert</span>关键字，不仅提升了易用性，而且还能输出更详细的错误信息。</p></li>
+<li><p><span class="docutils literal">mark</span>，不仅能对用例进行分类，还可参数化测试。</p></li>
+<li><p><span class="docutils literal">fixtrue</span>，作为一种依赖注入，解耦了测试的配置和逻辑，是<a class="reference external" href="https://pytest.org">pytest</a>的核心。</p></li>
+<li><p><span class="docutils literal">hook</span>，不仅将各个模块组合起来，还给用户留出了扩展接口。</p></li>
+</ul>
+</div>
+<p>从运行层面上看，<a class="reference external" href="https://pytest.org">pytest</a>先读取配置信息，加载测试目录，将测试用例映射成节点并从下至上链接成树；然后运行测试循环，迭代测试用例，完成<span class="docutils literal">setup/call/teardown</span>；最后汇总测试结果，生出测试报告。</p>
+<div class="compound">
+<p class="compound-first">从源代码层面上看，<a class="reference external" href="https://pytest.org">pytest</a>由一个入口文件<span class="docutils literal">pytest.py</span>和一个组件包<span class="docutils literal">_pytest</span>构成。</p>
+<ul class="compound-last simple">
+<li><p><span class="docutils literal">assertion</span>组件重写了<span class="docutils literal">assert</span>关键字；</p></li>
+<li><p><span class="docutils literal">Config</span>类组合了一个<span class="docutils literal">PytestPluginManager</span>类的实例，这个类是<a class="reference external" href="https://github.com/pytest-dev/pluggy">pluggy</a>模块中<span class="docutils literal">PluginManager</span>类的子类，从而实现了<span class="docutils literal">hook</span>。</p></li>
+<li><p><span class="docutils literal">nodes.py</span>文件中的节点类<span class="docutils literal">Node</span>用<span class="docutils literal">property</span>装饰了两个属性<span class="docutils literal">nodeid</span>、<span class="docutils literal">ihook</span>。<span class="docutils literal">ihook</span>作为代理接口，用于把用例接入整个测试系统。</p></li>
+<li><p><span class="docutils literal">pytest.mark</span>是<span class="docutils literal">MarkGenerator</span>类的一个实例，从而实现了所谓的“单例模式”。通过类属性<span class="docutils literal">_config</span>的布尔值，来判定是否拦截未注册的标记。<span class="docutils literal">__getattr__</span>方法返回一个被<a class="reference external" href="https://www.attrs.org/">attr</a>模块的<span class="docutils literal">attrs</span>函数装饰过的<span class="docutils literal">MarkDecorator</span>类的实例，这个类的<span class="docutils literal">__call__</span>方法很有意思——如果传入除用例以外的参数，那么将再返回一个<span class="docutils literal">MarkDecorator</span>类的实例。</p></li>
+<li><p><span class="docutils literal">pytest.fixtrue</span>函数返回一个<span class="docutils literal">FixtureFunctionMarker</span>类的实例。<span class="docutils literal">FixtureRequest</span>从用例节点中获取参数名，并转换为对应的<span class="docutils literal">FixtureDef</span>，而它的子类<span class="docutils literal">SubRequest</span>则由下至上地查找出所有的依赖项。</p></li>
+</ul>
+</div>
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/pytest%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/pytest%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/pytest%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/Python%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BE%8E/" title="Python编程之美" aria-label="Previous">
+        <span><small>上一篇：</small>Python编程之美</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%80%9D%E8%80%83%E8%BF%87%E7%A8%8B/" title="面向对象的思考过程" aria-label="Next">
+        <span><small>下一篇：</small>面向对象的思考过程</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/pytest测试实战/cover.jpg" alt="封面：pytest测试实战">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Brian Okken</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>陆阳 & 饶勇</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>224页</p>
+      </li>
+      
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787568044424</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>华中科技大学出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2018-08-31</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2GMfu7g" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

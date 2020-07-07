@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>.rst to .html - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/posts/">日志</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">.rst to .html</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/python" rel="tag">Python</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/文档" rel="tag">文档</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/工具" rel="tag">工具</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Jan 2, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p><strong>高端玩家</strong>： <a class="reference external" href="http://www.ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/">Don't Use Markdown for Technical Docs！</a></p>
+<p><strong>萌新</strong>： 没有什么技术文档是<a class="reference external" href="https://daringfireball.net/projects/markdown/syntax">Markdown</a>无法表述的，不行就加个<span class="docutils literal">div</span>元素。</p>
+<p><strong>NPC</strong>： 为咩不用<em>Word</em>?</p>
+</div>
+<!-- 摘要注释 -->
+<div class="section" id="id1">
+<h2>起因</h2>
+<p>本站的内容起初是使用<a class="reference external" href="https://daringfireball.net/projects/markdown/syntax">Markdown</a>编写的，在样式表中给<span class="docutils literal">p</span>元素添加了首行缩进。文本转译成<em>.html</em>后，原本独立的<span class="docutils literal">img</span>元素被包裹在<span class="docutils literal">p</span>标签中。</p>
+<p>这就导致：不符合语义；移动端显示时，图片因缩进，而溢出屏幕边界。</p>
+</div>
+<div class="section" id="id2">
+<h2>经过</h2>
+<p>解决方法不外乎：1、在文本中插入一个<span class="docutils literal">div</span>元素；2、使用新的文本标记语言。</p>
+<p>因为插入<span class="docutils literal">div</span>元素不能彻底解决问题，所以将<a class="reference external" href="https://daringfireball.net/projects/markdown/syntax">Markdown</a>替换成<a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>（被用于编写<a class="reference external" href="https://www.python.org/">Python</a>文档）。<a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>可以通过<span class="docutils literal">include</span>指令引用外部文档（如：代码片段），达到去除冗余的目的。</p>
+<p>接下来，要做的只是：编写一个<a class="reference external" href="https://jekyllrb.com/">Jekyll</a> <a class="reference external" href="https://jekyllrb.com/docs/plugins/converters/">Converters</a>插件，通过管道调用外部的<a class="reference external" href="https://www.python.org/">Python</a>脚本，将文本由<em>.rst</em>格式转换成<em>.html</em>格式。</p>
+<p><a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a>源码中提供了相应的工具：<a class="reference external" href="https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/tools/rst2html5.py">rst2html5.py</a>脚本，但这个转换脚本将输出一个带有<span class="docutils literal">head</span>部分的<em>.html</em>文本。<span class="docutils literal">publish_cmdline</span>函数位于docutils目录下的<a class="reference external" href="https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/core.py">core.py</a>文件中，此文件内包含有一个<span class="docutils literal">Publisher</span>类和多个以“<em>publish</em>”开头的函数。</p>
+<p>通过阅读文档字符串，可以看到<span class="docutils literal">publish_parts</span>函数返回：<em>a dictionary of document parts</em>（<span class="docutils literal">pub.writer.parts</span>）。<span class="docutils literal">pub</span>对象，又是通过调用<span class="docutils literal">publish_programmatically</span>函数——实例化<span class="docutils literal">Publisher</span>类——产生的。</p>
+<p>查看<em>docutils/writers</em>目录下的<a class="reference external" href="https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/_html_base.py">_html_base.py</a>文件，可以获悉一个<em>.html</em>文本究竟是由哪几部分构成：</p>
+<pre class="code python literal-block"><code><span class="n">visitor_attributes</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s1">'head_prefix'</span><span class="p">,</span> <span class="s1">'head'</span><span class="p">,</span> <span class="s1">'stylesheet'</span><span class="p">,</span> <span class="s1">'body_prefix'</span><span class="p">,</span>
+    <span class="s1">'body_pre_docinfo'</span><span class="p">,</span> <span class="s1">'docinfo'</span><span class="p">,</span> <span class="s1">'body'</span><span class="p">,</span> <span class="s1">'body_suffix'</span><span class="p">,</span>
+    <span class="s1">'title'</span><span class="p">,</span> <span class="s1">'subtitle'</span><span class="p">,</span> <span class="s1">'header'</span><span class="p">,</span> <span class="s1">'footer'</span><span class="p">,</span> <span class="s1">'meta'</span><span class="p">,</span> <span class="s1">'fragment'</span><span class="p">,</span>
+    <span class="s1">'html_prolog'</span><span class="p">,</span> <span class="s1">'html_head'</span><span class="p">,</span> <span class="s1">'html_title'</span><span class="p">,</span> <span class="s1">'html_subtitle'</span><span class="p">,</span>
+    <span class="s1">'html_body'</span><span class="p">)</span></code></pre>
+<p>于是乎，我们可以编写出如下的<em>.rst</em> to <em>.html</em>转换函数：</p>
+<pre class="code python literal-block"><code><span class="n">settings</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'syntax_highlight'</span><span class="p">:</span> <span class="s1">'short'</span><span class="p">,</span>
+            <span class="s1">'initial_header_level'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s1">'raw_enabled'</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">converter</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">part</span><span class="o">=</span><span class="s2">&quot;html_body&quot;</span><span class="p">):</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">publish_parts</span><span class="p">(</span>
+        <span class="n">source</span><span class="p">,</span>
+        <span class="n">writer_name</span><span class="o">=</span><span class="s1">'html5'</span><span class="p">,</span>
+        <span class="n">settings_overrides</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">parts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span></code></pre>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/html5_polyglot/__init__.py#l48">settings_overrides参数配置</a></p></li>
+<li><p><a class="reference external" href="https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/docutils/writers/__init__.py#l120">writer_name参数配置</a></p></li>
+<li><p><a class="reference external" href="http://docutils.sourceforge.net/docs/user/config.html">docutils配置</a></p></li>
+<li><p><a class="reference external" href="https://github.com/dracula/pygments">Dracula for Pygments</a>，请将样式表中的<em>highlight</em>类替换成<em>code</em>类。</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>结果</h2>
+<p>在<a class="reference external" href="https://jekyllrb.com/">Jekyll</a>项目的<em>_plugins/rst2html</em>目录下，编写插件<em>converter.rb</em>和<em>rst2html5.py</em>。</p>
+<p><em>converter.rb</em>，代码如下：</p>
+<pre class="code ruby literal-block"><code><span class="k">module</span> <span class="nn">Jekyll</span>
+  <span class="k">class</span> <span class="nc">RstConverter</span> <span class="o">&lt;</span> <span class="no">Converter</span>
+    <span class="n">safe</span> <span class="kp">true</span>
+    <span class="n">priority</span> <span class="ss">:low</span>
+
+    <span class="k">def</span> <span class="nf">matches</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>
+      <span class="n">ext</span> <span class="o">=~</span> <span class="sr">/rst/i</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">output_ext</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>
+      <span class="s2">&quot;.html&quot;</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+      <span class="no">IO</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s2">&quot;python </span><span class="si">#{</span><span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">))</span><span class="si">}</span><span class="s2">/rst2html5.py&quot;</span><span class="p">,</span> <span class="s1">'r+'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">pipe</span><span class="o">|</span>
+        <span class="n">pipe</span><span class="o">.</span><span class="n">puts</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="n">pipe</span><span class="o">.</span><span class="n">close_write</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">read</span>
+        <span class="n">pipe</span><span class="o">.</span><span class="n">close_read</span>
+        <span class="n">result</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">module</span> <span class="nn">Filters</span>
+    <span class="k">def</span> <span class="nf">rst</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+      <span class="n">site</span> <span class="o">=</span> <span class="vi">&#64;context</span><span class="o">.</span><span class="n">registers</span><span class="o">[</span><span class="ss">:site</span><span class="o">]</span>
+      <span class="n">converter</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">find_converter_instance</span><span class="p">(</span><span class="o">::</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">Converters</span><span class="o">::</span><span class="no">RstConverter</span><span class="p">)</span>
+      <span class="n">converter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+<p><em>rst2html5.py</em>，代码如下：</p>
+<pre class="code python literal-block"><code><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">locale</span>  <span class="c1"># module missing in Jython</span>
+
+    <span class="n">locale</span><span class="o">.</span><span class="n">setlocale</span><span class="p">(</span><span class="n">locale</span><span class="o">.</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">locale</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">docutils.core</span> <span class="kn">import</span> <span class="n">publish_parts</span>
+
+<span class="n">settings</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'syntax_highlight'</span><span class="p">:</span> <span class="s1">'short'</span><span class="p">,</span>
+            <span class="s1">'initial_header_level'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s1">'raw_enabled'</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">converter</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">part</span><span class="o">=</span><span class="s2">&quot;html_body&quot;</span><span class="p">):</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">publish_parts</span><span class="p">(</span>
+        <span class="n">source</span><span class="p">,</span>
+        <span class="n">writer_name</span><span class="o">=</span><span class="s1">'html5'</span><span class="p">,</span>
+        <span class="n">settings_overrides</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">parts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">converter</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span></code></pre>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<p>本插件依赖于第三方<a class="reference external" href="https://www.python.org/">Python</a>模块：<a class="reference external" href="http://pygments.org/">Pygments</a>、<a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a>。</p>
+
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <div>
+    
+    
+    <button type="button" class="github-gist">
+      <a href="https://gist.github.com/39db3c65f0347d9ee92d33b2dd845105.git" title="Clone with HTTPS" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span>View on GitHub Gist</span>
+      </a>
+    </button>
+    
+  </div>
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/posts/rst-to-html/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/posts/rst-to-html/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/posts/rst-to-html/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/posts/VIM-%E6%89%8B%E7%9A%84%E5%BB%B6%E4%BC%B8/" title="VIM，手的延伸" aria-label="Next">
+        <span><small>下一篇：</small>VIM，手的延伸</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

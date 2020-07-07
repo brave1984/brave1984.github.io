@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>SQL基础教程 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">SQL基础教程</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/数据库" rel="tag">数据库</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/sql" rel="tag">SQL</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/基础" rel="tag">基础</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Oct 19, 2018
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>一本对新手友好的<em>SQL</em>书，本书侧重于<strong>Read</strong>操作，从简单的查询语句延伸到表与表之间的关联查询。通过阅读本书，你将掌握基本的<em>SQL</em>语句，实现数据的<strong>增查改删</strong>。</p>
+</div>
+<!-- 摘要注释 -->
+<div class="section" id="id1">
+<h2>文摘</h2>
+<dl class="simple">
+<dt>DDL 数据定义语言</dt>
+<dd><p>用来创建或者删除存储数据用的数据库以及数据库中的表等对象，包含：<em>CREATE</em>、<em>DROP</em>、<em>ALTER</em>。</p>
+</dd>
+<dt>DML 数据操纵语言</dt>
+<dd><p>用来查询或者变更表中记录，包含：<em>SELECT</em>、<em>INSERT</em>、<em>UPDATE</em>、<em>DELETE</em>。</p>
+</dd>
+<dt>DCL 数据控制语言</dt>
+<dd><p>用来确认或者取消对数据库中的数据进行的变更，还可以对 <strong>RDBMS</strong>的用户是否有权限操作数据库中的对象进行设定，包含：<em>COMMIT</em>、<em>ROLLBACK</em>、<em>GRANT</em>、<em>REVOKE</em>。</p>
+</dd>
+</dl>
+<p><em>SQL</em>语句以分号结尾、关键字不区分大小写、字符串和日期用单引号括起、单词以半角空格或换行符分隔。</p>
+<div class="section" id="createselect">
+<h3>CREATE与SELECT子句</h3>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr><th class="head"><p>商品编号</p></th>
+<th class="head"><p>商品名称</p></th>
+<th class="head"><p>商品种类</p></th>
+<th class="head"><p>销售单价</p></th>
+<th class="head"><p>进货单价</p></th>
+<th class="head"><p>登记日期</p></th>
+</tr>
+</thead>
+<tbody>
+<tr><td><p>0001</p></td>
+<td><p>T恤衫</p></td>
+<td><p>衣服</p></td>
+<td><p>1000</p></td>
+<td><p>500</p></td>
+<td><p>2009-09-20</p></td>
+</tr>
+<tr><td><p>0002</p></td>
+<td><p>打孔器</p></td>
+<td><p>办公用品</p></td>
+<td><p>500</p></td>
+<td><p>320</p></td>
+<td><p>2009-09-11</p></td>
+</tr>
+<tr><td><p>0003</p></td>
+<td><p>运动T恤</p></td>
+<td><p>衣服</p></td>
+<td><p>4000</p></td>
+<td><p>2800</p></td>
+<td></td>
+</tr>
+<tr><td><p>0004</p></td>
+<td><p>菜刀</p></td>
+<td><p>厨房用具</p></td>
+<td><p>3000</p></td>
+<td><p>2800</p></td>
+<td><p>2009-09-20</p></td>
+</tr>
+<tr><td><p>0005</p></td>
+<td><p>高压锅</p></td>
+<td><p>厨房用具</p></td>
+<td><p>6800</p></td>
+<td><p>5000</p></td>
+<td><p>2009-01-15</p></td>
+</tr>
+<tr><td><p>0006</p></td>
+<td><p>叉子</p></td>
+<td><p>厨房用具</p></td>
+<td><p>500</p></td>
+<td></td>
+<td><p>2009-09-20</p></td>
+</tr>
+<tr><td><p>0007</p></td>
+<td><p>擦菜板</p></td>
+<td><p>厨房用具</p></td>
+<td><p>880</p></td>
+<td><p>790</p></td>
+<td><p>2008-04-28</p></td>
+</tr>
+<tr><td><p>0008</p></td>
+<td><p>圆珠笔</p></td>
+<td><p>办公用品</p></td>
+<td><p>100</p></td>
+<td></td>
+<td><p>2009-11-11</p></td>
+</tr>
+</tbody>
+</table>
+<pre class="code postgres literal-block"><code><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">shop</span><span class="p">;</span></code></pre>
+<pre class="code postgres literal-block"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">product</span><span class="p">(</span>
+  <span class="n">product_id</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mf">4</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">product_name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mf">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">product_type</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mf">32</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="n">sale_price</span> <span class="nb">INTEGER</span><span class="p">,</span>
+  <span class="n">purchase_price</span> <span class="nb">INTEGER</span><span class="p">,</span>
+  <span class="n">regist_date</span> <span class="nb">DATE</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">product_id</span><span class="p">)</span>
+<span class="p">);</span></code></pre>
+<pre class="code postgres literal-block"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">product</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'0001'</span><span class="p">,</span> <span class="s1">'T恤衫'</span><span class="p">,</span> <span class="s1">'衣服'</span><span class="p">,</span> <span class="mf">1000</span><span class="p">,</span> <span class="mf">500</span><span class="p">,</span> <span class="s1">'2009-09-20'</span><span class="p">),</span>
+                           <span class="p">(</span><span class="s1">'0002'</span><span class="p">,</span> <span class="s1">'打孔器'</span><span class="p">,</span> <span class="s1">'办公用品'</span><span class="p">,</span> <span class="mf">500</span><span class="p">,</span> <span class="mf">320</span><span class="p">,</span> <span class="s1">'2009-09-11'</span><span class="p">),</span>
+                           <span class="p">(</span><span class="s1">'0003'</span><span class="p">,</span> <span class="s1">'运动T恤'</span><span class="p">,</span> <span class="s1">'衣服'</span><span class="p">,</span> <span class="mf">4000</span><span class="p">,</span> <span class="mf">2800</span><span class="p">,</span> <span class="k">NULL</span><span class="p">),</span>
+                           <span class="p">(</span><span class="s1">'0004'</span><span class="p">,</span> <span class="s1">'菜刀'</span><span class="p">,</span> <span class="s1">'厨房用具'</span><span class="p">,</span> <span class="mf">3000</span><span class="p">,</span> <span class="mf">2800</span><span class="p">,</span> <span class="s1">'2009-09-20'</span><span class="p">),</span>
+                           <span class="p">(</span><span class="s1">'0005'</span><span class="p">,</span> <span class="s1">'高压锅'</span><span class="p">,</span> <span class="s1">'厨房用具'</span><span class="p">,</span> <span class="mf">6800</span><span class="p">,</span> <span class="mf">5000</span><span class="p">,</span> <span class="s1">'2009-01-15'</span><span class="p">),</span>
+                           <span class="p">(</span><span class="s1">'0006'</span><span class="p">,</span> <span class="s1">'叉子'</span><span class="p">,</span> <span class="s1">'厨房用具'</span><span class="p">,</span> <span class="mf">500</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">'2009-09-20'</span><span class="p">),</span>
+                           <span class="p">(</span><span class="s1">'0007'</span><span class="p">,</span> <span class="s1">'擦菜板'</span><span class="p">,</span> <span class="s1">'厨房用具'</span><span class="p">,</span> <span class="mf">880</span><span class="p">,</span> <span class="mf">790</span><span class="p">,</span> <span class="s1">'2008-04-28'</span><span class="p">),</span>
+                           <span class="p">(</span><span class="s1">'0008'</span><span class="p">,</span> <span class="s1">'圆珠笔'</span><span class="p">,</span> <span class="s1">'办公用品'</span><span class="p">,</span> <span class="mf">100</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">'2009-11-11'</span><span class="p">);</span></code></pre>
+<pre class="code postgres literal-block"><code><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">product_type</span>
+  <span class="k">FROM</span> <span class="n">product</span><span class="p">;</span></code></pre>
+<p><em>DISTINCT</em>关键字只能写在第一个列名之前，用以删除重复记录。</p>
+<ul class="simple">
+<li><p>算术运算符：+、-、*、/；</p></li>
+<li><p>比较运算符：=、&lt;&gt;、&gt;=、&gt;、&lt;=、&lt;;</p></li>
+<li><p>逻辑运算符：<em>NOT</em>、<em>AND</em>、<em>OR</em>。</p></li>
+</ul>
+</div>
+<div class="section" id="group-by">
+<h3>GROUP BY子句</h3>
+<p>聚合函数：<em>COUNT</em>、<em>SUM</em>、<em>AVG</em>、<em>MIN</em>、<em>MAX</em>，会排除字段值为<em>NULL</em>的记录。</p>
+<pre class="code postgres literal-block"><code><span class="k">SELECT</span> <span class="n">product_type</span><span class="p">,</span>
+       <span class="n">COUNT</span><span class="p">(</span><span class="n">product_type</span><span class="p">),</span>
+       <span class="k">current_date</span> <span class="k">AS</span> <span class="n">query_date</span>
+  <span class="k">FROM</span> <span class="n">product</span>
+  <span class="k">WHERE</span> <span class="n">product_type</span> <span class="o">&lt;&gt;</span> <span class="s1">'衣服'</span>
+  <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">product_type</span><span class="p">;</span></code></pre>
+<ul class="simple">
+<li><p>使用<em>GROUP BY</em>子句时，<em>SELECT</em>子句中不能出现聚合键之外的列名（只允许存在：常数、聚合函数、聚合键）；</p></li>
+<li><p>在<em>GROUP BY</em>子句中不能使用<em>SELECT</em>子句中定义的别名；</p></li>
+<li><p><em>GROUP BY</em>子句结果的显示是无序的；</p></li>
+<li><p>只有<em>SELECT</em>子句和<em>HAVING</em>子句（以及<em>ORDER BY</em>子句）中能够使用聚合函数。</p></li>
+</ul>
+</div>
+<div class="section" id="having">
+<h3>HAVING子句</h3>
+<pre class="code postgres literal-block"><code><span class="k">SELECT</span> <span class="n">product_type</span><span class="p">,</span>
+       <span class="n">COUNT</span><span class="p">(</span><span class="n">product_type</span><span class="p">)</span>
+  <span class="k">FROM</span> <span class="n">product</span>
+  <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">product_type</span>
+  <span class="k">HAVING</span> <span class="n">count</span><span class="p">(</span><span class="n">product_type</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2</span><span class="p">;</span></code></pre>
+<p><em>HAVING</em>子句中只允许存在：常数、聚合函数、聚合键，但是聚合键所对应的条件不应该书写在<em>HAVING</em>子句当中，而应该书写在<em>WHERE</em>子句当中。</p>
+</div>
+<div class="section" id="order-by">
+<h3>ORDER BY子句</h3>
+<p>子句的书写顺序：1、<em>SELECT</em>子句--&gt;2、<em>FROM</em>子句--&gt;3、<em>WHERE</em>子句--&gt;4、<em>GROUP BY</em>子句--&gt;5、<em>HAVING</em>子句--&gt;6、<em>ORDER BY</em>子句。</p>
+<ul class="simple">
+<li><p>未指定<em>ORDER BY</em>子句中排列顺序时会默认使用升序进行排列，<em>ASC</em>和<em>DESC</em>是ascendent（上升的）和descendent（下降的）这两个单词的缩写；</p></li>
+<li><p>排序键中包含<em>NULL</em>时，会在开头或末尾进行汇总；</p></li>
+<li><p>在<em>ORDER BY</em>子句中可以使用<em>SELECT</em>子句中定义的别名；</p></li>
+<li><p>在<em>ORDER BY</em>子句中可以使用<em>SELECT</em>子句中未使用的列和聚合函数。</p></li>
+</ul>
+</div>
+<div class="section" id="insert">
+<h3>INSERT子句</h3>
+<pre class="code postgres literal-block"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">productcopy</span>
+  <span class="k">SELECT</span> <span class="o">*</span>
+    <span class="k">FROM</span> <span class="n">product</span>
+    <span class="k">WHERE</span> <span class="n">product_type</span> <span class="o">=</span> <span class="s1">'厨房用具'</span><span class="p">;</span></code></pre>
+<ul class="simple">
+<li><p>通过在建表语句中设置<em>DEFAULT</em>约束来设定默认值，省略<em>INSERT</em>语句中的列名，就会自动设定为该列的默认值（没有默认值时会设定为<em>NULL</em>）</p></li>
+<li><p><em>INSERT</em>语句的<em>SELECT</em>语句中，可以使用<em>WHERE</em>子句或者<em>GROUP BY</em>子句等任何SQL语法（ 但使用<em>ORDER BY</em>子句并不会产生任何效果）。</p></li>
+</ul>
+</div>
+<div class="section" id="delete">
+<h3>DELETE子句</h3>
+<pre class="code postgres literal-block"><code><span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">productcopy</span>
+  <span class="k">WHERE</span> <span class="n">product_type</span> <span class="o">=</span> <span class="s1">'叉子'</span><span class="p">;</span></code></pre>
+<p><em>DELETE</em>语句的删除对象并不是表或者列，而是记录（行）,可以通过<em>WHERE</em>子句指定对象条件来删除部分数据。</p>
+<pre class="code postgres literal-block"><code><span class="k">TRUNCATE</span> <span class="n">productcopy</span><span class="p">;</span></code></pre>
+<p><em>TRUNCATE</em>语句只能用于删除表中全部数据。</p>
+</div>
+<div class="section" id="update">
+<h3>UPDATE子句</h3>
+<pre class="code postgres literal-block"><code><span class="k">UPDATE</span> <span class="n">product</span>
+  <span class="k">SET</span> <span class="n">sale_price</span> <span class="o">=</span> <span class="n">sale_price</span> <span class="o">*</span> <span class="mf">10</span><span class="p">,</span>
+      <span class="n">purchase_price</span> <span class="o">=</span> <span class="n">purchase_price</span> <span class="o">/</span> <span class="mf">2</span>
+  <span class="k">WHERE</span> <span class="n">product_type</span> <span class="o">=</span> <span class="s1">'厨房用具'</span><span class="p">;</span></code></pre>
+</div>
+<div class="section" id="id2">
+<h3>事务</h3>
+<ul class="simple">
+<li><p>事务是需要在同一个处理单元中执行的一系列更新处理的集合。通过使用事务，可以对数据库中的数据更新处理的提交(<em>COMMIT</em>)和取消(<em>ROLLBACK</em>)进行管理；</p></li>
+<li><p>DBMS的事务具有原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）和持久性（Durability）四种特性。</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>子查询</h3>
+<p>表中存储的是实际数据，而视图中保存的是从表中取出数据所使用的<em>SELECT</em>语句，应该将经常使用的<em>SELECT</em>语句做成视图，并避免在视图的基础上创建视图。</p>
+<p>子查询作为内层查询会首先执行，标量子查询就是返回单一值的子查询。</p>
+<pre class="code postgres literal-block"><code><span class="k">SELECT</span> <span class="n">product_type</span><span class="p">,</span>
+       <span class="n">product_name</span><span class="p">,</span>
+       <span class="n">sale_price</span>
+  <span class="k">FROM</span> <span class="n">product</span> <span class="k">AS</span> <span class="n">p1</span>
+  <span class="k">WHERE</span> <span class="n">sale_price</span> <span class="o">&gt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">AVG</span><span class="p">(</span><span class="n">sale_price</span><span class="p">)</span>
+                      <span class="k">FROM</span> <span class="n">product</span> <span class="k">AS</span> <span class="n">p2</span>
+                      <span class="k">WHERE</span> <span class="n">p1</span><span class="mf">.</span><span class="n">product_type</span> <span class="o">=</span> <span class="n">p2</span><span class="mf">.</span><span class="n">product_type</span>
+                      <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">product_type</span><span class="p">);</span></code></pre>
+<p>关联子查询会在细分的组内进行比较时使用，结合条件一定要写在子查询中。</p>
+</div>
+<div class="section" id="case">
+<h3>函数、谓词、CASE表达式</h3>
+<div class="compound">
+<p class="compound-first">函数可分为：</p>
+<ul class="compound-last simple">
+<li><p>算术函数：+、-、*、/、<em>ABS</em>、<em>MOD</em>、<em>ROUND</em>等；</p></li>
+<li><p>字符串函数：||、<em>LENGTH</em>、<em>LOWER</em>、<em>UPPER</em>、<em>REPLACE</em>、<em>SUBSTRING</em>等；</p></li>
+<li><p>日期函数：<em>CURRENT_DATE</em>、<em>CURRENT_TIME</em>、<em>CURRENT_TIMESTAMP</em>、<em>EXTRACT</em>等；</p></li>
+<li><p>转换函数：<em>CAST</em>、<em>COALESCE</em>等；</p></li>
+<li><p>聚合函数。</p></li>
+</ul>
+</div>
+<p>谓词：<em>LIKE</em>、<em>BETWEEN</em>、<em>IS NULL</em>、<em>IS NOT NULL</em>、<em>IN</em>、<em>EXISTS</em>(通常指定关联子查询作为<em>EXIST</em>的参数)。</p>
+<pre class="code postgres literal-block"><code><span class="k">SELECT</span> <span class="n">SUM</span><span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">product_type</span> <span class="o">=</span> <span class="s1">'衣服'</span>
+                     <span class="k">THEN</span> <span class="n">sale_price</span> <span class="k">ELSE</span> <span class="mf">0</span> <span class="k">END</span> <span class="p">)</span> <span class="k">AS</span> <span class="s-Name">&quot;衣服合计&quot;</span><span class="p">,</span>
+       <span class="n">SUM</span><span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">product_type</span> <span class="o">=</span> <span class="s1">'厨房用具'</span>
+                     <span class="k">THEN</span> <span class="n">sale_price</span> <span class="k">ELSE</span> <span class="mf">0</span> <span class="k">END</span> <span class="p">)</span> <span class="k">AS</span> <span class="s-Name">&quot;厨房用具合计&quot;</span><span class="p">,</span>
+       <span class="n">SUM</span><span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">product_type</span> <span class="o">=</span> <span class="s1">'办公用品'</span>
+                     <span class="k">THEN</span> <span class="n">sale_price</span> <span class="k">ELSE</span> <span class="mf">0</span> <span class="k">END</span> <span class="p">)</span> <span class="k">AS</span> <span class="s-Name">&quot;办公用品&quot;</span>
+  <span class="k">FROM</span> <span class="n">product</span><span class="p">;</span></code></pre>
+</div>
+<div class="section" id="id4">
+<h3>表的加减法</h3>
+<p>集合运算符：<em>UNION</em>（并集）、<em>INTERSECT</em>（交集）、<em>EXCEPT</em>（差集），以行为单位进行操作。集合运算符会除去重复的记录，使用<em>ALL</em>选项，可以保留重复行。</p>
+<p>联结：<em>INNER JOIN</em>（内联结）、<em>OUTER JOIN</em>（外联结），以列为单位对表进行操作。</p>
+<ul class="simple">
+<li><p>进行联结时需要在<em>FROM</em>子句中使用多张表；</p></li>
+<li><p>进行内联结时必须使用<em>ON</em>子句，并且要书写在<em>FROM</em>和<em>WHERE</em>之间；</p></li>
+<li><p>使用联结时<em>SELECT</em>子句中的列需要按照“&lt;表的别名&gt;.&lt;列名&gt;”的格式进行书写。</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/SQL%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/SQL%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/SQL%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E7%88%B6%E4%B8%8E%E5%AD%90%E7%9A%84%E7%BC%96%E7%A8%8B%E4%B9%8B%E6%97%85/" title="父与子的编程之旅" aria-label="Previous">
+        <span><small>上一篇：</small>父与子的编程之旅</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E7%AC%A8%E5%8A%9E%E6%B3%95-%E5%AD%A6Python/" title="“笨办法”学Python" aria-label="Next">
+        <span><small>下一篇：</small>“笨办法”学Python</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/SQL基础教程/cover.jpg" alt="封面：SQL基础教程">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>[日] MICK</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>孙淼 & 罗勇</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>320页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>图灵社区</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787115455024</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>人民邮电出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2017-12-14</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/31VYEuT" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

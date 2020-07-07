@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>渐进增强 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">渐进增强</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/web" rel="tag">Web</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/程序设计" rel="tag">程序设计</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/基础" rel="tag">基础</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Feb 26, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>所谓的<a class="reference external" href="https://en.wikipedia.org/wiki/Progressive_enhancement">渐进增强</a>，其实就是<strong>基于内容</strong>（模型）的<strong>分层设计</strong>（语义、视觉、交互），用户看到的只是视图而已。拥抱“最佳实践”，去除耦合，实现正交！</p>
+</div>
+<!-- 摘要注释 -->
+<p>作者从过往的经验中，总结出了一套有关于<a class="reference external" href="https://en.wikipedia.org/wiki/Progressive_enhancement">渐进增强</a>的“最佳实践”。只有理解并遵循“最佳实践”，我们才能设计出够健壮、易拓展、可访问的Web应用。虽然<em>HTML</em>不是编程语言，但网页也是Web应用中的一种工件。对于网页的设计，也应当“早重构、常重构”，以避免腐败发生。</p>
+<p>在设计时引入文案，避免使用占位符填充。设计<a class="reference external" href="http://styletil.es/">风格组件</a>，建立视觉规范或组件库。为内容设置断点，而不是为设备设置断点。</p>
+<p>在页面中使用<strong>结构化数据</strong>（<a class="reference external" href="http://microformats.org/">微格式</a>、<a class="reference external" href="https://schema.org/">微数据</a>、<a class="reference external" href="https://en.wikipedia.org/wiki/RDFa">RDFa</a>）、<a class="reference external" href="https://www.w3.org/TR/wai-aria/">ARIA</a>的<em>role</em>属性、以及<em>data</em>属性。避免因实现基于JavaScript的交互行为而引入与语义无关的冗余标签，应当提供一个供JavaScript使用的接口，实现语义结构与交互结构的解耦（如：通过修改接口名称，来引入标签式或手风琴式的交互行为）。</p>
+<div class="section" id="id2">
+<h2>文摘</h2>
+<p>Web的概念之所以经久不衰，是因为它无关于设备与屏幕尺寸；Web不是软件，不需要用户去安装；Web本身对其承载的内容具有良好的适应性和无限的延展性；Web可以作为内容访问的窗口，集成在任何需要的地方；Web可以触及每个用户，当今的Web几乎能够胜任一切。</p>
+<p><strong>内容</strong>是Web页面的核心，先要保证在比较落后的设备上能够正常访问核心内容，再在比较先进的设备上利用设备性能来逐步增强用户的交互体验——这就是<a class="reference external" href="https://en.wikipedia.org/wiki/Progressive_enhancement">渐进增强</a>思想的核心。</p>
+<p><strong>可访问性</strong>就是无论用户是有一些生理上的缺陷，还是受网络或设备条件的限制，都确保每个人能平等地访问Web上的内容。</p>
+<p>用户界面是和用户产生交流的地方，交流是双向的，需要知道“用户要什么”，以及清晰地表达“你想说的话”。</p>
+<p><em>class</em>旨在定义一个有限的、具有共同内容特征的HTML元素<strong>集合</strong>。<em>id</em>的作用是为页面标记出一个具有<strong>唯一名称</strong>的HTML元素。</p>
+<p><span class="docutils literal">section</span>包含的是一个较大的章节或部分，而<span class="docutils literal">article</span>包含的则是独立的、完整的内容。如果把一段内容从整个文档中删除，但不影响对文档的理解，那么这段内容该用<span class="docutils literal">article</span>；如果删除一段内容，使文档变得难以理解，那么就该用<span class="docutils literal">section</span>。</p>
+<p>如果在<em>CSS</em>选择器中的任何地方出现错误（即使选择器的其他地方是正确的），那么整条语句都将被忽略。</p>
+</div>
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/%E6%B8%90%E8%BF%9B%E5%A2%9E%E5%BC%BA/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/%E6%B8%90%E8%BF%9B%E5%A2%9E%E5%BC%BA/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/%E6%B8%90%E8%BF%9B%E5%A2%9E%E5%BC%BA/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E5%93%8D%E5%BA%94%E5%BC%8FWeb%E8%AE%BE%E8%AE%A1/" title="响应式Web设计" aria-label="Previous">
+        <span><small>上一篇：</small>响应式Web设计</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/Sass%E5%92%8CCompass%E8%AE%BE%E8%AE%A1%E5%B8%88%E6%8C%87%E5%8D%97/" title="Sass和Compass设计师指南" aria-label="Next">
+        <span><small>下一篇：</small>Sass和Compass设计师指南</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/渐进增强/cover.jpg" alt="封面：渐进增强">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Aaron Gustafson</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>翟东方 & 任洁</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>190页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>异步图书</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787115448484</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>人民邮电出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2017-02-28</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2TXq93t" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>Sass与Compass实战 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">Sass与Compass实战</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/web" rel="tag">Web</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/css" rel="tag">CSS</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/sass" rel="tag">Sass</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/compass" rel="tag">Compass</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Feb 27, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>没法设计出令人惊艳的Web页面时，就使用<strong>垂直韵律</strong>让它中规中矩吧！</p>
+</div>
+<!-- 摘要注释 -->
+<p>在讲述了<a class="reference external" href="http://sass-lang.com/">Sass</a>的基本语法后，本书的着重点在于使用<a class="reference external" href="http://compass-style.org/">Compass</a>实现网格布局、文本排版、CSS3特性、精灵、<span class="docutils literal">config.rb</span>文件配置、样式表调优、以及扩展分发。</p>
+<p>用<em>compass/typography</em>目录下的<em>_vertical_rhythm.scss</em>管理<strong>垂直韵律</strong>（行与行之间内容的留白），我解决了页面文本排版乱杂无章的问题。</p>
+<p><a class="reference external" href="http://compass-style.org/">Compass</a>方便了大家在CSS中引用图片资源、合成<em>CSS sprites</em>以及<em>data URI</em>，但我个人更倾向于使用<em>SVG sprites</em> 代替<em>CSS sprites</em>（推荐<a class="reference external" href="https://fontawesome.com/">Font Awesome</a>的服务）。</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<blockquote class="epigraph">
+<p>我们需要从人的角度考虑问题，人们怎样编写程序或者怎样使用机器上的应用程序。我们是主人，它们是仆人。</p>
+<p class="attribution">—松本行弘</p>
+</blockquote>
+<p>类名具有<strong>语义化</strong>含义，混合器则是作为一种<strong>展示性</strong>描述。判断一组属性是否应该组合成一个混合器，一条经验法则就是——能否为这些属性取一个描述性的名字。</p>
+<p>继承应建立在语义化的关系上，它遵从CSS层叠规则，与混合器相比，继承生成的CSS代码相对更少。值得注意的是：尽量不要使用后代选择器去继承CSS规则。</p>
+<div class="compound">
+<p class="compound-first">CSS网格布局的核心由<strong>容器</strong>、<strong>列</strong>、<strong>槽</strong>构成。</p>
+<table class="compound-last">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 55%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr><th class="head"><p>术语名</p></th>
+<th class="head"><p>定义</p></th>
+<th class="head"><p>是否涉及HTML标签</p></th>
+</tr>
+</thead>
+<tbody>
+<tr><td><p>容器</p></td>
+<td><p>构成一个网格布局的HTML元素</p></td>
+<td><p>是</p></td>
+</tr>
+<tr><td><p>列</p></td>
+<td><p>内容度量的垂直单位</p></td>
+<td><p>否</p></td>
+</tr>
+<tr><td><p>槽</p></td>
+<td><p>网格布局中列与列之间的统一留白</p></td>
+<td><p>否</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>源码控制的最佳实践表明：非手工编辑的生成文件不应该出现在源码控制中，如：编译生成的CSS文件。</p>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<p><a class="reference external" href="http://compass-style.org/help/documentation/command-line/">Compass的命令行选项</a>，进阶——请阅读与使用<a class="reference external" href="http://compass-style.org/">Compass</a>、<a class="reference external" href="https://github.com/twbs/bootstrap-rubygem/">Bootstrap</a>、<a class="reference external" href="https://github.com/zurb/foundation-sites">Foundation</a>的源码。</p>
+
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/Sass%E4%B8%8ECompass%E5%AE%9E%E6%88%98/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/Sass%E4%B8%8ECompass%E5%AE%9E%E6%88%98/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/Sass%E4%B8%8ECompass%E5%AE%9E%E6%88%98/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/Sass%E5%92%8CCompass%E8%AE%BE%E8%AE%A1%E5%B8%88%E6%8C%87%E5%8D%97/" title="Sass和Compass设计师指南" aria-label="Previous">
+        <span><small>上一篇：</small>Sass和Compass设计师指南</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/CSS%E9%87%8D%E6%9E%84/" title="CSS重构" aria-label="Next">
+        <span><small>下一篇：</small>CSS重构</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/Sass与Compass实战/cover.jpg" alt="封面：Sass与Compass实战">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Wynn Netherland & Nathan Weizenbaum & Chris Eppstein & Brandon Mathis</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>刘炬光 & 赵锦江 & 张浩然</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>188页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>图灵社区</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>978711553016</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>人民邮电出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2014-05-31</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2BJNajk" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

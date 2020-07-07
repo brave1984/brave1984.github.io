@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>VIM，手的延伸 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/posts/">日志</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">VIM，手的延伸</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/python" rel="tag">Python</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/vim" rel="tag">VIM</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/工具" rel="tag">工具</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Jan 2, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p><strong>团长</strong>： 赶紧把这个<a class="reference external" href="https://www.python.org/">Python</a>脚本给我改好！</p>
+<p><strong>萌新</strong>： 好的，先等我把<a class="reference external" href="http://www.jetbrains.com/pycharm/">Pycharm</a>打开。</p>
+<p><strong>休闲玩家</strong>： 你就不能用<a class="reference external" href="https://www.vim.org/">VIM</a>？</p>
+</div>
+<!-- 摘要注释 -->
+<p>用好一种<strong>可配置</strong>、<strong>可扩展</strong>、<strong>可编程</strong>的编辑器。学习它，扩展它，拥有它！</p>
+<p>本文参考自：<a class="reference external" href="https://realpython.com/vim-and-python-a-match-made-in-heaven/">VIM and Python – A Match Made in Heaven</a>，增加了<a class="reference external" href="https://github.com/python-mode/python-mode">Python-mode</a>等插件。</p>
+<div class="section" id="id1">
+<h2>安装插件</h2>
+<p>利用<a class="reference external" href="https://www.vim.org/">VIM</a> 8的原生包管理功能，从<a class="reference external" href="https://github.com/">GitHub</a>上克隆以下插件到<em>~/.vim/pack/foo/start</em>目录：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/Valloric/YouCompleteMe">YouCompleteMe</a>（自动完成）</p></li>
+<li><p><a class="reference external" href="https://github.com/python-mode/python-mode">Python-mode</a>（Python语法突显&amp;代码重构）</p></li>
+<li><p><a class="reference external" href="https://github.com/mattn/emmet-vim">emmet-vim</a>（HTML &amp; CSS）</p></li>
+<li><p><a class="reference external" href="https://github.com/scrooloose/nerdtree">NERDTree</a>（目录文件导航）</p></li>
+<li><p><a class="reference external" href="https://github.com/vim-airline/vim-airline">vim-airline</a>（状态条）</p></li>
+<li><p><a class="reference external" href="https://github.com/tpope/vim-fugitive">vim-fugitive</a>（git扩展）</p></li>
+<li><p><a class="reference external" href="https://github.com/yianwillis/vimcdoc">vimcdoc</a>（中文文档）</p></li>
+</ul>
+<pre class="code bash literal-block"><code>mkdir -p <span class="nv">$HOME</span>/.vim/pack/foo/start
+<span class="nb">cd</span> <span class="nv">$HOME</span>/.vim/pack/foo/start
+
+sudo apt-get install -yqq --no-install-recommends build-essential cmake python3-dev
+git clone --recurse-submodules <span class="s2">&quot;https://github.com/Valloric/YouCompleteMe.git&quot;</span>
+
+git clone --recurse-submodules <span class="s2">&quot;https://github.com/python-mode/python-mode.git&quot;</span>
+git clone <span class="s2">&quot;https://github.com/mattn/emmet-vim.git&quot;</span>
+git clone <span class="s2">&quot;https://github.com/scrooloose/nerdtree.git&quot;</span>
+git clone <span class="s2">&quot;https://github.com/vim-airline/vim-airline.git&quot;</span>
+git clone <span class="s2">&quot;https://github.com/tpope/vim-fugitive.git&quot;</span>
+git clone <span class="s2">&quot;https://github.com/yianwillis/vimcdoc.git&quot;</span></code></pre>
+</div>
+<div class="section" id="id2">
+<h2>配置VIM</h2>
+<p>添加插件的帮助文档：</p>
+<pre class="code bash literal-block"><code>vim -u NONE <span class="se">\
+</span>        -c <span class="s2">&quot;helptags YouCompleteMe/doc&quot;</span> <span class="se">\
+</span>        -c <span class="s2">&quot;helptags python-mode/doc&quot;</span> <span class="se">\
+</span>        -c <span class="s2">&quot;helptags emmet-vim/doc&quot;</span> <span class="se">\
+</span>        -c <span class="s2">&quot;helptags nerdtree/doc&quot;</span> <span class="se">\
+</span>        -c <span class="s2">&quot;helptags vim-airline/doc&quot;</span> <span class="se">\
+</span>        -c <span class="s2">&quot;helptags vim-fugitive/doc&quot;</span> <span class="se">\
+</span>        -c <span class="s2">&quot;helptags vimcdoc/doc&quot;</span> <span class="se">\
+</span>        -c q</code></pre>
+<p>在<span class="docutils literal">$HOME</span>目录下，添加<em>.vimrc</em>文件，代码如下：</p>
+<pre class="code vim literal-block"><code><span class="k">set</span> <span class="nb">nocompatible</span>
+<span class="nb">syntax</span> <span class="k">on</span>
+<span class="k">filetype</span> off
+
+<span class="k">set</span> <span class="nb">expandtab</span>
+<span class="k">set</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">4</span> <span class="nb">shiftwidth</span><span class="p">=</span><span class="m">4</span> <span class="nb">softtabstop</span><span class="p">=</span><span class="m">4</span>
+<span class="k">set</span> <span class="nb">autoindent</span>
+
+<span class="k">au</span> <span class="nb">BufNewFile</span><span class="p">,</span><span class="nb">BufRead</span> *.<span class="nb">js</span><span class="p">,</span>*.html<span class="p">,</span>*.scss<span class="p">,</span>*.yml<span class="p">,</span>*.rb<span class="p">,</span>Rakefile
+    \ <span class="k">set</span> <span class="nb">expandtab</span> <span class="p">|</span>
+    \ <span class="k">set</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">2</span> <span class="nb">shiftwidth</span><span class="p">=</span><span class="m">2</span> <span class="nb">softtabstop</span><span class="p">=</span><span class="m">2</span><span class="p">|</span>
+    \ <span class="k">set</span> <span class="nb">autoindent</span>
+
+<span class="k">set</span> <span class="nb">splitbelow</span>
+<span class="k">set</span> <span class="nb">splitright</span>
+
+<span class="nb">nnoremap</span> <span class="p">&lt;</span>C<span class="p">-</span>J<span class="p">&gt;</span> <span class="p">&lt;</span>C<span class="p">-</span>W<span class="p">&gt;&lt;</span>C<span class="p">-</span>J<span class="p">&gt;</span>
+<span class="nb">nnoremap</span> <span class="p">&lt;</span>C<span class="p">-</span>K<span class="p">&gt;</span> <span class="p">&lt;</span>C<span class="p">-</span>W<span class="p">&gt;&lt;</span>C<span class="p">-</span>K<span class="p">&gt;</span>
+<span class="nb">nnoremap</span> <span class="p">&lt;</span>C<span class="p">-</span>L<span class="p">&gt;</span> <span class="p">&lt;</span>C<span class="p">-</span>W<span class="p">&gt;&lt;</span>C<span class="p">-</span>L<span class="p">&gt;</span>
+<span class="nb">nnoremap</span> <span class="p">&lt;</span>C<span class="p">-</span>H<span class="p">&gt;</span> <span class="p">&lt;</span>C<span class="p">-</span>W<span class="p">&gt;&lt;</span>C<span class="p">-</span>H<span class="p">&gt;</span>
+
+<span class="k">set</span> <span class="nb">foldmethod</span><span class="p">=</span>indent
+<span class="k">set</span> <span class="nb">foldlevel</span><span class="p">=</span><span class="m">99</span>
+<span class="nb">nnoremap</span> <span class="p">&lt;</span>space<span class="p">&gt;</span> za
+
+<span class="k">set</span> <span class="nb">encoding</span><span class="p">=</span>utf<span class="m">-8</span>
+<span class="k">set</span> <span class="k">nu</span>
+<span class="k">set</span> <span class="nb">hls</span> <span class="k">is</span>
+<span class="k">set</span> <span class="nb">clipboard</span><span class="p">=</span>unnamed
+<span class="c">
+&quot; python-mode</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_python <span class="p">=</span> <span class="s1">'python3'</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_folding <span class="p">=</span> <span class="m">1</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_lint_on_unmodified <span class="p">=</span> <span class="m">1</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_lint_on_fly <span class="p">=</span> <span class="m">1</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_syntax <span class="p">=</span> <span class="m">1</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_syntax_all <span class="p">=</span> <span class="m">1</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_run_bind <span class="p">=</span> <span class="s1">'&lt;F5&gt;'</span>
+<span class="c">
+&quot; NERDTree</span>
+autocmd vimenter * NERDTree
+map <span class="p">&lt;</span>C<span class="p">-</span><span class="k">n</span><span class="p">&gt;</span> :NERDTreeToggle<span class="p">&lt;</span>CR<span class="p">&gt;</span>
+autocmd bufenter * <span class="k">if</span> <span class="p">(</span>winnr<span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">)</span> <span class="p">==</span> <span class="m">1</span> &amp;&amp; exists<span class="p">(</span><span class="s2">&quot;b:NERDTree&quot;</span><span class="p">)</span> &amp;&amp; <span class="k">b</span>:NERDTree.isTabTree<span class="p">())</span> <span class="p">|</span> <span class="k">q</span> <span class="p">|</span> <span class="k">endif</span>
+<span class="k">let</span> NERDTreeIgnore<span class="p">=</span>[<span class="s1">'^.git$'</span><span class="p">,</span> <span class="s1">'^__pycache__$'</span><span class="p">,</span> <span class="s1">'\.pyc$'</span><span class="p">,</span> <span class="s1">'\~$'</span>]
+<span class="c">
+&quot; YouCompleteMe</span>
+<span class="k">let</span> <span class="k">g</span>:ycm_autoclose_preview_window_after_completion<span class="p">=</span><span class="m">1</span>
+map <span class="p">&lt;</span>leader<span class="p">&gt;</span><span class="k">g</span>  :YcmCompleter GoToDefinitionElseDeclaration<span class="p">&lt;</span>CR<span class="p">&gt;</span>
+<span class="c">
+&quot; emmet-vim</span>
+<span class="k">let</span> <span class="k">g</span>:user_emmet_settings <span class="p">=</span> {
+\   <span class="s1">'html'</span>: {
+\       <span class="s1">'snippets'</span>: {
+\           <span class="s1">'html:5'</span>: <span class="s2">&quot;&lt;!DOCTYPE html&gt;\n&quot;</span>
+\               .<span class="s2">&quot;&lt;html lang=\&quot;${lang}\&quot;&gt;\n&quot;</span>
+\               .<span class="s2">&quot;&lt;head&gt;\n&quot;</span>
+\               .<span class="s2">&quot;\t&lt;meta charset=\&quot;${charset}\&quot;&gt;\n&quot;</span>
+\               .<span class="s2">&quot;\t&lt;meta name=\&quot;viewport\&quot; content=\&quot;width=device-width, initial-scale=1, shrink-to-fit=no\&quot;&gt;\n&quot;</span>
+\               .<span class="s2">&quot;\t&lt;meta http-equiv=\&quot;X-UA-Compatible\&quot; content=\&quot;ie=edge\&quot;&gt;\n&quot;</span>
+\               .<span class="s2">&quot;\t&lt;title&gt;&lt;/title&gt;\n&quot;</span>
+\               .<span class="s2">&quot;&lt;/head&gt;\n&quot;</span>
+\               .<span class="s2">&quot;&lt;body&gt;\n\t${child}|\n&lt;/body&gt;\n&quot;</span>
+\               .<span class="s2">&quot;&lt;/html&gt;&quot;</span><span class="p">,</span>
+\       }<span class="p">,</span>
+\   }<span class="p">,</span>
+\}
+
+<span class="k">filetype</span> plugin indent <span class="k">on</span></code></pre>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<p>DPS垫底，就是木桩（<span class="docutils literal">$ vimtutor zh</span>）打得少！</p>
+
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <div>
+    
+    
+    <button type="button" class="github-gist">
+      <a href="https://gist.github.com/e8231dd2fd399536d8272b110f4a8b7e.git" title="Clone with HTTPS" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span>View on GitHub Gist</span>
+      </a>
+    </button>
+    
+  </div>
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/posts/VIM-%E6%89%8B%E7%9A%84%E5%BB%B6%E4%BC%B8/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/posts/VIM-%E6%89%8B%E7%9A%84%E5%BB%B6%E4%BC%B8/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/posts/VIM-%E6%89%8B%E7%9A%84%E5%BB%B6%E4%BC%B8/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/posts/rst-to-html/" title=".rst to .html" aria-label="Previous">
+        <span><small>上一篇：</small>.rst to .html</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/posts/%E6%8B%A5%E6%8A%B1-GNU-Linux/" title="拥抱 GNU/Linux" aria-label="Next">
+        <span><small>下一篇：</small>拥抱 GNU/Linux</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

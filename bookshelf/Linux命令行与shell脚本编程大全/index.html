@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>Linux命令行与shell脚本编程大全 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">Linux命令行与shell脚本编程大全</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/gnu/linux" rel="tag">GNU/Linux</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/shell" rel="tag">Shell</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/基础" rel="tag">基础</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Mar 11, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>践行<strong>懒惰</strong>这一美德，用脚本自动化地完成繁琐的任务。</p>
+</div>
+<!-- 摘要注释 -->
+<blockquote class="epigraph">
+<p>假舆马者，非利足也，而致千里；假舟楫者，非能水也，而绝江河。君子生非异也，善假于物也。</p>
+<p>不积跬步，无以至千里；不积小流，无以成江海。</p>
+<p class="attribution">—荀子《劝学》</p>
+</blockquote>
+<p><a class="reference external" href="http://www.gnu.org/">GNU</a>/<a class="reference external" href="https://www.kernel.org/">Linux</a>系统就是我们的工作台，利用<em>Shell</em>命令，我们能将散布在台面上的各种工具整合起来。这些工具就如同函数一般小，正是由于功能的单一，我们才能通过管道将其复用。</p>
+<p>虽然我们是在<em>GUI</em>界面与专有软件的环境下成长的，但是作为一名操纵文本文件的程序员，如若不熟悉<em>Shell</em>，那么就没法使一些人工作业转为自动化处理，更没法全面掌握语言中与系统操作相关的标准库（如：<a class="reference external" href="https://www.python.org/">Python</a>的<em>sys</em>、<em>os</em>、<em>signal</em>等模块）。</p>
+<p><a class="reference external" href="https://www.kernel.org/">Linux</a>内核主要负责系统内存、软件程序、硬件设备、文件系统的管理。<a class="reference external" href="http://www.gnu.org/">GNU</a> coreutils软件包由文件处理、文本操作、进程管理等工具构成。</p>
+<p>学习<a class="reference external" href="http://www.gnu.org/">GNU</a>/<a class="reference external" href="https://www.kernel.org/">Linux</a>系统，就在于理解<strong>文件</strong>。程序是从文件中读写数据流（如：处理日志），而文件有主、组的归属，以及读、写、执行的权限。<strong>文件系统</strong>管理着文件与目录，主要有<em>日志</em>文件系统与<em>写时复制</em>文件系统。文件系统与虚拟内存依托于硬盘（硬件设备），执行文件所生成的各类进程又要消耗CPU和内存等资源。</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p>系统将硬件设备当成特殊的文件，称之为<strong>设备文件</strong>，可分为：字符型设备文件、块设备文件、网络设备文件。</p>
+<p><strong>逻辑卷管理</strong>的核心在于如何处理安装在系统上的硬盘分区，硬盘称作<strong>物理卷</strong>。每个物理卷都会映射到硬盘上特定的物理分区，多个物理卷集中在一起可以形成一个<strong>卷组</strong>。卷组提供了一个创建<strong>逻辑卷</strong>的平台，逻辑卷提供了创建文件系统的分区环境。</p>
+<p><strong>命令替换</strong>会创建一个<em>子Shell</em>来运行对应的命令。外部命令，是存在于<em>Bash Shell</em>之外的程序，执行时会<strong>衍生</strong>（forking）出一个子进程。</p>
+<p>由<strong>管道</strong>连接的命令会被系统同时运行，前一个命令的输出会被直接重定向到后一个命令的输入，数据传输不会用到任何中间文件或缓冲区。</p>
+<p>退出状态码（exit status）是一个0～255的整数值，在命令结束运行时由命令传给<em>Shell</em>，环境变量<span class="docutils literal">$?</span>保存了上个已执行命令的退出状态码。</p>
+<p>环境变量<span class="docutils literal">$#</span>存有命令行参数的个数，环境变量<span class="docutils literal">$*</span>将命令行参数当作一个单词，环境变量<span class="docutils literal">$&#64;</span>将命令行参数当作同一字符串中的多个独立的单词。默认情况下，<span class="docutils literal">shift</span>命令会将命令行参数向左移动一个位置，参数被移除后，值就会被舍弃。</p>
+<p>系统将每个对象当作文件处理，包括输入和输出进程，用<strong>文件描述符</strong>来标识每个文件对象。文件描述符是一个非负整数，每个进程一次最多可以有九个文件描述符。<em>Bash Shell</em>保留了前三个文件描述符（0、1和2），分别应对<strong>STDIN</strong>（标准输入流）、<strong>STDOUT</strong>（标准输出流）、<strong>STDERR</strong>（标准错误流）。<em>exec</em>命令可用于打开文件描述符。</p>
+<p><em>kill</em>命令用于向进程发送信号，<em>trap</em>命令用于捕获信号。在命令后加个<em>&amp;</em>符就在后台运行进程，<em>nohup</em>命令用于解除终端与进程的关联。启动、停止、终止以及恢复作业统称为<strong>作业控制</strong>，<em>jobs</em>命令用于查看<em>Shell</em>中的作业。</p>
+<div class="section" id="shell">
+<h3>Shell 语法</h3>
+<p><strong>if语句</strong>会运行<span class="docutils literal">if</span>后面的那个命令，若该命令的退出状态码是0，位于<span class="docutils literal">then</span>部分的命令就会被执行；反之，则不执行。</p>
+<p>若<span class="docutils literal">test</span>命令中列出的条件成立，返回的退出状态码则为<strong>零</strong>，否则，为<strong>非零</strong>。<span class="docutils literal">test</span>命令可以判断三类条件：<strong>数值</strong>比较、<strong>字符串</strong>比较、<strong>文件</strong>比较。</p>
+<pre class="code bash literal-block"><code><span class="k">if</span> command1 <span class="p">;</span> <span class="k">then</span>
+    commands
+<span class="k">elif</span> commad2 <span class="p">;</span> <span class="k">then</span>
+    commands
+<span class="k">else</span>
+    commands
+<span class="k">fi</span></code></pre>
+<pre class="code bash literal-block"><code><span class="k">case</span> variable in
+    pattern1 <span class="p">|</span> pattern2<span class="o">)</span>
+        commands1 <span class="p">;;</span>
+    pattern3<span class="o">)</span>
+        commands2 <span class="p">;;</span>
+    *<span class="o">)</span>
+        default commands<span class="p">;;</span>
+<span class="k">esac</span></code></pre>
+<p><strong>while语句</strong>可以定义多个测试命令，但只用最后一个测试命令的退出状态码来决定是否执行循环过程。内部字段分隔符（<span class="docutils literal">IFS</span>）默认为：空格、制表符、换行符。<span class="docutils literal">break</span>、<span class="docutils literal">continue</span>可用于改变循环流程。</p>
+<pre class="code bash literal-block"><code><span class="k">for</span> var in list <span class="p">;</span> <span class="k">do</span>
+    commands
+<span class="k">done</span>
+
+
+<span class="k">while</span> <span class="nb">test</span> <span class="nb">command</span> <span class="p">;</span> <span class="k">do</span>
+  other commands
+<span class="k">done</span>
+
+
+<span class="k">until</span> <span class="nb">test</span> <span class="nb">command</span> <span class="p">;</span> <span class="k">do</span>
+    other commands
+<span class="k">done</span></code></pre>
+<p>函数有两种定义格式，在运行结束时会返回一个退出状态码——默认，是函数中最后一条命令的退出状态码；显示，使用<span class="docutils literal">return</span>返回一个0~255的退出状态码。</p>
+<pre class="code bash literal-block"><code><span class="k">function</span> name <span class="o">{</span>
+    commands
+<span class="o">}</span>
+
+name<span class="o">()</span> <span class="o">{</span>
+    commands
+<span class="o">}</span></code></pre>
+<p><em>Bash Shell</em>会将函数当作小型脚本，函数调用只需像使用脚本那样地传递参数。当函数参数为数组变量时，需要在函数体内将环境变量<span class="docutils literal">$&#64;</span>重建为数组。函数可以进行<strong>递归</strong>调用，使用<span class="docutils literal">source</span>命令（别名：<span class="docutils literal">.</span>号）引用<strong>函数库</strong>文件。</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<p>对于编写带有命令行选项的脚本，我个人更偏好于<a class="reference external" href="https://www.python.org/">Python</a>的<a class="reference external" href="https://www.pyinvoke.org/">Invoke</a>、<a class="reference external" href="https://www.fabfile.org/">Fabric</a>与<a class="reference external" href="https://www.ruby-lang.org/">Ruby</a>的<a class="reference external" href="https://github.com/ruby/rake">rake</a>。</p>
+<p>附录A、<em>sed</em>流编辑器很实用，推荐阅读：<a class="reference external" href="https://github.com/rbenv/rbenv-installer/blob/master/bin/rbenv-installer">rbenv-installer</a>（<a class="reference external" href="https://github.com/rbenv/rbenv">rbenv</a>的安装脚本）、<a class="reference external" href="https://get.docker.com/">get-docker.sh</a>（<a class="reference external" href="https://www.docker.com/">Docker</a>的安装脚本）。</p>
+
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/CSS%E9%87%8D%E6%9E%84/" title="CSS重构" aria-label="Previous">
+        <span><small>上一篇：</small>CSS重构</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E7%AC%AC%E4%B8%80%E6%9C%ACDocker%E4%B9%A6/" title="第一本Docker书" aria-label="Next">
+        <span><small>下一篇：</small>第一本Docker书</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/Linux命令行与shell脚本编程大全/cover.jpg" alt="封面：Linux命令行与shell脚本编程大全">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Richard Blum & Christine Bresnahan</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>门佳 & 武海峰</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>605页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>图灵社区</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787115429674</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>人民邮电出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2016-08-01</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2O0Jf6h" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

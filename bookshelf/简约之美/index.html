@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>简约之美 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">简约之美</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/程序设计" rel="tag">程序设计</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/经典" rel="tag">经典</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Aug 1, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>编程所要用到的艺术和才能——化繁为简。</p>
+</div>
+<!-- 摘要注释 -->
+<p>本书旨在表明软件设计可以成为科学。作者以软件设计的目标与方程式为准绳，以设计所遭遇的挑战（变化、缺陷、复杂）和应对挑战的方法（简洁、测试）为事实依据，揭示了存在于软件设计中的规则与条例。</p>
+<p>软件设计是为了解决问题，而渐进式的开发及设计能够有效地解决问题。所谓的“化繁为简”，就是要找到问题的真正所在，设法缩小问题的规模并降低问题的复杂度。</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p>每个写代码的人都是设计师，团队里的每个人都有责任保证自己的代码有着良好的设计，任何决策都必须由单独的个人而不是一群人来做出。</p>
+<div class="compound">
+<p class="compound-first"><strong>软件设计的目标</strong>：</p>
+<ol class="compound-last arabic simple">
+<li><p>确保软件能提供尽可能多的帮助；</p></li>
+<li><p>确保软件能持续提供尽可能多的帮助；</p></li>
+<li><p>设计程序员能尽可能容易开发和维护的软件系统，这样的系统才能为用户提供尽可能多的帮助，而且能持续提供尽可能多的帮助。</p></li>
+</ol>
+</div>
+<p>改变的合意程度（可取程度），正比于软件当前价值与未来价值之和，反比于实现成本和维护成本之和。<strong>相比降低实现成本，降低维护成本更加重要。</strong></p>
+<ul class="simple">
+<li><p><strong>变化定律</strong>：程序存在的时间越久，它的某个部分需要变化的可能性就越高。</p></li>
+<li><p><strong>缺陷定律</strong>：在程序中新增缺陷的可能性与代码修改量成正比。</p></li>
+<li><p><strong>简洁定律</strong>：软件任何一部分的维护难度，反比于该部分的简洁程度。</p></li>
+<li><p><strong>测试法则</strong>：你对软件行为的了解程度，等于你真正测试它的程度。</p></li>
+</ul>
+<p>未来的某些事情，是我们所不知道的。程序员犯的最常见也是最严重的错误，就是在其实不知道未来的时候去预测未来。</p>
+<div class="compound">
+<p class="compound-first">软件设计的三大误区：</p>
+<ul class="compound-last simple">
+<li><p>编写不必要的代码</p></li>
+<li><p>代码难以修改</p></li>
+<li><p>过分追求通用</p></li>
+</ul>
+</div>
+<p>不要编写不是必需的代码，并且要删除没有用到的代码。设计程序时，应当根据你现在确切知道的需求，而不是你认为未来会出现的需求。仅仅根据目前确知的需求来考虑通用。</p>
+<p>永远不要“修正”任何东西，除非它真的是一个问题，而且有证据表明问题确实存在。</p>
+<div class="compound">
+<p class="compound-first">以下做法会增加复杂性：</p>
+<ul class="compound-last simple">
+<li><p>新增功能</p></li>
+<li><p>扩展软件的用途</p></li>
+<li><p>新增程序员</p></li>
+<li><p>做无谓的改变</p></li>
+<li><p>困于糟糕的技术</p></li>
+<li><p>理解错误</p></li>
+<li><p>糟糕的设计或不做设计</p></li>
+<li><p>重新发明轮子</p></li>
+</ul>
+</div>
+<p>大多数麻烦的设计问题，都可以用在纸上画图或写出来的办法找到答案。</p>
+</div>
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/%E7%AE%80%E7%BA%A6%E4%B9%8B%E7%BE%8E/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/%E7%AE%80%E7%BA%A6%E4%B9%8B%E7%BE%8E/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/%E7%AE%80%E7%BA%A6%E4%B9%8B%E7%BE%8E/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/" title="代码整洁之道" aria-label="Previous">
+        <span><small>上一篇：</small>代码整洁之道</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E7%A8%8B%E5%BA%8F%E5%8E%9F%E6%9C%AC/" title="程序原本" aria-label="Next">
+        <span><small>下一篇：</small>程序原本</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/简约之美/cover.jpg" alt="封面：简约之美">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Max Kanat-Alexander</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>余晟</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>105页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>图灵社区</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787115302380</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>人民邮电出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2013-01-01</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2LUBcdm" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

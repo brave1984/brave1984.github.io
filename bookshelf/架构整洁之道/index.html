@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>架构整洁之道 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">架构整洁之道</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/程序设计" rel="tag">程序设计</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/架构" rel="tag">架构</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/经典" rel="tag">经典</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Aug 6, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>一个系统的架构是由一系列软件<strong>组件</strong>以及它们之间的<strong>边界</strong>共同定义的。</p>
+</div>
+<!-- 摘要注释 -->
+<p>“系统”有没有规模的含义呢？<strong>整洁架构</strong>中的系统是有的，而且其规模远不止于应用。“组件”与“边界”共同孕育了聚合、解耦合、依赖、层次等概念。</p>
+<p>对于目前的我来说，框架就等同于生产力。然而在<strong>整洁架构</strong>中，应用程序框架是实现细节。分歧的根源是什么呢？是思维差异导致的！我是个模块级的程序员，关注工具之用。</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p>软件项目是具有递归（recursive）和分形（fractal）特点的，最终都要由一行行的代码组成。脱离了一行行的代码，脱离了具体的细节设计，架构设计就无从谈起。</p>
+<p>今天的软件与过去的软件本质上仍然是一样的，软件架构的规则是相同的，软件架构的终极目标是用最小的人力成本来满足构建和维护该系统的需求。</p>
+<div class="compound">
+<p class="compound-first">程序是由顺序结构、分支结构、循环结构和间接转移这几种行为组合而成的，无可增加，也缺一不可。软件架构的三大关注重点：功能性、组件独立性以及数据管理。</p>
+<ul class="compound-last simple">
+<li><p>结构化编程对程序控制权的直接转移进行了限制和规范。</p></li>
+<li><p>面向对象编程对程序控制权的间接转移进行了限制和规范。</p></li>
+<li><p>函数式编程对程序中的赋值进行了限制和规范。</p></li>
+</ul>
+</div>
+<p>组件是软件的部署单元，是整个软件系统在部署过程中可以独立完成部署的最小实体。</p>
+<p><strong>SOLID</strong>原则应该直接紧贴于具体的代码逻辑之上，这些原则是用来帮助我们定义软件中的组件和模块的。</p>
+<ul class="simple">
+<li><p><strong>REP</strong>（复用/发布等同原则）：软件复用的最小粒度应等同于其发布的最小粒度。</p></li>
+<li><p><strong>CCP</strong>（共同闭包原则）：应该将那些会同时修改，并且为相同目的而修改的类放到同一个组件中，而将不会同时修改，并且不会为了相同目的而修改的那些类放到不同的组件中。</p></li>
+<li><p><strong>CRP</strong>（共同复用原则）：不要强迫一个组件的用户依赖他们不需要的东西。</p></li>
+<li><p><strong>ADP</strong>（无依赖环原则）：组件依赖关系图中不应该出现环。</p></li>
+<li><p><strong>SDP</strong>（稳定依赖原则）：依赖关系必须要指向更稳定的方向。</p></li>
+<li><p><strong>SAP</strong>（稳定抽象原则）：一个组件的抽象化程度应该与其稳定性保持一致。</p></li>
+</ul>
+<p>一个项目在组件结构设计上的重心是根据该项目的开发时间和成熟度不断变动的，我们对组件结构的安排主要与项目开发的进度和它被使用的方式有关，与项目本身功能的关系其实很小。</p>
+<p>所有的软件系统都可以降解为<strong>策略</strong>和<strong>细节</strong>这两种主要元素。策略体现的是软件中所有的业务规则与操作过程；细节则是指那些让操作该系统的人、其他系统以及程序员们与策略进行交互，但是又不会影响到策略本身的行为。软件架构师的目标是创建一种系统形态，该形态会以策略为最基本的元素，并让细节与策略脱离关系，以允许在具体决策过程中推迟或延迟与细节相关的内容。</p>
+<p>边界的作用是将软件分割成各种元素，以便约束边界两侧之间的依赖关系。</p>
+<p>一条策略距离系统的输入/输出越远，它所属的层次就越高，而直接管理输入/输出的策略在系统中的层次是最低的。</p>
+<img alt="/assets/bookshelf/架构整洁之道/整洁架构.jpg" src="/assets/bookshelf/架构整洁之道/整洁架构.jpg" />
+<p>业务实体中包含了一系列用于操作关键数据的业务逻辑。用例本质上就是关于如何操作一个自动化系统的描述，它定义了用户需要提供的输入数据、用户应该得到的输出信息以及产生输出所应该采取的处理步骤。一个良好的架构设计应该围绕用例来展开，这样的架构设计可以在脱离框架、工具以及使用环境的情况下完整地描述用例。</p>
+<p>软件架构师必须仔细权衡成本，决定哪里需要设计架构边界，以及这些地方需要的是完全的边界，还是不完全的边界，还是可以忽略的边界。</p>
+</div>
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E7%A8%8B%E5%BA%8F%E5%8E%9F%E6%9C%AC/" title="程序原本" aria-label="Previous">
+        <span><small>上一篇：</small>程序原本</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E6%88%91%E7%9A%84%E6%9E%B6%E6%9E%84%E6%80%9D%E6%83%B3/" title="我的架构思想" aria-label="Next">
+        <span><small>下一篇：</small>我的架构思想</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/架构整洁之道/cover.jpg" alt="封面：架构整洁之道">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Robert C. Martin</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>孙宇聪</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>348页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>博文视点</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787121347962</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>电子工业出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2018-09-20</p>
+      </li>
+      
+    </ul>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

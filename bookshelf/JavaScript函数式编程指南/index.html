@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>JavaScript函数式编程指南 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">JavaScript函数式编程指南</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/javascript" rel="tag">JavaScript</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/函数式" rel="tag">函数式</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Apr 11, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<blockquote class="epigraph">
+<p>面向对象编程通过<strong>封装</strong>变化使得代码更易理解；</p>
+<p>函数式编程通过<strong>最小化</strong>变化使得代码更易理解。</p>
+<p class="attribution">—Michael Feathers</p>
+</blockquote>
+</div>
+<!-- 摘要注释 -->
+<p>作者利用<a class="reference external" href="https://underscorejs.org/">Underscore</a>、<a class="reference external" href="https://lodash.com/">Lodash</a>、<a class="reference external" href="https://ramdajs.com/">Ramda</a>、<a class="reference external" href="https://rxjs.dev/">RxJS</a>等代码库编写函数式代码示例，并与命令式代码示例进行比对，指出——函数式代码具有易推理、易测试的优点，函数式编程有利于驯服系统的复杂性。</p>
+<p>有了<span class="docutils literal">curry</span>、<span class="docutils literal">partial</span>、<span class="docutils literal">compose</span>，就能实践函数式编程了么？</p>
+<p>我的答案是：不能。半年多前，我就看完了这本书，但我没办法将函数式编程真正应用于代码实践当中。函数式编程可以简单地归结为：分解与组合，但<span class="docutils literal">curry</span>、<span class="docutils literal">partial</span>、<span class="docutils literal">compose</span>对于完成函数式编程是远远不够的。</p>
+<p>尽管我对<em>Scheme</em>与<a class="reference external" href="https://www.clojure.org/">Clojure</a>的认知是肤浅的，但还是想谈谈——我对实践“函数式编程”的想法。作为<em>Lisp</em>的方言，所有的<em>Scheme</em>与<a class="reference external" href="https://www.clojure.org/">Clojure</a>代码都是由表达式组成的，每个表达式会求值产生一个值。<strong>前缀表示法</strong>简化了语法，<strong>括号</strong>使得“代码即数据”。表达式是函数式编程的基石，相较于其他语言中无值的控制语句，<em>Lisp</em>中的条件判断都是表达式。在<a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">JavaScript</a>中使用三元运算符表示多路分支是多么的可怕啊，而且比较运算符不是过程，不符合<em>point-free</em>风格。</p>
+<p>为了能用<a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">JavaScript</a>进行函数式编程，我们需要借助外部的工具库来抽象过程和保证数据的不可变。<a class="reference external" href="https://underscorejs.org/">Underscore</a>、<a class="reference external" href="https://lodash.com/">Lodash</a>的传参方式不符合<em>point-free</em>风格，而<a class="reference external" href="https://ramdajs.com/">Ramda</a>是专门为函数式编程风格而设计。</p>
+<p>真实世界中充满了状态，我们需要把不纯的部分从函数中抽离出来，将状态控制在局部。既然函数是值，那么也就能放入函子当中，使用<em>IO Monad</em>与外部资源进行交互。关于<em>Monad</em>的更多信息，可参考<em>欧阳继超</em>（本书译者之一）的《<a class="reference external" href="https://amzn.to/2VEK6wH">前端函数式攻城指南</a>》。</p>
+<p><a class="reference external" href="https://jquery.com/">jQuery</a>所代表的命令式编程，已不足已应对当下前端系统所面对的复杂性。拥抱声明式编程，创建反应式应用。</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p>函数式编程的目标是使用函数来<strong>抽象作用在数据上的控制流与操作</strong>，从而在系统中<strong>消除副作用</strong>并<strong>减少对状态的改变</strong>。</p>
+<p>面向对象编程通过特定的行为将很多数据类型逻辑地连接在一起，函数式编程则关注如何在这些数据类型之上通过组合来连接各种操作。</p>
+<img alt="/assets/bookshelf/JavaScript函数式编程指南/compare.jpg" src="/assets/bookshelf/JavaScript函数式编程指南/compare.jpg" />
+<p><strong>方法链接</strong>通过对象的方法紧密连接，而<strong>管道</strong>以函数作为组件，将函数的输入和输出松散地连接在一起。但是，为了实现管道，被连接的函数必须在元数（arity）和类型上相互兼容。</p>
+<div class="figure">
+<img alt="pipeline" src="/assets/bookshelf/JavaScript函数式编程指南/pipeline.png" />
+<p class="caption">方法链接（紧耦合，有限的表现力）</p>
+</div>
+<div class="figure">
+<img alt="compose" src="/assets/bookshelf/JavaScript函数式编程指南/compose.png" />
+<p class="caption">函数的管道化（松耦合，灵活）</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<p><a class="reference external" href="https://github.com/hylang/hy">Hy</a>是一种运行在<a class="reference external" href="https://www.python.org/">Python</a>虚拟机上的<em>Lisp</em>方言。</p>
+<p>开源社区承担了工具库的开发与维护的责任，那我这种普通人就先从“借鸡生蛋”开始……</p>
+
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/JavaScript%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/JavaScript%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/JavaScript%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/JavaScript-ES6%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8/" title="JavaScript ES6函数式编程入门经典" aria-label="Previous">
+        <span><small>上一篇：</small>JavaScript ES6函数式编程入门经典</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ES6/" title="深入理解ES6" aria-label="Next">
+        <span><small>下一篇：</small>深入理解ES6</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/JavaScript函数式编程指南/cover.jpg" alt="封面：JavaScript函数式编程指南">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Luis Atencio</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>欧阳继超 & 屈鉴铭</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>210页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>异步图书</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787115462046</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>人民邮电出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2018-06-01</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/321VMNm" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

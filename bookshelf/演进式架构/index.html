@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>演进式架构 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">演进式架构</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/程序设计" rel="tag">程序设计</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/架构" rel="tag">架构</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Oct 7, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>演进式架构以持续交付和DevOps为前提，支持跨多个维度的引导性增量变更，主要由三方面构成：适应度函数、增量变更和适当的耦合。</p>
+</div>
+<!-- 摘要注释 -->
+<p>本书的书名其实可以取作“演进式系统构建之架构思想”，作者分析了不同架构模式的演进能力，为企业团队实践演进式架构提供了依据与参考。</p>
+<div class="compound">
+<p class="compound-first">架构是个面向问题的过程，适应度函数可看作是对架构决议的复核手段。本书也可用于印证《<a class="reference external" href="/bookshelf/我的架构思想/">我的架构思想</a>》、《<a class="reference external" href="/bookshelf/程序原本/">程序原本</a>》与《<a class="reference external" href="/bookshelf/架构整洁之道/">架构整洁之道</a>》所述之内容，比如：</p>
+<ul class="compound-last simple">
+<li><p>团队决策考虑的对象有两点，其一是对架构整体的把握，其二是对团队整体的把握。</p></li>
+<li><p>系统本身的复杂性并不是由这些领域带来的，领域间的交叉与交互才是系统规模问题的根源。</p></li>
+<li><p>软件架构师的目标是创建一种系统形态，该形态会以策略为最基本的元素，并让细节与策略脱离关系，以允许在具体决策过程中推迟或延迟与细节相关的内容。</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p><strong>持续架构</strong>指构建架构的过程没有最终状态，它会随着软件开发体系的不断变化而演进，并保护重要的架构特征。</p>
+<p>在适应度函数为某些架构特征提供了客观的完整性评估，用于计算潜在的解决方案与既定目标的差距。全系统适应度函数，可看作是适应度函数的集合。所谓“适应度函数引导演进式架构”，指的是通过单独的适应度函数评估单个架构选择，同时通过全系统适应度函数确定变更的影响。</p>
+<p>增量变更描述了软件架构的两个方面：如何增量地构建软件和如何部署软件。使用部署流水线，架构师可以决定执行适应度函数的类别、时间和频率。架构量子是具有高功能内聚并可以独立部署的组件，它包括了支持系统正常工作的所有结构性元素。</p>
+<p>虽然架构模式对于成功演进至关重要，但是它并不是唯一的决定性因素。必须结合架构模式固有的特征和系统定义的附加特征才能完整定义演进性的各个维度。</p>
+<p>数据库的演进式设计是指开发人员能够根据需求的不断变化来构建数据库结构并使其演进。数据库模式是抽象的，和类的层次结构类似。当现实世界发生变化，这些变化需要反映在开发人员和DBA所建立的抽象当中；否则，抽象将逐渐脱离与现实世界的同步。</p>
+<div class="figure">
+<img alt="/assets/bookshelf/演进式架构/扩展-收缩模式.jpg" src="/assets/bookshelf/演进式架构/扩展-收缩模式.jpg" />
+<p class="caption">数据库重构之扩展/收缩模式</p>
+</div>
+<blockquote class="epigraph">
+<p>在设计系统时，组织所交付的方案结构将不可避免地与其沟通结构一致。</p>
+<p class="attribution">—梅尔文•康威</p>
+</blockquote>
+<blockquote class="epigraph">
+<p>系统绝不是其组成部分的总和，而是各部分相互作用的产物。</p>
+<p class="attribution">—Russel Ackoff</p>
+</blockquote>
+<blockquote class="epigraph">
+<p>如果无法构建单体应用，为什么你认为微服务能解决问题呢？</p>
+<p class="attribution">—Simon Brown</p>
+</blockquote>
+<blockquote class="epigraph">
+<p>计算机科学领域的任何问题都可以通过增加一个间接的中间层来解决，除非该问题是由间接层太多导致的。</p>
+<p class="attribution">—Dave Wheeler &amp; Kevlin Henney</p>
+</blockquote>
+<ul class="simple">
+<li><p>构建与目标系统架构相仿的团队结构，这样项目会更容易实现。</p></li>
+<li><p>将适应度函数的执行结果可视化至明显的公共区域，能使开发人员记得在日常编码中考虑它们，保持关键部分和相关适应度函数的活力。</p></li>
+<li><p>每年至少审查一次适应度函数。</p></li>
+<li><p>架构在开始运行、具有生命力前是抽象的。</p></li>
+<li><p>确保架构与问题领域匹配，不要尝试强行使用不合适的架构。</p></li>
+<li><p>架构量子越小，架构的演进能力越强。</p></li>
+<li><p>数据库事务好像强核力一样，将架构量子结合在一起。</p></li>
+<li><p>拒绝重构数据库模式或删除旧数据会使架构耦合到过去，这将导致重构难以进行。</p></li>
+<li><p>选择架构前，需要理解面临的业务问题。</p></li>
+<li><p>我们应努力使集成点保持一定的成熟度，如果无法做到这一点，那么你需要意识到系统的某些部分将更易于演进。</p></li>
+<li><p>不要仅仅因为元工作有趣而构建架构。</p></li>
+<li><p>在重建架构时，需要考虑所有受影响的维度。</p></li>
+<li><p>识别并去除不需要的可变因素。</p></li>
+<li><p>尽可能多地使决策可逆（在不过度工程化的前提下）。</p></li>
+<li><p>构建即时防腐层来隔离库的更新。</p></li>
+<li><p>使用服务模板仅将合适的架构部分耦合在一起（例如基础设施组件），团队可以从耦合中获益。</p></li>
+<li><p>积极地更新框架依赖，消极地更新库。</p></li>
+<li><p>相比快照，我们倾向于通过持续交付来处理（外部）依赖。</p></li>
+<li><p>在版本化服务时，我们倾向于内部版本化，一次只支持两个版本，而不是用版本号。</p></li>
+<li><p>不要将你的架构耦合，使得供应商为王。</p></li>
+<li><p>了解复杂技术栈的脆弱部分，并通过适应度函数自动保护它们。</p></li>
+<li><p>代码复用性越高，其可用性就越低。</p></li>
+<li><p>当耦合点妨碍了演进或其他重要的架构特征时，通过分叉或重复来打破耦合点。</p></li>
+<li><p>架构师必须持续评估架构特征的适应度，保证它们仍在提供价值，避免沦为反模式。</p></li>
+<li><p>不要为了架构而构建架构，构建架构是为了解决问题。</p></li>
+<li><p>演进的速度和生产周期成正比，生产周期越短，演进的速度就越快。</p></li>
+<li><p>理性对待软件中的定制部分。</p></li>
+<li><p>按照业务能力而非职能来组织团队。</p></li>
+<li><p>尽量减少开发团队之间的连接数。</p></li>
+</ul>
+</div>
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/%E6%BC%94%E8%BF%9B%E5%BC%8F%E6%9E%B6%E6%9E%84/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/%E6%BC%94%E8%BF%9B%E5%BC%8F%E6%9E%B6%E6%9E%84/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/%E6%BC%94%E8%BF%9B%E5%BC%8F%E6%9E%B6%E6%9E%84/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E6%88%91%E7%9A%84%E6%9E%B6%E6%9E%84%E6%80%9D%E6%83%B3/" title="我的架构思想" aria-label="Previous">
+        <span><small>上一篇：</small>我的架构思想</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Python%E7%89%B9%E6%80%A7/" title="深入理解Python特性" aria-label="Next">
+        <span><small>下一篇：</small>深入理解Python特性</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/演进式架构/cover.jpg" alt="封面：演进式架构">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Neal Ford & Rebecca Parsons & Patrick Kua</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>周训杰</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>140页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>图灵社区</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787115516176</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>人民邮电出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2019-08-22</p>
+      </li>
+      
+    </ul>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

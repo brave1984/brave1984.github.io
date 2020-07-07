@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>大教堂与集市 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">大教堂与集市</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/程序设计" rel="tag">程序设计</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/黑客" rel="tag">黑客</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/经典" rel="tag">经典</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Feb 19, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>相较于<em>自由软件</em>中“自由”这个词，“开源”，是一种<strong>策略</strong>。开源开发模式，也是弱者对抗强者的策略。</p>
+</div>
+<!-- 摘要注释 -->
+<p><em>Linus Torvalds</em>领导的集市队伍先于<em>Richard M.Stallman</em>领导的教堂队伍，开发出类<a class="reference external" href="https://en.wikipedia.org/wiki/Unix">UNIX</a>操作系统内核——<a class="reference external" href="https://www.kernel.org/">Linux</a>。作者（<a class="reference external" href="http://www.catb.org/esr/">Eric Raymond</a>）从<a class="reference external" href="https://www.kernel.org/">Linux</a>项目的成功经验中，提出了“开源开发模式”的理论，并阐述了商业化项目是否该开源。</p>
+<p>开源运动（<a class="reference external" href="https://opensource.org/">Open Source</a>）肇始于1998年，网景公司将网景浏览器开源（为了防止微软扭曲开放标准的Web协议）。现如今，IE浏览器已经没落，微软也收购了<a class="reference external" href="https://github.com/">GitHub</a>，真是世事难料啊！</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p>开源软件系统性地利用开放式开发和分布式<strong>同行评审</strong>（peer review），不仅降低了成本，还提高了软件质量。</p>
+<div class="section" id="id2">
+<h3>大教堂与集市</h3>
+<p>“大教堂”模式和“集市”模式的根本不同点在于二者对<strong>软件排错</strong>有着完全对立的认识。</p>
+<p><strong>Brooks定律</strong>：“在一个已经延期的项目上增加人手，只会让项目更加延期。”，它的<strong>假设</strong>是：项目的沟通结构是一个完全图，即人人之间都沟通。</p>
+<p>在“集市”模式中，开发者和测试者基于源码共享同一个表达模式，并能进行有效的交流。外围开发者（beta测试者和潜在的贡献者）实际工作在分散而并行的子任务上，他们之间几乎不交流；代码修改和bug报告都会流向核心团队，只有在那个小的核心团队里才会有<em>Brooks</em>开销。</p>
+<div class="compound">
+<p class="compound-first"><strong>开发箴言</strong>：</p>
+<ol class="compound-last arabic simple">
+<li><p>好的软件作品，往往源自于开发者的个人需要。</p></li>
+<li><p>优秀的程序员知道写什么，卓越的程序员知道改写（和重用）什么。</p></li>
+<li><p>“计划好扔掉一个吧，迟早你会这么做的。”（Fred Brooks，《人月神话》第11章）</p></li>
+<li><p>如果你有正确的态度，有趣的事情自然会找到你。</p></li>
+<li><p>当你对一个程序不再感兴趣时，你最后的责任就是把它交给一个可以胜任的接棒者。</p></li>
+<li><p>把你的用户当成开发合作者对待，如果想让代码质量快速提升并有效排错，这是最省心的途径。</p></li>
+<li><p>早发布，常发布，倾听用户的反馈。</p></li>
+<li><p>如果有足够多的beta测试者和合作开发者，几乎所有问题都会很快显现，然后自然有人会把它解决。</p></li>
+<li><p>聪明的数据结构配上愚笨的代码，远比反过来要好得多。</p></li>
+<li><p>如果你把beta测试者当做最珍贵的资源对待，他们就会成为你最珍贵的资源。</p></li>
+<li><p>仅次于拥有好主意的是，识别来自用户的好主意，有时后者会更好。</p></li>
+<li><p>通常，那些最有突破性和最有创新力的解决方案来自于你认识到你对问题的基本观念是错的。</p></li>
+<li><p>“设计上的完美不是没有东西可以再加，而是没有东西可以再减。”</p></li>
+<li><p>任何工具都应具备预期内的功能，但一个伟大的工具能给你带来预期外的功能。</p></li>
+<li><p>写网关类软件时，尽可能不要干扰数据流，而且绝不要扔掉信息，除非接收方强迫你这么做。</p></li>
+<li><p>当你的语言还远不是图灵完备（Turing-complete）的时候，语法糖会让你受益良多。</p></li>
+<li><p>系统的安全性只取决于它所拥有的秘密。谨防虚假的秘密。</p></li>
+<li><p>想要解决一个有趣的问题，先去找一个让你感兴趣的问题。</p></li>
+<li><p>如果开发协调者有一个至少像Internet这样好的沟通媒介，并且知道如何不靠强制来领导，那么多人合作必然强于单兵作战。</p></li>
+</ol>
+</div>
+<blockquote class="epigraph">
+<p>让我看你的流程图但不让我看表，我会仍然搞不明白。给我看你的表，一般我就不再需要你的流程图了，表能让人一目了然。</p>
+<p class="attribution">—Fred Brooks《人月神话》第9章</p>
+</blockquote>
+</div>
+<div class="section" id="id3">
+<h3>开垦心智层</h3>
+<p>黑客的“礼物文化”，即通过付出时间、精力和创意，参与者在竞争中获取声望的文化。</p>
+<p>自称是黑客不代表你就是黑客，只有其他黑客认为你是黑客，你才是黑客。</p>
+<div class="compound">
+<p class="compound-first"><strong>开源文化的禁忌</strong>：</p>
+<ul class="compound-last simple">
+<li><p>分化一个项目会遇到强大的社会压力，只有在极为必要的情况下才使用，而且要重新命名和做出大量的公开解释。</p></li>
+<li><p>在没有项目主持人认可的情况下发布更新是令人不悦的，除非是特殊情况（如本质上不重要的移植bug修复）。</p></li>
+<li><p>在项目历史、致谢表或维护列表中移除某个人的名字是绝对不可以的，除非当事人明确表示同意。</p></li>
+</ul>
+</div>
+<div class="compound">
+<p class="compound-first"><strong>追求声誉的意义</strong>：</p>
+<ul class="compound-last simple">
+<li><p>在同侪中拥有好名声是一种最基本的激励，我们都渴望体验它。</p></li>
+<li><p>声誉是很好的吸引他人注意和合作的途径。</p></li>
+<li><p>如果你所处的礼物经济和交换经济或命令体系互相关联交织，你的名声就可能传播到后两种环境中，使你在那里获得更高的地位。</p></li>
+</ul>
+</div>
+<div class="compound">
+<p class="compound-first"><strong>什么才是好礼物</strong>：</p>
+<ul class="compound-last simple">
+<li><p>如果它不能像我所预期的那样工作，那就不是好的——不管它多么聪明和有原创性。</p></li>
+<li><p>在心智层的拓展性工作要比在某功能域内（对现有作品）的重复性工作好。</p></li>
+<li><p>能进入主要发行版的作品比不能进入的好。在所有主要发行版中都包含的作品最令人尊敬。</p></li>
+<li><p>“使用”是最真实的赞美，类别杀手比同类竞争者好。</p></li>
+<li><p>相比那些只挑有趣和简单工作的人，长期致力于艰苦和乏味工作（如调试、写文档）的人更令人钦佩。</p></li>
+<li><p>重要的功能扩展比低层次的修补好。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>魔法锅</h3>
+<div class="compound">
+<p class="compound-first">满足以下条件，就该<strong>考虑开源</strong>：</p>
+<ul class="compound-last simple">
+<li><p>可靠性/稳定性/可扩展性非常重要</p></li>
+<li><p>除了独立的同行评审，没有其他便捷易行的方法验证设计和实现的正确性</p></li>
+<li><p>该软件对客户的业务非常关键</p></li>
+<li><p>该软件创建或运转一个公共计算或通信基础架构</p></li>
+<li><p>关键方法（或能实现同等功能的方法）属于公共知识</p></li>
+</ul>
+</div>
+<div class="compound">
+<p class="compound-first">有时，开源的直接目的不是为了收入增长，而是为了<strong>闯入与重塑</strong>市场：</p>
+<ul class="compound-last simple">
+<li><p>用成本分摊做竞争武器</p></li>
+<li><p>重置竞争</p></li>
+<li><p>扩大水池</p></li>
+<li><p>防止锁喉</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<p>本书的附录A：《<a class="reference external" href="http://www.catb.org/esr/faqs/hacker-howto.html">如何成为一名黑客</a>》，请勤拂拭！</p>
+<p>微软 《<a class="reference external" href="http://catb.org/~esr/halloween/index.html">万圣节文件</a>》</p>
+
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/%E5%A4%A7%E6%95%99%E5%A0%82%E4%B8%8E%E9%9B%86%E5%B8%82/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/%E5%A4%A7%E6%95%99%E5%A0%82%E4%B8%8E%E9%9B%86%E5%B8%82/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/%E5%A4%A7%E6%95%99%E5%A0%82%E4%B8%8E%E9%9B%86%E5%B8%82/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E8%8B%A5%E4%B8%BA%E8%87%AA%E7%94%B1%E6%95%85/" title="若为自由故" aria-label="Previous">
+        <span><small>上一篇：</small>若为自由故</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6/" title="黑客与画家" aria-label="Next">
+        <span><small>下一篇：</small>黑客与画家</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/大教堂与集市/cover.jpg" alt="封面：大教堂与集市">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Eric S. Raymond</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>卫剑钒</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>194页</p>
+      </li>
+      
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787111452478</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>机械工业出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2014-06-13</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2TYAE6j" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>黑客与画家 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">黑客与画家</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/程序设计" rel="tag">程序设计</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/黑客" rel="tag">黑客</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/经典" rel="tag">经典</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Feb 19, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>程序设计，就如同绘画一般，是一种<strong>艺术创作</strong>。实现原型，以人为本，重构再设计。</p>
+</div>
+<!-- 摘要注释 -->
+<p><em>保罗·格雷厄姆</em>（<a class="reference external" href="http://www.paulgraham.com/">Paul Graham</a>），是一个“书呆子”（中学时代）、想当画家的黑客（大学时代）、创业者（<a class="reference external" href="https://en.wikipedia.org/wiki/Viaweb">Viaweb</a>）、风险投资家（<a class="reference external" href="https://www.ycombinator.com/">Y Combinator</a>）、一种<em>Lisp</em>方言（<a class="reference external" href="http://arclanguage.org/">Arc</a>）的设计者。</p>
+<p>作者设计了第一个Web应用，预言了移动互联网时代的到来。在文集中，以其亲身经历为依据，论述了：1、黑客为何多为“书呆子”；2、黑客与画家为何相像；3、如何应对“流行”；4、财富与创业的关系；5、计算机时代，该如何创业；6、百年后，编程语言的模样；7、如何设计一种成功的产品或编程语言。</p>
+<p>构想未来的编程语言，就得结合现有语言的发展趋势，考虑<em>摩尔定律</em>会否失效，以及并行计算的应用程度。<em>松本行弘</em>在其文集——《<a class="reference external" href="https://amzn.to/2TXjVAx">代码的未来</a>》——中，也构想了未来的编程语言，而且有着与<em>保罗·格雷厄姆</em>相反的观点。</p>
+<p>梦寐以求的编程语言，我可以理解为是指<a class="reference external" href="https://www.ruby-lang.org/">Ruby</a>（社区友好、简洁、元编程、杀手级应用、<a class="reference external" href="https://rubygems.org/">RubyGems</a>）或<a class="reference external" href="https://www.python.org/">Python</a>么？</p>
+<p>语言流行的秘诀，即：快速原型（曳光弹）、聆听用户需求、产品再设计、时间的检验。我个人认为这几条秘诀也适用于创业产品。</p>
+<p><em>Lisp</em>语言有种动人心魄的美——<strong>闭合的括号</strong>，你可以从阅读《<a class="reference external" href="/bookshelf/The-Little-Schemer/">The Little Schemer</a>》来认识它的一种方言<em>Scheme</em>（提供两种实现：<a class="reference external" href="https://www.scheme.com/">Chez Scheme</a>、<a class="reference external" href="http://www.gnu.org/software/mit-scheme/">MIT/GNU Scheme</a>）。</p>
+<p>所有的编程语言都是图灵等价的，但它们的抽象程度却各不相同。Web应用服务器有基于线程的，也有基于事件的。在较大型<a class="reference external" href="https://nodejs.org/">Node.js</a>项目中，很容易出现“回调地狱”式的代码（<a class="reference external" href="http://callbackhell.com/">callback hell</a>）。</p>
+<blockquote class="epigraph">
+<p>回调作为一种抽象，在编写复杂的异步流时，显得过于底层。<em>JavaScript</em>只是没有跟上工具和抽象的步伐，但是像<a class="reference external" href="https://www.scala-lang.org/">Scala</a>这样的语言在设计时就考虑了这些抽象，它使用了众所周知的函数式编程原则，从而有可能从不同的角度解决这个问题。</p>
+<p><a class="reference external" href="https://www.scala-lang.org/">Scala</a>编程语言一个主要的设计目标就是帮助开发人员克服多核以及分布式系统编程所带来的复杂性。</p>
+<p class="attribution">—Manuel Bernhardt《<a class="reference external" href="https://amzn.to/2BOod66*常常是大胆的设计">反应式：Web应用开发</a>》</p>
+</blockquote>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p>“计算机科学”，这个学科的一端是纯粹的数学家（计算机科学家），中间部分是计算机博物学家，另一端则是黑客。</p>
+<blockquote class="epigraph">
+<p>任何C或Fortran程序复杂到一定程度之后，都会包含一个临时开发的、只有一半功能的、不完全符合规格的、到处都是bug的、运行速度很慢的Common Lisp实现。</p>
+<p class="attribution">—格林斯潘第十定律（Greenspun's Tenth Rule）</p>
+</blockquote>
+<div class="compound">
+<p class="compound-first"><strong>好设计</strong>：</p>
+<ul class="compound-last simple">
+<li><p>是简单的设计</p></li>
+<li><p>是永不过时的设计</p></li>
+<li><p>是解决主要问题的设计</p></li>
+<li><p>是启发性的设计</p></li>
+<li><p>通常是有点趣味性的设计</p></li>
+<li><p>是艰苦的设计</p></li>
+<li><p>是看似容易的设计</p></li>
+<li><p>是对称的设计</p></li>
+<li><p>是模仿大自然的设计</p></li>
+<li><p>是一种再设计</p></li>
+<li><p>是能够复制的设计</p></li>
+<li><p>常常是奇特的设计</p></li>
+<li><p>是成批出现的</p></li>
+</ul>
+</div>
+<p>优秀作品的秘诀就是：非常严格的品味，再加上实现这种品味的能力。</p>
+</div>
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E5%A4%A7%E6%95%99%E5%A0%82%E4%B8%8E%E9%9B%86%E5%B8%82/" title="大教堂与集市" aria-label="Previous">
+        <span><small>上一篇：</small>大教堂与集市</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93-%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%81%8C%E4%B8%9A%E7%B4%A0%E5%85%BB/" title="代码整洁之道：程序员的职业素养" aria-label="Next">
+        <span><small>下一篇：</small>代码整洁之道：程序员的职业素养</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/黑客与画家/cover.jpg" alt="封面：黑客与画家">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Paul Graham</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>阮一峰</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>236页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>图灵社区</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787115249494</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>人民邮电出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2011-03-31</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2TXigLj" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

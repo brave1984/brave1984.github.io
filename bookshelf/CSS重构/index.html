@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>CSS重构 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">CSS重构</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/web" rel="tag">Web</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/程序设计" rel="tag">程序设计</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/css" rel="tag">CSS</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Feb 28, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>CSS样式表的宿命不是僵化，就是<strong>重构</strong>，而你的宿命则是——主动选择或被动接受——沦为“人肉UI测试器”。</p>
+</div>
+<!-- 摘要注释 -->
+<blockquote class="epigraph">
+<p>何时进行重构：对<em>DRY</em>原则的违反；事物可以更为正交；知识扩展了；需求演变了；需要改善性能。</p>
+<p>怎么进行重构：不要在重构的同时试图增加功能；在开始重构之前，确保拥有良好的测试；采取短小、深思熟虑的步骤。</p>
+<p class="attribution">—《<a class="reference external" href="/bookshelf/程序员修炼之道/">程序员修炼之道</a>》第33节</p>
+</blockquote>
+<p>重构的好处不必多说，它的前提是——<strong>不破坏软件的功能和架构</strong>。</p>
+<p>本书主要从架构组织方面谈论“CSS重构”，目的是创建可预测、可复用、可维护、可拓展的CSS架构。</p>
+<p>在基于类型的设计中，不仅要处理好互相关联的类型，还要保持模块性。我们可以通过<a class="reference external" href="http://sass-lang.com/">Sass</a>对代码进行物理上的分隔；对样式<strong>分层</strong>（通用、基础、组件、结构、功能、特定）来构筑抽象屏障。</p>
+<p>CSS不是编程语言，所呈现的视觉效果，会因浏览器厂商、版本，以及屏幕尺寸的不同而不同。UI测试实现“半自动化”已是不易，更遑论“自动化”。在你把层叠规则与选择器匹配规则弄懂后，写一点，测一点。</p>
+<p>本书所指的<strong>模式库</strong>，其实就是《<a class="reference external" href="/bookshelf/渐进增强/">渐进增强</a>》中的<a class="reference external" href="http://styletil.es/">风格组件</a>，可参考<a class="reference external" href="https://www.yelp.com/styleguide">Yelp Styleguide</a>。</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p>软件架构的<strong>可预测</strong>是指可以对软件的工作方式和结构做出准确的假设，可避免如下问题：组件的功能是什么；某一段代码在何处；新代码加到何处。</p>
+<div class="compound">
+<p class="compound-first"><strong>基础样式</strong>：</p>
+<ul class="compound-last simple">
+<li><p>区块元素（<span class="docutils literal">body</span>、<span class="docutils literal">header</span>、<span class="docutils literal">nav</span>、<span class="docutils literal">section</span>、<span class="docutils literal">article</span>、<span class="docutils literal">aside</span>、<span class="docutils literal">footer</span>、<span class="docutils literal">address</span>）</p></li>
+<li><p>标题和文本元素（<span class="docutils literal">h1~h6</span>、<span class="docutils literal">p</span>、<span class="docutils literal">figure</span>、<span class="docutils literal">figcaption</span>、<span class="docutils literal">pre</span>）</p></li>
+<li><p>锚点标签元素（<span class="docutils literal">:link</span>、<span class="docutils literal">:visited</span>、<span class="docutils literal">:focus</span>、<span class="docutils literal">:hover</span>、<span class="docutils literal">:active</span>）</p></li>
+<li><p>文本语义元素（<span class="docutils literal">small</span>、<span class="docutils literal">strong</span>、<span class="docutils literal">em</span>、<span class="docutils literal">b</span>、<span class="docutils literal">i</span>、<span class="docutils literal">cite</span>、<span class="docutils literal">q</span>、<span class="docutils literal">time</span>、<span class="docutils literal">code</span>、<span class="docutils literal">mark</span>、<span class="docutils literal">del</span>、<span class="docutils literal">ins</span>、<span class="docutils literal">s</span>、<span class="docutils literal">abbr</span>、<span class="docutils literal">dfn</span>、<span class="docutils literal">sub</span>、<span class="docutils literal">sup</span>等）</p></li>
+<li><p>列表（<span class="docutils literal">ol</span>、<span class="docutils literal">ul</span>、<span class="docutils literal">dl</span>、<span class="docutils literal">li</span>、<span class="docutils literal">dt</span>、<span class="docutils literal">dd</span>）</p></li>
+<li><p>组合元素（<span class="docutils literal">div</span>、<span class="docutils literal">main</span>、<span class="docutils literal">span</span>）</p></li>
+<li><p>表格（<span class="docutils literal">table</span>、<span class="docutils literal">caption</span>、<span class="docutils literal">colgroup</span>、<span class="docutils literal">col</span>、<span class="docutils literal">thead</span>、<span class="docutils literal">tbody</span>、<span class="docutils literal">tfoot</span>、<span class="docutils literal">tr</span>、<span class="docutils literal">th</span>、<span class="docutils literal">td</span>）</p></li>
+<li><p>表单（<span class="docutils literal">form</span>、<span class="docutils literal">label</span>、<span class="docutils literal">input</span>、<span class="docutils literal">button</span>、<span class="docutils literal">select</span>、<span class="docutils literal">datalist</span>、<span class="docutils literal">optgroup</span>、<span class="docutils literal">option</span>、<span class="docutils literal">textarea</span>、<span class="docutils literal">progress</span>、<span class="docutils literal">meter</span>、<span class="docutils literal">fieldset</span>、<span class="docutils literal">legend</span>）</p></li>
+<li><p>图像与媒体资源（<span class="docutils literal">img</span>、<span class="docutils literal">picture</span>、<span class="docutils literal">video</span>、<span class="docutils literal">audio</span>、<span class="docutils literal">object</span>）</p></li>
+</ul>
+</div>
+<div class="compound">
+<p class="compound-first"><strong>创建可复用组件</strong>的过程可以简化为：</p>
+<ol class="compound-last arabic simple">
+<li><p>创建组件之前，定义需要实现的行为；</p></li>
+<li><p>保持组件样式的粒度，设置合理的默认值；</p></li>
+<li><p>若需要重写组件组的可见样式，用容器元素将它们包起来，为该容器定义一个具有区别度的类；</p></li>
+<li><p>将定义元素尺寸的任务交给结构化容器。</p></li>
+</ol>
+</div>
+<div class="compound">
+<p class="compound-first"><strong>重构策略</strong>：</p>
+<ol class="compound-last arabic simple">
+<li><p>保持规则集结构的一致性</p></li>
+<li><p>删除僵尸代码</p></li>
+<li><p>分离<em>CSS</em>和<em>JavaScript</em></p></li>
+<li><p>分离基础样式</p></li>
+<li><p>删除冗余的<em>ID</em></p></li>
+<li><p>将<em>ID</em>转化为类</p></li>
+<li><p>区分功能性样式</p></li>
+<li><p>定义可复用组件</p></li>
+<li><p>删除行内<em>CSS</em>和过于模块化的类</p></li>
+<li><p>隔离面向特定浏览器的<em>CSS</em>样式</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<p>CSS编码规范：<a class="reference external" href="https://google.github.io/styleguide//htmlcssguide.html">Google</a>、<a class="reference external" href="https://make.wordpress.org/core/handbook/best-practices/coding-standards/css/">WordPress</a>、<a class="reference external" href="https://frontend.18f.gov/css/">18F</a>、<a class="reference external" href="http://zoomzhao.github.io/code-guide/">&#64;mdo</a>。</p>
+
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/CSS%E9%87%8D%E6%9E%84/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/CSS%E9%87%8D%E6%9E%84/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/CSS%E9%87%8D%E6%9E%84/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/Sass%E4%B8%8ECompass%E5%AE%9E%E6%88%98/" title="Sass与Compass实战" aria-label="Previous">
+        <span><small>上一篇：</small>Sass与Compass实战</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%8Eshell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B%E5%A4%A7%E5%85%A8/" title="Linux命令行与shell脚本编程大全" aria-label="Next">
+        <span><small>下一篇：</small>Linux命令行与shell脚本编程大全</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/CSS重构/cover.jpg" alt="封面：CSS重构">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Steve Lindstrom</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>杜春晓 & 司韦韦</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>120页</p>
+      </li>
+      
+      
+      <li>
+        <p><span>品牌：</span>图灵社区</p>
+      </li>
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787115469786</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>人民邮电出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2017-11-01</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2ECvTKC" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

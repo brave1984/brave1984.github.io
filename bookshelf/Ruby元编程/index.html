@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>Ruby元编程 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">Ruby元编程</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/ruby" rel="tag">Ruby</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/经典" rel="tag">经典</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Jun 4, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>根本就没有元编程，从来就只有编程。</p>
+</div>
+<!-- 摘要注释 -->
+<p>本书讲透了<a class="reference external" href="https://www.ruby-lang.org/">Ruby</a>的对象模型，传授了操作语言构件的“法术”。</p>
+<p>调用一个方法就是给一个对象发送消息。<a class="reference external" href="https://www.ruby-lang.org/">Ruby</a>的关键在于理解<strong>当前对象</strong>（<span class="docutils literal">self</span>），从而识别出上下文。</p>
+<p>相较于<a class="reference external" href="https://www.python.org/">Python</a>，<a class="reference external" href="https://www.ruby-lang.org/">Ruby</a>的优势在于：方法调用可以省略括号，可以省略<span class="docutils literal">self</span>；调用方法时，可以定义代码块；混入“模块”，就能扩展现有类；有钩子方法，有“符号”这种类型。</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p><strong>元编程</strong>是编写能在运行时操作语言构件的代码。</p>
+<p>任何以大写字母开头的引用（包括类名和模块名）都是常量，常量的路径用双冒号进行分隔。类本身是<span class="docutils literal">Class</span>类的对象，<span class="docutils literal">Class</span>类是<span class="docutils literal">Module</span>的子类。</p>
+<p>每次<span class="docutils literal">include</span>或<span class="docutils literal">prepend</span>一个模块时，如果该模块已经存在于祖先链中，那么<a class="reference external" href="https://www.ruby-lang.org/">Ruby</a>会忽略这个包含指令。</p>
+<p>如果调用方法的接收者不是自己，就必须明确指明接收者；私有方法只能通过隐性的接收者调用。</p>
+<p><a class="reference external" href="https://www.ruby-lang.org/">Ruby</a>解释器会创建一个名为<span class="docutils literal">main</span>的对象，即顶层上下文。在类和模块定义之中（且在任何方法定义之外），<span class="docutils literal">self</span>的角色由这个类或模块本身担任。</p>
+<p>每当程序进入（或离开）类定义、模块定义、方法时，就会发生作用域切换。代码块是闭包，不是对象。</p>
+<p>一个对象的单件类的超类是这个对象的类；一个类的单件类的超类是这个类的超类的单件类。</p>
+<div class="section" id="id2">
+<h3>法术手册</h3>
+<ul class="simple">
+<li><p><strong>别名环绕</strong>，从一个重新定义的方法中调用原始的、被重命名的版本。</p></li>
+<li><p><strong>白板类</strong>，移除一个对象中的所有方法，以便把它们转换成<strong>幽灵方法</strong>。</p></li>
+<li><p><strong>类扩展</strong>，通过向类的单件类中加入模块来定义类方法，是<strong>对象扩展</strong>的一个特例。</p></li>
+<li><p><strong>类实例变量</strong>，在一个<span class="docutils literal">Class</span>对象的实例变量中存储类级别的状态。</p></li>
+<li><p><strong>类宏</strong>，在类定义中使用类方法。</p></li>
+<li><p><strong>洁净室</strong>，使用一个对象作为执行一个代码块的环境。</p></li>
+<li><p><strong>代码处理器</strong>，处理从外部获得的<strong>代码字符串</strong>。</p></li>
+<li><p><strong>上下文探针</strong>，执行一个代码块来获取一个对象上下文中的信息。</p></li>
+<li><p><strong>延迟执行</strong>，在<span class="docutils literal">proc</span>或<span class="docutils literal">lambda</span>中存储一段代码及其上下文，用于以后执行。</p></li>
+<li><p><strong>动态派发</strong>，在运行时决定调用哪个方法。</p></li>
+<li><p><strong>动态方法</strong>，在运行时决定怎样定义一个方法。</p></li>
+<li><p><strong>动态代理</strong>，把不能对应某个方法名的消息转发给另一个对象。</p></li>
+<li><p><strong>扁平作用域</strong>，使用闭包在两个作用域之间共享变量。</p></li>
+<li><p><strong>幽灵方法</strong>，响应一个没有关联方法的消息。</p></li>
+<li><p><strong>钩子方法</strong>，覆写一个方法来截获对象模型事件。</p></li>
+<li><p><strong>内核方法</strong>，在<span class="docutils literal">Kernel</span>模块中定义一个方法，使得所有对象都可使用。</p></li>
+<li><p><strong>惰性实例变量</strong>，等第一次访问一个实例变量时才对它进行初始化。</p></li>
+<li><p><strong>拟态方法</strong>，把一个方法伪装成另一种语言构件。</p></li>
+<li><p><strong>猴子补丁</strong>，修改已有类的特性。</p></li>
+<li><p><strong>命名空间</strong>，在一个模块中定义常量，以防止命名冲突。</p></li>
+<li><p><strong>空指针保护</strong>，用“或”操作符覆写一个空引用。</p></li>
+<li><p><strong>对象扩展</strong>，通过给一个对象的单件类混入模块来定义单件类方法。</p></li>
+<li><p><strong>打开类</strong>，修改已有的类。</p></li>
+<li><p><strong>下包含包装器</strong>，调用一个用<span class="docutils literal">prepend</span>方式覆写的方法。</p></li>
+<li><p><strong>细化</strong>，为类打补丁，作用范围仅到文件结束，或仅限于包含模块的作用域中。</p></li>
+<li><p><strong>细化封装器</strong>，在<strong>细化</strong>中调用非细化的方法。</p></li>
+<li><p><strong>沙盒</strong>，在一个安全的环境中执行未授信的代码。</p></li>
+<li><p><strong>作用域门</strong>，用<span class="docutils literal">class</span>、<span class="docutils literal">module</span>或<span class="docutils literal">def</span>关键字来隔离作用域。</p></li>
+<li><p><strong>Self Yield</strong>，把<span class="docutils literal">self</span>传给当前代码块。</p></li>
+<li><p><strong>共享作用域</strong>，在同一个<strong>扁平作用域</strong>的多个上下文中共享变量。</p></li>
+<li><p><strong>单件方法</strong>，在一个对象上定义一个方法。</p></li>
+<li><p><strong>代码字符串</strong>，执行一段表示<a class="reference external" href="https://www.ruby-lang.org/">Ruby</a>代码的字符串。</p></li>
+<li><p><strong>符号到Proc</strong>，把一个调用单个方法的块转换为一个符号。</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+<p><a class="reference external" href="https://www.ruby-lang.org/">Ruby</a>有着不同于<a class="reference external" href="https://www.python.org/">Python</a>的哲学，可参考《<a class="reference external" href="https://ruby-china.org/wiki/the-rails-doctrine">The Rails Doctrine - Rails 信条</a>》。</p>
+
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/Ruby%E5%85%83%E7%BC%96%E7%A8%8B/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/Ruby%E5%85%83%E7%BC%96%E7%A8%8B/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/Ruby%E5%85%83%E7%BC%96%E7%A8%8B/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/Ruby%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" title="Ruby基础教程" aria-label="Previous">
+        <span><small>上一篇：</small>Ruby基础教程</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/" title="面向对象设计实践指南" aria-label="Next">
+        <span><small>下一篇：</small>面向对象设计实践指南</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/Ruby元编程/cover.jpg" alt="封面：Ruby元编程">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Paolo Perrotta</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>廖志刚</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>272页</p>
+      </li>
+      
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787568009799</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>华中科技大学出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2015-08-01</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2WbzoNB" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>

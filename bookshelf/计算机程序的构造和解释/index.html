@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/assets/stylesheets/style.css">
+    <title>计算机程序的构造和解释 - 黄昭隗的个人网站</title>
+</head>
+<body>
+    <header id="header" role="banner">
+  <nav role="navigation">
+    <ul class="container nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" href="/" title="首页">
+          <svg>
+            <use xlink:href="/assets/images/sprites.svg#logo"></use>
+          </svg>
+        <span class="sr-only">首页</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bookshelf/" title="书架">书架</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/posts/" title="日志">日志</a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <blockquote class="container">
+      <p>在社会演化中，没有什么是不可避免的，使其成为不可避免的，是思想。</p>
+      <footer>哈耶克(Hayek F.A.)<cite>《通往奴役之路》</cite></footer>
+    </blockquote>
+  </div>
+</header>
+
+    <main class="jumbotron" role="main">
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="/">首页</a>
+    </li>
+    
+    <li class="breadcrumb-item">
+      <a href="/bookshelf/">书架</a>
+    </li>
+    
+    
+    <li class="breadcrumb-item">
+      <a href="/categories/计算">计算</a>
+    </li>
+    
+</ol>
+</nav>
+
+  <section class="container" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">计算机程序的构造和解释</h1>
+  <ul class="tags">
+  
+  <li>
+    <a class="badge badge-light" href="/tags/程序设计" rel="tag">程序设计</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/lisp" rel="tag">Lisp</a>
+  </li>
+  
+  <li>
+    <a class="badge badge-light" href="/tags/经典" rel="tag">经典</a>
+  </li>
+  
+</ul>
+
+<time itemprop="datePublished" datetime="">
+  Jan 21, 2019
+</time>
+
+
+  <div itemprop="articleBody">
+    <div class="document">
+<div class="summary docutils container">
+<p>“野生”与“家养”的差别不在于学位，而在于对<strong>经典</strong>的理解。</p>
+</div>
+<!-- 摘要注释 -->
+<p>用<em>Lisp</em>方言——<em>Scheme</em>——来描述“基于类型的程序设计”，可真是件奇妙的事。</p>
+<p>虽然只阅读了前3章——程序设计，但我已然获得了一种的“升华”，“锐变”（后2章——解释器与编译器的实现）留待年后了。</p>
+<div class="section" id="id1">
+<h2>文摘</h2>
+<p>计算机永远都不够大也不够快，硬件技术的每一次突破都带来了更大规模的程序设计事业，新的组织原理，以及更加丰富的抽象模型。</p>
+<p>金字塔矗立在那里千年不变，而有机体则必须演化，否则就会死亡。</p>
+<p>“完全展开而后归约”的求值模型称为<strong>正则序求值</strong>，“先求值而后应用”的求值模型称为<strong>应用序求值</strong>。</p>
+<p>一个过程是递归的，论述的是一个语法形式上的事实——这个过程的定义中（直接或间接地）引用了该过程本身。<strong>递归计算过程</strong>与<strong>迭代计算过程</strong>表达的是计算过程的进展方式。</p>
+<p>高阶过程的重要性，就在于使我们能显示地利用程序设计语言的要素去描述这些抽象，像操作其它计算元素一样去操作它们。</p>
+<p>数据抽象的基本思想就是为每一类数据对象标识出一组操作，使得对这类数据对象的所有操作都可以基于它们表述，而且在操作这些数据对象时也只使用它们。</p>
+<p>闭包，来自抽象代数，一集元素称为在某个运算（操作）之下封闭，如果将该运算应用于这一集合的元素，产生出的仍然是该集合里的元素。闭包性质是任何一种组合功能的威力的关键要素。</p>
+<p>过程中的耦合是由——将<strong>枚举器（map）</strong>的工作散布在过程中的各处，并与映射、<strong>过滤器（filter）</strong>、<strong>累积器（reduce）</strong>混和——的原因，而产生的。</p>
+<p>一个复杂的系统应该通过一系列的层次构造出来，为了描述这些层次，需要使用一系列的语言。构造各个层次的方式，就是设法组合起作为这一层次中部件的各种基本元素，而这样构造出的部件又可以作为另一个层次里的基本元素。在分层设计中，每个层次上所用的语言都提供了一些基本元素、组合手段，还有对该层次中的适当细节做抽象的手段。</p>
+<p>数据对象可以有多种表示方式，通过<strong>通用型过程</strong>，将描述数据操作的代码连接到几种不同表示上。</p>
+<p>在设计大型系统时，处理好一大批互相有关的类型而同时又能保持模块性，这是一个非常困难的问题，也是当前正在继续研究的一个领域。</p>
+<p>第一种策略将注意力集中在<strong>对象</strong>上，将一个大型系统看成一大批对象，它们的行为可能随着时间的进展而不断变化。另一种组织策略将注意力集中在流过系统的<strong>信息流</strong>上，非常像电子工程师观察一个信号处理系统。</p>
+<ul class="simple">
+<li><p>在基于<strong>对象</strong>的途径中，在处理对象、变化和标识时，各种困难的基本根源在于我们需要在 <strong>环境模型</strong>中与时间搏斗。</p></li>
+<li><p>在基于<strong>流处理</strong>的途径中，能够松解对时间的模拟与计算机求值过程中的各种事件发生的顺序。</p></li>
+</ul>
+<div class="compound">
+<p class="compound-first">求值的环境模型：</p>
+<ul class="compound-last simple">
+<li><p>将一个过程对象应用于一集实际参数，将构造出一个新框架，其中将过程的形式参数约束到调用时的实际参数，而后在构造起的一新环境的上下文中求值过程体。这个新框架的外围环境就是作为被应用的那个过程对象的一部分的环境。</p></li>
+<li><p>相对于一个给定环境求值一个<em>lambda</em>表达式，将创建起一个过程对象，这个过程对象是一个序对，由该<em>lambda</em>表达式的正文和一个指向环境的指针组成，这一指针指向的就是创建这个过程对象时的环境。</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+  </div>
+</section>
+
+  <aside class="post-aside">
+  
+  <section>
+    <h2>Share this on</h2>
+      <button type="button" class="btn">
+        <a href="https://twitter.com/intent/tweet?url=https://www.brave1984.com/bookshelf/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9E%84%E9%80%A0%E5%92%8C%E8%A7%A3%E9%87%8A/" title="Share this on Twitter" rel="external">
+          <svg class="fa-2x twitter">
+            <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+          </svg>
+          <span class="sr-only">Twitter</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://www.facebook.com/sharer.php?u=https://www.brave1984.com/bookshelf/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9E%84%E9%80%A0%E5%92%8C%E8%A7%A3%E9%87%8A/" title="Share this on Facebook" rel="external">
+          <svg class="fa-2x facebook-f">
+            <use xlink:href="/assets/images/sprites.svg#facebook-f"></use>
+          </svg>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </button>
+      <button type="button" class="btn">
+        <a href="https://plus.google.com/share?url=https://www.brave1984.com/bookshelf/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9E%84%E9%80%A0%E5%92%8C%E8%A7%A3%E9%87%8A/" title="Share this on Google Plus" rel="external">
+          <svg class="fa-2x google-plus-g">
+            <use xlink:href="/assets/images/sprites.svg#google-plus-g"></use>
+          </svg>
+          <span class="sr-only">Google Plus</span>
+        </a>
+      </button>
+  </section>
+</aside>
+
+  
+<nav aria-label="posts navigation">
+  <ul class="pagination">
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/The-Little-Schemer/" title="The Little Schemer" aria-label="Previous">
+        <span><small>上一篇：</small>The Little Schemer</span> 
+      </a>
+    </li>
+    
+    
+    <li class="page-item">
+      <a class="page-link" href="/bookshelf/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E6%95%B0%E5%AD%A6/" title="程序员的数学" aria-label="Next">
+        <span><small>下一篇：</small>程序员的数学</span> 
+      </a>
+    </li>
+  
+</ul>
+</nav>
+
+
+  
+
+<aside class="book-aside" role="complementary">
+  <figure>
+    <img src="/assets/bookshelf/计算机程序的构造和解释/cover.jpg" alt="封面：计算机程序的构造和解释">
+  </figure>
+  <section class="card">
+    <h2 class="card-header">书籍信息</h2>
+    <ul class="card-body">
+      <li>
+        <p><span>作者：</span>Harold Abelson & Gerald Jay Sussman & Julie Sussman</p>
+      </li>
+      
+      <li>
+        <p><span>译者：</span>裘宗燕</p>
+      </li>
+      
+      
+      <li>
+        <p><span>页码：</span>473页</p>
+      </li>
+      
+      
+      
+      <li>
+        <p><span>ISBN：</span>9787111135104</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版社：</span>机械工业出版社</p>
+      </li>
+      
+      
+      <li>
+        <p><span>出版日期：</span>2004-02-01</p>
+      </li>
+      
+    </ul>
+    
+    <a class="btn" href="https://amzn.to/2AUW50B" title="Amazon 购买本书" rel="external">
+      <svg class="fa-2x">
+        <use xlink:href="/assets/images/sprites.svg#amazon"></use>
+        <span class="sr-only">Amazon</span>
+      </svg>
+        <span>购买本书</span>
+    </a>
+    
+  </section>
+</aside>
+
+
+</main>
+
+    <footer role="contentinfo">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.twitter.com/zhaowei1984" title="Twitter" rel="external">
+        <svg class="fa-2x twitter">
+          <use xlink:href="/assets/images/sprites.svg#twitter"></use>
+        </svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/brave1984" title="GitHub" rel="external">
+        <svg class="fa-2x github">
+          <use xlink:href="/assets/images/sprites.svg#github"></use>
+        </svg>
+        <span class="sr-only">GitHub</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contact/" title="Mail" rel="external">
+        <svg class="fa-2x envelope">
+          <use xlink:href="/assets/images/sprites.svg#envelope"></use>
+        </svg>
+        <span class="sr-only">Mail</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/feed.xml" title="RSS">
+        <svg class="fa-2x rss">
+          <use xlink:href="/assets/images/sprites.svg#rss"></use>
+        </svg>
+        <span class="sr-only">RSS</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#header" title="返回顶部">
+        <svg class="fa-2x arrow-alt-to-top">
+          <use xlink:href="/assets/images/sprites.svg#arrow-alt-to-top"></use>
+        </svg>
+        <span class="sr-only">返回顶部</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <p>
+    <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="许可协议" rel="license external">
+      <img src="/assets/images/by-nc-nd.svg" alt="Creative Commons License"/>
+      <span class="sr-only">本网站采用《知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议》进行许可。</span>
+    </a>
+    <a href="https://github.com/brave1984/brave1984.github.io/blob/develop/README.rst" title="关于网站" rel="external"><b>黄昭隗</b>的个人网站</a>
+  </p>
+</footer>
+
+</body>
+</html>
